@@ -2,13 +2,12 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 import { CONTACT_FORM_SECRET } from "astro:env/server";
 
 const MIN_ELAPSED_MS = 15_000;
-const MAX_ELAPSED_MS = 60 * 60 * 1000;
+const MAX_ELAPSED_MS = 60 * 60 * 1000; /* 1 hour */
 
 function getSecret(): string {
   if (!CONTACT_FORM_SECRET) {
-    throw new Error("CONTACT_FORM_SECRET is required");
+    throw new Error("CONTACT_FORM_SECRET is not configured");
   }
-
   return CONTACT_FORM_SECRET;
 }
 
