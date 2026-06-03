@@ -1,0 +1,8 @@
+---
+import type { LocaleType } from "@content/i18n/locale";
+import { SUPPORTED_LOCALES } from "@content/i18n/locale";
+import ResumePage from "@components/pages/ResumePage.astro";
+
+const locale: LocaleType = SUPPORTED_LOCALES.EN;
+---
+<ResumePage locale={locale} />

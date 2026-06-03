@@ -1,0 +1,13 @@
+---
+import {combineCssClasses} from "@scripts/combineCssClasses.ts";
+type Props = {
+  class?: string;
+};
+
+const {class: className} = Astro.props as Props;
+const baseClasses = "l-container";//"mx-auto max-w-(--rl-container-max) px-6";
+const classes = combineCssClasses(baseClasses, className);
+---
+<div class={classes}>
+  <slot/>
+</div>

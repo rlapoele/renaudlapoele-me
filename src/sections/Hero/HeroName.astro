@@ -1,0 +1,12 @@
+---
+import {combineCssClasses} from "@scripts/combineCssClasses.ts";
+
+type Props = { name: string, class?: string };
+
+const { name, class: className = '' } = Astro.props as Props;
+const baseCssClasses = "font-serif font-light text-5xl leading-tight";
+const classes = combineCssClasses(baseCssClasses, className);
+---
+<h1 class={classes}>
+  {name}
+</h1>

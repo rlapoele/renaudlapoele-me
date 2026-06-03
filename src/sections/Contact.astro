@@ -1,0 +1,153 @@
+---
+import type { ContactType, FormUIType } from "@content/i18n/resume/Types";
+
+import { combineCssClasses } from "@scripts/combineCssClasses.ts";
+import Container from "@components/ui/Container.astro";
+import SectionHeading from "@components/ui/SectionHeading.astro";
+import Card from "@components/ui/Card.astro";
+import Spinner from "@components/ui/Spinner.astro";
+import FormField from "@components/ui/FormField.astro";
+import {DOM_ELEMENT_IDS, CONTACT_FORM_INPUT_MIN_MAX_LENGTHS} from "@scripts/contactFormManagement.ts";
+import {objectKeyValueArrayToString} from "@scripts/objectKeyValueArrayToString.ts";
+import {objectToObjectArray} from "@scripts/objectToObjectArray.ts";
+
+type Props = {
+  contact: ContactType,
+  form: FormUIType,
+  sectionLabel: string,
+  locale: string,
+  class?: string
+};
+
+const {
+  contact,
+  form,
+  sectionLabel,
+  locale,
+  class: className = ''
+} = Astro.props as Props;
+
+const baseCssClasses = 'l-section print:hidden';
+const classes = combineCssClasses(baseCssClasses, className);
+
+const minLengthName = CONTACT_FORM_INPUT_MIN_MAX_LENGTHS.NAME.MIN;
+const maxLengthName = CONTACT_FORM_INPUT_MIN_MAX_LENGTHS.NAME.MAX;
+const minLengthEmail = CONTACT_FORM_INPUT_MIN_MAX_LENGTHS.EMAIL.MIN;
+const maxLengthEmail = CONTACT_FORM_INPUT_MIN_MAX_LENGTHS.EMAIL.MAX;
+const minLengthMessage = CONTACT_FORM_INPUT_MIN_MAX_LENGTHS.MESSAGE.MIN;
+const maxLengthMessage = CONTACT_FORM_INPUT_MIN_MAX_LENGTHS.MESSAGE.MAX;
+
+const initialSubmitButtonTextLabel = form.controls.submitButton.labels.send;
+
+---
+
+<section id="contact" tabindex="-1" class={ classes }>
+  <Container class="">
+    <Card variant="section" padding="xl">
+      <div class="grid gap-10 lg:gap-20 lg:grid-cols-[0.95fr_1.35fr]">
+        <div>
+          <SectionHeading title={contact.title} label={sectionLabel} isHeaderStatic={true}/>
+          <p class="mt-4 max-w-lg leading-relaxed text-ink-secondary">
+            {contact.description}
+          </p>
+          <p class="mt-6 text-sm text-ink-tertiary">{contact.note}</p>
+        </div>
+
+        <form novalidate id={DOM_ELEMENT_IDS.CONTACT_FORM} aria-label={form.ariaLabel}>
+          <fieldset id={DOM_ELEMENT_IDS.CONTACT_FORM_FIELDSET} class="grid gap-8">
+
+            <p class="flex items-center justify-end gap-1 text-xs text-ink-tertiary"><span aria-hidden="true" class="c-required-field-indicator">*</span>{form.requiredFieldMessage}</p>
+
+            <input
+              id={DOM_ELEMENT_IDS.CONTACT_FORM_INPUT_TOKEN}
+              type="hidden"
+              value=""
+              name="token"
+            />
+
+            <input
+              id={DOM_ELEMENT_IDS.CONTACT_FORM_INPUT_LOCALE}
+              type="hidden"
+              value={locale}
+              name="locale"
+              data-error-messages={objectKeyValueArrayToString(objectToObjectArray(form.inputs.locale.errorMessages))}
+              data-error-message-id={DOM_ELEMENT_IDS.CONTACT_FORM_ERROR_MESSAGE_LOCALE}
+            />
+            <span id={DOM_ELEMENT_IDS.CONTACT_FORM_ERROR_MESSAGE_LOCALE} class="hidden"></span>
+
+            <div class="grid gap-x-4 gap-y-8 2xl:grid-cols-2">
+
+              <FormField
+                id={DOM_ELEMENT_IDS.CONTACT_FORM_INPUT_NAME}
+                name="name"
+                label={form.inputs.name.label}
+                inputType="text"
+                autocomplete="name"
+                placeholder={form.inputs.name.placeholder}
+                errorMessages={objectKeyValueArrayToString(objectToObjectArray(form.inputs.name.errorMessages))}
+                errorMessageId={DOM_ELEMENT_IDS.CONTACT_FORM_ERROR_MESSAGE_NAME}
+                minlength={minLengthName}
+                maxlength={maxLengthName}
+                required
+              />
+
+              <FormField
+                id={DOM_ELEMENT_IDS.CONTACT_FORM_INPUT_EMAIL}
+                name="email"
+                label={form.inputs.email.label}
+                inputType="email"
+                autocomplete="email"
+                placeholder={form.inputs.email.placeholder}
+                errorMessages={objectKeyValueArrayToString(objectToObjectArray(form.inputs.email.errorMessages))}
+                errorMessageId={DOM_ELEMENT_IDS.CONTACT_FORM_ERROR_MESSAGE_EMAIL}
+                minlength={minLengthEmail}
+                maxlength={maxLengthEmail}
+                required
+              />
+
+            </div>
+
+            <FormField
+              id={DOM_ELEMENT_IDS.CONTACT_FORM_INPUT_SUBJECT}
+              name="subject"
+              label={form.inputs.subject.label}
+              inputType="text"
+              autocomplete="off"
+              placeholder={form.inputs.subject.placeholder}
+              errorMessages={objectKeyValueArrayToString(objectToObjectArray(form.inputs.subject.errorMessages))}
+              errorMessageId={DOM_ELEMENT_IDS.CONTACT_FORM_ERROR_MESSAGE_SUBJECT}
+              required
+              isHoneyPot={true}
+            />
+
+            <FormField
+              id={DOM_ELEMENT_IDS.CONTACT_FORM_INPUT_MESSAGE}
+              name="message"
+              label={form.inputs.message.label}
+              fieldType="textarea"
+              rows={7}
+              autocomplete="off"
+              placeholder={form.inputs.message.placeholder}
+              errorMessages={objectKeyValueArrayToString(objectToObjectArray(form.inputs.message.errorMessages))}
+              errorMessageId={DOM_ELEMENT_IDS.CONTACT_FORM_ERROR_MESSAGE_MESSAGE}
+              minlength={minLengthMessage}
+              maxlength={maxLengthMessage}
+              required
+            />
+
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <button id={DOM_ELEMENT_IDS.CONTACT_FORM_BUTTON_SUBMIT}
+                      type="submit"
+                      class="c-button gap-x-2"
+                      data-text-labels={objectKeyValueArrayToString(objectToObjectArray(form.controls.submitButton.labels))}>
+                <Spinner dataSize="md"/><span id={DOM_ELEMENT_IDS.CONTACT_FORM_SUBMIT_BUTTON_TEXT_LABEL}>{initialSubmitButtonTextLabel}</span>
+              </button>
+            </div>
+          </fieldset>
+        </form>
+
+      </div>
+    </Card>
+
+  </Container>
+</section>

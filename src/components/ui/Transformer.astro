@@ -1,0 +1,23 @@
+---
+import {combineCssClasses} from "@scripts/combineCssClasses.ts";
+type Props = {
+  text: string,
+  sourceItemSeparator?: string,
+  newItemSeparator?: string,
+  mustTrimSeparator?: boolean,
+  class?: string
+};
+const {
+  text,
+  sourceItemSeparator = ' · ',
+  newItemSeparator = 'source',
+  mustTrimSeparator = true,
+  class: className = ''
+} = Astro.props as Props;
+
+const baseItemSeparatorCssClasses = "c-text-separator"; //'inline-block mx-1 text-accent-primary';
+const itemSeparatorCssClasses = combineCssClasses(baseItemSeparatorCssClasses, className);
+const itemSeparator = newItemSeparator === 'source' ? sourceItemSeparator : newItemSeparator;
+
+---
+{text.split(sourceItemSeparator).map((item, index, array) => (index + 1 < array.length ?<Fragment>{item}</Fragment><span aria-hidden="true" class={itemSeparatorCssClasses}>{mustTrimSeparator ? itemSeparator.trim() : itemSeparator}</span>:<Fragment>{item}</Fragment>))}

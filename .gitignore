@@ -1,0 +1,40 @@
+# Build output
+dist/
+
+# Generated Astro files
+.astro/
+
+# Dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Local caches and test output
+.cache/
+.vite/
+coverage/
+
+# Deployment state
+.vercel/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# JetBrains project settings
+.idea/
+
+# Project notes and archived drafts
+docs/
+.archives/

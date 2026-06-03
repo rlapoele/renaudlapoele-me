@@ -1,0 +1,64 @@
+---
+import type { NavBarItemType } from "@content/config/Types";
+import type {NavigationUIType, SettingsUIType} from "@content/i18n/resume/Types.ts";
+import { SUPPORTED_LOCALES } from "@content/i18n/locale";
+import { DOM_ELEMENT_IDS } from "@scripts/colorThemeManagement";
+import Icon from "@components/ui/Icon.astro";
+
+type Props = {
+  locale: string;
+  siteUrl: string;
+  navItems: NavBarItemType[]
+  navigation: NavigationUIType,
+  settings: SettingsUIType
+};
+const {
+  locale,
+  siteUrl,
+  navItems,
+  navigation,
+  settings
+} = Astro.props as Props;
+
+---
+<header role="banner" class="c-page-header print:hidden">
+  <div class="h-full flex flex-nowrap items-center justify-between gap-8 px-6">
+    <a id="rl-site-link" href={siteUrl} class="uppercase text-normal font-bold c-text-link hidden 2xl:inline-block">RENAUDLAPOELE.ME</a>
+
+    <button type="button" class="c-button c-button--icon -ms-2 2xl:hidden" title={navigation.menuOpenSelectorLabel} aria-label={navigation.menuOpenSelectorLabel}><Icon isDecorative={true} type="bar3" class="size-4"/></button>
+
+    <nav role="navigation" class="grow hidden 2xl:flex flex-nowrap items-center justify-center">
+      <ul class="px-6 flex flex-nowrap gap-8 items-center justify-center">
+        {navItems.map((item) => ( <li><a href={item.url} class="uppercase c-nav-link text-sm font-semibold dark:font-medium pbs-6 pbe-6 block">{navigation.navItems[item.key]}</a></li> ))}
+      </ul>
+    </nav>
+
+    <button type="button" class="c-button c-button--icon -me-2 2xl:hidden" title={settings.menuOpenSelectorLabel} aria-label={settings.menuOpenSelectorLabel}><Icon isDecorative={true} type="settings" class="size-4"/></button>
+
+    <div class="2xl:inline-flex hidden flex-nowrap items-center gap-4">
+      <div class="inline-flex items-center">
+        <a id="rl-language-selector" href={ locale === SUPPORTED_LOCALES.FR ? '/en' : '/fr'} class="c-button c-button--small" aria-label={settings.language.selectorLabel}>{settings.language.selectorLabel}</a>
+      </div>
+      <div class="inline-flex items-center gap-2">
+        <button id={DOM_ELEMENT_IDS.COLOR_THEME_MANAGER_SELECTOR_SYSTEM} type="button" class="c-button c-button--icon" title={settings.colorTheme.osThemeSelectorTitle} aria-label={settings.colorTheme.osThemeSelectorTitle}><Icon isDecorative={true} class="size-4" type="computer" /></button>
+        <button id={DOM_ELEMENT_IDS.COLOR_THEME_SELECTOR_LIGHT} type="button" class="c-button c-button--icon" title={settings.colorTheme.lightThemeSelectorTitle} aria-label={settings.colorTheme.lightThemeSelectorTitle}><Icon isDecorative={true}  class="size-4" type="sun" /></button>
+        <button id={DOM_ELEMENT_IDS.COLOR_THEME_SELECTOR_DARK} type="button" class="c-button c-button--icon" title={settings.colorTheme.darkThemeSelectorTitle} aria-label={settings.colorTheme.darkThemeSelectorTitle}><Icon isDecorative={true} class="size-4" type="moon" /></button>
+      </div>
+    </div>
+
+    <!--
+    <div class="flex flex-wrap items-center gap-3 text-sm">
+      <Badge class="border border-success-line bg-success-paint text-success-ink">
+        {personal.availability}
+      </Badge>
+      <span class="rounded-full border border-line-default px-3 py-1 text-ink-secondary">
+        {resume.ui.header.languageSwitch}
+      </span>
+    </div>
+    -->
+  </div>
+</header>
+
+<!--
+
+-->

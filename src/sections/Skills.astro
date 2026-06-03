@@ -1,0 +1,35 @@
+---
+import Container from "@components/ui/Container.astro";
+import Card from "@components/ui/Card.astro";
+import type {SkillsType} from "@content/i18n/resume/Types";
+import SectionHeading from "@components/ui/SectionHeading.astro";
+import Transformer from "@components/ui/Transformer.astro";
+
+type Props = {
+  content: SkillsType,
+  sectionLabel: string
+};
+
+const {
+  content,
+  sectionLabel
+} = Astro.props as Props;
+---
+<section id="skills" class="l-section">
+  <Container class="grid gap-8 lg:grid-cols-[0.95fr_2fr] items-start">
+    <SectionHeading label={sectionLabel} title={content.title} />
+    <div class="l-auto-grid l-auto-grid--col-min-15">
+      {content.groups.map((group) => (
+        <Card variant="default" as="div" class="min-w-20">
+          <h4 class="text-lg font-semibold"><Transformer text={group.name} mustTrimSeparator={false} sourceItemSeparator=" / " class="text-ink-tertiary/50"/></h4>
+          <ul class="mt-4 space-y-2 text-sm leading-6 text-ink-secondary">
+            {group.items.map((item) => (
+              <li><Transformer text={item} mustTrimSeparator={true} sourceItemSeparator="/" class="text-ink-tertiary/50 mx-0.5"/></li>
+            ))}
+          </ul>
+        </Card>
+      ))}
+    </div>
+
+  </Container>
+</section>

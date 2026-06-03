@@ -1,0 +1,40 @@
+---
+import type { LocaleType } from "@content/i18n/locale";
+import { getResumeData } from "@content/i18n/resume";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "@sections/Hero/Hero.astro";
+import Snapshot from "@sections/Snapshot.astro";
+import Impacts from "@sections/Impacts.astro";
+import Projects from "@sections/Projects.astro";
+import Skills from "@sections/Skills.astro";
+import Contact from "@sections/Contact.astro";
+import Toasts from "@components/ui/Toasts.astro";
+import { config } from "@content/config";
+import { DOM_ELEM_IDS } from "@scripts/notificationManagement.ts";
+
+type Props = { locale: LocaleType; };
+
+const { locale } = Astro.props as Props;
+const resume = getResumeData(locale);
+const { personal } = resume.data;
+const {
+  hero,
+  snapshot,
+  selectedImpact,
+  selectedWork,
+  skills,
+  contact
+} = resume.content;
+const {
+  sections
+} = resume.ui;
+---
+<BaseLayout locale={locale}>
+  <Hero content={hero} data={config.sections.hero.links} ui={sections.hero} fullname={personal.fullName} />
+  <Snapshot content={snapshot} sectionLabel={sections.snapshot.label} />
+  <Impacts content={selectedImpact} sectionLabel={sections.selectedImpact.label}/>
+  <Projects content={selectedWork} sectionLabel={sections.selectedWork.label}/>
+  <Skills content={skills} sectionLabel={sections.skills.label}  />
+  <Contact locale={locale} class="mbe-30" contact={contact} form={sections.contact.form} sectionLabel={sections.contact.label}/>
+  <Toasts id={DOM_ELEM_IDS.TOAST_CONTAINER} placement="bottom-center"/>
+</BaseLayout>

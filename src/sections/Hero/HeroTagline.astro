@@ -1,0 +1,13 @@
+---
+import Transformer from "@components/ui/Transformer.astro";
+import {combineCssClasses} from "@scripts/combineCssClasses.ts";
+
+type Props = { tagline: string, class?: string };
+const { tagline, class: className = '' } = Astro.props as Props;
+
+const baseCssClasses = "text-xl font-normal uppercase tracking-wider leading-none text-ink-tertiary";
+const classes = combineCssClasses(baseCssClasses, className);
+---
+<p class={classes}>
+  <Transformer text={tagline} class="font-bold text-xl" />
+</p>

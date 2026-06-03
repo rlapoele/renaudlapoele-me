@@ -1,0 +1,29 @@
+---
+import { combineCssClasses } from "@scripts/combineCssClasses.ts";
+import type {HTMLTag} from "astro/types";
+
+type Props = {
+  label: string;
+  title: string;
+  class?: string;
+  isHeaderStatic?: boolean
+  tag?: HTMLTag
+};
+
+const {
+  class: className,
+  label,
+  title,
+  isHeaderStatic = false,
+  tag: HTMLTagElement= "header"
+} = Astro.props as Props;
+const baseCssClasses = isHeaderStatic ? "c-section__heading" : "c-section__heading c-section__heading--dynamic";
+const classes = combineCssClasses(baseCssClasses, className);
+---
+<HTMLTagElement class={classes}>
+  <h2 class="c-section__heading__label">
+    {label}
+  </h2>
+  <h3 class="c-section__heading__title">{title}</h3>
+</HTMLTagElement>
+

@@ -1,0 +1,10 @@
+---
+import {combineCssClasses} from "@scripts/combineCssClasses.ts";
+type Props = {
+  class?: string;
+}
+const { class: className } = Astro.props as Props;
+const baseClasses = "c-bullet";
+const classes = combineCssClasses(baseClasses, className);
+---
+<span class={classes} aria-hidden="true"></span>

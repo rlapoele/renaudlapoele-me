@@ -1,0 +1,23 @@
+---
+import { combineCssClasses } from "@scripts/combineCssClasses.ts";
+
+type Props = {
+  id: string;
+  placement?: "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right";
+  class?: string;
+  attributes?: Record<string, unknown>;
+};
+
+const {
+  id,
+  placement = "bottom-center",
+  class: className,
+  ...attributes
+} = Astro.props as Props;
+
+const baseCssClasses = "c-toast-container";
+const classes = combineCssClasses(baseCssClasses, className);
+---
+<div id={id} {...attributes} class={classes} data-placement={placement}>
+  <slot/>
+</div>

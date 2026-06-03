@@ -1,0 +1,25 @@
+---
+import {combineCssClasses} from "@scripts/combineCssClasses.ts";
+type Props = {
+  title: string,
+  value: string
+  class?: string
+  attributes?: Record<string, unknown>
+};
+
+const {
+  title,
+  value,
+  class: className,
+  ...attributes
+} = Astro.props as Props;
+
+const baseCssClasses = "";
+const classes = combineCssClasses( baseCssClasses, className );
+
+---
+
+<div class={classes} {...attributes}>
+  <dt class="text-xs uppercase tracking-[0.3em] text-ink-tertiary/70 mbe-2">{title}</dt>
+  <dd class="text-lg font-medium text-ink-primary">{value}</dd>
+</div>

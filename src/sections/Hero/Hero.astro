@@ -1,0 +1,52 @@
+---
+import type {HeroType, HeroUIType} from "@content/i18n/resume/Types.ts";
+import Card from "@components/ui/Card.astro";
+import Container from "@components/ui/Container.astro";
+import HeroFocus from "./HeroFocus.astro";
+import HeroMetadata from "./HeroMetadata.astro";
+import HeroSummary from "./HeroSummary.astro";
+import HeroTagline from "./HeroTagline.astro";
+import HeroPortrait from "./HeroPortrait.astro";
+import HeroName from "./HeroName.astro";
+import HeroTitle from "./HeroTitle.astro";
+import type { HeroLinksType } from "@content/config/Types.ts";
+import Icon from "@components/ui/Icon.astro";
+
+type Props = {
+  content: HeroType,
+  data: HeroLinksType,
+  ui: HeroUIType,
+  fullname: string
+};
+
+const { content, data, ui, fullname } = Astro.props;
+
+---
+<section id="hero" class="l-section">
+  <Container class="pbs-20 pbe-7 sm:pe-0-20 grid place-items-center lg:place-items-start text-center lg:text-left gap-10 lg:gap-14 lg:grid-cols-[2fr_0.75fr] xl:grid-cols-[1.5fr_0.75fr] lg:items-start xl:items-center"> <!--md:grid-cols-[1.25fr_0.9fr] -->
+    <div class="space-y-10">
+      <div class="space-y-3">
+        <HeroTitle title={content.title}/>
+        <HeroName name={fullname}/>
+        <HeroTagline tagline={content.tagline} class="mbe-4" />
+        <HeroSummary summary={content.summary}/>
+      </div>
+      <div class="flex items-center justify-center lg:justify-start  gap-5">
+        <a class="c-button" href={data.toContactForm.href}>{ui.links.toContactForm}</a>
+        <a download href={data.resumeDownload.href} class="c-button c-button--secondary"><Icon class="size-4 stroke-2" type="arrow-down-on-square" isDecorative={true} /><span>{ui.links.resumeDownload}</span></a>
+      </div>
+
+      <div class="space-y-8">
+        <HeroMetadata metadata={content.meta}/>
+        <HeroFocus focusItems={content.focus}/>
+      </div>
+    </div>
+    <div>
+      <Card variant="media"
+            padding="none"
+            class="mx-auto lg:mr-0 aspect-4/5 lg:max-w-fit max-w-64">
+        <HeroPortrait portraitImageAlt={content.portraitImageAlt}/>
+      </Card>
+    </div>
+  </Container>
+</section>

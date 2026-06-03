@@ -1,0 +1,43 @@
+---
+import type { MiscType } from "@content/i18n/resume/Types.ts";
+import { createCopyrightStatement } from '@scripts/createCopyrightStatement.ts';
+import { combineCssClasses } from "@scripts/combineCssClasses.ts";
+import IconResend from '@components/ui/brand/IconResend.astro';
+import IconAstro from '@components/ui/brand/IconAstro.astro';
+import IconLinkedIn from "@components/ui/brand/IconLinkedIn.astro";
+import IconGitHub from "@components/ui/brand/IconGitHub.astro";
+
+type Props = {
+  fullname: string;
+  tagline: string;
+  misc: MiscType,
+  class?: string;
+}
+
+const {
+  fullname,
+  misc,
+  tagline,
+  class: className
+} = Astro.props as Props;
+
+const baseClasses = "c-page-footer print:hidden";
+const classes = combineCssClasses(baseClasses, className);
+
+const copyrightStatement = createCopyrightStatement(new Date().getFullYear(), fullname);
+---
+<footer role="contentinfo" class={classes}>
+  <div class="l-auto-grid l-auto-grid--col-min-20 gap-10">
+    <div class="grid gap-2">
+      <p>{copyrightStatement}</p>
+      <p class="text-ink-tertiary mbe-3">{tagline}</p>
+      <p class="flex flex-nowrap gap-4 items-center">
+        <a href="https://www.linkedin.com/in/renaud-lapoele-167106/" class="text-ink-tertiary transition-[color] duration-150 hover:text-accent-primary" target="_blank"><IconLinkedIn class="inline-block size-6"/></a>
+        <a href="https://github.com/rlapoele" class="text-ink-tertiary hover:text-accent-primary" target="_blank"><IconGitHub class="inline-block size-6"/></a>
+      </p>
+    </div>
+    <div>
+      <p class="flex items-center justify-center sm:justify-end text-sm text-ink-tertiary">{misc.poweredBy}<IconAstro class="w-3.5 h-(--rl-astro-icon-w) pbs-0.5 mx-2"/>+<IconResend class="size-7" /></p>
+    </div>
+  </div>
+</footer>

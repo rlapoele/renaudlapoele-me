@@ -1,0 +1,28 @@
+---
+import {combineCssClasses} from "@scripts/combineCssClasses.ts";
+//import Badge from "@components/ui/Badge.astro";
+import Transformer from "@components/ui/Transformer.astro";
+import type {HeroMetadataType} from "@content/i18n/resume/Types.ts";
+
+type Props = {
+  metadata: HeroMetadataType,
+  class?: string
+};
+
+const {
+  metadata,
+  class: className = ""
+} = Astro.props as Props;
+
+const baseCssClasses = "flex flex-col lg:flex-row justify-between gap-5";//"flex flex-wrap justify-center lg:justify-start gap-3 pbs-2 text-sm";
+const classes = combineCssClasses(baseCssClasses, className);
+
+---
+<dl class={classes}>
+  {metadata.map((item) => (
+    <div class="inline-flex flex-col gap-1.5 text-xs">
+      <dt class="block text-ink-tertiary tracking-wider uppercase">{item.type}</dt>
+      <dd class="block text-sm"><Transformer text={item.value}/></dd>
+    </div>
+  ))}
+</dl>

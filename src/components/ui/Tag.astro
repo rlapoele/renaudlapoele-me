@@ -1,0 +1,15 @@
+---
+
+import { combineCssClasses } from "@scripts/combineCssClasses.ts";
+
+type Props = { class?: string; };
+
+const { class: className } = Astro.props as Props;
+const baseClasses = "c-tag";
+//  "inline-flex items-center justify-center rounded-full px-3 py-1 text-xs font-medium bg-paint-tag text-ink-secondary border border-line-default";
+const classes = combineCssClasses(baseClasses, className);
+
+---
+<span class={classes}>
+  <slot />
+</span>

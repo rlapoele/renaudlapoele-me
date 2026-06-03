@@ -1,0 +1,18 @@
+---
+import {combineCssClasses} from "@scripts/combineCssClasses.ts";
+
+type Props = { portraitImageAlt: string, class?: string };
+
+const { portraitImageAlt, class: className = '' } = Astro.props as Props;
+const baseCssClasses = '';
+const classes = combineCssClasses(baseCssClasses, className);
+---
+<picture class={classes}>
+  <source srcset="/images/hero/renaud-hero-mobile.avif" media="(max-width: 1024px)" type="image/avif" />
+  <source srcset="/images/hero/renaud-hero-desktop.avif" media="(min-width: 1025px)" type="image/avif" />
+  <source srcset="/images/hero/renaud-hero-mobile.webp" media="(max-width: 1024px)" type="image/webp" />
+  <source srcset="/images/hero/renaud-hero-desktop.webp" media="(min-width: 1025px)" type="image/webp" />
+  <source srcset="/images/hero/renaud-hero-mobile.jpg" media="(max-width: 1024px)" type="image/jpeg" />
+  <source srcset="/images/hero/renaud-hero-desktop.jpg" media="(min-width: 1025px)" type="image/jpeg" />
+  <img fetchpriority="high" src="/images/hero/renaud-hero-desktop.jpg" alt={portraitImageAlt} class="h-full w-full object-cover" />
+</picture>

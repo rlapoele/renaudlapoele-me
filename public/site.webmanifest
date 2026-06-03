@@ -1,0 +1,25 @@
+{
+  "name": "Renaud Lapoële – Senior Front-End Engineer / Product Engineer",
+  "short_name": "Renaud Lapoële",
+  "description": "Design-minded front-end engineer with 25+ years of experience building scalable, usable, and product-oriented web applications.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fafaf9",
+  "theme_color": "#1c1917",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

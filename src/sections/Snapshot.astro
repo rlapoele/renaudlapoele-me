@@ -1,0 +1,29 @@
+---
+import type { SnapshotType } from "@content/i18n/resume/Types";
+import Card from "@components/ui/Card.astro";
+import Container from "@components/ui/Container.astro";
+import SectionHeading from "@components/ui/SectionHeading.astro";
+import Transformer from "@components/ui/Transformer.astro";
+
+type Props = { content: SnapshotType, sectionLabel: string};
+
+const { content, sectionLabel } = Astro.props as Props;
+
+---
+<section id="snapshot" class="l-section">
+  <Container class="grid gap-8 lg:grid-cols-[0.95fr_2fr] items-start">
+    <SectionHeading label={sectionLabel} title={content.title} />
+
+<!--    <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">-->
+      <div class="l-auto-grid">
+      {content.items.map((item) => (
+        <Card variant="default" as="div">
+          <h4 class="text-lg font-semibold"><Transformer text={item.label}/></h4>
+          <p class="mt-4 text-sm leading-6 text-ink-secondary">
+            {item.description}
+          </p>
+        </Card>
+      ))}
+    </div>
+  </Container>
+</section>

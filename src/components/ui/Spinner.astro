@@ -1,0 +1,35 @@
+---
+import {combineCssClasses} from "@scripts/combineCssClasses.ts";
+
+const SPINNER_SIZE_VARIANTS = {
+  SMALL: "sm",
+  MEDIUM: "md",
+  LARGE: "lg",
+  DEFAULT: "sm",
+} as const;
+
+const SPINNER_SIZE_VARIANT_TO_CSS_CLASS_MAP = {
+  [SPINNER_SIZE_VARIANTS.SMALL]: "c-spinner--small",
+  [SPINNER_SIZE_VARIANTS.MEDIUM]: "c-spinner--medium",
+  [SPINNER_SIZE_VARIANTS.LARGE]: "c-spinner--large",
+} as const;
+
+type SpinnerSizeType = "sm" | "md" | "lg";
+
+type Props = {
+  class?: string,
+  dataSize?: SpinnerSizeType,
+  attributes?: Record<string, string>,
+}
+
+const {
+  class: className = "",
+  dataSize = SPINNER_SIZE_VARIANTS.DEFAULT,
+  ...attributes
+} = Astro.props as Props;
+
+const baseCssClasses = "c-spinner";
+const sizeCssClasses = SPINNER_SIZE_VARIANT_TO_CSS_CLASS_MAP[dataSize];
+const classes = combineCssClasses(baseCssClasses, sizeCssClasses, className);
+---
+<span class={classes} {...attributes} aria-hidden="true"></span>

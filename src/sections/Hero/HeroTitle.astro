@@ -1,0 +1,12 @@
+---
+import {combineCssClasses} from "@scripts/combineCssClasses.ts";
+import Transformer from "@components/ui/Transformer.astro";
+
+type Props = { title: string, class?: string };
+const { title, class: className = '' } = Astro.props as Props;
+const baseCssClasses = "text-md font-semibold dark:font-medium uppercase tracking-wider text-accent-primary"
+const classes = combineCssClasses(baseCssClasses, className);
+---
+<p class={classes}>
+  <Transformer text={title} mustTrimSeparator={false} sourceItemSeparator=" / " class="text-ink-tertiary/30"/>
+</p>

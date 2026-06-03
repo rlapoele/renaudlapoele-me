@@ -1,0 +1,54 @@
+---
+import { combineCssClasses } from "@scripts/combineCssClasses.ts";
+
+const variantClasses = {
+  default: "",
+  feature: "",
+  section: "",
+  media: "c-card--media",
+} as const;
+
+const paddingClasses = {
+  none: "",
+  md: "c-card--tight",
+  lg: "c-card--relaxed",
+  xl: "c-card--loose",
+} as const;
+
+type CardElement = keyof HTMLElementTagNameMap;
+type CardVariant = keyof typeof variantClasses;
+type CardPadding = keyof typeof paddingClasses;
+
+type Props = {
+  as?: CardElement;
+  variant?: CardVariant;
+  padding?: CardPadding;
+  isInteractive?: boolean;
+  class?: string;
+};
+
+const {
+  as = "article",
+  variant = "default",
+  padding = "lg",
+  isInteractive = false,
+  class: className,
+  ...attributes
+} = Astro.props as Props;
+
+const Element = as;
+
+const baseClasses = 'c-card';
+const interactiveClasses = isInteractive ? "c-card--interactive" : "";
+
+const classes = combineCssClasses(
+  baseClasses,
+  variantClasses[variant],
+  paddingClasses[padding],
+  interactiveClasses,
+  className,
+);
+---
+<Element class={classes} {...attributes}>
+  <slot />
+</Element>

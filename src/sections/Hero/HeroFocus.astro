@@ -1,0 +1,23 @@
+---
+import {combineCssClasses} from "@scripts/combineCssClasses.ts";
+import Tag from "@components/ui/Tag.astro";
+
+type Props = {
+  focusItems: string[]
+  class?: string
+};
+
+const {
+  focusItems,
+  class: className = ''
+} = Astro.props as Props;
+
+const baseCssClasses = 'flex flex-wrap justify-center lg:justify-start gap-2';
+const classes = combineCssClasses(baseCssClasses, className);
+
+---
+<ul class={classes}>
+  {focusItems.map((item) => (
+    <li><Tag>{item}</Tag></li>
+  ))}
+</ul>
