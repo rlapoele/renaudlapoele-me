@@ -7,6 +7,7 @@ import {
   serverValidateContactForm
 } from "@scripts/contactFormManagement.ts";
 import {validateContactFormToken} from "@scripts/contactFormToken.ts";
+import { logger } from "@scripts/logger.ts";
 
 export const prerender = false;
 
@@ -67,7 +68,20 @@ function isRateLimited(key: string) {
 
 export const POST: APIRoute = async ({ request }) => {
   const clientKey = getClientKey(request);
+  logger.info(
+    {
+      clientKey,
+      contentType: request.headers.get("content-type"),
+    },
+    "Contact form submission received",
+  );
+
   if (isRateLimited(clientKey)) {
+    logger.warn(
+      { clientKey },
+      "Contact form rate limit exceeded",
+    );
+
     return jsonResponse({ isValid: false, message: "Rate limit exceeded" }, 429);
   }
 
@@ -76,6 +90,14 @@ export const POST: APIRoute = async ({ request }) => {
     postedData = await request.formData();
   }
   catch {
+    logger.warn(
+      {
+        clientKey,
+        message: "Unable to parse form data",
+      },
+      "Invalid contact form payload",
+    );
+
     return jsonResponse({ isValid: false, message: "Invalid form data" }, 400);
   }
 
@@ -86,17 +108,57 @@ export const POST: APIRoute = async ({ request }) => {
 
   contactFormData.email = contactFormData.email.toLowerCase();
 
+  logger.info(
+    {
+      clientKey,
+      formToken: contactFormData.token,
+      name: contactFormData.name,
+      email: contactFormData.email,
+      message: contactFormData.message,
+      locale: contactFormData.locale,
+      hasHoneypotValue: contactFormData.subject.length > 0,
+    },
+    "Contact form data parsed",
+  );
+
   if (contactFormData.subject.length > 0) {
+    logger.info(
+      {
+        clientKey,
+        subject: contactFormData.subject,
+      },
+      "Contact form honeypot triggered",
+    );
+
     return successResponse();
   }
   const tokenResult = validateContactFormToken(contactFormData.token);
   if (!tokenResult.valid) {
+    logger.warn(
+      {
+        clientKey,
+        formToken: contactFormData.token,
+      },
+      "Invalid contact form token",
+    );
+
     return jsonResponse({ isValid: false, message: "Invalid form data" }, 400);
   }
 
   const formValidationResult = serverValidateContactForm(contactFormData);
 
   if (!formValidationResult.isValid) {
+    logger.warn(
+      {
+        clientKey,
+        name: contactFormData.name,
+        email: contactFormData.email,
+        message: contactFormData.message,
+        validationMessage: formValidationResult.validationMessage,
+      },
+      "Contact form validation failed",
+    );
+
     return jsonResponse({
       isValid: formValidationResult.isValid,
       message: formValidationResult.validationMessage,
@@ -108,6 +170,15 @@ export const POST: APIRoute = async ({ request }) => {
   const sendFromEmail = normalizeInput(RESEND_FROM_EMAIL ?? "");
 
   if (!resendApiKey || !sendToEmail || !sendFromEmail) {
+    logger.error(
+      {
+        resendApiKeyConfigured: Boolean(resendApiKey),
+        sendToEmailConfigured: Boolean(sendToEmail),
+        sendFromEmailConfigured: Boolean(sendFromEmail),
+      },
+      "Email service configuration missing",
+    );
+
     return jsonResponse({ isValid: false, message: "Email service is not configured" }, 500);
   }
 
@@ -136,24 +207,30 @@ export const POST: APIRoute = async ({ request }) => {
       return jsonResponse({ isValid: false, message: "Error sending email" }, 500);
     }
 */
-    console.log({
-      from: sendFromEmail,
-      to: sendToEmail,
-      replyTo: contactFormData.email,
-      subject: "Message from via renaudlapoele.me",
-      html: buildContactEmailHtml(contactFormData),
-      text: [
-        "Message from renaudlapoele.me",
-        "",
-        `Name: ${contactFormData.name}`,
-        `Email: ${contactFormData.email}`,
-        "",
-        contactFormData.message,
-      ].join("\n"),
-    });
+    logger.info(
+      {
+        clientKey,
+        from: sendFromEmail,
+        to: sendToEmail,
+        email: contactFormData.email,
+        name: contactFormData.name,
+        message: contactFormData.message,
+      },
+      "Contact form email payload prepared",
+    );
+
     return successResponse();
   }
-  catch {
+  catch (err) {
+    logger.error(
+      {
+        clientKey,
+        email: contactFormData.email,
+        err,
+      },
+      "Failed to send contact form email",
+    );
+
     return jsonResponse({ isValid: false, message: "Error sending email" }, 500);
   }
 };
