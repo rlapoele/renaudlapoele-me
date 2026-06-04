@@ -26,6 +26,15 @@ type ContactFormSubmitResponseType = {
 type ContactFormTokenResponseType = {
   token: string
 };
+type ContactFormNotificationMessagesType = {
+  success: string;
+  validation: string;
+  sessionExpired: string;
+  rateLimited: string;
+  network: string;
+  serviceUnavailable: string;
+  unknown: string;
+};
 type ContactFormSubmitFailureReason =
   'validation' |
   'session-expired' |
@@ -43,6 +52,16 @@ type ContactFormValidationResult = {
 type ContactFormTokenResult =
   | { ok: true }
   | { ok: false; reason: Extract<ContactFormSubmitFailureReason, 'session-expired' | 'network' | 'unknown'>; status?: number; diagnostic?: string };
+
+const DEFAULT_CONTACT_FORM_NOTIFICATION_MESSAGES: ContactFormNotificationMessagesType = {
+  success: 'Your message has been sent. I will get back to you soon.',
+  validation: 'Some fields need attention. Please review the form and try again.',
+  sessionExpired: 'This form session expired. Please try sending your message again.',
+  rateLimited: 'Too many attempts in a short time. Please wait a few minutes before retrying.',
+  network: 'I could not reach the server. Check your connection, then try again.',
+  serviceUnavailable: 'The message service is temporarily unavailable. Please try again later.',
+  unknown: 'Your message could not be sent. Please try again later.',
+};
 
 function isContactFormSubmitResponse(value: unknown): value is ContactFormSubmitResponseType {
   return (
@@ -118,6 +137,15 @@ function logContactFormSubmitFailure(result: ContactFormSubmitResult): void {
     status: result.status,
     diagnostic: result.diagnostic,
   });
+}
+
+function resolveContactFormNotificationMessages(
+  notificationMessages: Record<string, string>
+): ContactFormNotificationMessagesType {
+  return {
+    ...DEFAULT_CONTACT_FORM_NOTIFICATION_MESSAGES,
+    ...notificationMessages,
+  };
 }
 
 type CreateContactFormManagerOptionsType = {
@@ -370,24 +398,27 @@ export function createContactFormManager(options: CreateContactFormManagerOption
     return { ok: false, reason: 'unknown', status: response.status, diagnostic: responseData.message };
   }
 
-  function getContactFormFailureMessage(result: ContactFormSubmitResult): string {
+  function getContactFormFailureMessage(
+    result: ContactFormSubmitResult,
+    notificationMessages: ContactFormNotificationMessagesType,
+  ): string {
     if (result.ok) {
       return '';
     }
 
     switch (result.reason) {
       case 'validation':
-        return 'Please review the highlighted fields and try again.';
+        return notificationMessages.validation;
       case 'session-expired':
-        return 'The form session expired. Please try again.';
+        return notificationMessages.sessionExpired;
       case 'rate-limited':
-        return 'Too many attempts. Please wait a few minutes before trying again.';
+        return notificationMessages.rateLimited;
       case 'network':
-        return 'Unable to send your message right now. Please check your connection and try again.';
+        return notificationMessages.network;
       case 'service-unavailable':
-        return 'Unable to send your message right now. Please try again later.';
+        return notificationMessages.serviceUnavailable;
       case 'unknown':
-        return 'Something went wrong. Please try again later.';
+        return notificationMessages.unknown;
     }
   }
 
@@ -397,10 +428,11 @@ export function createContactFormManager(options: CreateContactFormManagerOption
     errorMessageElements: Record<string, HTMLElement>,
     submitButtonTextLabelElement: HTMLElement,
     submitButtonLabels: Record<string, string>,
+    notificationMessages: ContactFormNotificationMessagesType,
     notificationManager: CreateNotificationManagerType,
   ): void {
     submitButtonTextLabelElement.textContent = submitButtonLabels.done;
-    notificationManager.notifySuccess('Your message has been sent. Thank you.');
+    notificationManager.notifySuccess(notificationMessages.success);
     window.setTimeout(() => {
       formInputs.forEach((formInput) => {
         resetField(formInput, errorMessageElements[formInput.name]);
@@ -414,10 +446,11 @@ export function createContactFormManager(options: CreateContactFormManagerOption
     result: ContactFormSubmitResult,
     submitButtonTextLabelElement: HTMLElement,
     submitButtonLabels: Record<string, string>,
+    notificationMessages: ContactFormNotificationMessagesType,
     notificationManager: CreateNotificationManagerType,
   ): void {
     logContactFormSubmitFailure(result);
-    notificationManager.notifyError(getContactFormFailureMessage(result));
+    notificationManager.notifyError(getContactFormFailureMessage(result, notificationMessages));
 
     window.setTimeout(() => {
       submitButtonTextLabelElement.textContent = submitButtonLabels.send;
@@ -446,6 +479,7 @@ export function createContactFormManager(options: CreateContactFormManagerOption
     inputErrorMessages: Record<string, Record<string, string>>,
     submitButtonTextLabelElement: HTMLElement,
     submitButtonLabels: Record<string, string>,
+    notificationMessages: ContactFormNotificationMessagesType,
     disabledElementsOnProcessing: HTMLElement[] = [],
     notificationManager: CreateNotificationManagerType
   ): (event: SubmitEvent) => void {
@@ -464,10 +498,10 @@ export function createContactFormManager(options: CreateContactFormManagerOption
       const submitResult = await submitContactForm(formInputs, tokenFormInput);
 
       if(submitResult.ok) {
-        handleSubmitSuccess(formInputs, tokenFormInput, errorMessageElements, submitButtonTextLabelElement, submitButtonLabels, notificationManager);
+        handleSubmitSuccess(formInputs, tokenFormInput, errorMessageElements, submitButtonTextLabelElement, submitButtonLabels, notificationMessages, notificationManager);
       }
       else {
-        handleSubmitFailure(submitResult, submitButtonTextLabelElement, submitButtonLabels, notificationManager);
+        handleSubmitFailure(submitResult, submitButtonTextLabelElement, submitButtonLabels, notificationMessages, notificationManager);
       }
 
       setProcessing(false, submitButton, submitButtonTextLabelElement, submitButtonLabels, disabledElementsOnProcessing);
@@ -583,6 +617,9 @@ export function createContactFormManager(options: CreateContactFormManagerOption
     };
 
     const submitButtonLabels = extractErrorMessages(contactFormButtonSubmit.dataset.textLabels as string);
+    const notificationMessages = resolveContactFormNotificationMessages(
+      extractErrorMessages(contactForm.dataset.notificationMessages as string)
+    );
 
     inputErrorMessages[contactFormInputName.name].min = inputErrorMessages[contactFormInputName.name].min.replace(MIN_KEYWORD, CONTACT_FORM_INPUT_MIN_MAX_LENGTHS.NAME.MIN.toString());
     inputErrorMessages[contactFormInputName.name].max = inputErrorMessages[contactFormInputName.name].max.replace(MAX_KEYWORD, CONTACT_FORM_INPUT_MIN_MAX_LENGTHS.NAME.MAX.toString());
@@ -592,7 +629,7 @@ export function createContactFormManager(options: CreateContactFormManagerOption
     inputErrorMessages[contactFormInputMessage.name].max = inputErrorMessages[contactFormInputMessage.name].max.replace(MAX_KEYWORD, CONTACT_FORM_INPUT_MIN_MAX_LENGTHS.MESSAGE.MAX.toString());
 
     contactForm.addEventListener('focusin', formFocusInEventHandler(contactFormInputToken));
-    contactForm.addEventListener('submit', formSubmitEventHandler(formInputs as HTMLInputElement[], contactFormInputToken, contactFormButtonSubmit, errorMessageElements, inputErrorMessages, contactFormButtonSubmitTextLabel, submitButtonLabels, disabledElementsOnProcessing, options.notificationManager));
+    contactForm.addEventListener('submit', formSubmitEventHandler(formInputs as HTMLInputElement[], contactFormInputToken, contactFormButtonSubmit, errorMessageElements, inputErrorMessages, contactFormButtonSubmitTextLabel, submitButtonLabels, notificationMessages, disabledElementsOnProcessing, options.notificationManager));
     contactFormInputName.addEventListener('blur', inputBlurEventHandler(contactFormInputName, contactFormErrorMessageName, inputErrorMessages[contactFormInputName.name]));
     contactFormInputEmail.addEventListener('blur', inputBlurEventHandler(contactFormInputEmail, contactFormErrorMessageEmail, inputErrorMessages[contactFormInputEmail.name]));
     contactFormInputMessage.addEventListener('blur', inputBlurEventHandler(contactFormInputMessage, contactFormErrorMessageMessage, inputErrorMessages[contactFormInputMessage.name]));

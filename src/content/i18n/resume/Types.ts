@@ -180,6 +180,15 @@ export type FormUIType = {
     }
   },
   requiredFieldMessage: string,
+  notifications: {
+    success: string,
+    validation: string,
+    sessionExpired: string,
+    rateLimited: string,
+    network: string,
+    serviceUnavailable: string,
+    unknown: string,
+  },
   controls: {
     submitButton: {
       labels: {

@@ -268,6 +268,15 @@ export const resumeEN : ResumeType = {
             }
           },
           requiredFieldMessage: "Required information",
+          notifications: {
+            success: "Your message has been sent. I will get back to you soon.",
+            validation: "Some fields need attention. Please review the form and try again.",
+            sessionExpired: "This form session expired. Please try sending your message again.",
+            rateLimited: "Too many attempts in a short time. Please wait a few minutes before retrying.",
+            network: "I could not reach the server. Check your connection, then try again.",
+            serviceUnavailable: "The message service is temporarily unavailable. Please try again later.",
+            unknown: "Your message could not be sent. Please try again later.",
+          },
           controls: {
             submitButton: {
               labels: {

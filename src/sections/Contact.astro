@@ -54,7 +54,12 @@ const initialSubmitButtonTextLabel = form.controls.submitButton.labels.send;
           <p class="mt-6 text-sm text-ink-tertiary">{contact.note}</p>
         </div>
 
-        <form novalidate id={DOM_ELEMENT_IDS.CONTACT_FORM} aria-label={form.ariaLabel}>
+        <form
+          novalidate
+          id={DOM_ELEMENT_IDS.CONTACT_FORM}
+          aria-label={form.ariaLabel}
+          data-notification-messages={objectKeyValueArrayToString(objectToObjectArray(form.notifications))}
+        >
           <fieldset id={DOM_ELEMENT_IDS.CONTACT_FORM_FIELDSET} class="grid gap-8">
 
             <p class="flex items-center justify-end gap-1 text-xs text-ink-tertiary"><span aria-hidden="true" class="c-required-field-indicator">*</span>{form.requiredFieldMessage}</p>
