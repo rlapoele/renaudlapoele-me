@@ -17,12 +17,16 @@ const serverSecretEnv = {
 
 // https://astro.build/config
 export default defineConfig({
+  output: 'static',
   vite: {
     plugins: [tailwindcss()]
   },
   adapter: node({
     mode: 'standalone',
   }),
+  server: {
+    host: true,
+  },
   env: {
     schema: {
       RESEND_API_KEY:
