@@ -26,24 +26,23 @@ type ContactFormSubmitResponseType = {
 type ContactFormTokenResponseType = {
   token: string
 };
-type ContactFormSubmissionFailureReason =
-  'missing-token' |
-  'transport' |
-  'protocol' |
-  'unexpected-response' |
-  'api-error';
-
-class ContactFormSubmissionError extends Error {
-  reason: ContactFormSubmissionFailureReason;
-  status?: number;
-
-  constructor(reason: ContactFormSubmissionFailureReason, message: string, status?: number) {
-    super(message);
-    this.name = 'ContactFormSubmissionError';
-    this.reason = reason;
-    this.status = status;
-  }
-}
+type ContactFormSubmitFailureReason =
+  'validation' |
+  'session-expired' |
+  'rate-limited' |
+  'network' |
+  'service-unavailable' |
+  'unknown';
+type ContactFormSubmitResult =
+  | { ok: true }
+  | { ok: false; reason: ContactFormSubmitFailureReason; status?: number; diagnostic?: string };
+type ContactFormValidationResult = {
+  isValid: boolean;
+  firstInvalidInput: HTMLInputElement | null;
+};
+type ContactFormTokenResult =
+  | { ok: true }
+  | { ok: false; reason: Extract<ContactFormSubmitFailureReason, 'session-expired' | 'network' | 'unknown'>; status?: number; diagnostic?: string };
 
 function isContactFormSubmitResponse(value: unknown): value is ContactFormSubmitResponseType {
   return (
@@ -65,15 +64,11 @@ function isContactFormTokenResponse(value: unknown): value is ContactFormTokenRe
   );
 }
 
-async function readContactFormSubmitResponse(response: Response): Promise<ContactFormSubmitResponseType> {
+async function readContactFormSubmitResponse(response: Response): Promise<ContactFormSubmitResponseType | null> {
   const contentType = response.headers.get('content-type') ?? '';
 
   if (!contentType.toLowerCase().includes('application/json')) {
-    throw new ContactFormSubmissionError(
-      'protocol',
-      'Contact form API returned a non-JSON response.',
-      response.status
-    );
+    return null;
   }
 
   let responseData: unknown;
@@ -81,37 +76,47 @@ async function readContactFormSubmitResponse(response: Response): Promise<Contac
     responseData = await response.json();
   }
   catch {
-    throw new ContactFormSubmissionError(
-      'protocol',
-      'Contact form API returned invalid JSON.',
-      response.status
-    );
+    return null;
   }
 
   if(!isContactFormSubmitResponse(responseData)) {
-    throw new ContactFormSubmissionError(
-      'unexpected-response',
-      'Contact form API returned an unexpected response shape.',
-      response.status
-    );
+    return null;
   }
 
   return responseData;
 }
 
-function logContactFormSubmissionError(error: unknown): void {
-  if (error instanceof ContactFormSubmissionError) {
-    console.error('Contact form submission failed:', {
-      reason: error.reason,
-      status: error.status,
-      message: error.message,
-    });
+async function readContactFormTokenResponse(response: Response): Promise<ContactFormTokenResponseType | null> {
+  const contentType = response.headers.get('content-type') ?? '';
+
+  if (!contentType.toLowerCase().includes('application/json')) {
+    return null;
+  }
+
+  let responseData: unknown;
+  try {
+    responseData = await response.json();
+  }
+  catch {
+    return null;
+  }
+
+  if(!isContactFormTokenResponse(responseData)) {
+    return null;
+  }
+
+  return responseData;
+}
+
+function logContactFormSubmitFailure(result: ContactFormSubmitResult): void {
+  if (result.ok) {
     return;
   }
 
   console.error('Contact form submission failed:', {
-    reason: 'unexpected',
-    message: error instanceof Error ? error.message : 'Unknown contact form submission failure.',
+    reason: result.reason,
+    status: result.status,
+    diagnostic: result.diagnostic,
   });
 }
 
@@ -157,7 +162,7 @@ export function createContactFormManager(options: CreateContactFormManagerOption
   let contactFormManagerState: ContactFormManagerStateType = CONTACT_FORM_MANAGER_STATES.CREATED;
 
   let contactFormInputToken: HTMLInputElement | null = null;
-  let tokenPromise: Promise<void> | null = null;
+  let tokenPromise: Promise<ContactFormTokenResult> | null = null;
 
   function showFieldErrorMessage(input: HTMLInputElement, errorMessageElement: HTMLElement, errorMessage: string): void {
     input.setAttribute('aria-invalid', 'true');
@@ -200,20 +205,223 @@ export function createContactFormManager(options: CreateContactFormManagerOption
     }
   }
 
-  async function loadToken(tokenFormInput: HTMLInputElement) {
-    const response = await fetch("/api/contactToken");
+  function clientValidateFields(
+    formInputs: HTMLInputElement[],
+    errorMessageElements: Record<string, HTMLElement>,
+    inputErrorMessages: Record<string, Record<string, string>>,
+  ): ContactFormValidationResult {
+    let isValid = true;
+    let firstInvalidInput: HTMLInputElement | null = null;
 
-    if (!response.ok) {
-      throw new Error(`Contact token API returned HTTP ${response.status}.`);
+    for (const formInput of formInputs) {
+      const validationResult: ValidationResultType =
+        validateFieldInputValue(formInput.name, formInput.value.trim(), Object.keys(inputErrorMessages[formInput.name]) as ValidationType[]);
+      if(!validationResult.isValid) {
+        showFieldErrorMessage(formInput, errorMessageElements[formInput.name], inputErrorMessages[formInput.name][validationResult.errorType] as string);
+        isValid = false;
+        if(!firstInvalidInput) {
+          firstInvalidInput = formInput;
+        }
+      }
+      else {
+        hideFieldErrorMessage(formInput, errorMessageElements[formInput.name]);
+      }
     }
 
-    const responseData: unknown = await response.json();
+    return { isValid, firstInvalidInput };
+  }
 
-    if (!isContactFormTokenResponse(responseData)) {
-      throw new Error('Unexpected response from contact token API.');
+  async function loadToken(tokenFormInput: HTMLInputElement): Promise<ContactFormTokenResult> {
+    let response: Response;
+
+    try {
+      response = await fetch("/api/contactToken");
+    }
+    catch {
+      return { ok: false, reason: 'network', diagnostic: 'Contact token API request failed.' };
+    }
+
+    if (!response.ok) {
+      return {
+        ok: false,
+        reason: 'session-expired',
+        status: response.status,
+        diagnostic: `Contact token API returned HTTP ${response.status}.`
+      };
+    }
+
+    const responseData = await readContactFormTokenResponse(response);
+
+    if (!responseData) {
+      return {
+        ok: false,
+        reason: 'unknown',
+        status: response.status,
+        diagnostic: 'Contact token API returned an unexpected response.'
+      };
     }
 
     tokenFormInput.value = responseData.token;
+    return { ok: true };
+  }
+
+  async function ensureContactToken(tokenFormInput: HTMLInputElement): Promise<ContactFormTokenResult> {
+    if (tokenFormInput.value) {
+      return { ok: true };
+    }
+
+    if (!tokenPromise) {
+      tokenPromise = loadToken(tokenFormInput);
+    }
+
+    const tokenResult = await tokenPromise;
+
+    if (!tokenResult.ok) {
+      tokenPromise = null;
+    }
+
+    return tokenResult;
+  }
+
+  function preloadContactToken(tokenFormInput: HTMLInputElement): void {
+    if (tokenFormInput.value || tokenPromise) {
+      return;
+    }
+
+    tokenPromise = loadToken(tokenFormInput);
+    void tokenPromise.then((tokenResult) => {
+      if (!tokenResult.ok) {
+        tokenPromise = null;
+      }
+    });
+  }
+
+  function setProcessing(
+    isProcessing: boolean,
+    submitButton: HTMLButtonElement,
+    submitButtonTextLabelElement: HTMLElement,
+    submitButtonLabels: Record<string, string>,
+    disabledElementsOnProcessing: HTMLElement[],
+  ): void {
+    if (isProcessing) {
+      disableElements(disabledElementsOnProcessing);
+      submitButton.classList.add('c-button--processing');
+      submitButtonTextLabelElement.textContent = submitButtonLabels.sending;
+      return;
+    }
+
+    submitButton.classList.remove('c-button--processing');
+    enableElements(disabledElementsOnProcessing);
+  }
+
+  async function submitContactForm(
+    formInputs: HTMLInputElement[],
+    tokenFormInput: HTMLInputElement,
+  ): Promise<ContactFormSubmitResult> {
+    const tokenResult = await ensureContactToken(tokenFormInput);
+
+    if (!tokenResult.ok) {
+      return tokenResult;
+    }
+
+    let formData = new FormData();
+    formInputs.forEach((formInput) => formData.append(formInput.name, formInput.value.trim()));
+    formData.append(tokenFormInput.name, tokenFormInput.value.trim());
+
+    let response: Response;
+    try {
+      response = await fetch("/api/sendMessage", { method: "POST", body: formData });
+    }
+    catch {
+      return { ok: false, reason: 'network', diagnostic: 'Contact form API request failed.' };
+    }
+
+    const responseData = await readContactFormSubmitResponse(response);
+
+    if(!responseData) {
+      return {
+        ok: false,
+        reason: response.status >= 500 ? 'service-unavailable' : 'unknown',
+        status: response.status,
+        diagnostic: 'Contact form API returned an invalid or unexpected response.',
+      };
+    }
+
+    if(response.ok && responseData.isValid) {
+      return { ok: true };
+    }
+
+    if(response.status === 429) {
+      return { ok: false, reason: 'rate-limited', status: response.status, diagnostic: responseData.message };
+    }
+
+    if(response.status >= 500) {
+      return { ok: false, reason: 'service-unavailable', status: response.status, diagnostic: responseData.message };
+    }
+
+    if(response.status === 400) {
+      if (responseData.message === 'Invalid form data') {
+        return { ok: false, reason: 'session-expired', status: response.status, diagnostic: responseData.message };
+      }
+
+      return { ok: false, reason: 'validation', status: response.status, diagnostic: responseData.message };
+    }
+
+    return { ok: false, reason: 'unknown', status: response.status, diagnostic: responseData.message };
+  }
+
+  function getContactFormFailureMessage(result: ContactFormSubmitResult): string {
+    if (result.ok) {
+      return '';
+    }
+
+    switch (result.reason) {
+      case 'validation':
+        return 'Please review the highlighted fields and try again.';
+      case 'session-expired':
+        return 'The form session expired. Please try again.';
+      case 'rate-limited':
+        return 'Too many attempts. Please wait a few minutes before trying again.';
+      case 'network':
+        return 'Unable to send your message right now. Please check your connection and try again.';
+      case 'service-unavailable':
+        return 'Unable to send your message right now. Please try again later.';
+      case 'unknown':
+        return 'Something went wrong. Please try again later.';
+    }
+  }
+
+  function handleSubmitSuccess(
+    formInputs: HTMLInputElement[],
+    tokenFormInput: HTMLInputElement,
+    errorMessageElements: Record<string, HTMLElement>,
+    submitButtonTextLabelElement: HTMLElement,
+    submitButtonLabels: Record<string, string>,
+    notificationManager: CreateNotificationManagerType,
+  ): void {
+    submitButtonTextLabelElement.textContent = submitButtonLabels.done;
+    notificationManager.notifySuccess('Your message has been sent. Thank you.');
+    window.setTimeout(() => {
+      formInputs.forEach((formInput) => {
+        resetField(formInput, errorMessageElements[formInput.name]);
+      });
+      resetTokenField(tokenFormInput);
+      submitButtonTextLabelElement.textContent = submitButtonLabels.send;
+    }, 3000);
+  }
+
+  function handleSubmitFailure(
+    result: ContactFormSubmitResult,
+    submitButtonTextLabelElement: HTMLElement,
+    submitButtonLabels: Record<string, string>,
+    notificationManager: CreateNotificationManagerType,
+  ): void {
+    logContactFormSubmitFailure(result);
+    notificationManager.notifyError(getContactFormFailureMessage(result));
+
+    window.setTimeout(() => {
+      submitButtonTextLabelElement.textContent = submitButtonLabels.send;
+    }, 3000);
   }
 
   // Call the contact token endpoint to obtain a token with a server timestamp which
@@ -226,9 +434,7 @@ export function createContactFormManager(options: CreateContactFormManagerOption
     formTokenElement: HTMLInputElement,
   ): () => void {
     return () => {
-      if(!tokenPromise) {
-        tokenPromise = loadToken(formTokenElement);
-      }
+      preloadContactToken(formTokenElement);
     }
   }
 
@@ -246,113 +452,25 @@ export function createContactFormManager(options: CreateContactFormManagerOption
     return async (event: SubmitEvent) => {
       event.preventDefault();
 
-      let isFormValid = true;
-      let elementToFocusOn: HTMLInputElement | null = null;
+      const validationResult = clientValidateFields(formInputs, errorMessageElements, inputErrorMessages);
 
-      // Since the elementToFocusOn is init. as null, we use a for ... of loop to help typescript
-      // track assignment to the element to focus on and thereby avoid a type issue when trying to
-      // focus on the element (...toFocusOn).
-      for (const formInput of formInputs) {
-        const validationResult: ValidationResultType =
-          validateFieldInputValue(formInput.name, formInput.value.trim(), Object.keys(inputErrorMessages[formInput.name]) as ValidationType[]);
-        if(!validationResult.isValid) {
-          showFieldErrorMessage(formInput, errorMessageElements[formInput.name], inputErrorMessages[formInput.name][validationResult.errorType] as string);
-          isFormValid = false;
-          if(!elementToFocusOn) {
-            elementToFocusOn = formInput;
-          }
-        }
-        else {
-          hideFieldErrorMessage(formInput, errorMessageElements[formInput.name]);
-        }
+      if(!validationResult.isValid) {
+        validationResult.firstInvalidInput?.focus();
+        return;
       }
 
-      if(isFormValid) {
-        disableElements(disabledElementsOnProcessing);
+      setProcessing(true, submitButton, submitButtonTextLabelElement, submitButtonLabels, disabledElementsOnProcessing);
 
-        submitButton.classList.add('c-button--processing');
-        submitButtonTextLabelElement.textContent = submitButtonLabels.sending;
+      const submitResult = await submitContactForm(formInputs, tokenFormInput);
 
-        let hasBeenSent = false;
-        let errorMessage = submitButtonLabels.error ?? submitButtonLabels.send;
-
-        try {
-          if (tokenPromise) {
-            await tokenPromise;
-          }
-
-          if (!tokenFormInput.value) {
-            notificationManager.notifyError('An error occurred, please retry.');
-            throw new ContactFormSubmissionError('missing-token', 'Contact form token is missing.');
-          }
-
-          let formData = new FormData();
-          formInputs.forEach((formInput) => formData.append(formInput.name, formInput.value.trim()));
-          formData.append(tokenFormInput.name, tokenFormInput.value.trim());
-
-          let response: Response;
-          try {
-            response = await fetch("/api/sendMessage", { method: "POST", body: formData });
-          }
-          catch {
-            notificationManager.notifyError('An error occurred, please retry.');
-            throw new ContactFormSubmissionError('transport', 'Contact form API request failed.');
-          }
-
-          const responseData = await readContactFormSubmitResponse(response);
-
-          if(!response.ok || !responseData.isValid) {
-            errorMessage = responseData.message ?? errorMessage;
-            notificationManager.notifyError('An error occurred, please retry.');
-            throw new ContactFormSubmissionError(
-              'api-error',
-              responseData.message ?? `Contact form API returned HTTP ${response.status}.`,
-              response.status
-            );
-          }
-
-          hasBeenSent = true;
-          submitButtonTextLabelElement.textContent = submitButtonLabels.done;
-          notificationManager.notifySuccess('Your message has been sent successfully, thank you!');
-          window.setTimeout(() => {
-            formInputs.forEach((formInput) => {
-              resetField(formInput, errorMessageElements[formInput.name]);
-            });
-            resetTokenField(tokenFormInput);
-            submitButtonTextLabelElement.textContent = submitButtonLabels.send;
-            enableElements(disabledElementsOnProcessing);
-          }, 3000);
-        }
-        catch (error) {
-          logContactFormSubmissionError(error);
-
-          if (
-            error instanceof ContactFormSubmissionError &&
-            ['protocol', 'unexpected-response'].includes(error.reason)
-          ) {
-            notificationManager.notifyError('An error occurred, please retry.');
-          }
-
-          //submitButtonTextLabelElement.textContent = errorMessage;
-
-          window.setTimeout(() => {
-            submitButtonTextLabelElement.textContent = submitButtonLabels.send;
-          }, 3000);
-        }
-        finally {
-
-          submitButton.classList.remove('c-button--processing');
-
-          if(!hasBeenSent) {
-            enableElements(disabledElementsOnProcessing);
-          }
-        }
+      if(submitResult.ok) {
+        handleSubmitSuccess(formInputs, tokenFormInput, errorMessageElements, submitButtonTextLabelElement, submitButtonLabels, notificationManager);
       }
       else {
-        if(!!elementToFocusOn) {
-          elementToFocusOn.focus();
-        }
+        handleSubmitFailure(submitResult, submitButtonTextLabelElement, submitButtonLabels, notificationManager);
       }
+
+      setProcessing(false, submitButton, submitButtonTextLabelElement, submitButtonLabels, disabledElementsOnProcessing);
     }
   }
 
