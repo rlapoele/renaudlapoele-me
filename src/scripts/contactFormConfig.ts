@@ -1,0 +1,18 @@
+export const DOM_ELEMENT_IDS = {
+  CONTACT_FORM: 'rl-contact-form',
+  CONTACT_FORM_FIELDSET: 'rl-contact-form-fieldset',
+  CONTACT_FORM_INPUT_TOKEN: 'rl-contact-form-input-token',
+  CONTACT_FORM_INPUT_LOCALE: 'rl-contact-form-input-locale',
+  CONTACT_FORM_INPUT_NAME: 'rl-contact-form-input-name',
+  CONTACT_FORM_INPUT_EMAIL: 'rl-contact-form-input-email',
+  CONTACT_FORM_INPUT_SUBJECT: 'rl-contact-form-input-subject',
+  CONTACT_FORM_INPUT_MESSAGE: 'rl-contact-form-input-message',
+  CONTACT_FORM_BUTTON_SUBMIT: 'rl-contact-form-button-submit',
+  CONTACT_FORM_ERROR_MESSAGE_LOCALE: 'rl-contact-form-error-message-locale',
+  CONTACT_FORM_ERROR_MESSAGE_NAME: 'rl-contact-form-error-message-name',
+  CONTACT_FORM_ERROR_MESSAGE_EMAIL: 'rl-contact-form-error-message-email',
+  CONTACT_FORM_ERROR_MESSAGE_SUBJECT: 'rl-contact-form-error-message-subject',
+  CONTACT_FORM_ERROR_MESSAGE_MESSAGE: 'rl-contact-form-error-message-message',
+  CONTACT_FORM_SUCCESS_INDICATOR: 'rl-contact-form-success-indicator',
+  CONTACT_FORM_SUBMIT_BUTTON_TEXT_LABEL: 'rl-contact-form-submit-button-text-label',
+} as const;

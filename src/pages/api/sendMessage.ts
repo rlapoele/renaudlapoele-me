@@ -5,7 +5,7 @@ import { RESEND_API_KEY, RESEND_FROM_EMAIL, RESEND_TO_EMAIL } from "astro:env/se
 import {
   type ServerContactFormValidationInputType,
   serverValidateContactForm
-} from "@scripts/contactFormManagement.ts";
+} from "@scripts/serverContactFormValidation.ts";
 import {validateContactFormToken} from "@scripts/contactFormToken.ts";
 import { logger } from "@scripts/logger.ts";
 

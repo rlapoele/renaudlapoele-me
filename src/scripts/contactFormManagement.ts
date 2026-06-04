@@ -1,59 +1,24 @@
 import { extractErrorMessages } from "@scripts/extractErrorMessages.ts";
 import { disableElements, enableElements } from "@scripts/enableDisableElement.ts";
-import { getResumeData } from "@content/i18n/resume";
-import type {LocaleType} from "@content/i18n/locale";
-import {SUPPORTED_LOCALES} from "@content/i18n/locale";
 import type {CreateNotificationManagerType} from "@scripts/notificationManagement.ts";
+import { DOM_ELEMENT_IDS } from "@scripts/contactFormConfig.ts";
+import {
+  CONTACT_FORM_INPUT_MIN_MAX_LENGTHS,
+  MAX_KEYWORD,
+  MIN_KEYWORD,
+  type ValidationResultType,
+  type ValidationType,
+  validateFieldInputValue,
+} from "@scripts/contactFormValidation.ts";
 
-export const DOM_ELEMENT_IDS = {
-  CONTACT_FORM: 'rl-contact-form',
-  CONTACT_FORM_FIELDSET: 'rl-contact-form-fieldset',
-  CONTACT_FORM_INPUT_TOKEN: 'rl-contact-form-input-token',
-  CONTACT_FORM_INPUT_LOCALE: 'rl-contact-form-input-locale',
-  CONTACT_FORM_INPUT_NAME: 'rl-contact-form-input-name',
-  CONTACT_FORM_INPUT_EMAIL: 'rl-contact-form-input-email',
-  CONTACT_FORM_INPUT_SUBJECT: 'rl-contact-form-input-subject',
-  CONTACT_FORM_INPUT_MESSAGE: 'rl-contact-form-input-message',
-  CONTACT_FORM_BUTTON_SUBMIT: 'rl-contact-form-button-submit',
-  CONTACT_FORM_ERROR_MESSAGE_LOCALE: 'rl-contact-form-error-message-locale',
-  CONTACT_FORM_ERROR_MESSAGE_NAME: 'rl-contact-form-error-message-name',
-  CONTACT_FORM_ERROR_MESSAGE_EMAIL: 'rl-contact-form-error-message-email',
-  CONTACT_FORM_ERROR_MESSAGE_SUBJECT: 'rl-contact-form-error-message-subject',
-  CONTACT_FORM_ERROR_MESSAGE_MESSAGE: 'rl-contact-form-error-message-message',
-  CONTACT_FORM_SUCCESS_INDICATOR: 'rl-contact-form-success-indicator',
-  CONTACT_FORM_SUBMIT_BUTTON_TEXT_LABEL: 'rl-contact-form-submit-button-text-label',
-} as const;
-
-export const CONTACT_FORM_INPUT_MIN_MAX_LENGTHS = {
-  NAME: {
-    MIN: 2,
-    MAX: 100
-  },
-  EMAIL: {
-    MIN: 5,
-    MAX: 254
-  },
-  MESSAGE: {
-    MIN: 10,
-    MAX: 2000
-  },
-  SUBJECT: {
-    LEN: 0
-  }
-} as const;
-
-const MIN_KEYWORD = '{MIN}';
-const MAX_KEYWORD = '{MAX}';
-
+export { DOM_ELEMENT_IDS } from "@scripts/contactFormConfig.ts";
+export { CONTACT_FORM_INPUT_MIN_MAX_LENGTHS } from "@scripts/contactFormValidation.ts";
 
 export type CreateContactFormManagerType = {
   setup: () => void;
   init: () => void;
 }
 
-export type ValidationResultType = { isValid: boolean, errorType: string }
-export type ValidationType = 'min' | 'max' | 'email' | 'required' | 'length';
-type ContactFormInputLengthKey = keyof typeof CONTACT_FORM_INPUT_MIN_MAX_LENGTHS;
 type ContactFormSubmitResponseType = {
   isValid: boolean,
   message?: string
@@ -61,10 +26,6 @@ type ContactFormSubmitResponseType = {
 type ContactFormTokenResponseType = {
   token: string
 };
-
-function isContactFormInputLengthKey(inputName: string): inputName is ContactFormInputLengthKey {
-  return Object.prototype.hasOwnProperty.call(CONTACT_FORM_INPUT_MIN_MAX_LENGTHS, inputName);
-}
 
 function isContactFormSubmitResponse(value: unknown): value is ContactFormSubmitResponseType {
   return (
@@ -84,52 +45,6 @@ function isContactFormTokenResponse(value: unknown): value is ContactFormTokenRe
     typeof value.token === 'string' &&
     value.token.length > 0
   );
-}
-
-export function validateFieldInputValue(
-  inputName: string,
-  value: string,
-  validationTypes: ValidationType[]
-): ValidationResultType {
-  const emailRegex = /^(?!\.)(?!.*\.\.)([a-z0-9_'+\-\.]*)[a-z0-9_+-]@([a-z0-9][a-z0-9\-]*\.)+[a-z]{2,}$/i;
-  const trimmedValue = `${value}`.trim();
-  const uppercaseInputName = inputName.toUpperCase();
-  const inputLengthRules = isContactFormInputLengthKey(uppercaseInputName)
-    ? CONTACT_FORM_INPUT_MIN_MAX_LENGTHS[uppercaseInputName]
-    : null;
-  let isValid = true;
-  let errorType = '';
-
-
-  validationTypes.forEach((validationType) => {
-    if(isValid) {
-      if(validationType === 'required' && (trimmedValue.length === 0)) {
-        isValid = false;
-        errorType = 'required';
-      }
-
-      if(isValid && (validationType === 'email') && !emailRegex.test(trimmedValue)) {
-        isValid = false;
-        errorType = 'email';
-      }
-
-      if(isValid && (validationType === 'min') && inputLengthRules && ('MIN' in inputLengthRules) && (trimmedValue.length < inputLengthRules.MIN)) {
-        isValid = false;
-        errorType = 'min';
-      }
-
-      if(isValid && (validationType === 'max') && inputLengthRules && ('MAX' in inputLengthRules) && (trimmedValue.length > inputLengthRules.MAX)) {
-        isValid = false;
-        errorType = 'max';
-      }
-
-      if(isValid && (validationType === 'length') && inputLengthRules && ('LEN' in inputLengthRules) && (trimmedValue.length !== inputLengthRules.LEN)) {
-        isValid = false;
-        errorType = 'length';
-      }
-    }
-  });
-  return { isValid, errorType };
 }
 
 type CreateContactFormManagerOptionsType = {
@@ -338,7 +253,7 @@ export function createContactFormManager(options: CreateContactFormManagerOption
         catch (error) {
           console.error('Contact form submission failed:', error);
 
-          submitButtonTextLabelElement.textContent = errorMessage;
+          //submitButtonTextLabelElement.textContent = errorMessage;
 
           window.setTimeout(() => {
             submitButtonTextLabelElement.textContent = submitButtonLabels.send;
@@ -503,63 +418,4 @@ export function createContactFormManager(options: CreateContactFormManagerOption
     setup,
     init
   }
-}
-
-export type ServerContactFormValidationInputType = {
-  token: string,
-  locale: string,
-  name: string
-  email: string
-  subject: string
-  message: string
-}
-
-export type ServerContactFormValidationResultType = {
-  isValid: boolean,
-  validationMessage: string
-}
-
-export function serverValidateContactForm(contactFormInput: ServerContactFormValidationInputType): ServerContactFormValidationResultType {
-
-  let isValid = true;
-  let validationMessage: string = 'Your message has been sent successfully. Thank you for contacting me!';
-
-  if(
-    !contactFormInput.locale ||
-    (contactFormInput.locale.length === 0) ||
-    ![SUPPORTED_LOCALES.FR, SUPPORTED_LOCALES.EN].includes(contactFormInput.locale as LocaleType)
-  ) {
-    isValid = false;
-    validationMessage = 'Missing or invalid locale';
-  }
-  else {
-    const formInputs = getResumeData(contactFormInput.locale as LocaleType).ui.sections.contact.form.inputs;
-
-    let inputErrorMessages: Record<string, Record<string, string>> = {
-      locale: formInputs.locale.errorMessages,
-      name: formInputs.name.errorMessages,
-      email: formInputs.email.errorMessages,
-      subject: formInputs.subject.errorMessages,
-      message: formInputs.message.errorMessages,
-    }
-
-    inputErrorMessages["name"].min = inputErrorMessages["name"].min.replace(MIN_KEYWORD, CONTACT_FORM_INPUT_MIN_MAX_LENGTHS.NAME.MIN.toString());
-    inputErrorMessages["name"].max = inputErrorMessages["name"].max.replace(MAX_KEYWORD, CONTACT_FORM_INPUT_MIN_MAX_LENGTHS.NAME.MAX.toString());
-    inputErrorMessages["email"].min = inputErrorMessages["email"].min.replace(MIN_KEYWORD, CONTACT_FORM_INPUT_MIN_MAX_LENGTHS.EMAIL.MIN.toString());
-    inputErrorMessages["email"].max = inputErrorMessages["email"].max.replace(MAX_KEYWORD, CONTACT_FORM_INPUT_MIN_MAX_LENGTHS.EMAIL.MAX.toString());
-    inputErrorMessages["message"].min = inputErrorMessages["message"].min.replace(MIN_KEYWORD, CONTACT_FORM_INPUT_MIN_MAX_LENGTHS.MESSAGE.MIN.toString());
-    inputErrorMessages["message"].max = inputErrorMessages["message"].max.replace(MAX_KEYWORD, CONTACT_FORM_INPUT_MIN_MAX_LENGTHS.MESSAGE.MAX.toString());
-
-    Object.keys(formInputs).forEach((key) => {
-      if(isValid) {
-        let error: ValidationResultType = validateFieldInputValue(key, contactFormInput[key as keyof typeof contactFormInput], Object.keys(inputErrorMessages[key]) as ValidationType[]);
-        if (!error.isValid) {
-          isValid = false;
-          validationMessage = inputErrorMessages[key][error.errorType];
-        }
-      }
-    });
-  }
-  console.log('isValid:', isValid, 'validationMessage:', validationMessage);
-  return { isValid, validationMessage };
 }
