@@ -4,8 +4,11 @@ import {
 } from "@scripts/colorThemeManagement.ts";
 import {type CreateContactFormManagerType, createContactFormManager} from "@scripts/contactFormManagement.ts";
 import {createNotificationManager, type CreateNotificationManagerType} from "@scripts/notificationManagement.ts";
+import { defineIconElement } from "@components/wc/Icon.ts";
 
 function setup(): void {
+  defineIconElement();
+
   const ctm : CreateColorThemeManagerType = createColorThemeManager();
   const nm : CreateNotificationManagerType = createNotificationManager();
   const cfm : CreateContactFormManagerType = createContactFormManager({ disabledElementIDsOnProcessing: ['rl-site-link', 'rl-language-selector'], notificationManager: nm });
