@@ -1,7 +1,7 @@
 {
   "name": "renaudlapoele-me",
   "type": "module",
-  "version": "0.0.2-alpha.2",
+  "version": "0.0.2-alpha.3",
   "engines": {
     "node": ">=22.12.0"
   },
