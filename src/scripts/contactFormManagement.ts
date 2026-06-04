@@ -26,6 +26,24 @@ type ContactFormSubmitResponseType = {
 type ContactFormTokenResponseType = {
   token: string
 };
+type ContactFormSubmissionFailureReason =
+  'missing-token' |
+  'transport' |
+  'protocol' |
+  'unexpected-response' |
+  'api-error';
+
+class ContactFormSubmissionError extends Error {
+  reason: ContactFormSubmissionFailureReason;
+  status?: number;
+
+  constructor(reason: ContactFormSubmissionFailureReason, message: string, status?: number) {
+    super(message);
+    this.name = 'ContactFormSubmissionError';
+    this.reason = reason;
+    this.status = status;
+  }
+}
 
 function isContactFormSubmitResponse(value: unknown): value is ContactFormSubmitResponseType {
   return (
@@ -45,6 +63,56 @@ function isContactFormTokenResponse(value: unknown): value is ContactFormTokenRe
     typeof value.token === 'string' &&
     value.token.length > 0
   );
+}
+
+async function readContactFormSubmitResponse(response: Response): Promise<ContactFormSubmitResponseType> {
+  const contentType = response.headers.get('content-type') ?? '';
+
+  if (!contentType.toLowerCase().includes('application/json')) {
+    throw new ContactFormSubmissionError(
+      'protocol',
+      'Contact form API returned a non-JSON response.',
+      response.status
+    );
+  }
+
+  let responseData: unknown;
+  try {
+    responseData = await response.json();
+  }
+  catch {
+    throw new ContactFormSubmissionError(
+      'protocol',
+      'Contact form API returned invalid JSON.',
+      response.status
+    );
+  }
+
+  if(!isContactFormSubmitResponse(responseData)) {
+    throw new ContactFormSubmissionError(
+      'unexpected-response',
+      'Contact form API returned an unexpected response shape.',
+      response.status
+    );
+  }
+
+  return responseData;
+}
+
+function logContactFormSubmissionError(error: unknown): void {
+  if (error instanceof ContactFormSubmissionError) {
+    console.error('Contact form submission failed:', {
+      reason: error.reason,
+      status: error.status,
+      message: error.message,
+    });
+    return;
+  }
+
+  console.error('Contact form submission failed:', {
+    reason: 'unexpected',
+    message: error instanceof Error ? error.message : 'Unknown contact form submission failure.',
+  });
 }
 
 type CreateContactFormManagerOptionsType = {
@@ -215,27 +283,32 @@ export function createContactFormManager(options: CreateContactFormManagerOption
 
           if (!tokenFormInput.value) {
             notificationManager.notifyError('An error occurred, please retry.');
-            throw new Error('Contact form token is missing.');
+            throw new ContactFormSubmissionError('missing-token', 'Contact form token is missing.');
           }
 
           let formData = new FormData();
           formInputs.forEach((formInput) => formData.append(formInput.name, formInput.value.trim()));
           formData.append(tokenFormInput.name, tokenFormInput.value.trim());
 
-          const response = await fetch("/api/sendMessage", { method: "POST", body: formData });
-          const responseData: unknown = await response.json();
-
-          //console.log(responseData);
-
-          if(!isContactFormSubmitResponse(responseData)) {
-            notificationManager.notifyError('An error occurred, please retry.');
-            throw new Error('Unexpected response from contact form API.');
+          let response: Response;
+          try {
+            response = await fetch("/api/sendMessage", { method: "POST", body: formData });
           }
+          catch {
+            notificationManager.notifyError('An error occurred, please retry.');
+            throw new ContactFormSubmissionError('transport', 'Contact form API request failed.');
+          }
+
+          const responseData = await readContactFormSubmitResponse(response);
 
           if(!response.ok || !responseData.isValid) {
             errorMessage = responseData.message ?? errorMessage;
             notificationManager.notifyError('An error occurred, please retry.');
-            throw new Error(responseData.message ?? `Contact form API returned HTTP ${response.status}.`);
+            throw new ContactFormSubmissionError(
+              'api-error',
+              responseData.message ?? `Contact form API returned HTTP ${response.status}.`,
+              response.status
+            );
           }
 
           hasBeenSent = true;
@@ -251,7 +324,14 @@ export function createContactFormManager(options: CreateContactFormManagerOption
           }, 3000);
         }
         catch (error) {
-          console.error('Contact form submission failed:', error);
+          logContactFormSubmissionError(error);
+
+          if (
+            error instanceof ContactFormSubmissionError &&
+            ['protocol', 'unexpected-response'].includes(error.reason)
+          ) {
+            notificationManager.notifyError('An error occurred, please retry.');
+          }
 
           //submitButtonTextLabelElement.textContent = errorMessage;
 
