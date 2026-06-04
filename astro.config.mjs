@@ -27,6 +27,14 @@ export default defineConfig({
   server: {
     host: true,
   },
+  security: {
+    allowedDomains: [
+      {
+        protocol: 'https',
+        hostname: 'renaudlapoele-me-production.up.railway.app',
+      },
+    ],
+  },
   env: {
     schema: {
       RESEND_API_KEY:
