@@ -480,7 +480,6 @@ export function createContactFormManager(options: CreateContactFormManagerOption
     contactFormInputMessage.addEventListener('blur', inputBlurEventHandler(contactFormInputMessage, contactFormErrorMessageMessage, inputErrorMessages[contactFormInputMessage.name]));
 
     contactFormManagerState = CONTACT_FORM_MANAGER_STATES.SETUP;
-    console.log('The contact form manager has successfully been setup!');
   }
 
   function init(): void {
@@ -491,7 +490,6 @@ export function createContactFormManager(options: CreateContactFormManagerOption
       throw new Error('ContactFormManager.init(): the contact form manager has already been setup and initialized. It is ready to work');
     }
     contactFormManagerState = CONTACT_FORM_MANAGER_STATES.READY;
-    console.log('The contact form manager has successfully been initialized!');
   }
 
   return {
