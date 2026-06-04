@@ -262,6 +262,15 @@ export const resumeFR: ResumeType = {
             }
           },
           requiredFieldMessage: "Information requise",
+          notifications: {
+            success: "Votre message a bien été envoyé. Je reviendrai vers vous rapidement.",
+            validation: "Certains champs demandent votre attention. Vérifiez le formulaire puis réessayez.",
+            sessionExpired: "Cette session de formulaire a expiré. Merci de renvoyer votre message.",
+            rateLimited: "Trop de tentatives en peu de temps. Merci d'attendre quelques minutes avant de réessayer.",
+            network: "Le serveur est momentanément inaccessible. Vérifiez votre connexion, puis réessayez.",
+            serviceUnavailable: "Le service d'envoi est temporairement indisponible. Merci de réessayer plus tard.",
+            unknown: "Votre message n'a pas pu être envoyé. Merci de réessayer plus tard.",
+          },
           controls: {
             submitButton: {
               labels: {

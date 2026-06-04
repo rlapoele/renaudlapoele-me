@@ -74,6 +74,9 @@
   --rl-color-green-100: oklch(0.88 0.12 160);
   --rl-color-green-200: oklch(0.75 0.12 160);
   --rl-color-green-300: oklch(0.55 0.11 160);
+  --rl-color-green-400: oklch(0.45 0.11 160);
+  --rl-color-green-500: oklch(0.35 0.10 160);
+  --rl-color-green-600: oklch(0.30 0.09 160);
   --rl-color-green-700: oklch(0.25 0.09 160);
 
   /* ===== ERROR ===== */
@@ -132,12 +135,14 @@
   --rl-color-focus-ring:         var(--rl-color-accent-primary);
 
   /* ===== SUCCESS ===== */
+  --rl-color-success-toast: var(--rl-color-green-50);
   --rl-color-success-paint: var(--rl-color-green-50);
   --rl-color-success-ink:   var(--rl-color-green-700);
   --rl-color-success-line:  var(--rl-color-green-200);
   --rl-color-success-outline: var(--rl-color-green-100);
 
   /* ===== ERROR ===== */
+  --rl-color-error-toast: var(--rl-color-red-100);
   --rl-color-error-paint: var(--rl-color-red-100);
   --rl-color-error-ink:   var(--rl-color-red-600);
   --rl-color-error-line:  var(--rl-color-red-600);
@@ -191,13 +196,15 @@
     --rl-color-interactive-active: var(--rl-color-neutral-700);
 
     /* ===== SUCCESS ===== */
+    --rl-color-success-toast: var(--rl-color-green-500);
     --rl-color-success-paint: var(--rl-color-green-700);
     --rl-color-success-ink:   var(--rl-color-green-100);
     --rl-color-success-line:  var(--rl-color-green-200);
     --rl-color-success-outline: var(--rl-color-green-100);
 
     /* ===== ERROR ===== */
-  --rl-color-error-paint: var(--rl-color-red-950);
+    --rl-color-error-toast: var(--rl-color-red-900);
+    --rl-color-error-paint: var(--rl-color-red-950);
     --rl-color-error-ink:   var(--rl-color-red-600);
     --rl-color-error-line:  var(--rl-color-red-600);
     --rl-color-error-outline: var(--rl-color-red-400);
@@ -255,12 +262,14 @@
   --color-focus-ring:         var(--rl-color-focus-ring);
 
   /* ===== SUCCESS ===== */
+  --color-success-toast: var(--rl-color-success-toast);
   --color-success-paint: var(--rl-color-success-paint);
   --color-success-ink:   var(--rl-color-success-ink);
   --color-success-line:  var(--rl-color-success-line);
   --color-success-outline:  var(--rl-color-success-outline);
 
   /* ===== ERROR ===== */
+  --color-error-toast: var(--rl-color-error-toast);
   --color-error-paint: var(--rl-color-error-paint);
   --color-error-ink:   var(--rl-color-error-ink);
   --color-error-line: var(--rl-color-error-line);
@@ -862,20 +871,28 @@
     font-weight: var(--font-weight-medium);
   }
 
+  rl-icon {
+    display: contents;
+  }
+
 
   .c-toast-container {
+    --rl-toast-initial-translate-y: calc(var(--spacing) * 8);
+    --rl-toast-initial-scale: 0.5;
     position: fixed;
     bottom: 0;
     right: 0;
     left:auto;
+    width: calc(100vw - calc(var(--spacing) * 8));
+    max-width: 40rem;
     z-index: 9999;
     display: flex;
     flex-direction: column;
     gap: calc(var(--spacing) * 2);
-    padding-block-start: calc(var(--spacing) * 4);
-    padding-inline-end: calc(var(--spacing) * 4);
-    padding-block-end: calc(var(--spacing) * 4);
-    padding-inline-start: calc(var(--spacing) * 4);
+    padding-block-start: calc(var(--spacing) * 20);
+    padding-inline-end: calc(var(--spacing) * 6);
+    padding-block-end: calc(var(--spacing) * 20);
+    padding-inline-start: calc(var(--spacing) * 6);
     pointer-events: none;
 
     &[data-placement="bottom-center"] {
@@ -908,6 +925,7 @@
       right: 0;
       left: auto;
     }
+
     &[data-placement="top-left"] {
       bottom: auto;
       top: 0;
@@ -918,7 +936,7 @@
     & .c-toast {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       gap: calc(var(--spacing) * 2);
       padding-block: calc(var(--spacing) * 3);
       padding-inline: calc(var(--spacing) * 4);
@@ -928,7 +946,7 @@
       color: var(--color-brand-ink);
       box-shadow: var(--shadow-2xl);
       opacity: 0;
-      transform: scale(0.8) translateY(20rem);
+      transform: scale(var(--rl-toast-initial-scale)) translateY(var(--rl-toast-initial-translate-y));
       transition: opacity 0.5s, transform 0.5s;
 
       &.c-toast--active {
@@ -937,16 +955,24 @@
       }
 
       &[data-type="success"] {
-        background: var(--color-success-paint);
+        background: var(--color-success-toast);
         border-color: --alpha(var(--color-success-line)/90%);
         color: var(--color-success-ink);
       }
 
       &[data-type="error"] {
-        background: var(--color-error-paint);
+        background: var(--color-error-toast);
         border-color: --alpha(var(--color-error-line)/60%);
         color: var(--color-error-ink);
       }
+
+      & .c-toast__message {
+        flex: 1 1 auto;
+      }
+    }
+
+    &[data-placement*="top"] .c-toast {
+      --rl-toast-initial-translate-y: calc(var(--spacing) * -4);
     }
   }
 }

@@ -7,7 +7,8 @@ import SectionHeading from "@components/ui/SectionHeading.astro";
 import Card from "@components/ui/Card.astro";
 import Spinner from "@components/ui/Spinner.astro";
 import FormField from "@components/ui/FormField.astro";
-import {DOM_ELEMENT_IDS, CONTACT_FORM_INPUT_MIN_MAX_LENGTHS} from "@scripts/contactFormManagement.ts";
+import { DOM_ELEMENT_IDS } from "@scripts/contactFormConfig.ts";
+import { CONTACT_FORM_INPUT_MIN_MAX_LENGTHS } from "@scripts/contactFormValidation.ts";
 import {objectKeyValueArrayToString} from "@scripts/objectKeyValueArrayToString.ts";
 import {objectToObjectArray} from "@scripts/objectToObjectArray.ts";
 
@@ -53,7 +54,12 @@ const initialSubmitButtonTextLabel = form.controls.submitButton.labels.send;
           <p class="mt-6 text-sm text-ink-tertiary">{contact.note}</p>
         </div>
 
-        <form novalidate id={DOM_ELEMENT_IDS.CONTACT_FORM} aria-label={form.ariaLabel}>
+        <form
+          novalidate
+          id={DOM_ELEMENT_IDS.CONTACT_FORM}
+          aria-label={form.ariaLabel}
+          data-notification-messages={objectKeyValueArrayToString(objectToObjectArray(form.notifications))}
+        >
           <fieldset id={DOM_ELEMENT_IDS.CONTACT_FORM_FIELDSET} class="grid gap-8">
 
             <p class="flex items-center justify-end gap-1 text-xs text-ink-tertiary"><span aria-hidden="true" class="c-required-field-indicator">*</span>{form.requiredFieldMessage}</p>

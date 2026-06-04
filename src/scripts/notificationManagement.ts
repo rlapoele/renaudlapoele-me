@@ -54,6 +54,13 @@ export function createNotificationManager(
     typeof NOTIFICATION_TYPE_WARNING |
     typeof NOTIFICATION_TYPE_ERROR;
 
+  const NOTIFICATION_ICON_TYPES: Record<NotificationType, string> = {
+    [NOTIFICATION_TYPE_INFO]: 'adjustments-vertical',
+    [NOTIFICATION_TYPE_SUCCESS]: 'check-circle',
+    [NOTIFICATION_TYPE_WARNING]: 'exclamation-triangle',
+    [NOTIFICATION_TYPE_ERROR]: 'exclamation-triangle',
+  };
+
   const resolvedOptions: Required<CreateNotificationManagerOptionsType> = {
     ...defaultOptions,
     ...options,
@@ -81,7 +88,17 @@ export function createNotificationManager(
     toastElement.id = `c-toast-${Date.now()}-${toastIndex++}`;
     toastElement.classList.add('c-toast', `c-toast--${notificationType}`);
     toastElement.dataset.type = notificationType;
-    toastElement.textContent = message;
+
+    const iconElement = document.createElement('rl-icon');
+    iconElement.classList.add('c-toast__icon', 'size-5', 'shrink-0');
+    iconElement.setAttribute('type', NOTIFICATION_ICON_TYPES[notificationType]);
+    iconElement.setAttribute('is-decorative', 'true');
+
+    const messageElement = document.createElement('span');
+    messageElement.classList.add('c-toast__message');
+    messageElement.textContent = message;
+
+    toastElement.append(iconElement, messageElement);
     toastContainerElement.prepend(toastElement);
     setTimeout(() => toastElement.classList.add('c-toast--active'), preFadeDelay);
     setTimeout(() => toastElement.classList.remove('c-toast--active'), toastDisplayDuration);
