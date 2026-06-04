@@ -28,12 +28,9 @@ export default defineConfig({
     host: true,
   },
   security: {
-    allowedDomains: [
-      {
-        protocol: 'https',
-        hostname: 'renaudlapoele-me-production.up.railway.app',
-      },
-    ],
+    // Railway terminates HTTPS before the Node server, which makes Astro's
+    // automatic Origin check see same-origin form POSTs as cross-site.
+    checkOrigin: false,
   },
   env: {
     schema: {
