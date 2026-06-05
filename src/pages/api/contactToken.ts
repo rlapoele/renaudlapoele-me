@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
 
-import { createContactFormToken } from "@scripts/contactFormToken.ts";
-import { logger } from "@scripts/logger.ts";
+import { createContactFormToken } from "@scripts/server/contactForm/contactFormToken.ts";
+import { logger } from "@scripts/server/logger.ts";
 
 export const prerender = false;
 

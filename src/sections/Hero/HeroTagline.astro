@@ -1,6 +1,6 @@
 ---
 import Transformer from "@components/ui/Transformer.astro";
-import {combineCssClasses} from "@scripts/combineCssClasses.ts";
+import {combineCssClasses} from "@scripts/shared/combineCssClasses.ts";
 
 type Props = { tagline: string, class?: string };
 const { tagline, class: className = '' } = Astro.props as Props;

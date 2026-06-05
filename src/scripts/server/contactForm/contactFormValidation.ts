@@ -8,8 +8,8 @@ import {
   type ValidationResultType,
   type ValidationType,
   validateFieldInputValue,
-} from "@scripts/contactFormValidation.ts";
-import { logger } from "@scripts/logger.ts";
+} from "@scripts/shared/contactForm/validation.ts";
+import { logger } from "@scripts/server/logger.ts";
 
 export type ServerContactFormValidationInputType = {
   token: string,

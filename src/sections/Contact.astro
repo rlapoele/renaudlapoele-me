@@ -1,16 +1,16 @@
 ---
 import type { ContactType, FormUIType } from "@content/i18n/resume/Types";
 
-import { combineCssClasses } from "@scripts/combineCssClasses.ts";
+import { combineCssClasses } from "@scripts/shared/combineCssClasses.ts";
 import Container from "@components/ui/Container.astro";
 import SectionHeading from "@components/ui/SectionHeading.astro";
 import Card from "@components/ui/Card.astro";
 import Spinner from "@components/ui/Spinner.astro";
 import FormField from "@components/ui/FormField.astro";
-import { DOM_ELEMENT_IDS } from "@scripts/contactFormConfig.ts";
-import { CONTACT_FORM_INPUT_MIN_MAX_LENGTHS } from "@scripts/contactFormValidation.ts";
-import {objectKeyValueArrayToString} from "@scripts/objectKeyValueArrayToString.ts";
-import {objectToObjectArray} from "@scripts/objectToObjectArray.ts";
+import { DOM_ELEMENT_IDS } from "@scripts/shared/contactForm/domElementIds.ts";
+import { CONTACT_FORM_INPUT_MIN_MAX_LENGTHS } from "@scripts/shared/contactForm/validation.ts";
+import {objectKeyValueArrayToString} from "@scripts/shared/objectKeyValueArrayToString.ts";
+import {objectToObjectArray} from "@scripts/shared/objectToObjectArray.ts";
 
 type Props = {
   contact: ContactType,

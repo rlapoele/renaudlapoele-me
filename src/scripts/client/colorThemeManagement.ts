@@ -1,4 +1,4 @@
-import {disableElement, enableElement} from "@scripts/enableDisableElement.ts";
+import {disableElement, enableElement} from "@scripts/client/enableDisableElement.ts";
 
 export const DOM_ELEMENT_IDS = {
   COLOR_THEME_SELECTOR_LIGHT: 'rl-color-theme-selector-light',

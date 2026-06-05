@@ -1,13 +1,13 @@
 import type { APIRoute } from "astro";
 import { Resend } from 'resend';
-import { escapeHtml, normalizeInput, getStringFormValue } from "@scripts/htmlUtils.ts";
+import { escapeHtml, normalizeInput, getStringFormValue } from "@scripts/server/htmlUtils.ts";
 import { RESEND_API_KEY, RESEND_FROM_EMAIL, RESEND_TO_EMAIL } from "astro:env/server";
 import {
   type ServerContactFormValidationInputType,
   serverValidateContactForm
-} from "@scripts/serverContactFormValidation.ts";
-import {validateContactFormToken} from "@scripts/contactFormToken.ts";
-import { logger } from "@scripts/logger.ts";
+} from "@scripts/server/contactForm/contactFormValidation.ts";
+import {validateContactFormToken} from "@scripts/server/contactForm/contactFormToken.ts";
+import { logger } from "@scripts/server/logger.ts";
 
 export const prerender = false;
 

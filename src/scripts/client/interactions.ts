@@ -1,9 +1,9 @@
 import {
   type CreateColorThemeManagerType,
   createColorThemeManager
-} from "@scripts/colorThemeManagement.ts";
-import {type CreateContactFormManagerType, createContactFormManager} from "@scripts/contactFormManagement.ts";
-import {createNotificationManager, type CreateNotificationManagerType} from "@scripts/notificationManagement.ts";
+} from "@scripts/client/colorThemeManagement.ts";
+import {type CreateContactFormManagerType, createContactFormManager} from "@scripts/client/contactFormManagement.ts";
+import {createNotificationManager, type CreateNotificationManagerType} from "@scripts/client/notificationManagement.ts";
 import { defineIconElement } from "@components/wc/Icon.ts";
 
 function setup(): void {

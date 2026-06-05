@@ -1,7 +1,7 @@
-import { extractErrorMessages } from "@scripts/extractErrorMessages.ts";
-import { disableElements, enableElements } from "@scripts/enableDisableElement.ts";
-import type {CreateNotificationManagerType} from "@scripts/notificationManagement.ts";
-import { DOM_ELEMENT_IDS } from "@scripts/contactFormConfig.ts";
+import { extractErrorMessages } from "@scripts/client/extractErrorMessages.ts";
+import { disableElements, enableElements } from "@scripts/client/enableDisableElement.ts";
+import type {CreateNotificationManagerType} from "@scripts/client/notificationManagement.ts";
+import { DOM_ELEMENT_IDS } from "@scripts/shared/contactForm/domElementIds.ts";
 import {
   CONTACT_FORM_INPUT_MIN_MAX_LENGTHS,
   MAX_KEYWORD,
@@ -9,10 +9,10 @@ import {
   type ValidationResultType,
   type ValidationType,
   validateFieldInputValue,
-} from "@scripts/contactFormValidation.ts";
+} from "@scripts/shared/contactForm/validation.ts";
 
-export { DOM_ELEMENT_IDS } from "@scripts/contactFormConfig.ts";
-export { CONTACT_FORM_INPUT_MIN_MAX_LENGTHS } from "@scripts/contactFormValidation.ts";
+export { DOM_ELEMENT_IDS } from "@scripts/shared/contactForm/domElementIds.ts";
+export { CONTACT_FORM_INPUT_MIN_MAX_LENGTHS } from "@scripts/shared/contactForm/validation.ts";
 
 export type CreateContactFormManagerType = {
   setup: () => void;
