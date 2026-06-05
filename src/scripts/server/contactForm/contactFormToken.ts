@@ -1,7 +1,7 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { CONTACT_FORM_SECRET } from "astro:env/server";
 
-const MIN_ELAPSED_MS = 15_000;
+const MIN_ELAPSED_MS = 10_000;
 const MAX_ELAPSED_MS = 60 * 60 * 1000; /* 1 hour */
 
 function getSecret(): string {
