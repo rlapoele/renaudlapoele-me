@@ -29,7 +29,6 @@ export function createMenuManager(): CreateMenuManagerType {
 
 
       menuManagerState = MENU_MANAGER_STATES.SETUP;
-      console.log('The menu manager has successfully been setup!');
     },
 
 
@@ -43,7 +42,6 @@ export function createMenuManager(): CreateMenuManagerType {
 
 
       menuManagerState = MENU_MANAGER_STATES.READY;
-      console.log('The menu manager has successfully been initialized!');
     }
   }
 }

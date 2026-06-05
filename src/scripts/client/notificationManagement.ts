@@ -147,7 +147,6 @@ export function createNotificationManager(
         throw new Error(`NotificationManager.setup(): Toast container DOM element id ("${resolvedOptions.toastContainerId}") is missing.`);
       }
       notificationManagerState = NOTIFICATION_MANAGER_STATE_SETUP;
-      console.log('The notification manager has successfully been setup!');
     },
 
 
@@ -160,7 +159,6 @@ export function createNotificationManager(
       }
 
       notificationManagerState = NOTIFICATION_MANAGER_STATE_READY;
-      console.log('The notification manager has successfully been initialized!');
     },
 
     notifySuccess: (message: string): string => { return notify(message, NOTIFICATION_TYPE_SUCCESS); },

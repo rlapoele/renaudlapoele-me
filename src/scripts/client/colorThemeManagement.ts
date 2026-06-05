@@ -119,9 +119,6 @@ export function createColorThemeManager(): CreateColorThemeManagerType {
       disableElement(userLightColorThemeSelector as HTMLInputElement);
     }
 
-    console.log(
-      `The color theme has been successfully changed to "${newColorTheme}" and the color theme manager to "${newColorThemeManager}".`
-    )
   }
 
   function setUserLightColorTheme(): void {
@@ -176,7 +173,6 @@ export function createColorThemeManager(): CreateColorThemeManagerType {
     systemColorThemeManagerSelector.addEventListener('click', clickEventHandler(systemColorThemeManagerSelector, setSystemColorThemeManager));
     window.matchMedia(MEDIA_QUERY_DARK_COLOR_THEME).addEventListener('change', updateSystemColorTheme);
     colorThemeManagerState = COLOR_THEME_MANAGER_STATES.SETUP;
-    console.log('The color theme manager has successfully been setup!');
   }
 
   function init(): void {
@@ -196,7 +192,6 @@ export function createColorThemeManager(): CreateColorThemeManagerType {
     }
     applyThemeState(colorTheme, colorThemeManager);
     colorThemeManagerState = COLOR_THEME_MANAGER_STATES.READY;
-    console.log('The color theme manager has successfully been initialized!');
   }
 
   return {
