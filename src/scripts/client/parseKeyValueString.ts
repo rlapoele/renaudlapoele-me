@@ -55,7 +55,7 @@ function unescapeString(str: string): string {
     );
 }
 
-export function extractErrorMessages(
+export function parseKeyValueString(
   objectArrayAsString: string
 ): StringKeyStringValueObjectType {
   return splitOnUnescapedCharacter(

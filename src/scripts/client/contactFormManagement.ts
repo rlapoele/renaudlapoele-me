@@ -1,4 +1,4 @@
-import { extractErrorMessages } from "@scripts/client/extractErrorMessages.ts";
+import { parseKeyValueString } from "@scripts/client/parseKeyValueString.ts";
 import { disableElements, enableElements } from "@scripts/client/enableDisableElement.ts";
 import type {CreateNotificationManagerType} from "@scripts/client/notificationManagement.ts";
 import { DOM_ELEMENT_IDS } from "@scripts/shared/contactForm/domElementIds.ts";
@@ -609,16 +609,16 @@ export function createContactFormManager(options: CreateContactFormManagerOption
       [contactFormInputMessage.name]: contactFormErrorMessageMessage,
     }
     const inputErrorMessages = {
-      [contactFormInputLocale.name]: extractErrorMessages(contactFormInputLocale.dataset.errorMessages as string),
-      [contactFormInputName.name]: extractErrorMessages(contactFormInputName.dataset.errorMessages as string),
-      [contactFormInputEmail.name]: extractErrorMessages(contactFormInputEmail.dataset.errorMessages as string),
-      [contactFormInputMessage.name]: extractErrorMessages(contactFormInputMessage.dataset.errorMessages as string),
-      [contactFormInputSubject.name]: extractErrorMessages(contactFormInputSubject.dataset.errorMessages as string),
+      [contactFormInputLocale.name]: parseKeyValueString(contactFormInputLocale.dataset.errorMessages as string),
+      [contactFormInputName.name]: parseKeyValueString(contactFormInputName.dataset.errorMessages as string),
+      [contactFormInputEmail.name]: parseKeyValueString(contactFormInputEmail.dataset.errorMessages as string),
+      [contactFormInputMessage.name]: parseKeyValueString(contactFormInputMessage.dataset.errorMessages as string),
+      [contactFormInputSubject.name]: parseKeyValueString(contactFormInputSubject.dataset.errorMessages as string),
     };
 
-    const submitButtonLabels = extractErrorMessages(contactFormButtonSubmit.dataset.textLabels as string);
+    const submitButtonLabels = parseKeyValueString(contactFormButtonSubmit.dataset.textLabels as string);
     const notificationMessages = resolveContactFormNotificationMessages(
-      extractErrorMessages(contactForm.dataset.notificationMessages as string)
+      parseKeyValueString(contactForm.dataset.notificationMessages as string)
     );
 
     inputErrorMessages[contactFormInputName.name].min = inputErrorMessages[contactFormInputName.name].min.replace(MIN_KEYWORD, CONTACT_FORM_INPUT_MIN_MAX_LENGTHS.NAME.MIN.toString());
