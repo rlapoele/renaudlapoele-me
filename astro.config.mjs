@@ -50,6 +50,10 @@ export default defineConfig({
         envField.string(
           serverSecretEnv
         ),
+      SITE_URL:
+        envField.string(
+          serverPublicEnv
+        ),
       LOG_LEVEL:
         envField.enum({
           ...serverPublicEnv,

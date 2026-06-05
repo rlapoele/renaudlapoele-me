@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import { Resend } from 'resend';
-import { escapeHtml, normalizeInput, getStringFormValue } from "@scripts/server/htmlUtils.ts";
+import { escapeHtml, getStringFormValue } from "@scripts/server/htmlUtils.ts";
 import { RESEND_API_KEY, RESEND_FROM_EMAIL, RESEND_TO_EMAIL } from "astro:env/server";
 import {
   type ServerContactFormValidationInputType,
@@ -8,6 +8,7 @@ import {
 } from "@scripts/server/contactForm/contactFormValidation.ts";
 import {validateContactFormToken} from "@scripts/server/contactForm/contactFormToken.ts";
 import { logger } from "@scripts/server/logger.ts";
+import { normalizeConfigValue } from "@scripts/server/configUtils.ts";
 
 export const prerender = false;
 
@@ -165,9 +166,9 @@ export const POST: APIRoute = async ({ request }) => {
     }, 400);
   }
 
-  const resendApiKey = normalizeInput(RESEND_API_KEY ?? "");
-  const sendToEmail = normalizeInput(RESEND_TO_EMAIL ?? "");
-  const sendFromEmail = normalizeInput(RESEND_FROM_EMAIL ?? "");
+  const resendApiKey = normalizeConfigValue(RESEND_API_KEY);
+  const sendToEmail = normalizeConfigValue(RESEND_TO_EMAIL);
+  const sendFromEmail = normalizeConfigValue(RESEND_FROM_EMAIL);
 
   if (!resendApiKey || !sendToEmail || !sendFromEmail) {
     logger.error(

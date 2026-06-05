@@ -6,6 +6,8 @@ import type { ResumeType } from "@content/i18n/resume/Types";
 
 import { getResumeData } from "@content/i18n/resume";
 import {config} from "@content/config";
+import { SITE_URL } from "astro:env/server";
+import { normalizeSiteUrl } from "@scripts/server/configUtils.ts";
 
 import Header from "@components/layout/Header.astro";
 import Footer from "@components/layout/Footer.astro";
@@ -16,6 +18,7 @@ interface Props {
 
 const { locale } = Astro.props;
 const resume: ResumeType = getResumeData(locale);
+const siteUrl = normalizeSiteUrl(SITE_URL);
 ---
 
 <!DOCTYPE html>
@@ -70,7 +73,7 @@ const resume: ResumeType = getResumeData(locale);
       <div class="c-grid-overlay"></div>
       <div class="relative z-20">
         <a href="#main-content" class="c-skip-link">Skip to main content</a>
-        <Header locale={locale} siteUrl={Astro.url.origin} navItems={config.navBarItems} navigation={resume.ui.header.navigation} settings={resume.ui.header.settings} />
+        <Header locale={locale} siteUrl={siteUrl} navItems={config.navBarItems} navigation={resume.ui.header.navigation} settings={resume.ui.header.settings} />
         <main id="main-content" tabindex="-1" role="main" class="space-y-28">
           <slot />
         </main>
@@ -86,4 +89,3 @@ const resume: ResumeType = getResumeData(locale);
     </script>
   </body>
 </html>
-
