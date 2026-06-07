@@ -702,7 +702,7 @@
   */
   .c-section__heading {
     @media screen and (min-width: 64rem) {
-      &.c-section__header--dynamic {
+      &.c-section__heading--dynamic {
         position: sticky;
         top: calc(var(--rl-header-height) + 1ch);
       }
