@@ -1,9 +1,12 @@
 ---
 import { combineCssClasses } from "@scripts/shared/combineCssClasses.ts";
+import { DOM_ELEM_IDS } from "@scripts/client/notificationManagement.ts";
 
 type Props = {
   id: string;
   placement?: "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right";
+  politeLiveRegionId?: string;
+  assertiveLiveRegionId?: string;
   class?: string;
   attributes?: Record<string, unknown>;
 };
@@ -11,6 +14,8 @@ type Props = {
 const {
   id,
   placement = "bottom-center",
+  politeLiveRegionId = DOM_ELEM_IDS.TOAST_LIVE_REGION_POLITE,
+  assertiveLiveRegionId = DOM_ELEM_IDS.TOAST_LIVE_REGION_ASSERTIVE,
   class: className,
   ...attributes
 } = Astro.props as Props;
@@ -19,5 +24,19 @@ const baseCssClasses = "c-toast-container";
 const classes = combineCssClasses(baseCssClasses, className);
 ---
 <div id={id} {...attributes} class={classes} data-placement={placement}>
+  <div
+    id={politeLiveRegionId}
+    class="sr-only"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+  ></div>
+  <div
+    id={assertiveLiveRegionId}
+    class="sr-only"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  ></div>
   <slot/>
 </div>

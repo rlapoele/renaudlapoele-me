@@ -858,7 +858,6 @@
     display: contents;
   }
 
-
   .c-toast-container {
     --rl-toast-initial-translate-y: calc(var(--spacing) * 8);
     --rl-toast-initial-scale: 0.5;

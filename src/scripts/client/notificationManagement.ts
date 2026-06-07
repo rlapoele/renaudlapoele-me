@@ -1,5 +1,7 @@
 export const DOM_ELEM_IDS = {
   TOAST_CONTAINER: 'rl-toast-container',
+  TOAST_LIVE_REGION_POLITE: 'rl-toast-live-region-polite',
+  TOAST_LIVE_REGION_ASSERTIVE: 'rl-toast-live-region-assertive',
 } as const;
 
 
@@ -20,12 +22,16 @@ const TOAST_DISPLAY_DURATION = 3000;
 
 export type CreateNotificationManagerOptionsType = {
   toastContainerId?: string;
+  politeLiveRegionId?: string;
+  assertiveLiveRegionId?: string;
   fadeDuration?: number;
   toastDisplayDuration?: number;
 }
 
 const defaultOptions: Required<CreateNotificationManagerOptionsType> = {
   toastContainerId: DOM_ELEM_IDS.TOAST_CONTAINER,
+  politeLiveRegionId: DOM_ELEM_IDS.TOAST_LIVE_REGION_POLITE,
+  assertiveLiveRegionId: DOM_ELEM_IDS.TOAST_LIVE_REGION_ASSERTIVE,
   fadeDuration: TOAST_FADE_DURATION,
   toastDisplayDuration: TOAST_DISPLAY_DURATION,
 }
@@ -68,6 +74,27 @@ export function createNotificationManager(
 
   let toastIndex = 0;
 
+  function getLiveRegionElement(notificationType: NotificationType): HTMLElement | null {
+    if (notificationType === NOTIFICATION_TYPE_ERROR || notificationType === NOTIFICATION_TYPE_WARNING) {
+      return assertiveLiveRegion;
+    }
+
+    return politeLiveRegion;
+  }
+
+  function announceToast(message: string, notificationType: NotificationType): void {
+    const liveRegion = getLiveRegionElement(notificationType);
+
+    if (!liveRegion) {
+      return;
+    }
+
+    liveRegion.textContent = '';
+    setTimeout(() => {
+      liveRegion.textContent = message;
+    });
+  }
+
   function safelyRemoveToast(toastElement: HTMLElement): void {
     toastElement.remove();
   }
@@ -88,6 +115,7 @@ export function createNotificationManager(
     toastElement.id = `c-toast-${Date.now()}-${toastIndex++}`;
     toastElement.classList.add('c-toast', `c-toast--${notificationType}`);
     toastElement.dataset.type = notificationType;
+    toastElement.setAttribute('aria-live', 'off');
 
     const iconElement = document.createElement('rl-icon');
     iconElement.classList.add('c-toast__icon', 'size-5', 'shrink-0');
@@ -100,6 +128,7 @@ export function createNotificationManager(
 
     toastElement.append(iconElement, messageElement);
     toastContainerElement.prepend(toastElement);
+    announceToast(message, notificationType);
     setTimeout(() => toastElement.classList.add('c-toast--active'), preFadeDelay);
     setTimeout(() => toastElement.classList.remove('c-toast--active'), toastDisplayDuration);
     setTimeout(() => safelyRemoveToast(toastElement), toastDisplayDuration + fadeDuration);
@@ -133,6 +162,8 @@ export function createNotificationManager(
 
   let notificationManagerState: NotificationManagerStateType = NOTIFICATION_MANAGER_STATE_CREATED;
   let toastContainer : HTMLElement | null = null;
+  let politeLiveRegion : HTMLElement | null = null;
+  let assertiveLiveRegion : HTMLElement | null = null;
 
   return {
     setup: () => {
@@ -145,6 +176,14 @@ export function createNotificationManager(
       toastContainer = document.getElementById(resolvedOptions.toastContainerId);
       if (!toastContainer) {
         throw new Error(`NotificationManager.setup(): Toast container DOM element id ("${resolvedOptions.toastContainerId}") is missing.`);
+      }
+      politeLiveRegion = document.getElementById(resolvedOptions.politeLiveRegionId);
+      if (!politeLiveRegion) {
+        throw new Error(`NotificationManager.setup(): Polite live region DOM element id ("${resolvedOptions.politeLiveRegionId}") is missing.`);
+      }
+      assertiveLiveRegion = document.getElementById(resolvedOptions.assertiveLiveRegionId);
+      if (!assertiveLiveRegion) {
+        throw new Error(`NotificationManager.setup(): Assertive live region DOM element id ("${resolvedOptions.assertiveLiveRegionId}") is missing.`);
       }
       notificationManagerState = NOTIFICATION_MANAGER_STATE_SETUP;
     },
