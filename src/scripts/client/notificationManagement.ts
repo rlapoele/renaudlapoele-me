@@ -17,7 +17,7 @@ export type CreateNotificationManagerType = {
 
 const TOAST_PRE_FADE_DELAY = 10;
 const TOAST_FADE_DURATION = 500;
-const TOAST_DISPLAY_DURATION = 3000;
+const TOAST_DISPLAY_DURATION = 5000;
 
 
 export type CreateNotificationManagerOptionsType = {
