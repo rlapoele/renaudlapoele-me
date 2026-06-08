@@ -9,7 +9,7 @@ import HeroTagline from "./HeroTagline.astro";
 import HeroPortrait from "./HeroPortrait.astro";
 import HeroName from "./HeroName.astro";
 import HeroTitle from "./HeroTitle.astro";
-import type { HeroLinksType } from "@content/config/Types.ts";
+import type { HeroLinksType, HeroConfigType } from "@content/config/Types.ts";
 import Icon from "@components/ui/Icon.astro";
 import HeroAvailability from "@sections/Hero/HeroAvailability.astro";
 
@@ -17,10 +17,11 @@ type Props = {
   content: HeroType,
   data: HeroLinksType,
   ui: HeroUIType,
+  config: HeroConfigType,
   fullname: string
 };
 
-const { content, data, ui, fullname } = Astro.props;
+const { content, data, ui, fullname, config } = Astro.props;
 
 ---
 <section id="hero" class="l-section">
@@ -32,7 +33,14 @@ const { content, data, ui, fullname } = Astro.props;
         <HeroTagline tagline={content.tagline} class="mbe-4" />
         <HeroSummary summary={content.summary} class="mbe-10"/>
         <div class="space-y-6 inline-flex flex-col">
-          <HeroAvailability class="self-center" />
+          {
+            config.availability.isAvailable &&
+              <HeroAvailability
+                availableFromText={content.availability.availableFromText}
+                availabilityPeriodText={content.availability.availabilityPeriodText}
+                openToText={content.availability.openToText}
+                class="self-center" />
+          }
           <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-5">
             <a class="c-button" href={data.toContactForm.href}>{ui.links.toContactForm}</a>
             <a download href={data.resumeDownload.href} class="c-button c-button--secondary"><Icon class="size-4 stroke-2" type="arrow-down-on-square" isDecorative={true} /><span>{ui.links.resumeDownload}</span></a>

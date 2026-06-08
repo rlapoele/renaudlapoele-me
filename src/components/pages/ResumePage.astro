@@ -30,7 +30,7 @@ const {
 } = resume.ui;
 ---
 <BaseLayout locale={locale}>
-  <Hero content={hero} data={config.sections.hero.links} ui={sections.hero} fullname={personal.fullName} />
+  <Hero content={hero} data={config.sections.hero.links} ui={sections.hero} fullname={personal.fullName} config={config.sections.hero} />
   <Snapshot content={snapshot} sectionLabel={sections.snapshot.label} />
   <Impacts content={selectedImpact} sectionLabel={sections.selectedImpact.label}/>
   <Projects content={selectedWork} sectionLabel={sections.selectedWork.label}/>

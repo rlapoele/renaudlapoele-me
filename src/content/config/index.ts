@@ -18,6 +18,9 @@ export const config: ConfigType = {
       links: {
         toContactForm: { href: "#contact" },
         resumeDownload: { href: "#" },
+      },
+      availability: {
+        isAvailable: true
       }
     }
   }

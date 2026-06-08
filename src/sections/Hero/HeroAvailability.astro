@@ -1,13 +1,18 @@
 ---
 import { combineCssClasses } from "@scripts/shared/combineCssClasses.ts";
-import Badge from "@components/ui/Badge.astro";
 
 type Props = {
+  availableFromText: string,
+  availabilityPeriodText: string,
+  openToText: string,
   class?: string;
   attributes?: Record<string, string>;
 };
 
 const {
+  availableFromText,
+  availabilityPeriodText,
+  openToText,
   class: className = "",
   ...attributes
 } = Astro.props as Props;
@@ -17,7 +22,7 @@ const classes = combineCssClasses(baseClasses, className);
 ---
 <div class={classes} {...attributes}>
   <p class="">
-    <span class="text-ink-primary">Available from <strong class="underline decoration-2 underline-offset-4 decoration-dotted">September 2026</strong></span>
-    <span class="text-line-default ms-1 me-1">/</span>
-    <span class="text-ink-tertiary">Open to permanent or contract opportunities</span></p>
+    <span class="text-ink-primary">{availableFromText}<strong class="underline decoration-2 underline-offset-4 decoration-dotted">{availabilityPeriodText}</strong></span>
+    <span class="text-line-default ms-1 me-1" aria-hidden="true">/</span>
+    <span class="text-ink-tertiary">{openToText}</span></p>
 </div>

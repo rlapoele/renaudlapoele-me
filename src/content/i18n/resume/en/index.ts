@@ -30,7 +30,13 @@ export const resumeEN : ResumeType = {
         { type: "Focus", value:"Enterprise · Product · UX-minded"},
       ],
       focus: ["Frontend", "UX", "Product", "Design Systems", "Leadership"],
-      portraitImageAlt: "Portrait of Renaud Lapoële"
+      portraitImageAlt: "Portrait of Renaud Lapoële",
+      availability: {
+        availableFromText: "Available from ",
+        availabilityPeriodText: 'September 2026',
+        openToText: 'Open to permanent or contract opportunities'
+      }
+
     },
 
     snapshot: {
@@ -272,7 +278,7 @@ export const resumeEN : ResumeType = {
           },
           requiredFieldMessage: "Required information",
           notifications: {
-            success: "Your message has been sent. I will get back to you soon.",
+            success: "Your message has been sent successfully. Thank you for contacting me!",
             validation: "Some fields need attention. Please review the form and try again.",
             sessionExpired: "This form session expired. Please try sending your message again.",
             rateLimited: "Too many attempts in a short time. Please wait a few minutes before retrying.",

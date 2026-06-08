@@ -20,14 +20,22 @@ export type NavBarItemType = {
 
 export type LinkType = { href: string };
 
-export type HeroLinksType = { toContactForm: LinkType, resumeDownload: LinkType };
+export type HeroLinksType = {
+  toContactForm: LinkType,
+  resumeDownload: LinkType
+};
+
+export type HeroConfigType = {
+  links: HeroLinksType,
+  availability: {
+    isAvailable: boolean;
+  }
+}
 
 export type ConfigType = {
   rl: RLItemType;
   navBarItems: NavBarItemType[];
   sections: {
-    hero: {
-      links: HeroLinksType
-    }
+    hero: HeroConfigType
   }
 }

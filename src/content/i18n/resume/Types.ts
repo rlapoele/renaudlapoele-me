@@ -37,6 +37,11 @@ export type HeroType = {
   meta: HeroMetadataType;
   focus: string[];
   portraitImageAlt: string;
+  availability: {
+    availableFromText: string;
+    availabilityPeriodText: string;
+    openToText: string;
+  }
 };
 
 export type SnapshotType = {
