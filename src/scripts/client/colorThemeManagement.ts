@@ -47,9 +47,9 @@ export function createColorThemeManager(): CreateColorThemeManagerType {
   let colorTheme: ColorThemeType = COLOR_THEMES.DEFAULT;
   let colorThemeManager: ColorThemeManagerType = COLOR_THEME_MANAGERS.DEFAULT;
 
-  let userLightColorThemeSelector: HTMLElement | null = null;
-  let userDarkColorThemeSelector: HTMLElement | null = null;
-  let systemColorThemeManagerSelector: HTMLElement | null = null;
+  let userLightColorThemeSelector: HTMLButtonElement | null = null;
+  let userDarkColorThemeSelector: HTMLButtonElement | null = null;
+  let systemColorThemeManagerSelector: HTMLButtonElement | null = null;
 
   function touchstartEventHandler(
     elem: HTMLElement,
@@ -81,8 +81,39 @@ export function createColorThemeManager(): CreateColorThemeManagerType {
       : COLOR_THEMES.LIGHT;
   }
 
+  function getStoredValue(key: string, defaultValue = ''): string {
+    try {
+      return window.localStorage.getItem(key) ?? defaultValue;
+    } catch {
+      return defaultValue;
+    }
+  }
+
+  function setStoredValue(key: string, value: string): void {
+    try {
+      window.localStorage.setItem(key, value);
+    } catch {
+      // Storage can be blocked in privacy-restricted contexts; keep in-memory state working.
+    }
+  }
+
+  function getButtonElement(elementId: string): HTMLButtonElement {
+    const element = document.getElementById(elementId);
+    if (element instanceof HTMLButtonElement) {
+      return element;
+    }
+    throw new Error(`ColorThemeManager.setup(): "${elementId}" button DOM element is missing.`);
+  }
+
+  function getSetupButtonElement(element: HTMLButtonElement | null, elementId: string): HTMLButtonElement {
+    if (element) {
+      return element;
+    }
+    throw new Error(`ColorThemeManager.applyThemeState(): "${elementId}" button DOM element has not been setup.`);
+  }
+
   function getStoredColorThemeManager(): ColorThemeManagerType {
-    const storedColorThemeManager = window.localStorage.getItem(STORAGE_KEYS.COLOR_THEME_MANAGER);
+    const storedColorThemeManager = getStoredValue(STORAGE_KEYS.COLOR_THEME_MANAGER);
     if (
       storedColorThemeManager === COLOR_THEME_MANAGERS.SYSTEM
       || storedColorThemeManager === COLOR_THEME_MANAGERS.USER
@@ -93,7 +124,7 @@ export function createColorThemeManager(): CreateColorThemeManagerType {
   }
 
   function getStoredColorTheme(): ColorThemeType {
-    const storedColorTheme: string = window.localStorage.getItem(STORAGE_KEYS.COLOR_THEME) || '';
+    const storedColorTheme: string = getStoredValue(STORAGE_KEYS.COLOR_THEME);
     return (Object.values(COLOR_THEMES).includes(storedColorTheme as ColorThemeType)) ? storedColorTheme as ColorThemeType : COLOR_THEMES.DEFAULT;
   }
 
@@ -101,22 +132,26 @@ export function createColorThemeManager(): CreateColorThemeManagerType {
     newColorTheme: ColorThemeType,
     newColorThemeManager: ColorThemeManagerType
   ): void {
-    window.localStorage.setItem(STORAGE_KEYS.COLOR_THEME, newColorTheme);
-    window.localStorage.setItem(STORAGE_KEYS.COLOR_THEME_MANAGER, newColorThemeManager);
+    const systemSelector = getSetupButtonElement(systemColorThemeManagerSelector, DOM_ELEMENT_IDS.COLOR_THEME_MANAGER_SELECTOR_SYSTEM);
+    const lightSelector = getSetupButtonElement(userLightColorThemeSelector, DOM_ELEMENT_IDS.COLOR_THEME_SELECTOR_LIGHT);
+    const darkSelector = getSetupButtonElement(userDarkColorThemeSelector, DOM_ELEMENT_IDS.COLOR_THEME_SELECTOR_DARK);
+
+    setStoredValue(STORAGE_KEYS.COLOR_THEME, newColorTheme);
+    setStoredValue(STORAGE_KEYS.COLOR_THEME_MANAGER, newColorThemeManager);
     document.documentElement.classList.remove(COLOR_THEMES.DARK, COLOR_THEMES.LIGHT);
     document.documentElement.classList.add(newColorTheme);
     if (newColorThemeManager === COLOR_THEME_MANAGERS.SYSTEM) {
-      disableElement(systemColorThemeManagerSelector as HTMLInputElement);
+      disableElement(systemSelector);
     }
     else {
-      enableElement(systemColorThemeManagerSelector as HTMLInputElement);
+      enableElement(systemSelector);
     }
     if (newColorTheme === COLOR_THEMES.DARK) {
-      enableElement(userLightColorThemeSelector as HTMLInputElement);
-      disableElement(userDarkColorThemeSelector as HTMLInputElement);
+      enableElement(lightSelector);
+      disableElement(darkSelector);
     } else {
-      enableElement(userDarkColorThemeSelector as HTMLInputElement);
-      disableElement(userLightColorThemeSelector as HTMLInputElement);
+      enableElement(darkSelector);
+      disableElement(lightSelector);
     }
 
   }
@@ -153,18 +188,9 @@ export function createColorThemeManager(): CreateColorThemeManagerType {
     if (typeof window === 'undefined') {
       throw new Error('ColorThemeManager.setup(): browser `window` object is undefined');
     }
-    userLightColorThemeSelector = document.getElementById(DOM_ELEMENT_IDS.COLOR_THEME_SELECTOR_LIGHT);
-    if (!userLightColorThemeSelector) {
-      throw new Error(`ColorThemeManager.setup(): "${DOM_ELEMENT_IDS.COLOR_THEME_SELECTOR_LIGHT}" DOM element is missing.`);
-    }
-    userDarkColorThemeSelector = document.getElementById(DOM_ELEMENT_IDS.COLOR_THEME_SELECTOR_DARK);
-    if (!userDarkColorThemeSelector) {
-      throw new Error(`ColorThemeManager.setup(): "${DOM_ELEMENT_IDS.COLOR_THEME_SELECTOR_DARK}" DOM element is missing.`);
-    }
-    systemColorThemeManagerSelector = document.getElementById(DOM_ELEMENT_IDS.COLOR_THEME_MANAGER_SELECTOR_SYSTEM);
-    if (!systemColorThemeManagerSelector) {
-      throw new Error(`ColorThemeManager.setup(): "${DOM_ELEMENT_IDS.COLOR_THEME_MANAGER_SELECTOR_SYSTEM}" DOM element is missing.`);
-    }
+    userLightColorThemeSelector = getButtonElement(DOM_ELEMENT_IDS.COLOR_THEME_SELECTOR_LIGHT);
+    userDarkColorThemeSelector = getButtonElement(DOM_ELEMENT_IDS.COLOR_THEME_SELECTOR_DARK);
+    systemColorThemeManagerSelector = getButtonElement(DOM_ELEMENT_IDS.COLOR_THEME_MANAGER_SELECTOR_SYSTEM);
     userLightColorThemeSelector.addEventListener('touchstart', touchstartEventHandler(userLightColorThemeSelector, setUserLightColorTheme));
     userLightColorThemeSelector.addEventListener('click', clickEventHandler(userLightColorThemeSelector, setUserLightColorTheme));
     userDarkColorThemeSelector.addEventListener('touchstart', touchstartEventHandler(userDarkColorThemeSelector, setUserDarkColorTheme));
