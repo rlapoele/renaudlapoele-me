@@ -493,6 +493,7 @@
     border-radius: 9999px;
     border: 2px solid transparent;
     cursor: pointer;
+    touch-action: manipulation;
     transition: box-shadow 150ms ease-in-out, scale 150ms ease-in-out, background 150ms ease-in-out, color 150ms ease-in-out;
 
     &:hover {
