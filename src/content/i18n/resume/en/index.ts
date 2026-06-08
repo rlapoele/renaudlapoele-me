@@ -1,9 +1,5 @@
 import type { ResumeType } from "../Types.ts";
 
-// =============================
-// ENGLISH VERSION
-// =============================
-
 export const resumeEN : ResumeType = {
   data: {
     personal: {
@@ -36,7 +32,6 @@ export const resumeEN : ResumeType = {
         availabilityPeriodText: 'September 2026',
         openToText: 'Open to permanent or contract opportunities'
       }
-
     },
 
     snapshot: {
@@ -298,12 +293,10 @@ export const resumeEN : ResumeType = {
         }
       }
     },
-
     misc: {
       poweredBy: "Powered by ",
       responseTime: "Usually replies within 24–48 hours",
     },
-
     footer: {
       copyright: (year: number, name: string) =>
         `© ${year} ${name}`,

@@ -32,7 +32,6 @@ export const resumeFR: ResumeType = {
         availabilityPeriodText: 'Septembre 2026',
         openToText: 'ouvert à un CDI, CDD ou une mission freelance'
       }
-
     },
 
     snapshot: {
@@ -292,46 +291,10 @@ export const resumeFR: ResumeType = {
         }
       },
     },
-/*
-    form: {
-      name: "Nom",
-      email: "Email",
-      message: "Message",
-      submitButtonLabels: [
-        {send: "Envoyer votre message"},
-        {sending: "Envoi en cours..."},
-        {done: "Message envoyé!"},
-      ],
-      placeholderName: "Votre nom",
-      placeholderEmail: "vous@entreprise.com",
-      placeholderMessage:
-        "Décrivez brièvement le contexte, le poste ou le projet.",
-      requiredFieldMessage: "Information requise",
-      errorMessages: {
-        name: [
-          { required: "Votre nom est requis" },
-          { min: "{MIN} caractères minimum sont requis" },
-          { max: "{MAX} caractères maximum sont acceptés" },
-        ],
-        email: [
-          { required: "Votre email est nécessaire" },
-          { email: "Merci d'indiquer une adresse mail valide" },
-          { min: "{MIN} caractères minimum sont requis" },
-          { max: "{MAX} caractères maximum sont acceptés" },
-        ],
-        message: [
-          { required: "Un message est obligatoire" },
-          { min: "{MIN} caractères minimum sont requis" },
-          { max: "{MAX} caractères maximum sont acceptés" },
-        ],
-      },
-    },
-*/
     misc: {
       poweredBy: "Propulsé par ",
       responseTime: "Réponse sous 24 à 48 heures",
     },
-
     footer: {
       copyright: (year: number, name: string) =>
         `© ${year} ${name}`,
