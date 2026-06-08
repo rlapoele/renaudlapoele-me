@@ -507,7 +507,7 @@
       scale: 0.99;
     }
 
-    &[inert], &:disabled, &[aria-disabled="true"],&[data-original-href] {
+    &[inert], &:disabled, &[aria-disabled="true"], &[aria-pressed="true"], &[data-original-href] {
       opacity: 0.4;
       cursor: not-allowed;
       pointer-events: none;

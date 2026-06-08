@@ -29,6 +29,11 @@ export function createColorThemeManager(): CreateColorThemeManagerType {
     COLOR_THEME_MANAGER: 'rl-color-theme-manager',
   } as const;
 
+  const DATA_ATTRIBUTES = {
+    DEFAULT_LABEL: 'defaultLabel',
+    ACTIVE_LABEL: 'activeLabel',
+  } as const;
+
   const MEDIA_QUERY_DARK_COLOR_THEME = '(prefers-color-scheme: dark)' as const;
 
   const COLOR_THEME_MANAGER_STATES = {
@@ -93,6 +98,20 @@ export function createColorThemeManager(): CreateColorThemeManagerType {
     throw new Error(`ColorThemeManager.applyThemeState(): "${elementId}" button DOM element has not been setup.`);
   }
 
+  function setupButtonLabel(buttonElement: HTMLButtonElement): void {
+    buttonElement.dataset[DATA_ATTRIBUTES.DEFAULT_LABEL] = buttonElement.ariaLabel || buttonElement.title;
+  }
+
+  function setButtonPressed(buttonElement: HTMLButtonElement, isPressed: boolean): void {
+    const defaultLabel = buttonElement.dataset[DATA_ATTRIBUTES.DEFAULT_LABEL] || buttonElement.ariaLabel || buttonElement.title;
+    const activeLabel = buttonElement.dataset[DATA_ATTRIBUTES.ACTIVE_LABEL] || defaultLabel;
+    const label = isPressed ? activeLabel : defaultLabel;
+
+    buttonElement.setAttribute('aria-pressed', String(isPressed));
+    buttonElement.title = label;
+    buttonElement.ariaLabel = label;
+  }
+
   function getStoredColorThemeManager(): ColorThemeManagerType {
     const storedColorThemeManager = getStoredValue(STORAGE_KEYS.COLOR_THEME_MANAGER);
     if (
@@ -121,6 +140,9 @@ export function createColorThemeManager(): CreateColorThemeManagerType {
     setStoredValue(STORAGE_KEYS.COLOR_THEME_MANAGER, newColorThemeManager);
     document.documentElement.classList.remove(COLOR_THEMES.DARK, COLOR_THEMES.LIGHT);
     document.documentElement.classList.add(newColorTheme);
+    setButtonPressed(systemSelector, newColorThemeManager === COLOR_THEME_MANAGERS.SYSTEM);
+    setButtonPressed(lightSelector, newColorTheme === COLOR_THEMES.LIGHT);
+    setButtonPressed(darkSelector, newColorTheme === COLOR_THEMES.DARK);
     if (newColorThemeManager === COLOR_THEME_MANAGERS.SYSTEM) {
       disableElement(systemSelector);
     }
@@ -172,6 +194,9 @@ export function createColorThemeManager(): CreateColorThemeManagerType {
     userLightColorThemeSelector = getButtonElement(DOM_ELEMENT_IDS.COLOR_THEME_SELECTOR_LIGHT);
     userDarkColorThemeSelector = getButtonElement(DOM_ELEMENT_IDS.COLOR_THEME_SELECTOR_DARK);
     systemColorThemeManagerSelector = getButtonElement(DOM_ELEMENT_IDS.COLOR_THEME_MANAGER_SELECTOR_SYSTEM);
+    setupButtonLabel(userLightColorThemeSelector);
+    setupButtonLabel(userDarkColorThemeSelector);
+    setupButtonLabel(systemColorThemeManagerSelector);
     userLightColorThemeSelector.addEventListener('click', clickEventHandler(setUserLightColorTheme));
     userDarkColorThemeSelector.addEventListener('click', clickEventHandler(setUserDarkColorTheme));
     systemColorThemeManagerSelector.addEventListener('click', clickEventHandler(setSystemColorThemeManager));

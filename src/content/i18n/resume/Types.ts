@@ -128,12 +128,15 @@ export type SettingsUIType = {
   language: {
     selectorLabel: string /* English or Français */
   },
-  colorTheme: {
-    osThemeSelectorTitle: string,
-    lightThemeSelectorTitle: string,
-    darkThemeSelectorTitle: string,
-  }
-}
+	  colorTheme: {
+	    osThemeSelectorTitle: string,
+	    osThemeSelectorActiveTitle: string,
+	    lightThemeSelectorTitle: string,
+	    lightThemeSelectorActiveTitle: string,
+	    darkThemeSelectorTitle: string,
+	    darkThemeSelectorActiveTitle: string,
+	  }
+	}
 
 export type FormUIType = {
   ariaLabel: string,

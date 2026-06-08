@@ -198,8 +198,11 @@ export const resumeFR: ResumeType = {
         },
         colorTheme: {
           osThemeSelectorTitle: "Utiliser le thème couleurs système",
+          osThemeSelectorActiveTitle: "Le thème couleurs système est actif",
           lightThemeSelectorTitle: "Utiliser le thème couleurs claires",
+          lightThemeSelectorActiveTitle: "Le thème couleurs claires est actif",
           darkThemeSelectorTitle: "Utiliser le thème couleurs sombres",
+          darkThemeSelectorActiveTitle: "Le thème couleurs sombres est actif",
         }
       },
     },

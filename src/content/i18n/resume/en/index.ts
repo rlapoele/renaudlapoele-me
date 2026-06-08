@@ -204,8 +204,11 @@ export const resumeEN : ResumeType = {
         },
         colorTheme: {
           osThemeSelectorTitle: "Use System Color Theme",
+          osThemeSelectorActiveTitle: "System Color Theme is active",
           lightThemeSelectorTitle: "Use Light Color Theme",
+          lightThemeSelectorActiveTitle: "Light Color Theme is active",
           darkThemeSelectorTitle: "Use Dark Color Theme",
+          darkThemeSelectorActiveTitle: "Dark Color Theme is active",
         }
       },
     },
