@@ -1,5 +1,3 @@
-import {disableElement, enableElement} from "@scripts/client/enableDisableElement.ts";
-
 export const DOM_ELEMENT_IDS = {
   COLOR_THEME_SELECTOR_LIGHT: 'rl-color-theme-selector-light',
   COLOR_THEME_SELECTOR_DARK: 'rl-color-theme-selector-dark',
@@ -57,6 +55,9 @@ export function createColorThemeManager(): CreateColorThemeManagerType {
   function clickEventHandler(callbackFn: () => void): (event: MouseEvent) => void {
     return (event) => {
       event.preventDefault();
+      if (event.currentTarget instanceof HTMLButtonElement && event.currentTarget.getAttribute('aria-disabled') === 'true') {
+        return;
+      }
       callbackFn();
     }
   }
@@ -99,17 +100,37 @@ export function createColorThemeManager(): CreateColorThemeManagerType {
   }
 
   function setupButtonLabel(buttonElement: HTMLButtonElement): void {
-    buttonElement.dataset[DATA_ATTRIBUTES.DEFAULT_LABEL] = buttonElement.ariaLabel || buttonElement.title;
+    buttonElement.dataset[DATA_ATTRIBUTES.DEFAULT_LABEL] = buttonElement.getAttribute('aria-label') || buttonElement.title;
   }
 
   function setButtonPressed(buttonElement: HTMLButtonElement, isPressed: boolean): void {
-    const defaultLabel = buttonElement.dataset[DATA_ATTRIBUTES.DEFAULT_LABEL] || buttonElement.ariaLabel || buttonElement.title;
+    const defaultLabel = buttonElement.dataset[DATA_ATTRIBUTES.DEFAULT_LABEL] || buttonElement.getAttribute('aria-label') || buttonElement.title;
     const activeLabel = buttonElement.dataset[DATA_ATTRIBUTES.ACTIVE_LABEL] || defaultLabel;
     const label = isPressed ? activeLabel : defaultLabel;
 
     buttonElement.setAttribute('aria-pressed', String(isPressed));
     buttonElement.title = label;
-    buttonElement.ariaLabel = label;
+    buttonElement.setAttribute('aria-label', label);
+  }
+
+  function setButtonActionAvailable(buttonElement: HTMLButtonElement, isAvailable: boolean): void {
+    if (isAvailable) {
+      buttonElement.removeAttribute('aria-disabled');
+    } else {
+      buttonElement.setAttribute('aria-disabled', 'true');
+    }
+  }
+
+  function addSystemColorThemeChangeListener(): void {
+    const mediaQueryList = window.matchMedia(MEDIA_QUERY_DARK_COLOR_THEME);
+    if (typeof mediaQueryList.addEventListener === 'function') {
+      mediaQueryList.addEventListener('change', updateSystemColorTheme);
+      return;
+    }
+    const legacyAddListener = (mediaQueryList as unknown as Record<string, unknown>).addListener;
+    if (typeof legacyAddListener === 'function') {
+      legacyAddListener.call(mediaQueryList, updateSystemColorTheme);
+    }
   }
 
   function getStoredColorThemeManager(): ColorThemeManagerType {
@@ -143,19 +164,9 @@ export function createColorThemeManager(): CreateColorThemeManagerType {
     setButtonPressed(systemSelector, newColorThemeManager === COLOR_THEME_MANAGERS.SYSTEM);
     setButtonPressed(lightSelector, newColorTheme === COLOR_THEMES.LIGHT);
     setButtonPressed(darkSelector, newColorTheme === COLOR_THEMES.DARK);
-    if (newColorThemeManager === COLOR_THEME_MANAGERS.SYSTEM) {
-      disableElement(systemSelector);
-    }
-    else {
-      enableElement(systemSelector);
-    }
-    if (newColorTheme === COLOR_THEMES.DARK) {
-      enableElement(lightSelector);
-      disableElement(darkSelector);
-    } else {
-      enableElement(darkSelector);
-      disableElement(lightSelector);
-    }
+    setButtonActionAvailable(systemSelector, newColorThemeManager !== COLOR_THEME_MANAGERS.SYSTEM);
+    setButtonActionAvailable(lightSelector, newColorTheme !== COLOR_THEMES.LIGHT);
+    setButtonActionAvailable(darkSelector, newColorTheme !== COLOR_THEMES.DARK);
 
   }
 
@@ -200,7 +211,7 @@ export function createColorThemeManager(): CreateColorThemeManagerType {
     userLightColorThemeSelector.addEventListener('click', clickEventHandler(setUserLightColorTheme));
     userDarkColorThemeSelector.addEventListener('click', clickEventHandler(setUserDarkColorTheme));
     systemColorThemeManagerSelector.addEventListener('click', clickEventHandler(setSystemColorThemeManager));
-    window.matchMedia(MEDIA_QUERY_DARK_COLOR_THEME).addEventListener('change', updateSystemColorTheme);
+    addSystemColorThemeChangeListener();
     colorThemeManagerState = COLOR_THEME_MANAGER_STATES.SETUP;
   }
 
