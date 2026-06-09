@@ -109,6 +109,36 @@ Before finishing code changes, run the most relevant available check:
 
 If a command cannot be run because dependencies are missing or the environment is restricted, state that clearly in the final response.
 
+## Persistent Agent Memory
+
+Use `agent-logs` to keep a lightweight written trace of agent work and durable project decisions.
+
+Track curated memory:
+
+- `agent-logs/README.md`: explains the logging policy.
+- `agent-logs/decisions.md`: durable decisions, conventions, and user preferences.
+- `agent-logs/changelog.md`: concise history of meaningful file changes.
+
+Do not track raw session logs. Keep detailed per-session notes under `agent-logs/sessions/`, which is ignored by git.
+
+When logging work, prefer concise summaries:
+
+- User request summary.
+- Short plan before implementation.
+- Files changed.
+- Commands run and verification outcome.
+- Follow-up questions or unresolved risks.
+
+Do not write secrets or sensitive material to agent logs, including:
+
+- API keys, tokens, passwords, private keys, cookies, or auth headers.
+- Raw `.env` values or deployment secrets.
+- Full terminal output that may contain secrets.
+- Private personal data beyond what is already intentionally present in public resume content.
+- Full conversation transcripts unless explicitly requested and reviewed for sensitive data.
+
+If a durable rule emerges from a session, promote it to `AGENTS.md`. Keep `AGENTS.md` as the current operating guide, not a chronological diary.
+
 ## Git And Safety
 
 - Do not revert unrelated user changes.

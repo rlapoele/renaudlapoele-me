@@ -14,6 +14,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+agent-logs/sessions/
 
 # Environment variables
 .env
@@ -34,6 +35,9 @@ Thumbs.db
 
 # JetBrains project settings
 .idea/
+
+# vscode project launch settings, etc..
+.vscode/
 
 # Project notes and archived drafts
 docs/
