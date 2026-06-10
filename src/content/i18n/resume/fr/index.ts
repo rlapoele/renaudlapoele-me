@@ -166,6 +166,371 @@ export const resumeFR: ResumeType = {
       ],
     },
 
+    experiences: [
+      {
+        "company": "YunikApps",
+        "role": "Consultant indépendant & Développement professionnel",
+        "location": "France",
+        "startDate": {
+          "label": "Janvier 2024",
+          "year": 2024,
+          "month": 1
+        },
+        "endDate": {
+          "label": "Aujourd’hui",
+          "year": null,
+          "month": null
+        },
+        "duration": null,
+        "summary": null,
+        "responsibilities": [
+          "Création et préparation du lancement d’une activité de conseil indépendante spécialisée dans les applications web et le développement de produits numériques.",
+          "Conception et réalisation de projets personnels avec des technologies front-end modernes, notamment TypeScript, Astro, React, SolidJS, Tailwind CSS et Node.js.",
+          "Suivi d’une formation professionnelle en accessibilité numérique et renforcement de l’expertise en conception inclusive et développement conforme aux normes WCAG.",
+          "Réalisation d’une veille technologique continue et d’expérimentations pratiques autour du développement front-end moderne, du développement assisté par l’IA et des nouvelles pratiques d’ingénierie IA.",
+          "Développement de preuves de concept et de prototypes explorant la productivité, l’expérience développeur et les processus de création de produits s’appuyant sur les technologies d’IA.",
+          "Maintien d’une montée en compétences continue à travers des projets personnels, des recherches techniques et des réalisations concrètes."
+        ],
+        "keyFocus": null,
+        "skills": []
+      },
+      {
+        "company": "Cisco Systems",
+        "role": "Senior Front-End Engineer / Tech Lead / Product Owner",
+        "location": "France",
+        "startDate": {
+          "label": "Juillet 2019",
+          "year": 2019,
+          "month": 7
+        },
+        "endDate": {
+          "label": "Janvier 2024",
+          "year": 2024,
+          "month": 1
+        },
+        "duration": null,
+        "summary": "Rôle senior combinant leadership Front-End, conception UX et responsabilité produit sur des plateformes partenaires mondiales à grande échelle.",
+        "responsibilities": [
+          "Collaboration étroite avec l’équipe design sur la refonte UX et pilotage de l’implémentation Front-End de deux plateformes mondiales de recherche utilisées par les partenaires Cisco dans plusieurs régions, offrant une expérience de recherche plus intuitive et cohérente.",
+          "Intervention en tant que Tech Lead et Product Owner, avec la responsabilité du backlog, des epics, des user stories, des priorités et de l’alignement des parties prenantes tout en restant impliqué dans le développement Front-End.",
+          "Définition de l’architecture UI et promotion des bonnes pratiques Front-End avec React, JavaScript, HTML, CSS et Tailwind CSS.",
+          "Conception et réalisation d’API web évolutives pour la gestion des programmes d’incentive partenaires.",
+          "Collaboration étroite avec les équipes métier, UX et ingénierie afin de transformer des besoins complexes en solutions intuitives et efficaces.",
+          "Contribution à la migration d’un portefeuille applicatif vers Salesforce en tant que Product Owner d’une solution de gestion directe des contrats partenaires.",
+          "Formation et accompagnement d’une Product Owner junior sur la gestion du backlog et des priorités, la rédaction des user stories et la communication avec les parties prenantes."
+        ],
+        "keyFocus": "Architecture Front-End, qualité UX, responsabilité produit et pilotage de la livraison à grande échelle.",
+        "skills": [
+          "Développement Front-End",
+          "Conception UX/UI",
+          "Analyse des besoins",
+          "Product Ownership",
+          "User Stories",
+          "Méthodologies Agile",
+          "React.js",
+          "JavaScript",
+          "TypeScript",
+          "Communication écrite"
+        ]
+      },
+      {
+        "company": "Cisco Systems",
+        "role": "UX Lead / Front-End Engineer",
+        "location": "France",
+        "startDate": {
+          "label": "Août 2016",
+          "year": 2016,
+          "month": 8
+        },
+        "endDate": {
+          "label": "Juin 2019",
+          "year": 2019,
+          "month": 6
+        },
+        "duration": null,
+        "summary": "Ingénieur Front-End avec une forte dimension de leadership UX, centré sur l’amélioration de l’utilisabilité, de la cohérence et de la clarté des produits.",
+        "responsibilities": [
+          "Promotion des pratiques UI et UX au sein des équipes afin d’ancrer une approche centrée utilisateur et d’améliorer l’expérience globale des produits.",
+          "Conception et refonte d’expériences utilisateur à l’aide de wireframes, maquettes, prototypes et parcours utilisateurs.",
+          "Développement d’interfaces utilisateur complexes avec AngularJS / Angular en s’appuyant sur des approches pilotées par le prototypage.",
+          "Contribution en tant qu’ingénieur Front-End à un tableau de bord de business intelligence, conciliant densité d’information et facilité d’utilisation.",
+          "Réalisation rapide de prototypes Front-End avec Vue.js pour valider des idées et soutenir des initiatives MVP.",
+          "Collaboration étroite avec les Product Owners, analystes et développeurs dans des environnements Lean et Agile."
+        ],
+        "keyFocus": "Développement Front-End orienté UX, prototypage et collaboration transverse.",
+        "skills": [
+          "Conception UX/UI",
+          "Expérience utilisateur (UX)",
+          "Wireframing",
+          "Prototypage",
+          "Développement Front-End",
+          "Responsive Web Design",
+          "Vue.js",
+          "Découverte produit",
+          "Conception centrée utilisateur",
+          "Communication écrite",
+          "Collaboration transverse"
+        ]
+      },
+      {
+        "company": "Cisco Systems",
+        "role": "IT Analyst / Technical Lead",
+        "location": "France",
+        "startDate": {
+          "label": "Mars 2008",
+          "year": 2008,
+          "month": 3
+        },
+        "endDate": {
+          "label": "Juillet 2016",
+          "year": 2016,
+          "month": 7
+        },
+        "duration": null,
+        "summary": "Rôle hybride à l’intersection de l’analyse métier, de la conception UX et du leadership technique.",
+        "responsibilities": [
+          "Recueil, analyse et formalisation des besoins métier pour des plateformes mondiales de gestion des partenaires ainsi que pour des initiatives liées à la tarification et aux remises.",
+          "Conception d’interfaces et d’expériences utilisateur alignées sur les processus métier et les besoins des utilisateurs afin d’améliorer l’utilisabilité et l’alignement entre les métiers et l’IT.",
+          "Rédaction de spécifications techniques, de documentation fonctionnelle et de guides utilisateurs.",
+          "Intervention comme responsable technique ou chef de projet sur plusieurs initiatives, avec coordination de petites équipes de réalisation.",
+          "Rôle d’interface clé entre les parties prenantes métier et les équipes d’ingénierie."
+        ],
+        "keyFocus": "Analyse des besoins, conception UX et transformation des besoins métier en solutions concrètes.",
+        "skills": [
+          "Analyse des besoins",
+          "Recueil des besoins",
+          "Product Ownership",
+          "User Stories",
+          "Documentation technique",
+          "Conception centrée utilisateur",
+          "Responsive Web Design",
+          "Méthodologies Agile",
+          "Collaboration transverse"
+        ]
+      },
+      {
+        "company": "Cisco Systems",
+        "role": "Software Engineer",
+        "location": "San Jose, Californie, États-Unis",
+        "startDate": {
+          "label": "Février 2007",
+          "year": 2007,
+          "month": 2
+        },
+        "endDate": {
+          "label": "Février 2008",
+          "year": 2008,
+          "month": 2
+        },
+        "duration": null,
+        "summary": null,
+        "responsibilities": [
+          "Contribution à une plateforme mondiale d’enregistrement des opportunités partenaires, précurseur de Cisco Commerce Workspace.",
+          "Recueil et formalisation des besoins métier ainsi que des spécifications techniques.",
+          "Conception d’interfaces utilisateur et pilotage des efforts de localisation de l’application."
+        ],
+        "keyFocus": null,
+        "skills": [
+          "Développement Front-End",
+          "Développement Back-End",
+          "JavaScript",
+          "HTML",
+          "CSS",
+          "SQL",
+          "PL/SQL",
+          "Java",
+          "Documentation technique",
+          "Recueil des besoins",
+          "Analyse des besoins"
+        ]
+      },
+      {
+        "company": "Cisco Systems",
+        "role": "Software Engineer",
+        "location": "France",
+        "startDate": {
+          "label": "Janvier 2000",
+          "year": 2000,
+          "month": 1
+        },
+        "endDate": {
+          "label": "Janvier 2007",
+          "year": 2007,
+          "month": 1
+        },
+        "duration": null,
+        "summary": null,
+        "responsibilities": [
+          "Conception, développement et support d’applications web pour les équipes logistique, marketing, e-learning, finance et partenaires de la région EMEA.",
+          "Intervention sur les couches Front-End et Back-End avec Java, JavaScript, HTML, CSS et les technologies Oracle."
+        ],
+        "keyFocus": null,
+        "skills": [
+          "Développement Front-End",
+          "Développement Back-End",
+          "JavaScript",
+          "HTML",
+          "CSS",
+          "SQL",
+          "PL/SQL",
+          "Java",
+          "Technologies Oracle pour applications web"
+        ]
+      },
+      {
+        "company": "Université de Nantes",
+        "role": "Technicien support informatique",
+        "location": "Nantes, Pays de la Loire, France",
+        "startDate": {
+          "label": "Juillet 1996",
+          "year": 1996,
+          "month": 7
+        },
+        "endDate": {
+          "label": "Décembre 1997",
+          "year": 1997,
+          "month": 12
+        },
+        "duration": "1 an et 6 mois",
+        "summary": null,
+        "responsibilities": [
+          "Administration système et support des réseaux informatiques locaux, serveurs, postes de travail et imprimantes.",
+          "Conception et développement d’un convertisseur de fichiers texte vers le format bibliographique Unimarc.",
+          "Conception, réalisation et maintenance de pages web et supports imprimés pour les événements de la bibliothèque."
+        ],
+        "keyFocus": null,
+        "skills": [
+          "Conception Web",
+          "Administration système",
+          "Unix",
+          "Communication écrite",
+          "Turbo Pascal"
+        ]
+      },
+      {
+        "company": "Celia",
+        "role": "Développeur junior",
+        "location": null,
+        "startDate": null,
+        "endDate": null,
+        "duration": null,
+        "summary": null,
+        "responsibilities": [
+          "Conception et développement d’une application de gestion de marques sous Microsoft Access."
+        ],
+        "keyFocus": null,
+        "skills": [
+          "Recueil des besoins",
+          "Analyse des besoins",
+          "Conception de bases de données",
+          "Microsoft Access"
+        ]
+      },
+      {
+        "company": "Hegler France",
+        "role": "Développeur junior",
+        "location": null,
+        "startDate": null,
+        "endDate": null,
+        "duration": null,
+        "summary": null,
+        "responsibilities": [
+          "Conception et développement d’une application de gestion de facturation sous Microsoft Access."
+        ],
+        "keyFocus": null,
+        "skills": [
+          "Recueil des besoins",
+          "Analyse des besoins",
+          "Conception de bases de données",
+          "Microsoft Access"
+        ]
+      }
+    ],
+    educationDegrees:[
+      {
+        institution: "Université de Nantes",
+        degree: "Maîtrise",
+        fieldOfStudy: "Informatique et Génie Logiciel",
+        startDate: null,
+        endDate: {
+          label: "1996",
+          year: 1996,
+          month: null
+        },
+        duration: "1 an",
+        summary: null
+      },
+      {
+        institution: "Université de Nantes",
+        degree: "Licence",
+        fieldOfStudy: "Informatique et Génie Logiciel",
+        startDate: null,
+        endDate: {
+          label: "1995",
+          year: 1995,
+          month: null
+        },
+        duration: "1 an",
+        summary: null
+      },
+      {
+        institution: "Université de Nantes",
+        degree: "Diplôme Universitaire de Technologie (DUT)",
+        fieldOfStudy: "Informatique et Génie Logiciel",
+        startDate: null,
+        endDate: {
+          label: "1994",
+          year: 1994,
+          month: null
+        },
+        duration: "2 ans",
+        summary: null
+      },
+      {
+        institution: "Université de Nantes",
+        degree: "Baccalauréat",
+        fieldOfStudy: "Biologie et Mathématiques",
+        startDate: null,
+        endDate: {
+          label: "1992",
+          year: 1992,
+          month: null
+        },
+        duration: null,
+        summary: null
+      }
+    ],
+    certifications: [
+      {
+        name: "Développer des sites et des applications web accessibles",
+        institution: "Access42",
+        fieldOfStudy: "Accessibilité",
+        startDate: null,
+        endDate: {
+          label: "Octobre 2024",
+          year: 2024,
+          month: 10
+        },
+        duration: null,
+        summary: null
+      }
+    ],
+
+    languages: [
+      {
+        name: "Français",
+        level: "Natif"
+      },
+      {
+        name: "Anglais",
+        level: "Courant"
+      },
+      {
+        name: "Espagnol",
+        level: "Notions"
+      }
+    ],
+
     contact: {
       title:
         "Discutons de produits utiles, utilisables et conçus pour durer",

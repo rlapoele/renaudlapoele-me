@@ -22,6 +22,11 @@ export const config: ConfigType = {
       availability: {
         isAvailable: true
       }
-    }
+    },
+    certifications: [
+      {
+        certificationProofLink: "https://certificate.bcdiploma.com/check/A5B83C3A8F1FAC493938BB27FBB0F509A0D418B9803F5D6D00BB736DDAED0EFAVEpoSTBnMjNUY0c2TUNtWEZ5MkxsWm1pU250YlVma2RpelZkdWRMTzkwU0dvcFBZ"
+      }
+    ]
   }
 }

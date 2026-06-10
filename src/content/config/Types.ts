@@ -32,10 +32,15 @@ export type HeroConfigType = {
   }
 }
 
+export type CertificationsConfigType = {
+  certificationProofLink: string;
+}
+
 export type ConfigType = {
   rl: RLItemType;
   navBarItems: NavBarItemType[];
   sections: {
     hero: HeroConfigType
+    certifications: CertificationsConfigType[]
   }
 }

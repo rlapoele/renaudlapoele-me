@@ -64,6 +64,50 @@ export type SkillsType = {
   groups: SkillGroupType[];
 };
 
+export type GenericDateType = {
+  label: string;
+  year: number | null;
+  month: number | null;
+};
+
+export type ExperienceType = {
+  company: string;
+  role: string | null;
+  location: string | null;
+  startDate: GenericDateType | null;
+  endDate: GenericDateType | null;
+  duration: string | null;
+  summary: string | null;
+  responsibilities: string[];
+  keyFocus: string | null;
+  skills: string[];
+};
+
+export type CertificationType = {
+  name: string;
+  institution: string;
+  fieldOfStudy: string;
+  startDate: GenericDateType | null;
+  endDate: GenericDateType | null;
+  duration: string | null;
+  summary: string | null;
+};
+
+export type EducationDegreeType = {
+  institution: string;
+  degree: string;
+  fieldOfStudy: string;
+  startDate: GenericDateType | null;
+  endDate: GenericDateType | null;
+  duration: string | null;
+  summary: string | null;
+};
+
+export type LanguageType = {
+  name: string;
+  level: string;
+};
+
 export type ContactType = {
   title: string;
   description: string;
@@ -80,6 +124,10 @@ export type ResumeContentType = {
   selectedImpact: SelectedImpactType;
   selectedWork: SelectedWorkType;
   skills: SkillsType;
+  experiences: ExperienceType[];
+  educationDegrees: EducationDegreeType[];
+  certifications: CertificationType[];
+  languages: LanguageType[];
   contact: ContactType;
   footer: FooterType;
 };
