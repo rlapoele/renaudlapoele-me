@@ -145,7 +145,9 @@ export const resumeEN : ResumeType = {
           items: [
             "UX/UI",
             "Product Thinking",
+            "Requirements Analysis",
             "Information Architecture",
+            "Software Specification",
             "Prototyping",
             "Design Collaboration",
             "Accessibility"
@@ -154,10 +156,11 @@ export const resumeEN : ResumeType = {
         {
           name: "Engineering",
           items: [
-            "APIs",
             "Architecture",
+            "System Design",
+            "APIs",
             "Tech Leadership",
-            "Agile",
+            "AI-Assisted Development",
             "Scalable Web Applications",
           ],
         },
@@ -587,12 +590,14 @@ export const resumeEN : ResumeType = {
         }
       },
       careerOverview: {
+        label: "Career overview",
         snapshot: { label: "Highlights" },
         selectedImpact: { label: "Selected impact" },
         selectedWork: { label: "Selected work"},
         skills: { label: "Skills & stack" },
       },
       careerDetails: {
+        label: "Career details",
         experiences: { label: "Experience" },
         education: { label: "Education" },
         certifications: { label: "Certifications" },

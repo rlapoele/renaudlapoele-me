@@ -147,7 +147,9 @@ export const resumeFR: ResumeType = {
           items: [
             "UX/UI",
             "Approche produit",
+            "Analyse des besoins",
             "Architecture de l’information",
+            "Spécification logicielle",
             "Prototypage",
             "Collaboration au design",
             "Accessibilité"
@@ -156,11 +158,12 @@ export const resumeFR: ResumeType = {
         {
           name: "Ingénierie",
           items: [
-            "APIs",
             "Architecture",
+            "Conception de systèmes",
+            "APIs",
             "Responsabilité technique",
-            "Agile",
-            "Applications web évolutives",
+            "Développement assisté par l'IA",
+            "Applications Web évolutives",
           ],
         },
       ],
@@ -585,12 +588,14 @@ export const resumeFR: ResumeType = {
         }
       },
       careerOverview: {
+        label: "Aperçu de la carrière",
         snapshot: { label: "Repères clés"},
         selectedImpact: { label: "Contributions"},
         selectedWork: { label: "Réalisations" },
         skills: { label: "Compétences" },
       },
       careerDetails: {
+        label: "Détails de la carrière",
         experiences: { label: "Expérience" },
         education: { label: "Education" },
         certifications: { label: "Certifications" },

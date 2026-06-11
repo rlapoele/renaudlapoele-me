@@ -269,6 +269,7 @@ export type HeroUIType = {
 };
 
 export type CareerOverviewUIType = {
+  label: string;
   snapshot: { label: string };
   selectedImpact: { label: string };
   selectedWork: { label: string };
@@ -276,6 +277,7 @@ export type CareerOverviewUIType = {
 };
 
 export type CareerDetailsUIType = {
+  label: string;
   experiences: { label: string };
   education: { label: string };
   certifications: { label: string };
