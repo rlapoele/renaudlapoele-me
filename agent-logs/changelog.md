@@ -18,3 +18,7 @@ Concise history of meaningful agent-made changes.
 - Added `src/components/layout/Section.astro` as a structural layout primitive for standard resume sections.
 - Refactored `Snapshot`, `Impacts`, `Projects`, and `Skills` to use the shared section shell while preserving their section-specific card markup.
 - Verified with `npm run astro -- check` and `npm run build`.
+- Updated direct npm dependencies and dev dependencies to current compatible latest versions.
+- Added `vite` as an explicit dev dependency on the Astro-compatible `7.3.x` line so Astro and `@tailwindcss/vite` resolve the same Vite peer.
+- Added an npm `yaml` override to resolve the `@astrojs/check` transitive audit finding without downgrading `@astrojs/check`.
+- Verified with `npm audit --audit-level=moderate`, `npm run astro -- check`, and `npm run build`.
