@@ -1,0 +1,46 @@
+---
+import Container from "@components/ui/Container.astro";
+import SectionHeading from "@components/ui/SectionHeading.astro";
+import { combineCssClasses } from "@scripts/shared/combineCssClasses.ts";
+
+type Props = {
+  id: string;
+  label: string;
+  title: string;
+  class?: string;
+  containerClass?: string;
+  headingClass?: string;
+  bodyClass?: string;
+  isHeadingStatic?: boolean;
+};
+
+const {
+  id,
+  label,
+  title,
+  class: className,
+  containerClass,
+  headingClass,
+  bodyClass,
+  isHeadingStatic = false
+} = Astro.props as Props;
+
+const sectionClasses = combineCssClasses("l-section", className);
+const containerClasses = combineCssClasses(
+  "grid gap-8 lg:grid-cols-[0.95fr_2fr] items-start",
+  containerClass
+);
+---
+<section id={id} class={sectionClasses}>
+  <Container class={containerClasses}>
+    <SectionHeading
+      label={label}
+      title={title}
+      class={headingClass}
+      isHeaderStatic={isHeadingStatic}
+    />
+    <div class={bodyClass}>
+      <slot />
+    </div>
+  </Container>
+</section>

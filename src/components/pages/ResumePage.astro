@@ -11,6 +11,7 @@ import Contact from "@sections/Contact.astro";
 import Toasts from "@components/ui/Toasts.astro";
 import { config } from "@content/config";
 import { DOM_ELEM_IDS } from "@scripts/client/notificationManagement.ts";
+import Container from "@components/ui/Container.astro";
 
 type Props = { locale: LocaleType; };
 
@@ -31,10 +32,21 @@ const {
 ---
 <BaseLayout locale={locale}>
   <Hero content={hero} data={config.sections.hero.links} ui={sections.hero} fullname={personal.fullName} config={config.sections.hero} />
-  <Snapshot content={snapshot} sectionLabel={sections.careerOverview.snapshot.label} />
-  <Impacts content={selectedImpact} sectionLabel={sections.careerOverview.selectedImpact.label}/>
-  <Projects content={selectedWork} sectionLabel={sections.careerOverview.selectedWork.label}/>
-  <Skills content={skills} sectionLabel={sections.careerOverview.skills.label}  />
+
+  <div class="pbs-10 mbe-18">
+    <Container><h2 class="text-3xl sm:text-4xl font-thin tracking-wide text-accent-primary font-sans uppercase mbe-10">{sections.careerOverview.label}</h2></Container>
+    <div class="space-y-28">
+      <Snapshot content={snapshot} sectionLabel={sections.careerOverview.snapshot.label} />
+      <Impacts content={selectedImpact} sectionLabel={sections.careerOverview.selectedImpact.label}/>
+      <Projects content={selectedWork} sectionLabel={sections.careerOverview.selectedWork.label}/>
+      <Skills content={skills} sectionLabel={sections.careerOverview.skills.label}  />
+    </div>
+  </div>
+
+  <div class="pbs-10 mbe-18">
+    <Container><h2 class="text-3xl sm:text-4xl font-thin tracking-wide text-accent-primary font-sans uppercase mbe-10">{sections.careerDetails.label}</h2></Container>
+  </div>
+
   <Contact locale={locale} class="mbe-30" contact={contact} form={sections.contact.form} sectionLabel={sections.contact.label}/>
   <Toasts id={DOM_ELEM_IDS.TOAST_CONTAINER} placement="top-center"/>
 </BaseLayout>

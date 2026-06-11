@@ -373,9 +373,11 @@
     page-break-after: always;
     break-after: page;
 
+    /*
     &:first-of-type {
       min-height: 100svh;
     }
+    */
   }
 
   .c-text-link,

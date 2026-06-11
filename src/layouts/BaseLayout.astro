@@ -5,7 +5,7 @@ import type { LocaleType } from "@content/i18n/locale";
 import type { ResumeType } from "@content/i18n/resume/Types";
 
 import { getResumeData } from "@content/i18n/resume";
-import {config} from "@content/config";
+import { config } from "@content/config";
 import { SITE_URL } from "astro:env/server";
 import { normalizeSiteUrl } from "@scripts/server/configUtils.ts";
 
@@ -74,7 +74,7 @@ const siteUrl = normalizeSiteUrl(SITE_URL);
       <div class="relative z-20">
         <a href="#main-content" class="c-skip-link">Skip to main content</a>
         <Header locale={locale} siteUrl={siteUrl} navItems={config.navBarItems} navigation={resume.ui.header.navigation} settings={resume.ui.header.settings} />
-        <main id="main-content" tabindex="-1" role="main" class="space-y-28">
+        <main id="main-content" tabindex="-1" role="main">
           <slot />
         </main>
         <Footer class=""
