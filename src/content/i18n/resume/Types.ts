@@ -71,6 +71,10 @@ export type GenericDateType = {
 };
 
 export type ExperienceType = {
+  title: string;
+  items: ExperienceItemType[];
+}
+export type ExperienceItemType = {
   company: string;
   role: string | null;
   location: string | null;
@@ -84,6 +88,11 @@ export type ExperienceType = {
 };
 
 export type CertificationType = {
+  title: string;
+  items: CertificationItemType[];
+};
+
+export type CertificationItemType = {
   name: string;
   institution: string;
   fieldOfStudy: string;
@@ -94,6 +103,11 @@ export type CertificationType = {
 };
 
 export type EducationDegreeType = {
+  title: string;
+  items: EducationDegreeItemType[];
+};
+
+export type EducationDegreeItemType = {
   institution: string;
   degree: string;
   fieldOfStudy: string;
@@ -104,6 +118,10 @@ export type EducationDegreeType = {
 };
 
 export type LanguageType = {
+  title: string;
+  items: LanguageItemType[];
+};
+export type LanguageItemType = {
   name: string;
   level: string;
 };
@@ -124,10 +142,10 @@ export type ResumeContentType = {
   selectedImpact: SelectedImpactType;
   selectedWork: SelectedWorkType;
   skills: SkillsType;
-  experiences: ExperienceType[];
-  educationDegrees: EducationDegreeType[];
-  certifications: CertificationType[];
-  languages: LanguageType[];
+  experiences: ExperienceType;
+  educationDegrees: EducationDegreeType;
+  certifications: CertificationType;
+  languages: LanguageType;
   contact: ContactType;
   footer: FooterType;
 };
