@@ -584,10 +584,18 @@ export const resumeFR: ResumeType = {
           resumeDownload: "Télécharger le CV",
         }
       },
-      snapshot: { label: "Repères clés"},
-      selectedImpact: { label: "Contributions"},
-      selectedWork: { label: "Réalisations" },
-      skills: { label: "Compétences" },
+      careerOverview: {
+        snapshot: { label: "Repères clés"},
+        selectedImpact: { label: "Contributions"},
+        selectedWork: { label: "Réalisations" },
+        skills: { label: "Compétences" },
+      },
+      careerDetails: {
+        experiences: { label: "Expérience" },
+        education: { label: "Education" },
+        certifications: { label: "Certifications" },
+        languages: { label: "Langues" },
+      },
       contact: {
         label: "Contact",
         form: {

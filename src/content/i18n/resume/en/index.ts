@@ -586,10 +586,18 @@ export const resumeEN : ResumeType = {
           resumeDownload: "Download Resume",
         }
       },
-      snapshot: { label: "Highlights" },
-      selectedImpact: { label: "Selected impact" },
-      selectedWork: { label: "Selected work"},
-      skills: { label: "Skills & stack" },
+      careerOverview: {
+        snapshot: { label: "Highlights" },
+        selectedImpact: { label: "Selected impact" },
+        selectedWork: { label: "Selected work"},
+        skills: { label: "Skills & stack" },
+      },
+      careerDetails: {
+        experiences: { label: "Experience" },
+        education: { label: "Education" },
+        certifications: { label: "Certifications" },
+        languages: { label: "Languages" },
+      },
       contact: {
         label: "Contact",
         form: {

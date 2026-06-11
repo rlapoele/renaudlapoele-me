@@ -266,6 +266,20 @@ export type HeroUIType = {
     toContactForm: string,
     resumeDownload: string,
   }
+};
+
+export type CareerOverviewUIType = {
+  snapshot: { label: string };
+  selectedImpact: { label: string };
+  selectedWork: { label: string };
+  skills: { label: string };
+};
+
+export type CareerDetailsUIType = {
+  experiences: { label: string };
+  education: { label: string };
+  certifications: { label: string };
+  languages: { label: string };
 }
 
 export type ResumeUIType = {
@@ -276,10 +290,8 @@ export type ResumeUIType = {
 
   sections: {
     hero: HeroUIType;
-    snapshot: { label: string };
-    selectedImpact: { label: string };
-    selectedWork: { label: string };
-    skills: { label: string };
+    careerOverview: CareerOverviewUIType;
+    careerDetails: CareerDetailsUIType;
     contact: {
       label: string;
       form: FormUIType;

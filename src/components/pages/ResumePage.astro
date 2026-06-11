@@ -31,10 +31,10 @@ const {
 ---
 <BaseLayout locale={locale}>
   <Hero content={hero} data={config.sections.hero.links} ui={sections.hero} fullname={personal.fullName} config={config.sections.hero} />
-  <Snapshot content={snapshot} sectionLabel={sections.snapshot.label} />
-  <Impacts content={selectedImpact} sectionLabel={sections.selectedImpact.label}/>
-  <Projects content={selectedWork} sectionLabel={sections.selectedWork.label}/>
-  <Skills content={skills} sectionLabel={sections.skills.label}  />
+  <Snapshot content={snapshot} sectionLabel={sections.careerOverview.snapshot.label} />
+  <Impacts content={selectedImpact} sectionLabel={sections.careerOverview.selectedImpact.label}/>
+  <Projects content={selectedWork} sectionLabel={sections.careerOverview.selectedWork.label}/>
+  <Skills content={skills} sectionLabel={sections.careerOverview.skills.label}  />
   <Contact locale={locale} class="mbe-30" contact={contact} form={sections.contact.form} sectionLabel={sections.contact.label}/>
   <Toasts id={DOM_ELEM_IDS.TOAST_CONTAINER} placement="top-center"/>
 </BaseLayout>
