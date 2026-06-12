@@ -1,0 +1,18 @@
+---
+import {combineCssClasses} from "@scripts/shared/combineCssClasses.ts";
+type Props = {
+  org: string
+  role: string
+  class?: string
+}
+
+const {
+  org ,
+  role,
+  class: className = ""
+} = Astro.props as Props;
+
+const baseCssClasses = "text-2xl leading-8 font-semibold";
+const classes = combineCssClasses(baseCssClasses, className);
+---
+<h5 class={classes}><span class="text-ink-tertiary">{org}</span><span class="text-ink-tertiary/50 font-normal"> - </span><span>{role}</span></h5>

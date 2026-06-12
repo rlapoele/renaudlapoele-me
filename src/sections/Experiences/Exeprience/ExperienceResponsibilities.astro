@@ -1,0 +1,22 @@
+---
+import {combineCssClasses} from "@scripts/shared/combineCssClasses.ts";
+import Bullet from "@components/ui/Bullet.astro";
+type Props = {
+  responsibilities: string[];
+  class?: string;
+}
+
+const {
+  responsibilities,
+  class: className = ""
+} = Astro.props as Props;
+
+const baseCssClasses = "mt-6 space-y-2.5 text-sm text-ink-secondary";
+const classes = combineCssClasses(baseCssClasses, className);
+---
+<ul class={classes}>
+  {responsibilities.map((responsibility) => (
+    <li class="flex items-baseline gap-3"><span class="pbe-0.5"><Bullet/></span><span>{responsibility}</span>
+    </li>
+  ))}
+</ul>

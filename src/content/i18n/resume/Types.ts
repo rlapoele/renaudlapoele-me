@@ -74,6 +74,12 @@ export type ExperienceType = {
   title: string;
   items: ExperienceItemType[];
 }
+
+export type ExperienceSkillGroupType = {
+  name: string;
+  skills: string[];
+};
+
 export type ExperienceItemType = {
   company: string;
   role: string | null;
@@ -84,7 +90,7 @@ export type ExperienceItemType = {
   summary: string | null;
   responsibilities: string[];
   keyFocus: string | null;
-  skills: string[];
+  skillGroups: ExperienceSkillGroupType[];
 };
 
 export type CertificationType = {

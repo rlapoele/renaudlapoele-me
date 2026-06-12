@@ -1,0 +1,31 @@
+---
+import {combineCssClasses} from "@scripts/shared/combineCssClasses.ts";
+type Props = {
+  startDateLabel: string
+  endDateLabel: string
+  location: string
+  class?: string
+};
+
+const {
+  startDateLabel,
+  endDateLabel,
+  location,
+  class: className = ""
+} = Astro.props as Props;
+
+const baseCssClasses = "flex item-center justify-between leading-4 text-accent-primary text-sm font-semibold dark:font-medium uppercase tracking-wider";
+const classes = combineCssClasses(baseCssClasses, className);
+---
+<p class={classes}>
+  { !!startDateLabel && !!endDateLabel &&
+    <span class="uppercase">{startDateLabel} - {endDateLabel}</span>
+  }
+  { !!startDateLabel && !endDateLabel &&
+    <span class="uppercase">{startDateLabel}</span>
+  }
+  { !startDateLabel && !!endDateLabel &&
+    <span class="uppercase">{endDateLabel}</span>
+  }
+  <span class="text-xs">{location}</span>
+</p>

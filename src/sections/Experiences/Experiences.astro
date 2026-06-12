@@ -1,5 +1,6 @@
 ---
 import type {ExperienceType} from "@content/i18n/resume/Types.ts";
+import Experience from "./Exeprience/Experience.astro";
 import Card from "@components/ui/Card.astro";
 import Section from "@components/layout/Section.astro";
 import Bullet from "@components/ui/Bullet.astro";
@@ -8,8 +9,10 @@ type Props = { content: ExperienceType, sectionLabel: string };
 const { content, sectionLabel } = Astro.props as Props;
 ---
 <Section id="experience" label={sectionLabel} title={content.title} bodyClass="space-y-5">
-  <Card>
-    <!--
+  {
+    content.items.map((experience) => <Experience experience={experience} />)
+  }
+   <!--
       <ul class="space-y-2 text-sm text-ink-primary">
         {
           content.items.map((languageItem) => (
@@ -20,6 +23,4 @@ const { content, sectionLabel } = Astro.props as Props;
         }
       </ul>
       -->
-  </Card>
-
 </Section>
