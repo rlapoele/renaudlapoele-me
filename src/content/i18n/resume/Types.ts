@@ -136,16 +136,25 @@ export type FooterType = {
   tagline: string;
 };
 
-export type ResumeContentType = {
-  hero: HeroType;
+
+export type CareerOverviewType = {
   snapshot: SnapshotType;
   selectedImpact: SelectedImpactType;
   selectedWork: SelectedWorkType;
   skills: SkillsType;
+};
+
+export type CareerDetailsType = {
   experiences: ExperienceType;
   educationDegrees: EducationDegreeType;
   certifications: CertificationType;
   languages: LanguageType;
+};
+
+export type ResumeContentType = {
+  hero: HeroType;
+  careerOverview: CareerOverviewType;
+  careerDetails: CareerDetailsType;
   contact: ContactType;
   footer: FooterType;
 };

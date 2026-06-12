@@ -11,13 +11,14 @@ import { DOM_ELEMENT_IDS } from "@scripts/shared/contactForm/domElementIds.ts";
 import { CONTACT_FORM_INPUT_MIN_MAX_LENGTHS } from "@scripts/shared/contactForm/validation.ts";
 import {objectKeyValueArrayToString} from "@scripts/shared/objectKeyValueArrayToString.ts";
 import {objectToObjectArray} from "@scripts/shared/objectToObjectArray.ts";
+import type {HTMLTag} from "astro/types";
 
 type Props = {
   contact: ContactType,
   form: FormUIType,
   sectionLabel: string,
   locale: string,
-  class?: string
+  class?: string,
 };
 
 const {
@@ -47,7 +48,13 @@ const initialSubmitButtonTextLabel = form.controls.submitButton.labels.send;
     <Card variant="section" padding="xl">
       <div class="grid gap-10 lg:gap-20 lg:grid-cols-[0.95fr_1.35fr]">
         <div>
-          <SectionHeading title={contact.title} label={sectionLabel} isHeaderStatic={true}/>
+          <SectionHeading
+            title={contact.title}
+            label={sectionLabel}
+            isHeaderStatic={true}
+            headingLabelTag="h2"
+            headingTitleTag="h3"
+          />
           <p class="mt-4 max-w-lg leading-relaxed text-ink-secondary">
             {contact.description}
           </p>

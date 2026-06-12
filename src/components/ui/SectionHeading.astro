@@ -8,6 +8,8 @@ type Props = {
   class?: string;
   isHeaderStatic?: boolean
   tag?: HTMLTag
+  headingLabelTag?: HTMLTag
+  headingTitleTag?: HTMLTag
 };
 
 const {
@@ -15,15 +17,18 @@ const {
   label,
   title,
   isHeaderStatic = false,
-  tag: HTMLTagElement= "header"
+  tag: SectionHeadingTagElement= "header",
+  headingLabelTag: SectionHeadingLabelTagElement= "h3",
+  headingTitleTag: SectionHeadingTitleTagElement= "h4"
+
 } = Astro.props as Props;
 const baseCssClasses = isHeaderStatic ? "c-section__heading" : "c-section__heading c-section__heading--dynamic";
 const classes = combineCssClasses(baseCssClasses, className);
 ---
-<HTMLTagElement class={classes}>
-  <h3 class="c-section__heading__label">
+<SectionHeadingTagElement class={classes}>
+  <SectionHeadingLabelTagElement class="c-section__heading__label">
     {label}
-  </h3>
-  <h4 class="c-section__heading__title">{title}</h4>
-</HTMLTagElement>
+  </SectionHeadingLabelTagElement>
+  <SectionHeadingTitleTagElement class="c-section__heading__title">{title}</SectionHeadingTitleTagElement>
+</SectionHeadingTagElement>
 

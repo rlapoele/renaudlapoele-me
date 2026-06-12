@@ -33,514 +33,513 @@ export const resumeEN : ResumeType = {
         openToText: 'Open to permanent or contract opportunities'
       }
     },
-
-    snapshot: {
-      title: "Design-minded engineering leadership",
-      items: [
-        {
-          label: "25+ Years",
-          description:
-            "Experience across engineering, UX, and product-facing roles",
-        },
-        {
-          label: "Cisco Systems",
-          description:
-            "Long-term experience in enterprise-scale environments",
-        },
-        {
-          label: "Tech Lead + Product Owner",
-          description:
-            "Bridging delivery, alignment, and product thinking",
-        },
-        {
-          label: "React · TypeScript · UX",
-          description:
-            "Modern front-end execution with design sensitivity",
-        },
-      ],
+    careerOverview: {
+      snapshot: {
+        title: "Design-minded engineering leadership",
+        items: [
+          {
+            label: "25+ Years",
+            description:
+              "Experience across engineering, UX, and product-facing roles",
+          },
+          {
+            label: "Cisco Systems",
+            description:
+              "Long-term experience in enterprise-scale environments",
+          },
+          {
+            label: "Tech Lead + Product Owner",
+            description:
+              "Bridging delivery, alignment, and product thinking",
+          },
+          {
+            label: "React · TypeScript · UX",
+            description:
+              "Modern front-end execution with design sensitivity",
+          },
+        ],
+      },
+      selectedImpact: {
+        title: "A career shaped by useful systems and ergonomic user interfaces",
+        items: [
+          {
+            title: "Large-scale partner platforms",
+            description:
+              "Led front-end and product-facing initiatives across global partner ecosystems, translating complex business requirements into usable, scalable interfaces.",
+            highlights: [
+              "Bridged engineering, UX, and business constraints",
+              "Improved clarity and usability of complex flows",
+              "Contributed across delivery, alignment, and product decisions",
+            ],
+          },
+          {
+            title: "Search platform redesign",
+            description:
+              "Helped rethink search experiences with a stronger focus on information architecture, usability, and implementation quality.",
+            highlights: [
+              "Combined UX thinking with front-end execution",
+              "Worked across prototype, design, and delivery phases",
+              "Focused on discoverability and reduced interaction friction",
+            ],
+          },
+          {
+            title: "Product and engineering leadership",
+            description:
+              "Operated at the intersection of product ownership, technical leadership, and interface design to move initiatives from ambiguity to execution.",
+            highlights: [
+              "Facilitated collaboration across disciplines",
+              "Helped structure priorities and delivery direction",
+              "Maintained attention to both user value and implementation detail",
+            ],
+          },
+        ],
+      },
+      selectedWork: {
+        title: "Engineering with structured creativity",
+        items: [
+          {
+            name: "Offline-first Project Workspace",
+            type: "Product Experiment",
+            description:
+              "A project management web app exploring offline-first behavior, multi-device sync, and clear UX for local-first workflows.",
+            highlights: [
+              "Built with OPFS and hybrid logical clocks",
+              "Designed for multi-device consistency",
+              "Focused on usability in offline scenarios",
+            ],
+            tags: ["TypeScript", "UX", "Sync", "Architecture"],
+          },
+          {
+            name: "Resume Website / Personal Positioning",
+            type: "Design + Engineering",
+            description:
+              "A bilingual resume website designed to communicate senior engineering credibility with a strong product and UX sensibility.",
+            highlights: [
+              "Content structured for recruiter scanning",
+              "Balanced engineering clarity with design quality",
+              "Built with Astro and Tailwind",
+            ],
+            tags: ["Astro", "Tailwind","Typescript", "Localization", "Accessibility", "Design Tokens", "Content Strategy"],
+          },
+        ],
+      },
+      skills: {
+        title: "Breadth where it matters, depth where it counts",
+        groups: [
+          {
+            name: "Frontend",
+            items: [
+              "JavaScript",
+              "TypeScript",
+              "React",
+              "HTML",
+              "CSS",
+              "Responsive UI",
+            ],
+          },
+          {
+            name: "UX / Product",
+            items: [
+              "UX/UI",
+              "Product Thinking",
+              "Requirements Analysis",
+              "Information Architecture",
+              "Software Specification",
+              "Prototyping",
+              "Design Collaboration",
+              "Accessibility"
+            ],
+          },
+          {
+            name: "Engineering",
+            items: [
+              "Architecture",
+              "System Design",
+              "APIs",
+              "Tech Leadership",
+              "AI-Assisted Development",
+              "Scalable Web Applications",
+            ],
+          },
+        ],
+      },
     },
-
-    selectedImpact: {
-      title: "A career shaped by useful systems and ergonomic user interfaces",
-      items: [
-        {
-          title: "Large-scale partner platforms",
-          description:
-            "Led front-end and product-facing initiatives across global partner ecosystems, translating complex business requirements into usable, scalable interfaces.",
-          highlights: [
-            "Bridged engineering, UX, and business constraints",
-            "Improved clarity and usability of complex flows",
-            "Contributed across delivery, alignment, and product decisions",
-          ],
-        },
-        {
-          title: "Search platform redesign",
-          description:
-            "Helped rethink search experiences with a stronger focus on information architecture, usability, and implementation quality.",
-          highlights: [
-            "Combined UX thinking with front-end execution",
-            "Worked across prototype, design, and delivery phases",
-            "Focused on discoverability and reduced interaction friction",
-          ],
-        },
-        {
-          title: "Product and engineering leadership",
-          description:
-            "Operated at the intersection of product ownership, technical leadership, and interface design to move initiatives from ambiguity to execution.",
-          highlights: [
-            "Facilitated collaboration across disciplines",
-            "Helped structure priorities and delivery direction",
-            "Maintained attention to both user value and implementation detail",
-          ],
-        },
-      ],
-    },
-
-    selectedWork: {
-      title: "Engineering with structured creativity",
-      items: [
-        {
-          name: "Offline-first Project Workspace",
-          type: "Product Experiment",
-          description:
-            "A project management web app exploring offline-first behavior, multi-device sync, and clear UX for local-first workflows.",
-          highlights: [
-            "Built with OPFS and hybrid logical clocks",
-            "Designed for multi-device consistency",
-            "Focused on usability in offline scenarios",
-          ],
-          tags: ["TypeScript", "UX", "Sync", "Architecture"],
-        },
-        {
-          name: "Resume Website / Personal Positioning",
-          type: "Design + Engineering",
-          description:
-            "A bilingual resume website designed to communicate senior engineering credibility with a strong product and UX sensibility.",
-          highlights: [
-            "Content structured for recruiter scanning",
-            "Balanced engineering clarity with design quality",
-            "Built with Astro and Tailwind",
-          ],
-          tags: ["Astro", "Tailwind","Typescript", "Localization", "Accessibility", "Design Tokens", "Content Strategy"],
-        },
-      ],
-    },
-
-    skills: {
-      title: "Breadth where it matters, depth where it counts",
-      groups: [
-        {
-          name: "Frontend",
-          items: [
-            "JavaScript",
-            "TypeScript",
-            "React",
-            "HTML",
-            "CSS",
-            "Responsive UI",
-          ],
-        },
-        {
-          name: "UX / Product",
-          items: [
-            "UX/UI",
-            "Product Thinking",
-            "Requirements Analysis",
-            "Information Architecture",
-            "Software Specification",
-            "Prototyping",
-            "Design Collaboration",
-            "Accessibility"
-          ],
-        },
-        {
-          name: "Engineering",
-          items: [
-            "Architecture",
-            "System Design",
-            "APIs",
-            "Tech Leadership",
-            "AI-Assisted Development",
-            "Scalable Web Applications",
-          ],
-        },
-      ],
-    },
-
-    experiences: {
-      title: '',
-      items: [
-        {
-          "company": "YunikApps",
-          "role": "Independent Consulting & Professional Development",
-          "location": "France",
-          "startDate": {
-            "label": "January 2024",
-            "year": 2024,
-            "month": 1
+    careerDetails: {
+      experiences: {
+        title: 'A progression through engineering, UX, and product leadership',
+        items: [
+          {
+            "company": "YunikApps",
+            "role": "Independent Consulting & Professional Development",
+            "location": "France",
+            "startDate": {
+              "label": "January 2024",
+              "year": 2024,
+              "month": 1
+            },
+            "endDate": {
+              "label": "Present",
+              "year": null,
+              "month": null
+            },
+            "duration": null,
+            "summary": null,
+            "responsibilities": [
+              "Created and prepared the launch of an independent consulting activity focused on web applications and digital product development.",
+              "Designed and implemented personal projects using modern front-end technologies including TypeScript, Astro, React, SolidJS, Tailwind CSS, and Node.js.",
+              "Completed professional accessibility training and strengthened expertise in inclusive web design and WCAG-compliant development.",
+              "Conducted continuous technology research and hands-on experimentation in modern front-end engineering, AI-assisted development, and emerging AI engineering practices.",
+              "Developed proof-of-concepts and prototypes exploring productivity, developer experience, and product creation workflows leveraging AI technologies.",
+              "Maintained active technical learning through self-directed projects, technical research, and practical implementation work."
+            ],
+            "keyFocus": null,
+            "skills": []
           },
-          "endDate": {
-            "label": "Present",
-            "year": null,
-            "month": null
+          {
+            "company": "Cisco Systems",
+            "role": "Senior Front-End Engineer / Tech Lead / Product Owner",
+            "location": "France",
+            "startDate": {
+              "label": "July 2019",
+              "year": 2019,
+              "month": 7
+            },
+            "endDate": {
+              "label": "January 2024",
+              "year": 2024,
+              "month": 1
+            },
+            "duration": null,
+            "summary": "Senior individual contributor role combining Front-End leadership, UX design, and product ownership on global, large-scale partner platforms.",
+            "responsibilities": [
+              "Collaborated closely with design team on the UX redesign and led the Front-End implementation of two worldwide search platforms used by Cisco partners across multiple regions, delivering a more intuitive and consistent partner search experience.",
+              "Acted as Tech Lead and Product Owner, owning backlog, epics, user stories, priorities, and stakeholder alignment while remaining hands-on with Front-End development.",
+              "Drove UI architecture and Front-End best practices using React, JavaScript, HTML, CSS, and Tailwind CSS.",
+              "Designed and delivered scalable web APIs supporting partner incentive program management.",
+              "Collaborated closely with business, UX, and engineering teams to translate complex requirements into intuitive, usable solutions.",
+              "Contributed to an application portfolio migration to Salesforce by acting as Product Owner on a direct partner contract management solution.",
+              "Trained and mentored a junior Product Owner on backlog and priority management, user stories, and stakeholder communication."
+            ],
+            "keyFocus": "Front-End architecture, UX quality, product ownership, and delivery at scale.",
+            "skills": [
+              "Front-End Development",
+              "UX/UI Design",
+              "Requirements Analysis",
+              "Product Ownership",
+              "User Stories",
+              "Agile Methodologies",
+              "React.js",
+              "JavaScript",
+              "TypeScript",
+              "Written Communication"
+            ]
           },
-          "duration": null,
-          "summary": null,
-          "responsibilities": [
-            "Created and prepared the launch of an independent consulting activity focused on web applications and digital product development.",
-            "Designed and implemented personal projects using modern front-end technologies including TypeScript, Astro, React, SolidJS, Tailwind CSS, and Node.js.",
-            "Completed professional accessibility training and strengthened expertise in inclusive web design and WCAG-compliant development.",
-            "Conducted continuous technology research and hands-on experimentation in modern front-end engineering, AI-assisted development, and emerging AI engineering practices.",
-            "Developed proof-of-concepts and prototypes exploring productivity, developer experience, and product creation workflows leveraging AI technologies.",
-            "Maintained active technical learning through self-directed projects, technical research, and practical implementation work."
-          ],
-          "keyFocus": null,
-          "skills": []
-        },
-        {
-          "company": "Cisco Systems",
-          "role": "Senior Front-End Engineer / Tech Lead / Product Owner",
-          "location": "France",
-          "startDate": {
-            "label": "July 2019",
-            "year": 2019,
-            "month": 7
+          {
+            "company": "Cisco Systems",
+            "role": "UX Lead / Front-End Engineer",
+            "location": "France",
+            "startDate": {
+              "label": "August 2016",
+              "year": 2016,
+              "month": 8
+            },
+            "endDate": {
+              "label": "June 2019",
+              "year": 2019,
+              "month": 6
+            },
+            "duration": null,
+            "summary": "Front-End engineer with a strong UX leadership role, focused on improving usability, consistency, and product clarity.",
+            "responsibilities": [
+              "Promoted UI and UX design practices across teams, helping embed user-centered thinking into delivery and improve overall product usability.",
+              "Designed and redesigned user experiences using wireframes, mockups, prototypes, and journey maps.",
+              "Implemented complex user interfaces using AngularJS / Angular, leveraging prototype-driven approaches.",
+              "Contributed as Front-End engineer on a business intelligence dashboard, balancing data density with usability.",
+              "Rapidly prototyped Front-End concepts using Vue.js to validate ideas and support MVP initiatives.",
+              "Worked closely with product owners, analysts, and developers in Lean and Agile environments."
+            ],
+            "keyFocus": "UX-driven Front-End development, prototyping, and cross-functional collaboration.",
+            "skills": [
+              "UX/UI Design",
+              "User Experience (UX)",
+              "Wireframing",
+              "Prototyping",
+              "Front-End Development",
+              "Responsive Web Design",
+              "Vue.js",
+              "Product Discovery",
+              "Human-Centered Design",
+              "Written Communication",
+              "Cross-Functional Collaboration"
+            ]
           },
-          "endDate": {
-            "label": "January 2024",
-            "year": 2024,
-            "month": 1
+          {
+            "company": "Cisco Systems",
+            "role": "IT Analyst / Technical Lead",
+            "location": "France",
+            "startDate": {
+              "label": "March 2008",
+              "year": 2008,
+              "month": 3
+            },
+            "endDate": {
+              "label": "July 2016",
+              "year": 2016,
+              "month": 7
+            },
+            "duration": null,
+            "summary": "Hybrid role at the intersection of business analysis, UX design, and technical leadership.",
+            "responsibilities": [
+              "Gathered, analyzed, and documented business requirements for worldwide partner management platforms and pricing and discounting initiatives.",
+              "Designed user interfaces and user experiences aligned with business processes and user needs, improving usability and alignment between business and IT.",
+              "Authored technical specifications, functional documentation, and user manuals.",
+              "Acted as technical lead or project lead on multiple initiatives, coordinating small delivery teams.",
+              "Served as a key interface between business stakeholders and engineering teams."
+            ],
+            "keyFocus": "Requirements analysis, UX design, and translating business needs into deliverable solutions.",
+            "skills": [
+              "Requirements Analysis",
+              "Requirements Gathering",
+              "Product Ownership",
+              "User Stories",
+              "Technical Documentation",
+              "Human-Centered Design",
+              "Responsive Web Design",
+              "Agile Methodologies",
+              "Cross-Functional Collaboration"
+            ]
           },
-          "duration": null,
-          "summary": "Senior individual contributor role combining Front-End leadership, UX design, and product ownership on global, large-scale partner platforms.",
-          "responsibilities": [
-            "Collaborated closely with design team on the UX redesign and led the Front-End implementation of two worldwide search platforms used by Cisco partners across multiple regions, delivering a more intuitive and consistent partner search experience.",
-            "Acted as Tech Lead and Product Owner, owning backlog, epics, user stories, priorities, and stakeholder alignment while remaining hands-on with Front-End development.",
-            "Drove UI architecture and Front-End best practices using React, JavaScript, HTML, CSS, and Tailwind CSS.",
-            "Designed and delivered scalable web APIs supporting partner incentive program management.",
-            "Collaborated closely with business, UX, and engineering teams to translate complex requirements into intuitive, usable solutions.",
-            "Contributed to an application portfolio migration to Salesforce by acting as Product Owner on a direct partner contract management solution.",
-            "Trained and mentored a junior Product Owner on backlog and priority management, user stories, and stakeholder communication."
-          ],
-          "keyFocus": "Front-End architecture, UX quality, product ownership, and delivery at scale.",
-          "skills": [
-            "Front-End Development",
-            "UX/UI Design",
-            "Requirements Analysis",
-            "Product Ownership",
-            "User Stories",
-            "Agile Methodologies",
-            "React.js",
-            "JavaScript",
-            "TypeScript",
-            "Written Communication"
-          ]
-        },
-        {
-          "company": "Cisco Systems",
-          "role": "UX Lead / Front-End Engineer",
-          "location": "France",
-          "startDate": {
-            "label": "August 2016",
-            "year": 2016,
-            "month": 8
+          {
+            "company": "Cisco Systems",
+            "role": "Software Engineer",
+            "location": "San Jose, CA, USA",
+            "startDate": {
+              "label": "February 2007",
+              "year": 2007,
+              "month": 2
+            },
+            "endDate": {
+              "label": "February 2008",
+              "year": 2008,
+              "month": 2
+            },
+            "duration": null,
+            "summary": null,
+            "responsibilities": [
+              "Contributed to a worldwide Partner Deal Registration platform, early Cisco Commerce Workspace.",
+              "Gathered and documented business requirements and technical specifications.",
+              "Designed user interfaces and led application localization efforts."
+            ],
+            "keyFocus": null,
+            "skills": [
+              "Front-End Development",
+              "Back-End Development",
+              "JavaScript",
+              "HTML",
+              "CSS",
+              "SQL",
+              "PL/SQL",
+              "Java",
+              "Technical Documentation",
+              "Requirements Gathering",
+              "Requirements Analysis"
+            ]
           },
-          "endDate": {
-            "label": "June 2019",
-            "year": 2019,
-            "month": 6
+          {
+            "company": "Cisco Systems",
+            "role": "Software Engineer",
+            "location": "France",
+            "startDate": {
+              "label": "January 2000",
+              "year": 2000,
+              "month": 1
+            },
+            "endDate": {
+              "label": "January 2007",
+              "year": 2007,
+              "month": 1
+            },
+            "duration": null,
+            "summary": null,
+            "responsibilities": [
+              "Designed, implemented, and supported web applications for logistics, marketing, e-learning, finance, and channel organizations across EMEA.",
+              "Worked across Front-End and Back-End layers using Java, JavaScript, HTML, CSS, and Oracle technologies."
+            ],
+            "keyFocus": null,
+            "skills": [
+              "Front-End Development",
+              "Back-End Development",
+              "JavaScript",
+              "HTML",
+              "CSS",
+              "SQL",
+              "PL/SQL",
+              "Java",
+              "Oracle Web Application Technologies"
+            ]
           },
-          "duration": null,
-          "summary": "Front-End engineer with a strong UX leadership role, focused on improving usability, consistency, and product clarity.",
-          "responsibilities": [
-            "Promoted UI and UX design practices across teams, helping embed user-centered thinking into delivery and improve overall product usability.",
-            "Designed and redesigned user experiences using wireframes, mockups, prototypes, and journey maps.",
-            "Implemented complex user interfaces using AngularJS / Angular, leveraging prototype-driven approaches.",
-            "Contributed as Front-End engineer on a business intelligence dashboard, balancing data density with usability.",
-            "Rapidly prototyped Front-End concepts using Vue.js to validate ideas and support MVP initiatives.",
-            "Worked closely with product owners, analysts, and developers in Lean and Agile environments."
-          ],
-          "keyFocus": "UX-driven Front-End development, prototyping, and cross-functional collaboration.",
-          "skills": [
-            "UX/UI Design",
-            "User Experience (UX)",
-            "Wireframing",
-            "Prototyping",
-            "Front-End Development",
-            "Responsive Web Design",
-            "Vue.js",
-            "Product Discovery",
-            "Human-Centered Design",
-            "Written Communication",
-            "Cross-Functional Collaboration"
-          ]
-        },
-        {
-          "company": "Cisco Systems",
-          "role": "IT Analyst / Technical Lead",
-          "location": "France",
-          "startDate": {
-            "label": "March 2008",
-            "year": 2008,
-            "month": 3
+          {
+            "company": "Nantes University",
+            "role": "Technical Support Engineer",
+            "location": "Nantes, Pays de la Loire, France",
+            "startDate": {
+              "label": "July 1996",
+              "year": 1996,
+              "month": 7
+            },
+            "endDate": {
+              "label": "December 1997",
+              "year": 1997,
+              "month": 12
+            },
+            "duration": "1 year 6 months",
+            "summary": null,
+            "responsibilities": [
+              "System administration and support of computer local networks, servers, workstations, and printers.",
+              "Designed and implemented a text to Unimarc file format converter. Unimarc is a bibliographic file format.",
+              "Designed, implemented, and maintained library event web pages and prints."
+            ],
+            "keyFocus": null,
+            "skills": [
+              "Web Design",
+              "System administration",
+              "Unix",
+              "Written Communication",
+              "Turbo Pascal"
+            ]
           },
-          "endDate": {
-            "label": "July 2016",
-            "year": 2016,
-            "month": 7
+          {
+            "company": "Celia",
+            "role": "Junior Developer",
+            "location": null,
+            "startDate": null,
+            "endDate": null,
+            "duration": null,
+            "summary": null,
+            "responsibilities": [
+              "Designed and implemented a trademark management application in Microsoft Access."
+            ],
+            "keyFocus": null,
+            "skills": [
+              "Requirements Gathering",
+              "Requirements Analysis",
+              "Database Design",
+              "Microsoft Access"
+            ]
           },
-          "duration": null,
-          "summary": "Hybrid role at the intersection of business analysis, UX design, and technical leadership.",
-          "responsibilities": [
-            "Gathered, analyzed, and documented business requirements for worldwide partner management platforms and pricing and discounting initiatives.",
-            "Designed user interfaces and user experiences aligned with business processes and user needs, improving usability and alignment between business and IT.",
-            "Authored technical specifications, functional documentation, and user manuals.",
-            "Acted as technical lead or project lead on multiple initiatives, coordinating small delivery teams.",
-            "Served as a key interface between business stakeholders and engineering teams."
-          ],
-          "keyFocus": "Requirements analysis, UX design, and translating business needs into deliverable solutions.",
-          "skills": [
-            "Requirements Analysis",
-            "Requirements Gathering",
-            "Product Ownership",
-            "User Stories",
-            "Technical Documentation",
-            "Human-Centered Design",
-            "Responsive Web Design",
-            "Agile Methodologies",
-            "Cross-Functional Collaboration"
-          ]
-        },
-        {
-          "company": "Cisco Systems",
-          "role": "Software Engineer",
-          "location": "San Jose, CA, USA",
-          "startDate": {
-            "label": "February 2007",
-            "year": 2007,
-            "month": 2
+          {
+            "company": "Hegler France",
+            "role": "Junior Developer",
+            "location": null,
+            "startDate": null,
+            "endDate": null,
+            "duration": null,
+            "summary": null,
+            "responsibilities": [
+              "Designed and implemented a billing management application in Microsoft Access."
+            ],
+            "keyFocus": null,
+            "skills": [
+              "Requirements Gathering",
+              "Requirements Analysis",
+              "Database Design",
+              "Microsoft Access"
+            ]
+          }
+        ]
+      },
+      educationDegrees: {
+        title: 'Strong technical foundations in computer science',
+        items: [
+          {
+            institution: "Nantes University",
+            degree: "Master's Degree (Maîtrise)",
+            fieldOfStudy: "Computer Science and Software Engineering",
+            startDate: null,
+            endDate: {
+              label: "1996",
+              year: 1996,
+              month: null
+            },
+            duration: "1 year",
+            summary: null
           },
-          "endDate": {
-            "label": "February 2008",
-            "year": 2008,
-            "month": 2
+          {
+            institution: "Nantes University",
+            degree: "Bachelor's Degree (Licence)",
+            fieldOfStudy: "Computer Science and Software Engineering",
+            startDate: null,
+            endDate: {
+              label: "1995",
+              year: 1995,
+              month: null
+            },
+            duration: "1 year",
+            summary: null
           },
-          "duration": null,
-          "summary": null,
-          "responsibilities": [
-            "Contributed to a worldwide Partner Deal Registration platform, early Cisco Commerce Workspace.",
-            "Gathered and documented business requirements and technical specifications.",
-            "Designed user interfaces and led application localization efforts."
-          ],
-          "keyFocus": null,
-          "skills": [
-            "Front-End Development",
-            "Back-End Development",
-            "JavaScript",
-            "HTML",
-            "CSS",
-            "SQL",
-            "PL/SQL",
-            "Java",
-            "Technical Documentation",
-            "Requirements Gathering",
-            "Requirements Analysis"
-          ]
-        },
-        {
-          "company": "Cisco Systems",
-          "role": "Software Engineer",
-          "location": "France",
-          "startDate": {
-            "label": "January 2000",
-            "year": 2000,
-            "month": 1
+          {
+            institution: "Nantes University",
+            degree: "University Diploma of Technology (DUT)",
+            fieldOfStudy: "Computer Science and Software Engineering",
+            startDate: null,
+            endDate: {
+              label: "1994",
+              year: 1994,
+              month: null
+            },
+            duration: "2 years",
+            summary: null
           },
-          "endDate": {
-            "label": "January 2007",
-            "year": 2007,
-            "month": 1
+          {
+            institution: "Nantes University",
+            degree: "High School Diploma",
+            fieldOfStudy: "Biology and Mathematics",
+            startDate: null,
+            endDate: {
+              label: "1992",
+              year: 1992,
+              month: null
+            },
+            duration: null,
+            summary: null
+          }
+        ]
+      },
+      certifications: {
+        title: 'Continuous learning with a focus on accessibility',
+        items: [
+          {
+            name: "Développer des sites et des applications web accessibles",
+            institution: "Access42",
+            fieldOfStudy: "Accessibility",
+            startDate: null,
+            endDate: {
+              label: "October 2024",
+              year: 2024,
+              month: 10
+            },
+            duration: null,
+            summary: null
+          }
+        ]
+      },
+      languages: {
+        title: 'Collaborating across global teams and cultures',
+        items: [
+          {
+            name: "French",
+            level: "Native"
           },
-          "duration": null,
-          "summary": null,
-          "responsibilities": [
-            "Designed, implemented, and supported web applications for logistics, marketing, e-learning, finance, and channel organizations across EMEA.",
-            "Worked across Front-End and Back-End layers using Java, JavaScript, HTML, CSS, and Oracle technologies."
-          ],
-          "keyFocus": null,
-          "skills": [
-            "Front-End Development",
-            "Back-End Development",
-            "JavaScript",
-            "HTML",
-            "CSS",
-            "SQL",
-            "PL/SQL",
-            "Java",
-            "Oracle Web Application Technologies"
-          ]
-        },
-        {
-          "company": "Nantes University",
-          "role": "Technical Support Engineer",
-          "location": "Nantes, Pays de la Loire, France",
-          "startDate": {
-            "label": "July 1996",
-            "year": 1996,
-            "month": 7
+          {
+            name: "English",
+            level: "Fluent"
           },
-          "endDate": {
-            "label": "December 1997",
-            "year": 1997,
-            "month": 12
-          },
-          "duration": "1 year 6 months",
-          "summary": null,
-          "responsibilities": [
-            "System administration and support of computer local networks, servers, workstations, and printers.",
-            "Designed and implemented a text to Unimarc file format converter. Unimarc is a bibliographic file format.",
-            "Designed, implemented, and maintained library event web pages and prints."
-          ],
-          "keyFocus": null,
-          "skills": [
-            "Web Design",
-            "System administration",
-            "Unix",
-            "Written Communication",
-            "Turbo Pascal"
-          ]
-        },
-        {
-          "company": "Celia",
-          "role": "Junior Developer",
-          "location": null,
-          "startDate": null,
-          "endDate": null,
-          "duration": null,
-          "summary": null,
-          "responsibilities": [
-            "Designed and implemented a trademark management application in Microsoft Access."
-          ],
-          "keyFocus": null,
-          "skills": [
-            "Requirements Gathering",
-            "Requirements Analysis",
-            "Database Design",
-            "Microsoft Access"
-          ]
-        },
-        {
-          "company": "Hegler France",
-          "role": "Junior Developer",
-          "location": null,
-          "startDate": null,
-          "endDate": null,
-          "duration": null,
-          "summary": null,
-          "responsibilities": [
-            "Designed and implemented a billing management application in Microsoft Access."
-          ],
-          "keyFocus": null,
-          "skills": [
-            "Requirements Gathering",
-            "Requirements Analysis",
-            "Database Design",
-            "Microsoft Access"
-          ]
-        }
-      ]
-    },
-    educationDegrees: {
-      title: '',
-      items: [
-        {
-          institution: "Nantes University",
-          degree: "Master's Degree (Maîtrise)",
-          fieldOfStudy: "Computer Science and Software Engineering",
-          startDate: null,
-          endDate: {
-            label: "1996",
-            year: 1996,
-            month: null
-          },
-          duration: "1 year",
-          summary: null
-        },
-        {
-          institution: "Nantes University",
-          degree: "Bachelor's Degree (Licence)",
-          fieldOfStudy: "Computer Science and Software Engineering",
-          startDate: null,
-          endDate: {
-            label: "1995",
-            year: 1995,
-            month: null
-          },
-          duration: "1 year",
-          summary: null
-        },
-        {
-          institution: "Nantes University",
-          degree: "University Diploma of Technology (DUT)",
-          fieldOfStudy: "Computer Science and Software Engineering",
-          startDate: null,
-          endDate: {
-            label: "1994",
-            year: 1994,
-            month: null
-          },
-          duration: "2 years",
-          summary: null
-        },
-        {
-          institution: "Nantes University",
-          degree: "High School Diploma",
-          fieldOfStudy: "Biology and Mathematics",
-          startDate: null,
-          endDate: {
-            label: "1992",
-            year: 1992,
-            month: null
-          },
-          duration: null,
-          summary: null
-        }
-      ]
-    },
-    certifications: {
-      title: '',
-      items: [
-        {
-          name: "Développer des sites et des applications web accessibles",
-          institution: "Access42",
-          fieldOfStudy: "Accessibility",
-          startDate: null,
-          endDate: {
-            label: "October 2024",
-            year: 2024,
-            month: 10
-          },
-          duration: null,
-          summary: null
-        }
-      ]
-    },
-    languages: {
-      title: '',
-      items: [
-        {
-          name: "French",
-          level: "Native"
-        },
-        {
-          name: "English",
-          level: "Fluent"
-        },
-        {
-          name: "Spanish",
-          level: "Basic"
-        }
-      ]
+          {
+            name: "Spanish",
+            level: "Basic"
+          }
+        ]
+      },
     },
     contact: {
       title: "Let’s talk about useful, usable, scalable products",

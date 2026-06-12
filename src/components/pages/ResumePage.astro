@@ -1,6 +1,8 @@
 ---
 import type { LocaleType } from "@content/i18n/locale";
 import { getResumeData } from "@content/i18n/resume";
+import { config } from "@content/config";
+import { DOM_ELEM_IDS } from "@scripts/client/notificationManagement.ts";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "@sections/Hero/Hero.astro";
 import Snapshot from "@sections/Snapshot.astro";
@@ -9,9 +11,11 @@ import Projects from "@sections/Projects.astro";
 import Skills from "@sections/Skills.astro";
 import Contact from "@sections/Contact.astro";
 import Toasts from "@components/ui/Toasts.astro";
-import { config } from "@content/config";
-import { DOM_ELEM_IDS } from "@scripts/client/notificationManagement.ts";
 import Container from "@components/ui/Container.astro";
+import Languages from "@sections/Languages.astro";
+import Education from "@sections/Education.astro";
+import Experiences from "@sections/Experiences/Experiences.astro";
+import Certifications from "@sections/Certifications/Certifications.astro";
 
 type Props = { locale: LocaleType; };
 
@@ -20,10 +24,8 @@ const resume = getResumeData(locale);
 const { personal } = resume.data;
 const {
   hero,
-  snapshot,
-  selectedImpact,
-  selectedWork,
-  skills,
+  careerOverview,
+  careerDetails,
   contact
 } = resume.content;
 const {
@@ -36,17 +38,29 @@ const {
   <div class="pbs-10 mbe-18">
     <Container><h2 class="text-3xl sm:text-4xl font-thin tracking-wide text-accent-primary font-sans uppercase mbe-10">{sections.careerOverview.label}</h2></Container>
     <div class="space-y-28">
-      <Snapshot content={snapshot} sectionLabel={sections.careerOverview.snapshot.label} />
-      <Impacts content={selectedImpact} sectionLabel={sections.careerOverview.selectedImpact.label}/>
-      <Projects content={selectedWork} sectionLabel={sections.careerOverview.selectedWork.label}/>
-      <Skills content={skills} sectionLabel={sections.careerOverview.skills.label}  />
+      <Snapshot content={careerOverview.snapshot} sectionLabel={sections.careerOverview.snapshot.label} />
+      <Impacts content={careerOverview.selectedImpact} sectionLabel={sections.careerOverview.selectedImpact.label}/>
+      <Projects content={careerOverview.selectedWork} sectionLabel={sections.careerOverview.selectedWork.label}/>
+      <Skills content={careerOverview.skills} sectionLabel={sections.careerOverview.skills.label}  />
     </div>
   </div>
 
   <div class="pbs-10 mbe-18">
     <Container><h2 class="text-3xl sm:text-4xl font-thin tracking-wide text-accent-primary font-sans uppercase mbe-10">{sections.careerDetails.label}</h2></Container>
+    <div class="space-y-28">
+      <Experiences content={careerDetails.experiences} sectionLabel={sections.careerDetails.experiences.label} />
+      <Education content={careerDetails.educationDegrees} sectionLabel={sections.careerDetails.education.label} />
+      <Certifications content={careerDetails.certifications} sectionLabel={sections.careerDetails.certifications.label} />
+      <Languages content={careerDetails.languages} sectionLabel={sections.careerDetails.languages.label} />
+    </div>
   </div>
 
-  <Contact locale={locale} class="mbe-30" contact={contact} form={sections.contact.form} sectionLabel={sections.contact.label}/>
+  <Contact
+    locale={locale}
+    class="mbe-30"
+    contact={contact}
+    form={sections.contact.form}
+    sectionLabel={sections.contact.label}
+    />
   <Toasts id={DOM_ELEM_IDS.TOAST_CONTAINER} placement="top-center"/>
 </BaseLayout>
