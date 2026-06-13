@@ -37,7 +37,7 @@ const {
   <Hero content={hero} data={config.sections.hero.links} ui={sections.hero} fullname={personal.fullName} config={config.sections.hero} />
 
   <div class="pbs-10 mbe-18">
-    <Container><h2 class="c-section-group-heading mbe-10">{sections.careerOverview.label}</h2></Container>
+    <Container><h2 id="career-overview" tabindex="-1" class="c-section-group-heading mbe-10">{sections.careerOverview.label}</h2></Container>
     <div class="space-y-28">
       <Snapshot content={careerOverview.snapshot} sectionLabel={sections.careerOverview.snapshot.label} />
       <Impacts content={careerOverview.selectedImpact} sectionLabel={sections.careerOverview.selectedImpact.label}/>
@@ -47,8 +47,8 @@ const {
   </div>
 
   <details class="c-career-details">
-    <summary class="l-container cursor-pointer list-none c-career-details-summary">
-      <h2 class="c-section-group-heading c-section-group-heading--interactiv w-full flex items-center justify-between gap-2"><span>{sections.careerDetails.label}</span><span class="c-career-details-icon"><Icon class="size-7" type="chevron-right" isDecorative={true}/></span></h2>
+    <summary class="l-container c-career-details-summary">
+      <h2 id="career-details" tabindex="-1" class="c-section-group-heading c-section-group-heading--interactiv w-full flex items-center justify-between gap-2"><span>{sections.careerDetails.label}</span><span class="c-career-details-icon"><Icon class="size-7" type="chevron-right" isDecorative={true}/></span></h2>
     </summary>
     <div class="space-y-28 c-career-details-content">
       <Experiences content={careerDetails.experiences} sectionLabel={sections.careerDetails.experiences.label} />
@@ -59,7 +59,7 @@ const {
   </details>
 
   <div>
-    <Container><h2 class="c-section-group-heading mbe-10">{sections.contact.label}</h2></Container>
+    <Container><h2 id="contact" tabindex="-1" class="c-section-group-heading mbe-10">{sections.contact.label}</h2></Container>
     <Contact
       locale={locale}
       class="mbe-30"

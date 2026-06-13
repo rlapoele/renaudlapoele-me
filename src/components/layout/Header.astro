@@ -1,6 +1,6 @@
 ---
 import type { NavBarItemType } from "@content/config/Types";
-import type {NavigationUIType, SettingsUIType} from "@content/i18n/resume/Types.ts";
+import type { NavigationUIType, SettingsUIType } from "@content/i18n/resume/Types.ts";
 import { SUPPORTED_LOCALES } from "@content/i18n/locale";
 import { DOM_ELEMENT_IDS } from "@scripts/client/colorThemeManagement";
 import Icon from "@components/ui/Icon.astro";
@@ -19,23 +19,28 @@ const {
   navigation,
   settings
 } = Astro.props as Props;
-
 ---
 <header role="banner" class="c-page-header print:hidden">
   <div class="h-full flex flex-nowrap items-center justify-between gap-8 px-6">
-    <a id="rl-site-link" href={siteUrl} class="uppercase text-normal font-bold c-text-link hidden 2xl:inline-block">RENAUDLAPOELE.ME</a>
+    <a id="rl-site-link" href={siteUrl} class="uppercase text-normal font-bold c-text-link hidden xl:inline-block">RENAUDLAPOELE.ME</a>
 
-    <button type="button" class="c-button c-button--icon -ms-2 2xl:hidden" title={navigation.menuOpenSelectorLabel} aria-label={navigation.menuOpenSelectorLabel}><Icon isDecorative={true} type="bar3" class="size-4"/></button>
+    <button type="button" class="c-button c-button--icon -ms-2 xl:hidden" title={navigation.menuOpenSelectorLabel} aria-label={navigation.menuOpenSelectorLabel}><Icon isDecorative={true} type="bar3" class="size-4"/></button>
 
-    <nav role="navigation" class="grow hidden 2xl:flex flex-nowrap items-center justify-center">
+    <nav role="navigation" class="grow hidden xl:flex flex-nowrap items-center justify-center">
       <ul class="px-6 flex flex-nowrap gap-8 items-center justify-center">
-        {navItems.map((item) => ( <li><a href={item.url} class="uppercase c-nav-link text-sm font-semibold dark:font-medium pbs-6 pbe-6 block">{navigation.navItems[item.key]}</a></li> ))}
+        {navItems.map((item) => (
+          <li>
+            <a href={item.url} class="uppercase c-nav-link text-sm font-semibold dark:font-medium pbs-6 pbe-6 block">
+              {navigation.navItems[item.key].label}
+            </a>
+          </li>
+        ))}
       </ul>
     </nav>
 
-    <button type="button" class="c-button c-button--icon -me-2 2xl:hidden" title={settings.menuOpenSelectorLabel} aria-label={settings.menuOpenSelectorLabel}><Icon isDecorative={true} type="settings" class="size-4"/></button>
+    <button type="button" class="c-button c-button--icon -me-2 xl:hidden" title={settings.menuOpenSelectorLabel} aria-label={settings.menuOpenSelectorLabel}><Icon isDecorative={true} type="settings" class="size-4"/></button>
 
-    <div class="2xl:inline-flex hidden flex-nowrap items-center gap-4">
+    <div class="xl:inline-flex hidden flex-nowrap items-center gap-4">
       <div class="inline-flex items-center">
         <a id="rl-language-selector" href={ locale === SUPPORTED_LOCALES.FR ? '/en' : '/fr'} class="c-button c-button--small" aria-label={settings.language.selectorLabel}>{settings.language.selectorLabel}</a>
       </div>
@@ -46,16 +51,6 @@ const {
       </div>
     </div>
 
-    <!--
-    <div class="flex flex-wrap items-center gap-3 text-sm">
-      <Badge class="border border-success-line bg-success-paint text-success-ink">
-        {personal.availability}
-      </Badge>
-      <span class="rounded-full border border-line-default px-3 py-1 text-ink-secondary">
-        {resume.ui.header.languageSwitch}
-      </span>
-    </div>
-    -->
   </div>
 </header>
 

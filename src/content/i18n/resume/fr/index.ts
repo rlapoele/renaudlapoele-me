@@ -980,12 +980,26 @@ export const resumeFR: ResumeType = {
         menuOpenSelectorLabel: "Ouvrir le menu de navigation",
         menuCloseSelectorLabel: "Fermer le menu de navigation",
         navItems: {
-          about: "Profil",
-          snapshot: "Repères",
-          impacts: "Contributions",
-          works: "Réalisations",
-          skills: "Compétences",
-          contact: "Contact"
+          about: { label: "Profil" },
+          careerOverview: {
+            label: "Aperçu",
+            items: {
+              snapshot: { label: "Repères" },
+              impacts: { label: "Contributions" },
+              works: { label: "Réalisations" },
+              skills: { label: "Compétences" },
+            },
+          },
+          careerDetails: {
+            label: "Détails",
+            items: {
+              experiences: { label: "Expérience" },
+              education: { label: "Formation" },
+              certifications: { label: "Certifications" },
+              languages: { label: "Langues" },
+            },
+          },
+          contact: { label: "Contact" }
         }
       },
       settings: {

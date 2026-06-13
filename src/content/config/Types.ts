@@ -5,17 +5,35 @@ export type RLItemType = {
   url: (urlString: string) => string
 };
 
-export type NavBarNavigationItemKeyType =
+export type NavItemKeyType =
   "about" |
+  "careerOverview" |
   "snapshot" |
   "impacts" |
   "works" |
   "skills" |
+  "careerDetails" |
+  "experiences" |
+  "education" |
+  "certifications" |
+  "languages" |
   "contact";
 
-export type NavBarItemType = {
-  key: NavBarNavigationItemKeyType;
+export type NavBarItemKeyType =
+  "about" |
+  "careerOverview" |
+  "careerDetails" |
+  "contact";
+
+export type NavItemType = {
+  key: NavItemKeyType;
   url: string;
+  items?: NavItemType[];
+};
+
+export type NavBarItemType = Omit<NavItemType, "key" | "items"> & {
+  key: NavBarItemKeyType;
+  items?: NavItemType[];
 };
 
 export type LinkType = { href: string };

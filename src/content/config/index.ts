@@ -7,10 +7,24 @@ export const config: ConfigType = {
   },
   navBarItems: [
     { key: "about", url: "#hero" },
-    { key: "snapshot", url: "#snapshot" },
-    { key: "impacts", url: "#impacts" },
-    { key: "works", url: "#works" },
-    { key: "skills", url: "#skills" },
+    { key: "careerOverview",
+      url: "#career-overview",
+      items: [
+        { key: "snapshot", url: "#snapshot" },
+        { key: "impacts", url: "#impacts" },
+        { key: "works", url: "#works" },
+        { key: "skills", url: "#skills" },
+      ]
+    },
+    { key: "careerDetails",
+      url: "#career-details",
+      items: [
+        { key: "experiences", url: "#experience" },
+        { key: "education", url: "#education" },
+        { key: "certifications", url: "#certifications" },
+        { key: "languages", url: "#languages" },
+      ]
+    },
     { key: "contact", url: "#contact" },
   ],
   sections: {

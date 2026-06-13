@@ -22,3 +22,9 @@ Concise history of meaningful agent-made changes.
 - Added `vite` as an explicit dev dependency on the Astro-compatible `7.3.x` line so Astro and `@tailwindcss/vite` resolve the same Vite peer.
 - Added an npm `yaml` override to resolve the `@astrojs/check` transitive audit finding without downgrading `@astrojs/check`.
 - Verified with `npm audit --audit-level=moderate`, `npm run astro -- check`, and `npm run build`.
+
+## 2026-06-13
+
+- Fixed localized header navigation labels by aligning English and French `navigation.navItems` data with `NavigationUIType`.
+- Narrowed header navigation props to top-level nav bar keys so `Header.astro` can read localized labels without casts or debug logging.
+- Verified with `npm run astro -- check` and `npm run build`.

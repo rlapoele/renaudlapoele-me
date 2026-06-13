@@ -196,15 +196,30 @@ export type SkillGroupType = {
 // =============================
 
  export type NavigationUIType = {
-   menuOpenSelectorLabel: string,
-   menuCloseSelectorLabel: string,
+   menuOpenSelectorLabel: string;
+   menuCloseSelectorLabel: string;
+
    navItems: {
-     about: string,
-     snapshot: string,
-     impacts: string,
-     works: string,
-     skills: string,
-     contact: string
+     about: { label: string; };
+     careerOverview: {
+       label: string;
+       items: {
+         snapshot: { label: string };
+         impacts: { label: string };
+         works: { label: string };
+         skills: { label: string };
+       };
+     };
+     careerDetails: {
+       label: string;
+       items: {
+         experiences: { label: string };
+         education: { label: string };
+         certifications: { label: string };
+         languages: { label: string };
+       };
+     };
+     contact: { label: string; }
    }
 };
 
