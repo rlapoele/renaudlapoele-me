@@ -11,6 +11,7 @@ import { normalizeSiteUrl } from "@scripts/server/configUtils.ts";
 
 import Header from "@components/layout/Header.astro";
 import Footer from "@components/layout/Footer.astro";
+import Icon from "@components/ui/Icon.astro";
 
 interface Props {
   locale: LocaleType;
@@ -71,9 +72,9 @@ const siteUrl = normalizeSiteUrl(SITE_URL);
   <body>
     <div class="min-h-full relative">
       <div class="c-grid-overlay"></div>
-      <div class="relative z-20">
+      <div class="relative z-20 w-full">
         <a href="#main-content" class="c-skip-link">Skip to main content</a>
-        <Header locale={locale} siteUrl={siteUrl} navItems={config.navBarItems} navigation={resume.ui.header.navigation} settings={resume.ui.header.settings} />
+        <Header locale={locale} siteUrl={siteUrl} navItemsData={config.navBarItems} navItemLabels={resume.ui.header.navigation} settings={resume.ui.header.settings} />
         <main id="main-content" tabindex="-1" role="main">
           <slot />
         </main>
@@ -81,6 +82,7 @@ const siteUrl = normalizeSiteUrl(SITE_URL);
                 fullname={`${resume.data.personal.firstName} ${resume.data.personal.lastName}`}
                 misc={resume.ui.misc}
                 tagline={resume.content.footer.tagline}/>
+        <a class="c-button c-button--icon c-scroll-to-top" href="#hero"><Icon type="chevron-up" class="size-4"></Icon></a>
       </div>
     </div>
     <script>

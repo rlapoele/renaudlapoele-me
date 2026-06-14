@@ -1,10 +1,10 @@
-// src/utils/shared/combineCssClasses.ts
+// src/scripts/shared/combineCssClasses.ts
 // ---
 // Use this function to combine multiple CSS classes into a single string.
 // This is especially useful when you need to combine a component "class" prop
 // with other component internal specific classes to be applied to the root element.
 //
-// Exmaple:
+// Example:
 // --------
 //
 // combinedCssClasses(
