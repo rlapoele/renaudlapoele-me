@@ -1,0 +1,30 @@
+---
+import type {EducationDegreeItemType} from "@content/i18n/resume/Types.ts";
+import { combineCssClasses } from "@scripts/shared/combineCssClasses.ts";
+import DatesLocation from "@sections/CareerDetails/shared/DatesLocation.astro";
+import Card from "@components/ui/Card.astro";
+import Transformer from "@components/ui/Transformer.astro";
+
+type Props = {
+  educationDiploma: EducationDegreeItemType
+  class?: string
+}
+
+const {
+  educationDiploma,
+  class: className = ""
+} = Astro.props as Props;
+
+const baseCssClasses = "";
+const classes = combineCssClasses(baseCssClasses, className);
+
+const location = `${educationDiploma.institution}, ${educationDiploma.location}`;
+const diploma = `${educationDiploma.degree} - ${educationDiploma.fieldOfStudy}`;
+const startDateLabel: string = educationDiploma.startDate?.label ?? ""
+const endDateLabel: string = educationDiploma.endDate?.label ?? "";
+
+---
+<Card class={classes}>
+  <DatesLocation class="mbe-3" startDateLabel={startDateLabel} endDateLabel={endDateLabel} location={location} />
+  <h5 class="text-lg font-semibold leading-tight"><Transformer text={diploma} sourceItemSeparator=" - " mustTrimSeparator={false} class="text-ink-tertiary/50"/></h5>
+</Card>

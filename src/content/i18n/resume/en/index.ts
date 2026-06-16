@@ -1,4 +1,4 @@
-import type {GenericDateType, ResumeType} from "../Types.ts";
+import type { ResumeType } from "../Types.ts";
 
 export const resumeEN : ResumeType = {
   data: {
@@ -60,7 +60,7 @@ export const resumeEN : ResumeType = {
         ],
       },
       selectedImpact: {
-        title: "A career shaped by useful systems and ergonomic user interfaces",
+        title: "A career shaped by product engineering, user experience, and business impact",
         items: [
           {
             title: "Large-scale partner platforms",
@@ -124,7 +124,7 @@ export const resumeEN : ResumeType = {
         ],
       },
       skills: {
-        title: "Breadth where it matters, depth where it counts",
+        title: "A unique blend of engineering, UX, and product expertise",
         groups: [
           {
             name: "Frontend",
@@ -868,6 +868,7 @@ export const resumeEN : ResumeType = {
           {
             institution: "Nantes University",
             degree: "Master's Degree (Maîtrise)",
+            location: "France",
             fieldOfStudy: "Computer Science and Software Engineering",
             startDate: null,
             endDate: {
@@ -881,6 +882,7 @@ export const resumeEN : ResumeType = {
           {
             institution: "Nantes University",
             degree: "Bachelor's Degree (Licence)",
+            location: "France",
             fieldOfStudy: "Computer Science and Software Engineering",
             startDate: null,
             endDate: {
@@ -894,6 +896,7 @@ export const resumeEN : ResumeType = {
           {
             institution: "Nantes University",
             degree: "University Diploma of Technology (DUT)",
+            location: "France",
             fieldOfStudy: "Computer Science and Software Engineering",
             startDate: null,
             endDate: {
@@ -907,6 +910,7 @@ export const resumeEN : ResumeType = {
           {
             institution: "Nantes University",
             degree: "High School Diploma",
+            location: "France",
             fieldOfStudy: "Biology and Mathematics",
             startDate: null,
             endDate: {
@@ -956,7 +960,7 @@ export const resumeEN : ResumeType = {
       },
     },
     contact: {
-      title: "Let’s talk about useful, usable, scalable products",
+      title: "Let’s build better digital products",
       description:
         "Whether you are hiring for a permanent role, looking for contract support, or exploring a product-facing engineering need, feel free to get in touch.",
       note: "Usually replies within 24–48 hours.",
@@ -970,12 +974,6 @@ export const resumeEN : ResumeType = {
 
   ui: {
     header: {
-      /*
-      availability: "Open to opportunities",
-      languageSwitch: "EN / FR",
-      download: "Download CV",
-      */
-
       navigation: {
         menuOpenSelectorLabel: "Open navigation menu",
         menuCloseSelectorLabel: "Close navigation menu",
@@ -1042,6 +1040,7 @@ export const resumeEN : ResumeType = {
       },
       contact: {
         label: "Contact",
+        cardLabel: "Get in touch",
         form: {
           ariaLabel: "Contact form",
           inputs: {

@@ -93,7 +93,7 @@ export type ExperienceItemType = {
   skillGroups: ExperienceSkillGroupType[];
 };
 
-export type CertificationType = {
+export type CertificationsType = {
   title: string;
   items: CertificationItemType[];
 };
@@ -116,6 +116,7 @@ export type EducationDegreeType = {
 export type EducationDegreeItemType = {
   institution: string;
   degree: string;
+  location: string;
   fieldOfStudy: string;
   startDate: GenericDateType | null;
   endDate: GenericDateType | null;
@@ -153,7 +154,7 @@ export type CareerOverviewType = {
 export type CareerDetailsType = {
   experiences: ExperienceType;
   educationDegrees: EducationDegreeType;
-  certifications: CertificationType;
+  certifications: CertificationsType;
   languages: LanguageType;
 };
 
@@ -304,7 +305,7 @@ export type FormUIType = {
   }
 };
 
-export type MiscType = {
+export type MiscUIType = {
   poweredBy: string;
   responseTime: string;
 };
@@ -332,6 +333,12 @@ export type CareerDetailsUIType = {
   languages: { label: string };
 }
 
+export type ContactUIType = {
+  label: string;
+  cardLabel: string,
+  form: FormUIType;
+};
+
 export type ResumeUIType = {
   header: {
     navigation: NavigationUIType;
@@ -342,13 +349,10 @@ export type ResumeUIType = {
     hero: HeroUIType;
     careerOverview: CareerOverviewUIType;
     careerDetails: CareerDetailsUIType;
-    contact: {
-      label: string;
-      form: FormUIType;
-    };
+    contact: ContactUIType;
   };
 
-  misc: MiscType;
+  misc: MiscUIType;
   footer: {
     copyright: (year: number, name: string) => string;
   };

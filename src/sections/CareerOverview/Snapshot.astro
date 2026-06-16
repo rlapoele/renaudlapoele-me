@@ -12,8 +12,8 @@ const { content, sectionLabel } = Astro.props as Props;
 <Section id="snapshot" label={sectionLabel} title={content.title} bodyClass="l-auto-grid">
   {content.items.map((item) => (
     <Card variant="default" as="div">
-      <h5 class="text-lg font-semibold"><Transformer text={item.label}/></h5>
-      <p class="mt-4 text-sm leading-6 text-ink-secondary">
+      <h5 class="text-lg font-semibold mbe-4"><Transformer text={item.label}/></h5>
+      <p class="text-sm leading-6 text-ink-secondary">
         {item.description}
       </p>
     </Card>

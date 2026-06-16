@@ -1,0 +1,21 @@
+---
+import type {EducationDegreeItemType, EducationDegreeType} from "@content/i18n/resume/Types.ts";
+import Section from "@components/layout/Section.astro";
+import EducationDiploma from "@sections/CareerDetails/Education/EducationDiploma/EducationDiploma.astro";
+
+type Props = {
+  content: EducationDegreeType,
+  sectionLabel: string
+};
+
+const {
+  content,
+  sectionLabel
+} = Astro.props as Props;
+---
+<Section id="certifications" label={sectionLabel} title={content.title} bodyClass="space-y-5">
+
+  { content.items.map((certification: EducationDegreeItemType) => (
+    <EducationDiploma educationDiploma={certification} />
+  ))}
+</Section>

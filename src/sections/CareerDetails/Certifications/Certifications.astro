@@ -1,0 +1,20 @@
+---
+import type {CertificationItemType, CertificationsType} from "@content/i18n/resume/Types.ts";
+import Section from "@components/layout/Section.astro";
+import Certification from "@sections/CareerDetails/Certifications/Certification/Certification.astro";
+
+type Props = {
+  content: CertificationsType,
+  sectionLabel: string
+};
+
+const {
+  content,
+  sectionLabel
+} = Astro.props as Props;
+---
+<Section id="certifications" label={sectionLabel} title={content.title} bodyClass="space-y-5">
+  { content.items.map((certification: CertificationItemType) => (
+    <Certification certification={certification} />
+  ))}
+</Section>

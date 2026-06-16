@@ -1,31 +1,30 @@
 ---
-import type { ContactType, FormUIType } from "@content/i18n/resume/Types";
+import type { ContactType, ContactUIType} from "@content/i18n/resume/Types";
 
 import { combineCssClasses } from "@scripts/shared/combineCssClasses.ts";
+import { DOM_ELEMENT_IDS } from "@scripts/shared/contactForm/domElementIds.ts";
+import { CONTACT_FORM_INPUT_MIN_MAX_LENGTHS } from "@scripts/shared/contactForm/validation.ts";
+import {objectKeyValueArrayToString} from "@scripts/shared/objectKeyValueArrayToString.ts";
+import {objectToObjectArray} from "@scripts/shared/objectToObjectArray.ts";
+
 import Container from "@components/ui/Container.astro";
 import SectionHeading from "@components/ui/SectionHeading.astro";
 import Card from "@components/ui/Card.astro";
 import Spinner from "@components/ui/Spinner.astro";
 import FormField from "@components/ui/FormField.astro";
-import { DOM_ELEMENT_IDS } from "@scripts/shared/contactForm/domElementIds.ts";
-import { CONTACT_FORM_INPUT_MIN_MAX_LENGTHS } from "@scripts/shared/contactForm/validation.ts";
-import {objectKeyValueArrayToString} from "@scripts/shared/objectKeyValueArrayToString.ts";
-import {objectToObjectArray} from "@scripts/shared/objectToObjectArray.ts";
-import type {HTMLTag} from "astro/types";
+import Toasts from "@components/ui/Toasts.astro";
 
 type Props = {
-  contact: ContactType,
-  form: FormUIType,
-  sectionLabel: string,
   locale: string,
+  content: ContactType,
+  contentLabels: ContactUIType,
   class?: string,
 };
 
 const {
-  contact,
-  form,
-  sectionLabel,
   locale,
+  content,
+  contentLabels,
   class: className = ''
 } = Astro.props as Props;
 
@@ -39,37 +38,30 @@ const maxLengthEmail = CONTACT_FORM_INPUT_MIN_MAX_LENGTHS.EMAIL.MAX;
 const minLengthMessage = CONTACT_FORM_INPUT_MIN_MAX_LENGTHS.MESSAGE.MIN;
 const maxLengthMessage = CONTACT_FORM_INPUT_MIN_MAX_LENGTHS.MESSAGE.MAX;
 
-const initialSubmitButtonTextLabel = form.controls.submitButton.labels.send;
-
+const initialSubmitButtonTextLabel = contentLabels. form.controls.submitButton.labels.send;
 ---
+<div>
+  <Container><h2 id="contact" tabindex="-1" class="c-section-group-heading mbe-10">{contentLabels.label}</h2></Container>
 
 <section class={ classes }>
-  <Container class="">
+  <Container>
     <Card variant="section" padding="xl">
       <div class="grid gap-10 lg:gap-20 lg:grid-cols-[0.95fr_1.35fr]">
         <div>
-          <SectionHeading
-            title={contact.title}
-            label={sectionLabel}
-            isHeaderStatic={true}
-            headingLabelTag="h2"
-            headingTitleTag="h3"
-          />
-          <p class="mt-4 max-w-lg leading-relaxed text-ink-secondary">
-            {contact.description}
-          </p>
-          <p class="mt-6 text-sm text-ink-tertiary">{contact.note}</p>
+          <SectionHeading title={content.title} label={contentLabels.cardLabel} isHeaderStatic={true}/>
+          <p class="mt-4 max-w-lg leading-relaxed text-ink-secondary">{content.description}</p>
+          <p class="mt-6 text-sm text-ink-tertiary">{content.note}</p>
         </div>
 
         <form
           novalidate
           id={DOM_ELEMENT_IDS.CONTACT_FORM}
-          aria-label={form.ariaLabel}
-          data-notification-messages={objectKeyValueArrayToString(objectToObjectArray(form.notifications))}
+          aria-label={contentLabels.form.ariaLabel}
+          data-notification-messages={objectKeyValueArrayToString(objectToObjectArray(contentLabels.form.notifications))}
         >
           <fieldset id={DOM_ELEMENT_IDS.CONTACT_FORM_FIELDSET} class="grid gap-8">
 
-            <p class="flex items-center justify-end gap-1 text-xs text-ink-tertiary"><span aria-hidden="true" class="c-required-field-indicator">*</span>{form.requiredFieldMessage}</p>
+            <p class="flex items-center justify-end gap-1 text-xs text-ink-tertiary"><span aria-hidden="true" class="c-required-field-indicator">*</span>{contentLabels.form.requiredFieldMessage}</p>
 
             <input
               id={DOM_ELEMENT_IDS.CONTACT_FORM_INPUT_TOKEN}
@@ -83,7 +75,7 @@ const initialSubmitButtonTextLabel = form.controls.submitButton.labels.send;
               type="hidden"
               value={locale}
               name="locale"
-              data-error-messages={objectKeyValueArrayToString(objectToObjectArray(form.inputs.locale.errorMessages))}
+              data-error-messages={objectKeyValueArrayToString(objectToObjectArray(contentLabels.form.inputs.locale.errorMessages))}
               data-error-message-id={DOM_ELEMENT_IDS.CONTACT_FORM_ERROR_MESSAGE_LOCALE}
             />
             <span id={DOM_ELEMENT_IDS.CONTACT_FORM_ERROR_MESSAGE_LOCALE} class="hidden"></span>
@@ -93,11 +85,11 @@ const initialSubmitButtonTextLabel = form.controls.submitButton.labels.send;
               <FormField
                 id={DOM_ELEMENT_IDS.CONTACT_FORM_INPUT_NAME}
                 name="name"
-                label={form.inputs.name.label}
+                label={contentLabels.form.inputs.name.label}
                 inputType="text"
                 autocomplete="name"
-                placeholder={form.inputs.name.placeholder}
-                errorMessages={objectKeyValueArrayToString(objectToObjectArray(form.inputs.name.errorMessages))}
+                placeholder={contentLabels.form.inputs.name.placeholder}
+                errorMessages={objectKeyValueArrayToString(objectToObjectArray(contentLabels.form.inputs.name.errorMessages))}
                 errorMessageId={DOM_ELEMENT_IDS.CONTACT_FORM_ERROR_MESSAGE_NAME}
                 minlength={minLengthName}
                 maxlength={maxLengthName}
@@ -107,11 +99,11 @@ const initialSubmitButtonTextLabel = form.controls.submitButton.labels.send;
               <FormField
                 id={DOM_ELEMENT_IDS.CONTACT_FORM_INPUT_EMAIL}
                 name="email"
-                label={form.inputs.email.label}
+                label={contentLabels.form.inputs.email.label}
                 inputType="email"
                 autocomplete="email"
-                placeholder={form.inputs.email.placeholder}
-                errorMessages={objectKeyValueArrayToString(objectToObjectArray(form.inputs.email.errorMessages))}
+                placeholder={contentLabels.form.inputs.email.placeholder}
+                errorMessages={objectKeyValueArrayToString(objectToObjectArray(contentLabels.form.inputs.email.errorMessages))}
                 errorMessageId={DOM_ELEMENT_IDS.CONTACT_FORM_ERROR_MESSAGE_EMAIL}
                 minlength={minLengthEmail}
                 maxlength={maxLengthEmail}
@@ -123,11 +115,11 @@ const initialSubmitButtonTextLabel = form.controls.submitButton.labels.send;
             <FormField
               id={DOM_ELEMENT_IDS.CONTACT_FORM_INPUT_SUBJECT}
               name="subject"
-              label={form.inputs.subject.label}
+              label={contentLabels.form.inputs.subject.label}
               inputType="text"
               autocomplete="off"
-              placeholder={form.inputs.subject.placeholder}
-              errorMessages={objectKeyValueArrayToString(objectToObjectArray(form.inputs.subject.errorMessages))}
+              placeholder={contentLabels.form.inputs.subject.placeholder}
+              errorMessages={objectKeyValueArrayToString(objectToObjectArray(contentLabels.form.inputs.subject.errorMessages))}
               errorMessageId={DOM_ELEMENT_IDS.CONTACT_FORM_ERROR_MESSAGE_SUBJECT}
               required
               isHoneyPot={true}
@@ -136,12 +128,12 @@ const initialSubmitButtonTextLabel = form.controls.submitButton.labels.send;
             <FormField
               id={DOM_ELEMENT_IDS.CONTACT_FORM_INPUT_MESSAGE}
               name="message"
-              label={form.inputs.message.label}
+              label={contentLabels.form.inputs.message.label}
               fieldType="textarea"
               rows={7}
               autocomplete="off"
-              placeholder={form.inputs.message.placeholder}
-              errorMessages={objectKeyValueArrayToString(objectToObjectArray(form.inputs.message.errorMessages))}
+              placeholder={contentLabels.form.inputs.message.placeholder}
+              errorMessages={objectKeyValueArrayToString(objectToObjectArray(contentLabels.form.inputs.message.errorMessages))}
               errorMessageId={DOM_ELEMENT_IDS.CONTACT_FORM_ERROR_MESSAGE_MESSAGE}
               minlength={minLengthMessage}
               maxlength={maxLengthMessage}
@@ -152,7 +144,7 @@ const initialSubmitButtonTextLabel = form.controls.submitButton.labels.send;
               <button id={DOM_ELEMENT_IDS.CONTACT_FORM_BUTTON_SUBMIT}
                       type="submit"
                       class="c-button gap-x-2"
-                      data-text-labels={objectKeyValueArrayToString(objectToObjectArray(form.controls.submitButton.labels))}>
+                      data-text-labels={objectKeyValueArrayToString(objectToObjectArray(contentLabels.form.controls.submitButton.labels))}>
                 <Spinner dataSize="md"/><span id={DOM_ELEMENT_IDS.CONTACT_FORM_SUBMIT_BUTTON_TEXT_LABEL}>{initialSubmitButtonTextLabel}</span>
               </button>
             </div>
@@ -164,3 +156,4 @@ const initialSubmitButtonTextLabel = form.controls.submitButton.labels.send;
 
   </Container>
 </section>
+</div>

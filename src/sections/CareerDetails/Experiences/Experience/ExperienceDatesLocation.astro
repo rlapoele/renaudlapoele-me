@@ -1,0 +1,18 @@
+---
+import DatesLocation from "@sections/CareerDetails/shared/DatesLocation.astro";
+type Props = {
+  startDateLabel: string
+  endDateLabel: string
+  location: string
+  class?: string
+};
+
+const {
+  startDateLabel,
+  endDateLabel,
+  location,
+  class: className = ""
+} = Astro.props as Props;
+
+---
+<DatesLocation class={className} startDateLabel={startDateLabel} endDateLabel={endDateLabel} location={location} />

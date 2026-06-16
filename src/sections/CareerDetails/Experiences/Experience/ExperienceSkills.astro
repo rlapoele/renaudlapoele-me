@@ -17,13 +17,13 @@ const baseCssClasses = "";
 const classes = combineCssClasses(baseCssClasses, className);
 ---
 <div class={classes}>
-  <h5 class="leading-6 text-accent-primary text-sm font-semibold dark:font-medium uppercase tracking-wider mbe-4">Skills</h5>
+  <h6 class="leading-6 text-accent-primary text-sm font-semibold dark:font-medium uppercase tracking-wider mbe-4">Skills</h6>
   {
     skillGroups.map(
       (skillGroup) => {
         return (
-          <h6 class="block text-ink-tertiary tracking-wider uppercase text-xs mbe-3">
-          <Transformer text={skillGroup.name} mustTrimSeparator={false} sourceItemSeparator=" / " class="text-ink-tertiary/50"/></h6>
+          <p class="block text-ink-tertiary tracking-wider uppercase text-xs mbe-3">
+          <Transformer text={skillGroup.name} mustTrimSeparator={false} sourceItemSeparator=" / " class="text-ink-tertiary/50"/></p>
           <p class="text-sm mbe-8 last:mbe-0 flex items-baseline justify-start gap-3"><span class="pbe-0.5"><Bullet /></span>
           {
             skillGroup.skills.map(

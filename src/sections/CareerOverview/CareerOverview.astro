@@ -1,0 +1,30 @@
+---
+import Container from "@components/ui/Container.astro";
+import type {CareerOverviewType, CareerOverviewUIType} from "@content/i18n/resume/Types.ts";
+import {combineCssClasses} from "@scripts/shared/combineCssClasses.ts";
+import Snapshot from "./Snapshot.astro";
+import Impacts from "./Impacts.astro";
+import Projects from "./Projects.astro";
+import Skills from "./Skills.astro";
+type Props = {
+  content: CareerOverviewType;
+  contentLabels: CareerOverviewUIType;
+  class?: string;
+};
+const {
+  content,
+  contentLabels,
+  class: className = ""
+} = Astro.props as Props;
+const baseCssClasses = "pbs-10";
+const classes = combineCssClasses(baseCssClasses, className);
+---
+<div class={classes}>
+  <Container><h2 id="career-overview" tabindex="-1" class="c-section-group-heading mbe-10">{contentLabels.label}</h2></Container>
+  <div class="space-y-28">
+    <Snapshot content={content.snapshot} sectionLabel={contentLabels.snapshot.label} />
+    <Impacts content={content.selectedImpact} sectionLabel={contentLabels.selectedImpact.label}/>
+    <Projects content={content.selectedWork} sectionLabel={contentLabels.selectedWork.label}/>
+    <Skills content={content.skills} sectionLabel={contentLabels.skills.label}  />
+  </div>
+</div>

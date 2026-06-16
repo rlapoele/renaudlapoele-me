@@ -18,7 +18,7 @@
   }
 
 
-  --rl-min-root-font-size: 16;
+  --rl-min-root-font-size: 15;
   --rl-max-root-font-size: 24;
   --rl-min-viewport: 320;
   --rl-max-viewport: 1920;
@@ -1006,10 +1006,11 @@
   .c-career-details[open] .c-career-details-icon {
     rotate: 90deg;
   }
+
   .c-section-group-heading {
     font-family: var(--font-sans);
     font-size: var(--text-3xl);
-    font-weight: var(--font-weight-thin);
+    font-weight: var(--font-weight-extralight);
     letter-spacing: var(--tracking-wide);
     color: var(--color-accent-primary);
     text-transform: uppercase;
@@ -1033,6 +1034,11 @@
       }
     }
   }
+
+  .dark .c-section-group-heading {
+    font-weight: var(--font-weight-thin);
+  }
+
   .c-career-details[open] .c-section-group-heading--interactive {
     outline-color: transparent;
   }

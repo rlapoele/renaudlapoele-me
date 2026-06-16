@@ -1,6 +1,6 @@
 ---
-import Card from "@components/ui/Card.astro";
 import type {SelectedImpactType} from "@content/i18n/resume/Types.ts";
+import Card from "@components/ui/Card.astro";
 import Section from "@components/layout/Section.astro";
 import Bullet from "@components/ui/Bullet.astro";
 
@@ -10,7 +10,7 @@ const { content, sectionLabel } = Astro.props as Props;
 <Section id="impacts" label={sectionLabel} title={content.title} bodyClass="space-y-5">
   {content.items.map((item) => (
     <Card>
-      <h5 class="text-2xl font-semibold">{item.title}</h5>
+      <h5 class="text-xl font-semibold">{item.title}</h5>
       <p class="mt-3 max-w-3xl leading-relaxed text-ink-tertiary">
         {item.description}
       </p>

@@ -1,5 +1,5 @@
 ---
-import type { MiscType } from "@content/i18n/resume/Types.ts";
+import type { MiscUIType } from "@content/i18n/resume/Types.ts";
 import { createCopyrightStatement } from '@scripts/shared/createCopyrightStatement.ts';
 import { combineCssClasses } from "@scripts/shared/combineCssClasses.ts";
 import IconResend from '@components/ui/brand/IconResend.astro';
@@ -11,7 +11,7 @@ import IconRailway from "@components/ui/brand/IconRailway.astro";
 type Props = {
   fullname: string;
   tagline: string;
-  misc: MiscType,
+  misc: MiscUIType,
   class?: string;
 }
 

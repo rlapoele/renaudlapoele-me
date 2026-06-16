@@ -3,20 +3,12 @@ import type { LocaleType } from "@content/i18n/locale";
 import { getResumeData } from "@content/i18n/resume";
 import { config } from "@content/config";
 import { DOM_ELEM_IDS } from "@scripts/client/notificationManagement.ts";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 import Hero from "@sections/Hero/Hero.astro";
-import Snapshot from "@sections/Snapshot.astro";
-import Impacts from "@sections/Impacts.astro";
-import Projects from "@sections/Projects.astro";
-import Skills from "@sections/Skills.astro";
-import Contact from "@sections/Contact.astro";
+import CareerDetails from "@sections/CareerDetails/CareerDetails.astro";
+import CareerOverview from "@sections/CareerOverview/CareerOverview.astro";
+import Contact from "@sections/Contact/Contact.astro";
 import Toasts from "@components/ui/Toasts.astro";
-import Container from "@components/ui/Container.astro";
-import Languages from "@sections/Languages.astro";
-import Education from "@sections/Education.astro";
-import Experiences from "@sections/Experiences/Experiences.astro";
-import Certifications from "@sections/Certifications/Certifications.astro";
-import Icon from "@components/ui/Icon.astro";
 
 type Props = { locale: LocaleType; };
 
@@ -29,44 +21,12 @@ const {
   careerDetails,
   contact
 } = resume.content;
-const {
-  sections
-} = resume.ui;
+const {sections} = resume.ui;
 ---
 <BaseLayout locale={locale}>
   <Hero content={hero} data={config.sections.hero.links} ui={sections.hero} fullname={personal.fullName} config={config.sections.hero} />
-
-  <div class="pbs-10 mbe-18">
-    <Container><h2 id="career-overview" tabindex="-1" class="c-section-group-heading mbe-10">{sections.careerOverview.label}</h2></Container>
-    <div class="space-y-28">
-      <Snapshot content={careerOverview.snapshot} sectionLabel={sections.careerOverview.snapshot.label} />
-      <Impacts content={careerOverview.selectedImpact} sectionLabel={sections.careerOverview.selectedImpact.label}/>
-      <Projects content={careerOverview.selectedWork} sectionLabel={sections.careerOverview.selectedWork.label}/>
-      <Skills content={careerOverview.skills} sectionLabel={sections.careerOverview.skills.label}  />
-    </div>
-  </div>
-
-  <details id="career-details" class="c-career-details" tabindex="-1">
-    <summary class="l-container c-career-details-summary">
-      <h2 class="c-section-group-heading c-section-group-heading--interactiv w-full flex items-center justify-between gap-2"><span>{sections.careerDetails.label}</span><span class="c-career-details-icon"><Icon class="size-7" type="chevron-right" isDecorative={true}/></span></h2>
-    </summary>
-    <div class="space-y-28 c-career-details-content">
-      <Experiences content={careerDetails.experiences} sectionLabel={sections.careerDetails.experiences.label} />
-      <Education content={careerDetails.educationDegrees} sectionLabel={sections.careerDetails.education.label} />
-      <Certifications content={careerDetails.certifications} sectionLabel={sections.careerDetails.certifications.label} />
-      <Languages content={careerDetails.languages} sectionLabel={sections.careerDetails.languages.label} />
-    </div>
-  </details>
-
-  <div>
-    <Container><h2 id="contact" tabindex="-1" class="c-section-group-heading mbe-10">{sections.contact.label}</h2></Container>
-    <Contact
-      locale={locale}
-      class="mbe-30"
-      contact={contact}
-      form={sections.contact.form}
-      sectionLabel={sections.contact.label}
-      />
-    <Toasts id={DOM_ELEM_IDS.TOAST_CONTAINER} placement="top-center"/>
-  </div>
+  <CareerOverview class="mbe-18" content={careerOverview} contentLabels={sections.careerOverview}/>
+  <CareerDetails content={careerDetails} contentLabels={sections.careerDetails}/>
+  <Contact class="mbe-30" locale={locale} content={contact} contentLabels={sections.contact}/>
+  <Toasts id={DOM_ELEM_IDS.TOAST_CONTAINER} placement="top-center"/>
 </BaseLayout>

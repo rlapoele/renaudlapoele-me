@@ -2,12 +2,12 @@
 import type {ExperienceItemType, ExperienceSkillGroupType} from "@content/i18n/resume/Types.ts";
 import {combineCssClasses} from "@scripts/shared/combineCssClasses.ts";
 import Card from "@components/ui/Card.astro";
-import ExperienceOrgRole from "@sections/Experiences/Experience/ExperienceOrgRole.astro";
-import ExperienceDatesLocation from "@sections/Experiences/Experience/ExperienceDatesLocation.astro";
-import ExperienceResponsibilities from "@sections/Experiences/Experience/ExperienceResponsibilities.astro";
-import ExperienceSummary from "@sections/Experiences/Experience/ExperienceSummary.astro";
-import ExperienceSkills from "@sections/Experiences/Experience/ExperienceSkills.astro";
-import ExperienceKeyFocuses from "@sections/Experiences/Experience/ExperienceKeyFocuses.astro";
+import ExperienceOrgRole from "@sections/CareerDetails/Experiences/Experience/ExperienceOrgRole.astro";
+import ExperienceDatesLocation from "@sections/CareerDetails/Experiences/Experience/ExperienceDatesLocation.astro";
+import ExperienceResponsibilities from "@sections/CareerDetails/Experiences/Experience/ExperienceResponsibilities.astro";
+import ExperienceSummary from "@sections/CareerDetails/Experiences/Experience/ExperienceSummary.astro";
+import ExperienceSkills from "@sections/CareerDetails/Experiences/Experience/ExperienceSkills.astro";
+import ExperienceKeyFocuses from "@sections/CareerDetails/Experiences/Experience/ExperienceKeyFocuses.astro";
 
 type Props = {
   experience: ExperienceItemType;
@@ -28,7 +28,7 @@ const classes = combineCssClasses(baseCssClasses, className);
       startDateLabel={experience.startDate?.label as string}
       endDateLabel={experience.endDate?.label as string}
       location={experience.location as string}
-      class="mbe-4"
+      class="mbe-3"
     />
   }
   <ExperienceOrgRole

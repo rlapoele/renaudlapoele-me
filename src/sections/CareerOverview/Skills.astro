@@ -1,6 +1,6 @@
 ---
-import Card from "@components/ui/Card.astro";
 import type {SkillsType} from "@content/i18n/resume/Types";
+import Card from "@components/ui/Card.astro";
 import Section from "@components/layout/Section.astro";
 import Transformer from "@components/ui/Transformer.astro";
 
@@ -17,8 +17,8 @@ const {
 <Section id="skills" label={sectionLabel} title={content.title} bodyClass="l-auto-grid l-auto-grid--col-min-15">
   {content.groups.map((group) => (
     <Card variant="default" as="div" class="min-w-20">
-      <h5 class="text-lg font-semibold"><Transformer text={group.name} mustTrimSeparator={false} sourceItemSeparator=" / " class="text-ink-tertiary/50"/></h5>
-      <ul class="mt-4 space-y-2 text-sm leading-6 text-ink-secondary">
+      <h5 class="text-lg font-semibold mbe-4"><Transformer text={group.name} mustTrimSeparator={false} sourceItemSeparator=" / " class="text-ink-tertiary/50"/></h5>
+      <ul class="space-y-2 text-sm leading-6 text-ink-secondary">
         {group.items.map((item) => (
           <li><Transformer text={item} mustTrimSeparator={true} sourceItemSeparator="/" class="text-ink-tertiary/50 mx-0.5"/></li>
         ))}
