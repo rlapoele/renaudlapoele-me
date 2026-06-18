@@ -28,3 +28,10 @@ Concise history of meaningful agent-made changes.
 - Fixed localized header navigation labels by aligning English and French `navigation.navItems` data with `NavigationUIType`.
 - Narrowed header navigation props to top-level nav bar keys so `Header.astro` can read localized labels without casts or debug logging.
 - Verified with `npm run astro -- check` and `npm run build`.
+
+## 2026-06-18
+
+- Regenerated `package-lock.json` with `npm install` to repair npm lockfile metadata for Tailwind's bundled WASM optional dependencies after Railway reported `npm ci` failures around missing `@emnapi` entries.
+- Bumped the package version from `0.0.3-alpha.1` to `0.0.3-alpha.2` for the follow-up Railway release.
+- Verified the repaired lockfile with `npm --cache ./.npm-cache ci --ignore-scripts` using network access, then removed the temporary npm cache.
+- Verified production output with `npm run build`.
