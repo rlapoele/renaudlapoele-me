@@ -13,7 +13,7 @@ const { content, sectionLabel } = Astro.props as Props;
   {content.items.map((item) => (
     <Card variant="default" as="div">
       <h5 class="text-lg font-semibold mbe-4"><Transformer text={item.label}/></h5>
-      <p class="text-sm leading-6 text-ink-secondary">
+      <p class="text-sm leading-6 text-ink-primary">
         {item.description}
       </p>
     </Card>

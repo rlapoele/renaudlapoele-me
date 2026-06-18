@@ -2,11 +2,13 @@
 import { combineCssClasses } from "@scripts/shared/combineCssClasses.ts";
 
 type Props = {
-  keyFocus: string
-  class?: string
+  label: string;
+  keyFocus: string;
+  class?: string;
 };
 
 const {
+  label,
   keyFocus,
   class : className
 } = Astro.props as Props;
@@ -15,7 +17,7 @@ const baseCssClasses = "";
 const classes = combineCssClasses(baseCssClasses, className);
 ---
 <div class={classes}>
-  <h6 class="leading-6 text-accent-primary text-sm font-semibold dark:font-medium uppercase tracking-wider mbe-4">Key Focus</h6>
+  <h6 class="leading-tight text-accent-primary text-sm font-semibold dark:font-medium uppercase tracking-wider mbe-3">{label}</h6>
   <p class="text-sm">{keyFocus}</p>
 </div>
 

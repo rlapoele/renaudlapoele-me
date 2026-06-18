@@ -120,9 +120,9 @@ export const resumeFR: ResumeType = {
             highlights: [
               "Contenu structuré pour une lecture rapide par les recruteurs",
               "Équilibre entre clarté technique et qualité de design",
-              "Réalisé avec Astro et Tailwind",
+              "Réalisé avec Astro et Tailwind CSS",
             ],
-            tags: ["Astro", "Tailwind", "Typescript", "Localisation", "Accessibilité", "Design Tokens", "Stratégie de contenu"],
+            tags: ["Astro", "Tailwind CSS", "Typescript", "Localisation", "Accessibilité", "Design Tokens", "Stratégie de contenu"],
           },
         ],
       },
@@ -197,8 +197,45 @@ export const resumeFR: ResumeType = {
               "Développement de preuves de concept et de prototypes explorant la productivité, l’expérience développeur et les processus de création de produits s’appuyant sur les technologies d’IA.",
               "Maintien d’une montée en compétences continue à travers des projets personnels, des recherches techniques et des réalisations concrètes."
             ],
-            "keyFocus": null,
-            "skillGroups": []
+            keyFocus: "Ingénierie Front-End moderne, accessibilité, développement assisté par l’IA et développement professionnel continu.",
+            skillGroups: [
+              {
+                name: "Ingénierie Front-End",
+                skills: [
+                  "Développement Front-End",
+                  "TypeScript",
+                  "Astro",
+                  "Tailwind CSS",
+                  "Node.js",
+                  "SolidJS"
+                ]
+              },
+              {
+                name: "UX & Conception Produit",
+                skills: [
+                  "Accessibilité Web",
+                  "Conception Inclusive",
+                  "Conformité WCAG",
+                  "Prototypage"
+                ]
+              },
+              {
+                name: "Produit & Delivery",
+                skills: [
+                  "Développement de preuves de concept (PoC)",
+                  "Développement de MVP"
+                ]
+              },
+              {
+                name: "Leadership Technique & Innovation",
+                skills: [
+                  "Veille Technologique",
+                  "Expérimentation Technique",
+                  "Développement Assisté par l’IA",
+                  "Ingénierie IA"
+                ]
+              }
+            ]
           },
           {
             "company": "Cisco Systems",
@@ -425,9 +462,9 @@ export const resumeFR: ResumeType = {
             "role": "Software Engineer",
             "location": "France",
             "startDate": {
-              "label": "Janvier 2000",
-              "year": 2000,
-              "month": 1
+              "label": "Mars 1998",
+              "year": 1998,
+              "month": 3
             },
             "endDate": {
               "label": "Janvier 2007",
@@ -656,7 +693,8 @@ export const resumeFR: ResumeType = {
               month: 10
             },
             duration: null,
-            summary: null
+            summary: null,
+            certificateURL: "https://certificate.bcdiploma.com/check/A5B83C3A8F1FAC493938BB27FBB0F509A0D418B9803F5D6D00BB736DDAED0EFAVEpoSTBnMjNUY0c2TUNtWEZ5MkxsWm1pU250YlVma2RpelZkdWRMTzkwU0dvcFBZ"
           }
         ]
       },
@@ -753,7 +791,11 @@ export const resumeFR: ResumeType = {
       },
       careerDetails: {
         label: "Détails de la carrière",
-        experiences: { label: "Expérience" },
+        experiences: {
+          label: "Expérience",
+          keyFocus: { label: "Repères clés" },
+          skills: { label: "Compétences" }
+        },
         education: { label: "Éducation" },
         certifications: { label: "Certifications" },
         languages: { label: "Langues" },
@@ -830,6 +872,7 @@ export const resumeFR: ResumeType = {
     misc: {
       poweredBy: "Propulsé par ",
       responseTime: "Réponse sous 24 à 48 heures",
+      scrollToTopA11yLabel: "Retour en haut de la page",
     },
     footer: {
       copyright: (year: number, name: string) =>

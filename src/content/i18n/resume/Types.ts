@@ -106,6 +106,7 @@ export type CertificationItemType = {
   endDate: GenericDateType | null;
   duration: string | null;
   summary: string | null;
+  certificateURL: string | null;
 };
 
 export type EducationDegreeType = {
@@ -214,7 +215,7 @@ export type SkillGroupType = {
      careerDetails: {
        label: string;
        items: {
-         experiences: { label: string };
+         experiences: { label: string; };
          education: { label: string };
          certifications: { label: string };
          languages: { label: string };
@@ -308,6 +309,7 @@ export type FormUIType = {
 export type MiscUIType = {
   poweredBy: string;
   responseTime: string;
+  scrollToTopA11yLabel: string;
 };
 
 export type HeroUIType = {
@@ -327,7 +329,11 @@ export type CareerOverviewUIType = {
 
 export type CareerDetailsUIType = {
   label: string;
-  experiences: { label: string };
+  experiences: {
+    label: string;
+    keyFocus: { label: string };
+    skills: { label: string };
+  };
   education: { label: string };
   certifications: { label: string };
   languages: { label: string };

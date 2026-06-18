@@ -11,12 +11,12 @@ const {
   class: className = ""
 } = Astro.props as Props;
 
-const baseCssClasses = "mt-6 space-y-2.5 text-sm text-ink-secondary";
+const baseCssClasses = "mt-4 space-y-2.5 text-sm text-ink-primary";
 const classes = combineCssClasses(baseCssClasses, className);
 ---
 <ul class={classes}>
   {responsibilities.map((responsibility) => (
-    <li class="flex items-baseline gap-3"><span class="pbe-0.5"><Bullet/></span><span>{responsibility}</span>
+    <li class="flex items-baseline gap-2.5"><span class="pbe-0.5"><Bullet/></span><span>{responsibility}</span>
     </li>
   ))}
 </ul>

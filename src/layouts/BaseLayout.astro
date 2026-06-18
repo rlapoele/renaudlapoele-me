@@ -74,7 +74,7 @@ const siteUrl = normalizeSiteUrl(SITE_URL);
       <div class="c-grid-overlay"></div>
       <div class="relative z-20 w-full">
         <a href="#main-content" class="c-skip-link">Skip to main content</a>
-        <Header locale={locale} siteUrl={siteUrl} navItemsData={config.navBarItems} navItemLabels={resume.ui.header.navigation} settings={resume.ui.header.settings} />
+        <Header locale={locale} siteUrl={siteUrl} navItemsData={config.header.navBarItems} navItemLabels={resume.ui.header.navigation} settings={resume.ui.header.settings} />
         <main id="main-content" tabindex="-1" role="main">
           <slot />
         </main>
@@ -82,7 +82,6 @@ const siteUrl = normalizeSiteUrl(SITE_URL);
                 fullname={`${resume.data.personal.firstName} ${resume.data.personal.lastName}`}
                 misc={resume.ui.misc}
                 tagline={resume.content.footer.tagline}/>
-        <a class="c-button c-button--icon c-scroll-to-top" href="#hero"><Icon type="chevron-up" class="size-4"></Icon></a>
       </div>
     </div>
     <script>

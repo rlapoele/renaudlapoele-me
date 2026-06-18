@@ -1,5 +1,6 @@
 ---
 import type {ExperienceItemType, ExperienceSkillGroupType} from "@content/i18n/resume/Types.ts";
+import type {ExperienceSectionLabelsType} from "@sections/CareerDetails/Types.ts";
 import {combineCssClasses} from "@scripts/shared/combineCssClasses.ts";
 import Card from "@components/ui/Card.astro";
 import ExperienceOrgRole from "@sections/CareerDetails/Experiences/Experience/ExperienceOrgRole.astro";
@@ -9,12 +10,16 @@ import ExperienceSummary from "@sections/CareerDetails/Experiences/Experience/Ex
 import ExperienceSkills from "@sections/CareerDetails/Experiences/Experience/ExperienceSkills.astro";
 import ExperienceKeyFocuses from "@sections/CareerDetails/Experiences/Experience/ExperienceKeyFocuses.astro";
 
+
+
 type Props = {
+  sectionLabels: ExperienceSectionLabelsType;
   experience: ExperienceItemType;
   class?: string;
 };
 
 const {
+  sectionLabels,
   experience,
   class: className = ""
 } = Astro.props as Props;
@@ -45,12 +50,16 @@ const classes = combineCssClasses(baseCssClasses, className);
   {
     !!experience.keyFocus &&
     <ExperienceKeyFocuses
-      keyFocus={experience.keyFocus as string}
       class="mbs-10"
+      label={sectionLabels.keyFocusLabel}
+      keyFocus={experience.keyFocus as string}
     />
   }
   {
     !!experience.skillGroups.length &&
-    <ExperienceSkills class="mbs-10" skillGroups={experience.skillGroups as ExperienceSkillGroupType[]} />
+    <ExperienceSkills
+      class="mbs-10"
+      label={sectionLabels.skillsLabel}
+      skillGroups={experience.skillGroups as ExperienceSkillGroupType[]} />
   }
 </Card>

@@ -1,5 +1,6 @@
 ---
 import type {CareerDetailsType, CareerDetailsUIType} from "@content/i18n/resume/Types.ts";
+import type {ExperienceSectionLabelsType} from "@sections/CareerDetails/Types.ts";
 import {combineCssClasses} from "@scripts/shared/combineCssClasses.ts";
 import Certifications from "@sections/CareerDetails/Certifications/Certifications.astro";
 import Languages from "@sections/CareerDetails/Languages/Languages.astro";
@@ -11,20 +12,28 @@ type Props = {
   contentLabels: CareerDetailsUIType,
   class?: string;
 }
+
 const {
   content,
   contentLabels,
   class: className= ""
 } = Astro.props as Props;
-const baseCssClasses = "";
+
+const experienceSectionLabels: ExperienceSectionLabelsType = {
+  sectionLabel: contentLabels.experiences.label,
+  keyFocusLabel: contentLabels.experiences.keyFocus.label,
+  skillsLabel: contentLabels.experiences.skills.label,
+}
+
+const baseCssClasses = "c-career-details";
 const classes = combineCssClasses(baseCssClasses, className);
 ---
-<details id="career-details" class="c-career-details" tabindex="-1">
+<details id="career-details" class={classes} tabindex="-1">
   <summary class="l-container c-career-details-summary">
     <h2 class="c-section-group-heading c-section-group-heading--interactiv w-full flex items-center justify-between gap-2"><span>{contentLabels.label}</span><span class="c-career-details-icon"><Icon class="size-7" type="chevron-right" isDecorative={true}/></span></h2>
   </summary>
   <div class="space-y-28 c-career-details-content">
-    <Experiences content={content.experiences} sectionLabel={contentLabels.experiences.label} />
+    <Experiences content={content.experiences} sectionLabels={experienceSectionLabels} />
     <Certifications content={content.certifications} sectionLabel={contentLabels.certifications.label} />
     <Education content={content.educationDegrees} sectionLabel={contentLabels.education.label} />
     <Languages content={content.languages} sectionLabel={contentLabels.languages.label} />

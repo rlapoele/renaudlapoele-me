@@ -3,34 +3,55 @@ import { combineCssClasses } from "@scripts/shared/combineCssClasses.ts";
 import type { ExperienceSkillGroupType } from "@content/i18n/resume/Types.ts";
 import Transformer from "@components/ui/Transformer.astro";
 import Bullet from "@components/ui/Bullet.astro";
+import Tag from "@components/ui/Tag.astro";
 
 type Props = {
-  skillGroups: ExperienceSkillGroupType[]
-  class?: string
+  label: string;
+  skillGroups: ExperienceSkillGroupType[];
+  class?: string;
 };
 
 const {
+  label,
   skillGroups,
   class: className= ""
 } = Astro.props as Props;
+
 const baseCssClasses = "";
 const classes = combineCssClasses(baseCssClasses, className);
 ---
 <div class={classes}>
-  <h6 class="leading-6 text-accent-primary text-sm font-semibold dark:font-medium uppercase tracking-wider mbe-4">Skills</h6>
+  <h6 class="leading-tight text-accent-primary text-sm font-semibold dark:font-medium uppercase tracking-wider mbe-3">{label}</h6>
   {
     skillGroups.map(
       (skillGroup) => {
         return (
-          <p class="block text-ink-tertiary tracking-wider uppercase text-xs mbe-3">
-          <Transformer text={skillGroup.name} mustTrimSeparator={false} sourceItemSeparator=" / " class="text-ink-tertiary/50"/></p>
-          <p class="text-sm mbe-8 last:mbe-0 flex items-baseline justify-start gap-3"><span class="pbe-0.5"><Bullet /></span>
+          <p class="block font-medium text-ink-tertiary tracking-wider uppercase text-xs mbe-2">
+            <Transformer text={skillGroup.name} mustTrimSeparator={false} sourceItemSeparator=" / " class="text-ink-tertiary"/>
+          </p>
+          <div class="flex flex-wrap gap-2 mbe-6 last:mbe-0">
+            {skillGroup.skills.map((skill) => (
+              <Tag>{skill}</Tag>
+            ))}
+          </div>
+          <!--
+          <p class="text-sm mbe-6 last:mbe-0">
+            {
+              skillGroup.skills.map(
+                (skill: string, skillIndex: number, skillArray: string[]) => ( skillIndex < (skillArray.length - 1) ? <Fragment>{skill}, </Fragment> : <Fragment>{skill}</Fragment> )
+              )
+            }
+          </p>
+        -->
+          <!--
+          <p class="text-sm mbe-6 last:mbe-0 flex items-baseline justify-start gap-2.5"><span class="ms-4 pbe-0.5"><Bullet /></span>
           {
             skillGroup.skills.map(
               (skill: string, skillIndex: number, skillArray: string[]) => ( skillIndex < (skillArray.length - 1) ? <Fragment>{skill}, </Fragment> : <Fragment>{skill}</Fragment> )
             )
           }
           </p>
+-->
         );
       }
     )

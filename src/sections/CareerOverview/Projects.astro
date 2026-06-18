@@ -12,7 +12,7 @@ const { content, sectionLabel} = Astro.props as Props;
 <Section id="works" label={sectionLabel} title={content.title} bodyClass="l-auto-grid l-auto-grid--col-min-20">
   {content.items.map((project) => (
     <Card variant="feature" isInteractive>
-      <p class="text-sm font-semibold dark:font-medium uppercase tracking-wider text-accent-primary">
+      <p class="text-md font-semibold dark:font-medium uppercase tracking-wider text-accent-primary">
         {project.type}
       </p>
       <h5 class="mt-3 text-xl leading-tight font-semibold">
@@ -21,9 +21,9 @@ const { content, sectionLabel} = Astro.props as Props;
       <p class="mt-4 leading-relaxed text-ink-tertiary">
         {project.description}
       </p>
-      <ul class="mt-6 space-y-2 text-sm text-ink-secondary">
+      <ul class="mt-6 space-y-2 text-sm text-ink-primary">
         {project.highlights.map((highlight) => (
-          <li class="flex items-center gap-3">
+          <li class="flex items-center gap-2.5">
             <Bullet class="mbs-0.5"/>
             <span>{highlight}</span>
           </li>

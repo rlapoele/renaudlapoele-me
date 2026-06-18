@@ -7,6 +7,7 @@ import IconAstro from '@components/ui/brand/IconAstro.astro';
 import IconLinkedIn from "@components/ui/brand/IconLinkedIn.astro";
 import IconGitHub from "@components/ui/brand/IconGitHub.astro";
 import IconRailway from "@components/ui/brand/IconRailway.astro";
+import Icon from "@components/ui/Icon.astro";
 
 type Props = {
   fullname: string;
@@ -48,4 +49,5 @@ const copyrightStatement = createCopyrightStatement(new Date().getFullYear(), fu
       </p>
     </div>
   </div>
+  <a class="c-button c-button--icon c-scroll-to-top" href="#hero" title={misc.scrollToTopA11yLabel} aria-label={misc.scrollToTopA11yLabel}><Icon type="chevron-up" class="size-4"></Icon></a>
 </footer>

@@ -13,7 +13,7 @@ const {
   sectionLabel
 } = Astro.props as Props;
 ---
-<Section id="certifications" label={sectionLabel} title={content.title} bodyClass="space-y-5">
+<Section id="education" label={sectionLabel} title={content.title} bodyClass="space-y-5">
 
   { content.items.map((certification: EducationDegreeItemType) => (
     <EducationDiploma educationDiploma={certification} />
