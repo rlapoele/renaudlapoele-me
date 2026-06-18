@@ -35,3 +35,4 @@ Concise history of meaningful agent-made changes.
 - Bumped the package version from `0.0.3-alpha.1` to `0.0.3-alpha.2` for the follow-up Railway release.
 - Verified the repaired lockfile with `npm --cache ./.npm-cache ci --ignore-scripts` using network access, then removed the temporary npm cache.
 - Verified production output with `npm run build`.
+- Regenerated `package-lock.json` with npm 10 after Railway's Node 22 build still rejected the npm 11-generated lockfile, then bumped the package version to `0.0.3-alpha.3`.
