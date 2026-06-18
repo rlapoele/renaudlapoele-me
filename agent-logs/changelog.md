@@ -36,3 +36,4 @@ Concise history of meaningful agent-made changes.
 - Verified the repaired lockfile with `npm --cache ./.npm-cache ci --ignore-scripts` using network access, then removed the temporary npm cache.
 - Verified production output with `npm run build`.
 - Regenerated `package-lock.json` with npm 10 after Railway's Node 22 build still rejected the npm 11-generated lockfile, then bumped the package version to `0.0.3-alpha.3`.
+- Added `packageManager: npm@11.6.2` to make npm explicit for Railway/Railpack package manager detection, then bumped the package version to `0.0.3-alpha.4` for the test release.
