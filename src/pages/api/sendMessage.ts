@@ -1,14 +1,12 @@
 import type { APIRoute } from "astro";
+import type { ServerContactFormValidationInputType } from "@scripts/server/contactForm/contactFormValidation.ts";
 import { Resend } from 'resend';
-import { escapeHtml, getStringFormValue } from "@scripts/server/htmlUtils.ts";
 import { RESEND_API_KEY, RESEND_FROM_EMAIL, RESEND_TO_EMAIL } from "astro:env/server";
-import {
-  type ServerContactFormValidationInputType,
-  serverValidateContactForm
-} from "@scripts/server/contactForm/contactFormValidation.ts";
-import {validateContactFormToken} from "@scripts/server/contactForm/contactFormToken.ts";
-import { logger } from "@scripts/server/logger.ts";
+import { escapeHtml, getStringFormValue } from "@scripts/server/htmlUtils.ts";
+import { serverValidateContactForm } from "@scripts/server/contactForm/contactFormValidation.ts";
+import { validateContactFormToken} from "@scripts/server/contactForm/contactFormToken.ts";
 import { normalizeConfigValue } from "@scripts/server/configUtils.ts";
+import { logger } from "@scripts/server/logger.ts";
 
 export const prerender = false;
 
@@ -183,19 +181,20 @@ export const POST: APIRoute = async ({ request }) => {
     return jsonResponse({ isValid: false, message: "Email service is not configured" }, 500);
   }
 
-  //const resend = new Resend(resendApiKey);
+  const resend = new Resend(resendApiKey);
 
   try {
 
-    /*
-    const { error } = await resend.emails.send({
+    const subject = `Message from ${contactFormData.name} ${contactFormData.email} via renaudlapoele.me/${contactFormData.locale}`;
+
+    const { data, error } = await resend.emails.send({
       from: sendFromEmail,
       to: sendToEmail,
       replyTo: contactFormData.email,
-      subject: "Message from via renaudlapoele.me",
+      subject,
       html: buildContactEmailHtml(contactFormData),
       text: [
-        "Message from renaudlapoele.me",
+        `Message:`,
         "",
         `Name: ${contactFormData.name}`,
         `Email: ${contactFormData.email}`,
@@ -205,9 +204,19 @@ export const POST: APIRoute = async ({ request }) => {
     });
 
     if (error) {
+      logger.error(
+        {
+          clientKey,
+          resendErrorName: error.name,
+          resendErrorStatusCode: error.statusCode,
+          resendErrorText: error.message,
+        },
+        "Resend rejected contact form email",
+      );
+
       return jsonResponse({ isValid: false, message: "Error sending email" }, 500);
     }
-*/
+
     logger.info(
       {
         clientKey,
@@ -216,8 +225,9 @@ export const POST: APIRoute = async ({ request }) => {
         email: contactFormData.email,
         name: contactFormData.name,
         message: contactFormData.message,
+        resendEmailId: data?.id,
       },
-      "Contact form email payload prepared",
+      "Contact form email sent",
     );
 
     return successResponse();

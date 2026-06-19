@@ -37,3 +37,9 @@ Concise history of meaningful agent-made changes.
 - Verified production output with `npm run build`.
 - Regenerated `package-lock.json` with npm 10 after Railway's Node 22 build still rejected the npm 11-generated lockfile, then bumped the package version to `0.0.3-alpha.3`.
 - Added `packageManager: npm@11.6.2` to make npm explicit for Railway/Railpack package manager detection, then bumped the package version to `0.0.3-alpha.4` for the test release.
+
+## 2026-06-19
+
+- Added explicit logging for Resend API-level contact form send failures in `src/pages/api/sendMessage.ts`, preserving the generic client-facing 500 response while recording safe diagnostic fields.
+- Renamed the contact form success log to indicate the email was sent and included the Resend email id when available.
+- Verified with `npm run astro -- check`; the command passed with existing unused-code hints.
