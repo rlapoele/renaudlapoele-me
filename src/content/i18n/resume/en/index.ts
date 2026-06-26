@@ -1,4 +1,4 @@
-import type { ResumeType } from "../Types.ts";
+import type { ResumeType } from "@content/i18n/resume/Types.ts";
 
 export const resumeEN : ResumeType = {
   data: {
@@ -754,8 +754,16 @@ export const resumeEN : ResumeType = {
         }
       },
       settings: {
-        menuOpenSelectorLabel: "Open settings menu",
-        menuCloseSelectorLabel: "Close settings menu",
+        menu: {
+          title: "Settings",
+          openTriggerLabel: "Open Settings",
+          closeTriggerLabel: "Close Settings",
+          languageLabel: "Language",
+          colorThemeLabel: "Color Theme",
+          buttonSystemLabel: "System",
+          buttonLightLabel: "Light",
+          buttonDarkLabel: "Dark",
+        },
         language: {
           selectorLabel: "Français"
         },

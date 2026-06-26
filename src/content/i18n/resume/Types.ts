@@ -226,20 +226,28 @@ export type SkillGroupType = {
 };
 
 export type SettingsUIType = {
-  menuOpenSelectorLabel: string,
-  menuCloseSelectorLabel: string,
+  menu: {
+    title: string;
+    openTriggerLabel: string;
+    closeTriggerLabel: string;
+    languageLabel: string;
+    colorThemeLabel: string;
+    buttonSystemLabel: string,
+    buttonLightLabel: string,
+    buttonDarkLabel: string,
+  };
   language: {
     selectorLabel: string /* English or Français */
-  },
-	  colorTheme: {
-	    osThemeSelectorTitle: string,
-	    osThemeSelectorActiveTitle: string,
-	    lightThemeSelectorTitle: string,
-	    lightThemeSelectorActiveTitle: string,
-	    darkThemeSelectorTitle: string,
-	    darkThemeSelectorActiveTitle: string,
-	  }
-	}
+  };
+  colorTheme: {
+    osThemeSelectorTitle: string,
+    osThemeSelectorActiveTitle: string,
+    lightThemeSelectorTitle: string,
+    lightThemeSelectorActiveTitle: string,
+    darkThemeSelectorTitle: string,
+    darkThemeSelectorActiveTitle: string,
+  };
+};
 
 export type FormUIType = {
   ariaLabel: string,

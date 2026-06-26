@@ -43,3 +43,8 @@ Concise history of meaningful agent-made changes.
 - Added explicit logging for Resend API-level contact form send failures in `src/pages/api/sendMessage.ts`, preserving the generic client-facing 500 response while recording safe diagnostic fields.
 - Renamed the contact form success log to indicate the email was sent and included the Resend email id when available.
 - Verified with `npm run astro -- check`; the command passed with existing unused-code hints.
+
+## 2026-06-26
+
+- Fixed native dialog fade transitions in `src/styles/global.css` by adding `@starting-style` and discrete `display`/`overlay` transitions for the dialog and backdrop.
+- Verified with `npm run astro -- check` and `npm run build`; both passed with existing unused-code hints from `astro check`.

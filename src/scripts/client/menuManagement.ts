@@ -1,8 +1,8 @@
-export const DOM_ELEM_IDS = {
-  MENU_TRIGGER_SETTINGS: "rl-menu-settings-trigger",
-  MENU_SETTINGS: "rl-menu-settings",
-  MENU_TRIGGER_NAV: "rl-menu-nav-trigger",
-  MENU_NAV: "rl-menu-nav",
+export const DOM_ELEMENT_IDS = {
+  MENU_TRIGGER_SETTINGS: "rl-settings-menu-trigger",
+  MENU_SETTINGS: "rl-settings-menu",
+  MENU_TRIGGER_NAV: "rl-nav-menu-trigger",
+  MENU_NAV: "rl-nav-menu",
 } as const;
 
 export type CreateMenuManagerType = {
@@ -35,19 +35,19 @@ export function createMenuManager(): CreateMenuManagerType {
       if (typeof window === 'undefined') {
         throw new Error('MenuManager.setup(): browser `window` object is undefined');
       }
-      menuTriggerNavElement = document.getElementById(DOM_ELEM_IDS.MENU_TRIGGER_NAV);
+      menuTriggerNavElement = document.getElementById(DOM_ELEMENT_IDS.MENU_TRIGGER_NAV);
       if (!menuTriggerNavElement) {
         throw new Error('MenuManager.setup(): could not find menu trigger nav element');
       }
-      menuNavElement = document.getElementById(DOM_ELEM_IDS.MENU_NAV);
+      menuNavElement = document.getElementById(DOM_ELEMENT_IDS.MENU_NAV);
       if (!menuNavElement) {
         throw new Error('MenuManager.setup(): could not find menu nav element');
       }
-      menuTriggerSettingsElement = document.getElementById(DOM_ELEM_IDS.MENU_TRIGGER_SETTINGS);
+      menuTriggerSettingsElement = document.getElementById(DOM_ELEMENT_IDS.MENU_TRIGGER_SETTINGS);
       if (!menuTriggerSettingsElement) {
         throw new Error('MenuManager.setup(): could not find menu trigger settings element');
       }
-      menuSettingsElement = document.getElementById(DOM_ELEM_IDS.MENU_SETTINGS);
+      menuSettingsElement = document.getElementById(DOM_ELEMENT_IDS.MENU_SETTINGS);
       if (!menuSettingsElement) {
         throw new Error('MenuManager.setup(): could not find menu settings element');
       }

@@ -1,0 +1,45 @@
+---
+import type { NavBarItemType } from "@content/config/Types";
+import type { NavigationUIType, SettingsUIType } from "@content/i18n/resume/Types.ts";
+import type { LocaleType } from "@content/i18n/locale";
+import { DOM_ELEMENT_IDS as SETTINGS_MENU_ELEMENT_IDS } from "@scripts/client/menuManagement.ts";
+import Icon from "@components/ui/Icon.astro";
+import NavBar from "@components/layout/Header/NavBar.astro";
+import SettingsBar from "@components/layout/Header/SettingsBar.astro";
+import SettingsMenu from "@components/layout/Header/SettingsMenu.astro";
+
+type Props = {
+  locale: LocaleType;
+  siteUrl: string;
+  navItemsData: NavBarItemType[];
+  navItemLabels: NavigationUIType;
+  settings: SettingsUIType;
+};
+const {
+  locale,
+  siteUrl,
+  navItemsData,
+  navItemLabels,
+  settings
+} = Astro.props as Props;
+---
+<header role="banner" class="c-page-header print:hidden">
+  <div class="h-full flex flex-nowrap items-center justify-between gap-8 px-6">
+    <a id="rl-site-link" href={siteUrl} class="uppercase text-normal font-bold c-text-link hidden xl:inline-block">RENAUDLAPOELE.ME</a>
+
+    <button type="button" class="c-button c-button--icon -ms-2 xl:hidden" title={navItemLabels.menuOpenSelectorLabel} aria-label={navItemLabels.menuOpenSelectorLabel}><Icon isDecorative={true} type="bar3" class="size-4"/></button>
+
+    <NavBar class="grow" navItemsData={navItemsData} navItemLabels={navItemLabels}/>
+
+    <button type="button"
+            class="c-button c-button--icon -me-2 xl:hidden"
+            commandfor={SETTINGS_MENU_ELEMENT_IDS.MENU_SETTINGS}
+            command="show-modal"
+            title={settings.menu.openTriggerLabel}
+            aria-label={settings.menu.openTriggerLabel}><Icon isDecorative={true} type="settings" class="size-4"/></button>
+
+    <SettingsBar locale={locale} settings={settings}/>
+
+    <SettingsMenu locale={locale} settings={settings}/>
+  </div>
+</header>

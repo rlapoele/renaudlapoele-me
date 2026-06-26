@@ -1,11 +1,11 @@
 ---
-import Container from "@components/ui/Container.astro";
+import Container from "@components/layout/Container.astro";
 import type {CareerOverviewType, CareerOverviewUIType} from "@content/i18n/resume/Types.ts";
 import {combineCssClasses} from "@scripts/shared/combineCssClasses.ts";
-import Snapshot from "./Snapshot.astro";
-import Impacts from "./Impacts.astro";
-import Projects from "./Projects.astro";
-import Skills from "./Skills.astro";
+import Snapshot from "@sections/CareerOverview/Snapshot.astro";
+import Impacts from "@sections/CareerOverview/Impacts.astro";
+import Projects from "@sections/CareerOverview/Projects.astro";
+import Skills from "@sections/CareerOverview/Skills.astro";
 type Props = {
   content: CareerOverviewType;
   contentLabels: CareerOverviewUIType;

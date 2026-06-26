@@ -1,0 +1,49 @@
+---
+import type {LocaleType} from "@content/i18n/locale";
+import type { SettingsUIType } from "@content/i18n/resume/Types.ts";
+import { SUPPORTED_LOCALES } from "@content/i18n/locale";
+import { DOM_ELEMENT_IDS } from "@scripts/client/colorThemeManagement.ts";
+import { DOM_ELEMENT_IDS as MENU_ELEMENT_IDS} from "@scripts/client/menuManagement.ts";
+
+import Icon from "@components/ui/Icon.astro";
+import {combineCssClasses} from "@scripts/shared/combineCssClasses.ts";
+import Card from "@components/ui/Card.astro";
+
+type Props = {
+  locale: LocaleType;
+  settings: SettingsUIType;
+  class?: string;
+}
+
+const {
+  locale,
+  settings,
+  class: className = ""
+} = Astro.props as Props;
+const baseCssClasses = "space-y-8 w-full max-w-[20rem] py-16 m-auto"; /*"w-dvw h-dvh overflow-y-auto m-0 py-6 px-6 bg-paint-muted/95 border-none"; */
+const classes = combineCssClasses(baseCssClasses, className);
+---
+<Card id={MENU_ELEMENT_IDS.MENU_SETTINGS} as="dialog" class={classes} padding="xl">
+  <button type="button"
+          class="c-button c-button--ghost c-button--icon absolute top-4 right-4"
+          commandfor={MENU_ELEMENT_IDS.MENU_SETTINGS}
+          command="close"
+          title={settings.menu.closeTriggerLabel}
+          aria-label={settings.menu.closeTriggerLabel}
+          autofocus><Icon isDecorative={true} class="size-4" type="close" strokeWidth={2} /></button>
+  <h2 class="c-menu-title text-center">{settings.menu.title}</h2>
+  <div class="space-y-10">
+    <div class="space-y-4 text-center">
+      <h3 class="c-menu-option-group-label">{settings.menu.languageLabel}</h3>
+      <a id="rl-settings-bar-language-selector" href={ locale === SUPPORTED_LOCALES.FR ? '/en' : '/fr'} class="c-button w-full justify-between gap-2" aria-label={settings.language.selectorLabel}><Icon isDecorative={true} class="size-4 shrink-0" type="language" /><span>{settings.language.selectorLabel}</span></a>
+    </div>
+    <div class="space-y-4 text-center">
+      <h3 class="c-menu-option-group-label">{settings.menu.colorThemeLabel}</h3>
+      <div class="space-y-4 flex flex-col items-center">
+        <button id={DOM_ELEMENT_IDS.SETTINGS_MENU_COLOR_THEME_MANAGER_SELECTOR_SYSTEM} type="button" class="c-button w-full justify-between gap-2" title={settings.colorTheme.osThemeSelectorTitle} aria-label={settings.colorTheme.osThemeSelectorTitle} aria-pressed="false" data-active-label={settings.colorTheme.osThemeSelectorActiveTitle}><Icon isDecorative={true} class="size-4 shrink-0" type="computer" /><span>{settings.menu.buttonSystemLabel}</span></button>
+        <button id={DOM_ELEMENT_IDS.SETTINGS_MENU_COLOR_THEME_SELECTOR_LIGHT} type="button" class="c-button w-full justify-between gap-2" title={settings.colorTheme.lightThemeSelectorTitle} aria-label={settings.colorTheme.lightThemeSelectorTitle} aria-pressed="false" data-active-label={settings.colorTheme.lightThemeSelectorActiveTitle}><Icon isDecorative={true} class="size-4 shrink-0" type="sun" /><span>{settings.menu.buttonLightLabel}</span></button>
+        <button id={DOM_ELEMENT_IDS.SETTINGS_MENU_COLOR_THEME_SELECTOR_DARK} type="button" class="c-button w-full justify-between gap-2" title={settings.colorTheme.darkThemeSelectorTitle} aria-label={settings.colorTheme.darkThemeSelectorTitle} aria-pressed="false" data-active-label={settings.colorTheme.darkThemeSelectorActiveTitle}><Icon isDecorative={true} class="size-4 shrink-0" type="moon" /><span>{settings.menu.buttonDarkLabel}</span></button>
+      </div>
+    </div>
+  </div>
+</Card>

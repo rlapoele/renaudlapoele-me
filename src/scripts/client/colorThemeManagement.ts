@@ -1,7 +1,10 @@
 export const DOM_ELEMENT_IDS = {
-  COLOR_THEME_SELECTOR_LIGHT: 'rl-color-theme-selector-light',
-  COLOR_THEME_SELECTOR_DARK: 'rl-color-theme-selector-dark',
-  COLOR_THEME_MANAGER_SELECTOR_SYSTEM: 'rl-color-theme-manager-selector-system',
+  SETTINGS_BAR_COLOR_THEME_SELECTOR_LIGHT: 'rl-settings-bar-color-theme-selector-light',
+  SETTINGS_BAR_COLOR_THEME_SELECTOR_DARK: 'rl-settings-bar-color-theme-selector-dark',
+  SETTINGS_BAR_COLOR_THEME_MANAGER_SELECTOR_SYSTEM: 'rl-settings-bar-color-theme-manager-selector-system',
+  SETTINGS_MENU_COLOR_THEME_SELECTOR_LIGHT: 'rl-settings-menu-color-theme-selector-light',
+  SETTINGS_MENU_COLOR_THEME_SELECTOR_DARK: 'rl-settings-menu-color-theme-selector-dark',
+  SETTINGS_MENU_COLOR_THEME_MANAGER_SELECTOR_SYSTEM: 'rl-settings-menu-color-theme-manager-selector-system',
 } as const;
 
 export type CreateColorThemeManagerType = {
@@ -48,9 +51,14 @@ export function createColorThemeManager(): CreateColorThemeManagerType {
   let colorTheme: ColorThemeType = COLOR_THEMES.DEFAULT;
   let colorThemeManager: ColorThemeManagerType = COLOR_THEME_MANAGERS.DEFAULT;
 
-  let userLightColorThemeSelector: HTMLButtonElement | null = null;
-  let userDarkColorThemeSelector: HTMLButtonElement | null = null;
-  let systemColorThemeManagerSelector: HTMLButtonElement | null = null;
+  let sbUserLightColorThemeSelector: HTMLButtonElement | null = null;
+  let sbUserDarkColorThemeSelector: HTMLButtonElement | null = null;
+  let sbSystemColorThemeManagerSelector: HTMLButtonElement | null = null;
+
+  let smUserLightColorThemeSelector: HTMLButtonElement | null = null;
+  let smUserDarkColorThemeSelector: HTMLButtonElement | null = null;
+  let smSystemColorThemeManagerSelector: HTMLButtonElement | null = null;
+
 
   function clickEventHandler(callbackFn: () => void): (event: MouseEvent) => void {
     return (event) => {
@@ -153,21 +161,32 @@ export function createColorThemeManager(): CreateColorThemeManagerType {
     newColorTheme: ColorThemeType,
     newColorThemeManager: ColorThemeManagerType
   ): void {
-    const systemSelector = getSetupButtonElement(systemColorThemeManagerSelector, DOM_ELEMENT_IDS.COLOR_THEME_MANAGER_SELECTOR_SYSTEM);
-    const lightSelector = getSetupButtonElement(userLightColorThemeSelector, DOM_ELEMENT_IDS.COLOR_THEME_SELECTOR_LIGHT);
-    const darkSelector = getSetupButtonElement(userDarkColorThemeSelector, DOM_ELEMENT_IDS.COLOR_THEME_SELECTOR_DARK);
+    const sbSystemSelector = getSetupButtonElement(sbSystemColorThemeManagerSelector, DOM_ELEMENT_IDS.SETTINGS_BAR_COLOR_THEME_MANAGER_SELECTOR_SYSTEM);
+    const sbLightSelector = getSetupButtonElement(sbUserLightColorThemeSelector, DOM_ELEMENT_IDS.SETTINGS_BAR_COLOR_THEME_SELECTOR_LIGHT);
+    const sbDarkSelector = getSetupButtonElement(sbUserDarkColorThemeSelector, DOM_ELEMENT_IDS.SETTINGS_BAR_COLOR_THEME_SELECTOR_DARK);
+    const smSystemSelector = getSetupButtonElement(smSystemColorThemeManagerSelector, DOM_ELEMENT_IDS.SETTINGS_MENU_COLOR_THEME_MANAGER_SELECTOR_SYSTEM);
+    const smLightSelector = getSetupButtonElement(smUserLightColorThemeSelector, DOM_ELEMENT_IDS.SETTINGS_MENU_COLOR_THEME_SELECTOR_LIGHT);
+    const smDarkSelector = getSetupButtonElement(smUserDarkColorThemeSelector, DOM_ELEMENT_IDS.SETTINGS_MENU_COLOR_THEME_SELECTOR_DARK);
+
 
     setStoredValue(STORAGE_KEYS.COLOR_THEME, newColorTheme);
     setStoredValue(STORAGE_KEYS.COLOR_THEME_MANAGER, newColorThemeManager);
     document.documentElement.classList.remove(COLOR_THEMES.DARK, COLOR_THEMES.LIGHT);
     document.documentElement.classList.add(newColorTheme);
-    setButtonPressed(systemSelector, newColorThemeManager === COLOR_THEME_MANAGERS.SYSTEM);
-    setButtonPressed(lightSelector, newColorTheme === COLOR_THEMES.LIGHT);
-    setButtonPressed(darkSelector, newColorTheme === COLOR_THEMES.DARK);
-    setButtonActionAvailable(systemSelector, newColorThemeManager !== COLOR_THEME_MANAGERS.SYSTEM);
-    setButtonActionAvailable(lightSelector, newColorTheme !== COLOR_THEMES.LIGHT);
-    setButtonActionAvailable(darkSelector, newColorTheme !== COLOR_THEMES.DARK);
 
+    setButtonPressed(sbSystemSelector, newColorThemeManager === COLOR_THEME_MANAGERS.SYSTEM);
+    setButtonPressed(sbLightSelector, newColorTheme === COLOR_THEMES.LIGHT);
+    setButtonPressed(sbDarkSelector, newColorTheme === COLOR_THEMES.DARK);
+    setButtonActionAvailable(sbSystemSelector, newColorThemeManager !== COLOR_THEME_MANAGERS.SYSTEM);
+    setButtonActionAvailable(sbLightSelector, newColorTheme !== COLOR_THEMES.LIGHT);
+    setButtonActionAvailable(sbDarkSelector, newColorTheme !== COLOR_THEMES.DARK);
+
+    setButtonPressed(smSystemSelector, newColorThemeManager === COLOR_THEME_MANAGERS.SYSTEM);
+    setButtonPressed(smLightSelector, newColorTheme === COLOR_THEMES.LIGHT);
+    setButtonPressed(smDarkSelector, newColorTheme === COLOR_THEMES.DARK);
+    setButtonActionAvailable(smSystemSelector, newColorThemeManager !== COLOR_THEME_MANAGERS.SYSTEM);
+    setButtonActionAvailable(smLightSelector, newColorTheme !== COLOR_THEMES.LIGHT);
+    setButtonActionAvailable(smDarkSelector, newColorTheme !== COLOR_THEMES.DARK);
   }
 
   function setUserLightColorTheme(): void {
@@ -202,15 +221,26 @@ export function createColorThemeManager(): CreateColorThemeManagerType {
     if (typeof window === 'undefined') {
       throw new Error('ColorThemeManager.setup(): browser `window` object is undefined');
     }
-    userLightColorThemeSelector = getButtonElement(DOM_ELEMENT_IDS.COLOR_THEME_SELECTOR_LIGHT);
-    userDarkColorThemeSelector = getButtonElement(DOM_ELEMENT_IDS.COLOR_THEME_SELECTOR_DARK);
-    systemColorThemeManagerSelector = getButtonElement(DOM_ELEMENT_IDS.COLOR_THEME_MANAGER_SELECTOR_SYSTEM);
-    setupButtonLabel(userLightColorThemeSelector);
-    setupButtonLabel(userDarkColorThemeSelector);
-    setupButtonLabel(systemColorThemeManagerSelector);
-    userLightColorThemeSelector.addEventListener('click', clickEventHandler(setUserLightColorTheme));
-    userDarkColorThemeSelector.addEventListener('click', clickEventHandler(setUserDarkColorTheme));
-    systemColorThemeManagerSelector.addEventListener('click', clickEventHandler(setSystemColorThemeManager));
+    sbUserLightColorThemeSelector = getButtonElement(DOM_ELEMENT_IDS.SETTINGS_BAR_COLOR_THEME_SELECTOR_LIGHT);
+    sbUserDarkColorThemeSelector = getButtonElement(DOM_ELEMENT_IDS.SETTINGS_BAR_COLOR_THEME_SELECTOR_DARK);
+    sbSystemColorThemeManagerSelector = getButtonElement(DOM_ELEMENT_IDS.SETTINGS_BAR_COLOR_THEME_MANAGER_SELECTOR_SYSTEM);
+    setupButtonLabel(sbUserLightColorThemeSelector);
+    setupButtonLabel(sbUserDarkColorThemeSelector);
+    setupButtonLabel(sbSystemColorThemeManagerSelector);
+    sbUserLightColorThemeSelector.addEventListener('click', clickEventHandler(setUserLightColorTheme));
+    sbUserDarkColorThemeSelector.addEventListener('click', clickEventHandler(setUserDarkColorTheme));
+    sbSystemColorThemeManagerSelector.addEventListener('click', clickEventHandler(setSystemColorThemeManager));
+
+    smUserLightColorThemeSelector = getButtonElement(DOM_ELEMENT_IDS.SETTINGS_MENU_COLOR_THEME_SELECTOR_LIGHT);
+    smUserDarkColorThemeSelector = getButtonElement(DOM_ELEMENT_IDS.SETTINGS_MENU_COLOR_THEME_SELECTOR_DARK);
+    smSystemColorThemeManagerSelector = getButtonElement(DOM_ELEMENT_IDS.SETTINGS_MENU_COLOR_THEME_MANAGER_SELECTOR_SYSTEM);
+    setupButtonLabel(smUserLightColorThemeSelector);
+    setupButtonLabel(smUserDarkColorThemeSelector);
+    setupButtonLabel(smSystemColorThemeManagerSelector);
+    smUserLightColorThemeSelector.addEventListener('click', clickEventHandler(setUserLightColorTheme));
+    smUserDarkColorThemeSelector.addEventListener('click', clickEventHandler(setUserDarkColorTheme));
+    smSystemColorThemeManagerSelector.addEventListener('click', clickEventHandler(setSystemColorThemeManager));
+
     addSystemColorThemeChangeListener();
     colorThemeManagerState = COLOR_THEME_MANAGER_STATES.SETUP;
   }

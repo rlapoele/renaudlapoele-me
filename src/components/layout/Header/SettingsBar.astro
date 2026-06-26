@@ -1,0 +1,33 @@
+---
+import type {LocaleType} from "@content/i18n/locale";
+import type { SettingsUIType } from "@content/i18n/resume/Types.ts";
+import { SUPPORTED_LOCALES } from "@content/i18n/locale";
+import {DOM_ELEMENT_IDS} from "@scripts/client/colorThemeManagement.ts";
+
+import Icon from "@components/ui/Icon.astro";
+import {combineCssClasses} from "@scripts/shared/combineCssClasses.ts";
+
+type Props = {
+  locale: LocaleType;
+  settings: SettingsUIType;
+  class?: string;
+}
+
+const {
+  locale,
+  settings,
+  class: className = ""
+} = Astro.props as Props;
+const baseCssClasses = "xl:inline-flex hidden flex-nowrap items-center gap-4";
+const classes = combineCssClasses(baseCssClasses, className);
+---
+<div class={classes}>
+  <div class="inline-flex items-center">
+    <a id="rl-settings-bar-language-selector" href={ locale === SUPPORTED_LOCALES.FR ? '/en' : '/fr'} class="c-button c-button--small" aria-label={settings.language.selectorLabel}>{settings.language.selectorLabel}</a>
+  </div>
+  <div class="inline-flex items-center gap-2">
+    <button id={DOM_ELEMENT_IDS.SETTINGS_BAR_COLOR_THEME_MANAGER_SELECTOR_SYSTEM} type="button" class="c-button c-button--icon" title={settings.colorTheme.osThemeSelectorTitle} aria-label={settings.colorTheme.osThemeSelectorTitle} aria-pressed="false" data-active-label={settings.colorTheme.osThemeSelectorActiveTitle}><Icon isDecorative={true} class="size-4" type="computer" /></button>
+    <button id={DOM_ELEMENT_IDS.SETTINGS_BAR_COLOR_THEME_SELECTOR_LIGHT} type="button" class="c-button c-button--icon" title={settings.colorTheme.lightThemeSelectorTitle} aria-label={settings.colorTheme.lightThemeSelectorTitle} aria-pressed="false" data-active-label={settings.colorTheme.lightThemeSelectorActiveTitle}><Icon isDecorative={true} class="size-4" type="sun" /></button>
+    <button id={DOM_ELEMENT_IDS.SETTINGS_BAR_COLOR_THEME_SELECTOR_DARK} type="button" class="c-button c-button--icon" title={settings.colorTheme.darkThemeSelectorTitle} aria-label={settings.colorTheme.darkThemeSelectorTitle} aria-pressed="false" data-active-label={settings.colorTheme.darkThemeSelectorActiveTitle}><Icon isDecorative={true} class="size-4" type="moon" /></button>
+  </div>
+</div>

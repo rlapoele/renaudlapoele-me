@@ -157,6 +157,11 @@
   --rl-header-height: 4rem;
 
 
+  --rl-z-index-scroll-to-top: 10;
+  --rl-z-index-menu-overlay: 20;
+  --rl-z-index-menu: 30;
+
+
   &.dark {
     /* =========
        DARK MODE
@@ -330,6 +335,8 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  body:has(dialog:modal) { overflow: hidden; }
+
   ::selection {
     background: var(--color-accent-primary);
     color: var(--color-ink-inverted);
@@ -338,6 +345,48 @@
   :focus-visible {
     outline: 2px solid var(--color-focus-ring);
     outline-offset: 2px;
+  }
+
+  dialog {
+    opacity: 0;
+    transform: translateY(2rem) scale(0.9);
+    transition:
+      opacity 200ms ease,
+      transform 200ms ease,
+      overlay 200ms ease allow-discrete,
+      display 200ms ease allow-discrete;
+
+    &::backdrop {
+      opacity: 0;
+      transition:
+        opacity 200ms ease,
+        overlay 200ms ease allow-discrete,
+        display 200ms ease allow-discrete;
+    }
+
+    &[open] {
+      opacity: 1;
+      transform: none;
+
+      &::backdrop {
+        opacity: 1;
+      }
+    }
+  }
+
+  @starting-style {
+    dialog[open] {
+      opacity: 0;
+      transform: translateY(2rem) scale(0.9);
+    }
+
+    dialog[open]::backdrop {
+      opacity: 0;
+    }
+  }
+
+  dialog::backdrop {
+    background: --alpha(var(--color-paint-muted)/95%);
   }
 }
 
@@ -389,7 +438,7 @@
     text-decoration-style: dotted;
     text-decoration-color: currentColor;
     text-underline-offset: 0.75ch;
-    transition: color var(--transition-fast), text-decoration-color 750ms ease-in-out;
+    transition: color var(--transition-fast), text-decoration-color 250ms ease-in-out;
     &:hover {
       color: var(--color-accent-primary);
       text-decoration-color: var(--color-accent-primary);
@@ -482,6 +531,8 @@
   -------------------------------------------------------------------------------
   */
   .c-button {
+    --rl-c-button-border-width: 2px;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -495,7 +546,7 @@
     font-weight: var(--font-weight-semibold);
     text-decoration: none;
     border-radius: 9999px;
-    border: 2px solid transparent;
+    border: var(--rl-c-button-border-width) solid transparent;
     cursor: pointer;
     touch-action: manipulation;
     transition: box-shadow 150ms ease-in-out, scale 150ms ease-in-out, background 150ms ease-in-out, color 150ms ease-in-out;
@@ -528,24 +579,27 @@
       background: transparent;/*var(--color-brand-ink);*/
       color: var(--color-brand-paint);
       border-color: var(--color-brand-paint);
+    }
 
-      &:active {
-        background: var(--color-brand-paint);
-        border-color: transparent;
-        color: var(--color-brand-ink);
-      }
+    &.c-button--ghost {
+      background: transparent;
+      color: var(--color-brand-paint);
+      border-color: transparent;
+    }
+
+    &.c-button--secondary:active,
+    &.c-button--ghost:hover {
+      background: var(--color-brand-paint);
+      color: var(--color-brand-ink);
+      border-color: transparent;
     }
 
     &.c-button--icon {
-      border: none;
-      padding-inline: 0.5rem;
-      padding-block: 0.5rem;
+      padding-inline: calc(0.5rem - var(--rl-c-button-border-width));
+      padding-block: calc(0.5rem - var(--rl-c-button-border-width));
 
       &:hover {
         scale: 1.1;
-        & > svg {
-          stroke-width: 1.75;
-        }
       }
 
     }
@@ -1047,13 +1101,18 @@
 
   .c-scroll-to-top {
     position: fixed;
-    z-index: 50;
-    right: calc(var(--spacing) * 6);
-    bottom: calc(var(--spacing) * 6);
+    /*z-index: var(--rl-z-index-scroll-to-top);*/
+    right: calc(var(--spacing) * 4);
+    bottom: calc(var(--spacing) * 4);
     display: grid;
     place-items: center;
     opacity: 1;
     pointer-events: auto;
+
+    @media (min-width: 80rem) {
+      right: calc(var(--spacing) * 6);
+      bottom: calc(var(--spacing) * 6);
+    }
   }
 
   /* Progressive enhancement */
@@ -1078,5 +1137,27 @@
         pointer-events: auto;
       }
     }
+  }
+
+  .c-menu-title {
+    font-family: var(--font-sans);
+    font-size: var(--text-3xl);
+    font-weight: var(--font-weight-extralight);
+    letter-spacing: var(--tracking-wide);
+    line-height: var(--text-2xl--line-height);
+    color: var(--color-ink-tertiary);
+    text-transform: uppercase;
+
+    @media (min-width: 40rem) {
+      font-size: var(--text-4xl);
+    }
+  }
+
+  .c-menu-option-group-label {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+    color: var(--color-ink-tertiary);
   }
 }

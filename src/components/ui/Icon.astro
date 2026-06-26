@@ -34,6 +34,7 @@ type IconType = keyof typeof ICON_PATHS;
 type Props = {
   type: IconType;
   class?: string;
+  strokeWidth?: number;
   isDecorative?: boolean;
   isStandalone?: boolean;
   isLinkWrapped?: boolean;
@@ -44,6 +45,7 @@ type Props = {
 const {
   type,
   class: className,
+  strokeWidth = 1.75,
   isDecorative = true,
   isStandalone = false,
   isLinkWrapped = false,
@@ -70,7 +72,7 @@ const path = ICON_PATHS[type];
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      stroke-width="1.5"
+      stroke-width={strokeWidth}
       stroke="currentColor"
       class={classes}
       aria-hidden="true"

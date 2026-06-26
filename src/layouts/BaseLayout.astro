@@ -9,7 +9,7 @@ import { config } from "@content/config";
 import { SITE_URL } from "astro:env/server";
 import { normalizeSiteUrl } from "@scripts/server/configUtils.ts";
 
-import Header from "@components/layout/Header.astro";
+import Header from "@components/layout/Header/Header.astro";
 import Footer from "@components/layout/Footer.astro";
 import Icon from "@components/ui/Icon.astro";
 
@@ -70,9 +70,9 @@ const siteUrl = normalizeSiteUrl(SITE_URL);
   </head>
 
   <body>
-    <div class="min-h-full relative">
+    <div class="relative min-h-full">
       <div class="c-grid-overlay"></div>
-      <div class="relative z-20 w-full">
+      <div class="relative w-full">
         <a href="#main-content" class="c-skip-link">Skip to main content</a>
         <Header locale={locale} siteUrl={siteUrl} navItemsData={config.header.navBarItems} navItemLabels={resume.ui.header.navigation} settings={resume.ui.header.settings} />
         <main id="main-content" tabindex="-1" role="main">
@@ -84,6 +84,7 @@ const siteUrl = normalizeSiteUrl(SITE_URL);
                 tagline={resume.content.footer.tagline}/>
       </div>
     </div>
+
     <script>
       import { setupInteractions } from "@scripts/client/interactions.ts";
       setupInteractions();
