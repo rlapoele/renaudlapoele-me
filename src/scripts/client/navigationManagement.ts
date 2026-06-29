@@ -50,9 +50,7 @@ export function createNavigationManager(): CreateNavigationManagerType {
 
   function getHashTarget(hash: string): HTMLElement | null {
     const id = hash.slice(1);
-
     if (!id) return null;
-
     return document.getElementById(decodeURIComponent(id));
   }
 
@@ -74,23 +72,18 @@ export function createNavigationManager(): CreateNavigationManagerType {
 
   function handleHashNavigation(hash: string, shouldUpdateHistory = false) {
     const target = getHashTarget(hash);
-
     if (!target) return;
-
     openDetailsAndScrollToTarget(target, hash, shouldUpdateHistory);
   }
 
   function handleLinkClick(event: MouseEvent) {
     const link = event.currentTarget as HTMLAnchorElement;
-
     if (!link.hash) return;
 
     const target = getHashTarget(link.hash);
-
     if (!target) return;
 
     event.preventDefault();
-
     openDetailsAndScrollToTarget(target, link.hash, true);
   }
 
