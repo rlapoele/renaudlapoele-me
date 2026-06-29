@@ -107,6 +107,7 @@
   --rl-color-paint-raised: var(--rl-color-neutral-50);
   --rl-color-paint-badge:  var(--rl-color-neutral-300);
   --rl-color-paint-tag:    var(--rl-color-neutral-400);
+  --rl-color-paint-inverted: var(--rl-color-neutral-950);
 
   /* ===== TEXT ===== */
   --rl-color-ink-primary:   var(--rl-color-neutral-900);
@@ -121,6 +122,7 @@
   /* ===== ACCENT ===== */
   --rl-color-accent-primary:      var(--rl-color-accent-600);
   --rl-color-accent-primary-soft: var(--rl-color-accent-200);
+  --rl-color-accent-primary-inverted: var(--rl-color-accent-300);
 
   /* ===== BRAND ===== */
   --rl-color-brand-paint: var(--rl-color-neutral-900);
@@ -174,6 +176,7 @@
     --rl-color-paint-raised: var(--rl-color-neutral-700);
     --rl-color-paint-badge:  var(--rl-color-neutral-825);
     --rl-color-paint-tag:    var(--rl-color-neutral-800);
+    --rl-color-paint-inverted: var(--rl-color-neutral-200);
 
     /* ===== TEXT ===== */
     --rl-color-ink-primary:   var(--rl-color-neutral-100);
@@ -188,6 +191,7 @@
     /* ===== ACCENT ===== */
     --rl-color-accent-primary:      var(--rl-color-accent-300);
     --rl-color-accent-primary-soft: var(--rl-color-accent-200);
+    --rl-color-accent-primary-inverted: var(--rl-color-accent-600);
 
     /* ===== BRAND ===== */
     --rl-color-brand-paint: var(--rl-color-neutral-100);
@@ -233,6 +237,7 @@
   --color-paint-base:   var(--rl-color-paint-base);
   --color-paint-muted:  var(--rl-color-paint-muted);
   --color-paint-card:   var(--rl-color-paint-card);
+  --color-paint-menu:   var(--rl-color-paint-inverted);
   --color-paint-badge:  var(--rl-color-paint-badge);
   --color-paint-raised: var(--rl-color-paint-raised);
   --color-paint-tag:    var(--rl-color-paint-tag);
@@ -250,7 +255,7 @@
   /* ===== ACCENT ===== */
   --color-accent-primary:      var(--rl-color-accent-primary);
   --color-accent-primary-soft: var(--rl-color-accent-primary-soft);
-
+  --color-accent-primary-inverted: var(--rl-color-accent-primary-inverted);
   /* ===== BRAND ===== */
   --color-brand-paint: var(--rl-color-brand-paint);
   --color-brand-paint-hover: var(--rl-color-brand-paint-hover);
@@ -423,12 +428,6 @@
     padding-block-end: calc(var(--spacing) * 4);
     page-break-after: always;
     break-after: page;
-
-    /*
-    &:first-of-type {
-      min-height: 100svh;
-    }
-    */
   }
 
   .c-text-link,
@@ -438,7 +437,7 @@
     text-decoration-style: dotted;
     text-decoration-color: currentColor;
     text-underline-offset: 0.75ch;
-    transition: color var(--transition-fast), text-decoration-color 250ms ease-in-out;
+    transition: color var(--transition-fast), text-decoration-color 150ms ease-in-out;
     &:hover {
       color: var(--color-accent-primary);
       text-decoration-color: var(--color-accent-primary);
@@ -637,6 +636,17 @@
     &.c-card--interactive:hover {
       scale: 101%;
       box-shadow: var(--shadow-lg);
+    }
+
+    &.c-card--menu {
+      box-shadow: var(--shadow-xl);
+      background-color: var(--color-paint-menu);
+      color: var(--color-ink-inverted);
+    }
+
+    &.c-card--thin {
+      padding-block: calc(var(--spacing) * 4);
+      padding-inline: calc(var(--spacing) * 5);
     }
 
     &.c-card--tight {

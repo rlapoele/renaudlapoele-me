@@ -804,8 +804,8 @@ export const resumeFR: ResumeType = {
           keyFocus: { label: "Repères clés" },
           skills: { label: "Compétences" }
         },
-        education: { label: "Éducation" },
         certifications: { label: "Certifications" },
+        education: { label: "Éducation" },
         languages: { label: "Langues" },
       },
       contact: {

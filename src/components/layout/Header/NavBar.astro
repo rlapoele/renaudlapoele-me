@@ -1,33 +1,72 @@
 ---
-import type {NavBarItemType} from "@content/config/Types.ts";
+import type {
+  NavBarItemType,
+  NavItemKeyType,
+} from "@content/config/Types.ts";
 import type {NavigationUIType} from "@content/i18n/resume/Types.ts";
 import Icon from "@components/ui/Icon.astro";
 import {combineCssClasses} from "@scripts/shared/combineCssClasses.ts";
+import Card from "@components/ui/Card.astro";
+
 type Props = {
   navItemsData: NavBarItemType[];
   navItemLabels: NavigationUIType;
   class?: string;
 };
+
 const {
   navItemsData,
   navItemLabels,
   class: className = ""
 } = Astro.props as Props;
+
 const baseCssClasses = "hidden xl:flex flex-nowrap items-center justify-center";
 const classes = combineCssClasses(baseCssClasses, className);
+
+const navItemLabelLookup = {
+  about: navItemLabels.navItems.about,
+  careerOverview: navItemLabels.navItems.careerOverview,
+  snapshot: navItemLabels.navItems.careerOverview.items.snapshot,
+  impacts: navItemLabels.navItems.careerOverview.items.impacts,
+  works: navItemLabels.navItems.careerOverview.items.works,
+  skills: navItemLabels.navItems.careerOverview.items.skills,
+  careerDetails: navItemLabels.navItems.careerDetails,
+  experiences: navItemLabels.navItems.careerDetails.items.experiences,
+  education: navItemLabels.navItems.careerDetails.items.education,
+  certifications: navItemLabels.navItems.careerDetails.items.certifications,
+  languages: navItemLabels.navItems.careerDetails.items.languages,
+  contact: navItemLabels.navItems.contact,
+} satisfies Record<NavItemKeyType, { label: string }>;
 ---
 <nav role="navigation" class={classes}>
   <ul class="px-6 flex flex-nowrap gap-8 items-center justify-center">
     {navItemsData.map((item) => (
       <li>
         {
-          !!item?.items ?
-            <a href={item.url} class="uppercase c-nav-link text-sm font-semibold dark:font-medium pbs-6 pbe-6 inline-flex items-center gap-0.5">
-              <span>{navItemLabels.navItems[item.key].label}</span>
-              <Icon isDecorative={true} type="chevron-right" class="size-2.5 opacity-60" strokeWidth={2.5}/>
-            </a> :
-            <a href={item.url} class={`${className} uppercase c-nav-link text-sm font-semibold dark:font-medium pbs-6 pbe-6 inline-block`}>
-              {navItemLabels.navItems[item.key].label}
+          item.items.length > 0 ?
+            <div class="relative group">
+              <a href={item.url} class="uppercase c-nav-link text-sm font-semibold dark:font-medium pbs-6 pbe-6 inline-flex items-center gap-0.5">
+                <span>{navItemLabelLookup[item.key].label}</span>
+                <Icon isDecorative={true} type="chevron-right" class="transition-[rotate] duration-150 group-hover:rotate-90 size-2.5 opacity-60" strokeWidth={2.5}/>
+              </a>
+
+              <Card as="div" variant="menu" padding="sm" class="hidden group-hover:block absolute top-14 left-1/2 -translate-x-1/2">
+                <ul class="flex flex-col items-stretch flex-nowrap gap-1.5">
+                  {item.items.map((subItem) => (
+                    <li>
+                      <a id={`rl-navbar-link-${subItem.key}`} href={subItem.url} class="uppercase c-nav-link text-accent-primary-inverted hover:decoration-accent-primary-inverted text-xs font-semibold dark:font-medium pbs-1.5 pbe-1.5 block">
+                        {navItemLabelLookup[subItem.key].label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            </div>
+
+
+              :
+            <a href={item.url} class="uppercase c-nav-link text-sm font-semibold dark:font-medium pbs-6 pbe-6 inline-block">
+              {navItemLabelLookup[item.key].label}
             </a>
         }
       </li>

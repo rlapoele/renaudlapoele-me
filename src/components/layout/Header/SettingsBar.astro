@@ -18,7 +18,7 @@ const {
   settings,
   class: className = ""
 } = Astro.props as Props;
-const baseCssClasses = "xl:inline-flex hidden flex-nowrap items-center gap-4";
+const baseCssClasses = "flex-nowrap items-center gap-4";
 const classes = combineCssClasses(baseCssClasses, className);
 ---
 <div class={classes}>

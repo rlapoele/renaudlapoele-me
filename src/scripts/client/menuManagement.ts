@@ -23,7 +23,7 @@ export function createMenuManager(): CreateMenuManagerType {
   let menuSettingsElement: HTMLElement | null = null;
   let menuTriggerNavElement: HTMLElement | null = null;
   let menuNavElement: HTMLElement | null = null;
-
+  
   return {
     setup: () => {
       if (menuManagerState === MENU_MANAGER_STATES.SETUP) {

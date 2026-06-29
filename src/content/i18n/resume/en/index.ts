@@ -745,8 +745,8 @@ export const resumeEN : ResumeType = {
             label: "Details",
             items: {
               experiences: { label: "Experience" },
-              education: { label: "Education" },
               certifications: { label: "Certifications" },
+              education: { label: "Education" },
               languages: { label: "Languages" },
             },
           },

@@ -48,3 +48,15 @@ Concise history of meaningful agent-made changes.
 
 - Fixed native dialog fade transitions in `src/styles/global.css` by adding `@starting-style` and discrete `display`/`overlay` transitions for the dialog and backdrop.
 - Verified with `npm run astro -- check` and `npm run build`; both passed with existing unused-code hints from `astro check`.
+
+## 2026-06-29
+
+- Simplified header navigation typing around `header.navigation.items` in `src/content/config/Types.ts` and corrected the matching config shape in `src/content/config/index.ts`.
+- Updated `src/layouts/BaseLayout.astro` and `src/components/layout/Header/NavBar.astro` to use the new navigation config shape and render empty `items` arrays as simple links.
+- Verified with `npm run astro -- check` and `npm run build`; `astro check` passed with existing unused-code hints.
+- Fixed career details submenu navigation in `src/scripts/client/navigationManagement.ts` by replacing cancelled default anchor navigation plus `window.navigation.navigate()` with explicit hash history update and `scrollIntoView()` after opening the details section.
+- Re-verified with `npm run astro -- check` and `npm run build`; browser click verification was blocked because the in-app browser was unavailable and Playwright browser binaries are not installed.
+- Adjusted the career details submenu scroll timing to wait for the details `toggle` event and two animation frames before calling `scrollIntoView()`, so the target has an open, settled layout box.
+- Re-verified with `npm run astro -- check` and `npm run build`; both passed with existing unused-code hints from `astro check`.
+- Added initial hash and `hashchange` handling in `src/scripts/client/navigationManagement.ts` so direct URLs such as `/#certifications` open the containing details section before scrolling to the embedded target.
+- Re-verified with `npm run astro -- check` and `npm run build`; both passed with existing unused-code hints from `astro check`.

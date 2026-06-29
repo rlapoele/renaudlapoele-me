@@ -74,7 +74,7 @@ const siteUrl = normalizeSiteUrl(SITE_URL);
       <div class="c-grid-overlay"></div>
       <div class="relative w-full">
         <a href="#main-content" class="c-skip-link">Skip to main content</a>
-        <Header locale={locale} siteUrl={siteUrl} navItemsData={config.header.navBarItems} navItemLabels={resume.ui.header.navigation} settings={resume.ui.header.settings} />
+        <Header locale={locale} siteUrl={siteUrl} navItemsData={config.header.navigation.items} navItemLabels={resume.ui.header.navigation} settings={resume.ui.header.settings} />
         <main id="main-content" tabindex="-1" role="main">
           <slot />
         </main>
