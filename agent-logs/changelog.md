@@ -69,3 +69,7 @@ Concise history of meaningful agent-made changes.
 - Re-verified with `npm run astro -- check`; it passed with existing unrelated unused-code hints.
 - Wired all mobile navigation menu links into `src/scripts/client/navigationManagement.ts`, validating their DOM IDs during setup and closing the dialog indicated by each clicked link's `data-dialog-id` before scrolling.
 - Re-verified with `npm run astro -- check`; it passed with existing unrelated unused-code hints.
+
+## 2026-07-02
+
+- Prepared release `v0.0.3-alpha.6` by bumping package metadata after merging responsive menu/navigation work toward the `releases` branch.
