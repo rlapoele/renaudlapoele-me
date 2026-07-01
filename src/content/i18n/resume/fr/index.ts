@@ -1,4 +1,4 @@
-import type { ResumeType } from "../Types.ts";
+import type { ResumeType } from "@content/i18n/resume/Types.ts";
 
 export const resumeFR: ResumeType = {
   data: {
@@ -733,8 +733,11 @@ export const resumeFR: ResumeType = {
   ui: {
     header: {
       navigation: {
-        menuOpenSelectorLabel: "Ouvrir le menu de navigation",
-        menuCloseSelectorLabel: "Fermer le menu de navigation",
+        menu: {
+          title: "Navigation",
+          openTriggerLabel: "Ouvrir le menu de navigation",
+          closeTriggerLabel: "Fermer le menu de navigation",
+        },
         navItems: {
           about: { label: "Profil" },
           careerOverview: {
@@ -759,8 +762,16 @@ export const resumeFR: ResumeType = {
         }
       },
       settings: {
-        menuOpenSelectorLabel: "Ouvrir le menu de paramétrage",
-        menuCloseSelectorLabel: "Fermer le menu de paramétrage",
+        menu: {
+          title: "Paramétrage",
+          openTriggerLabel: "Ouvrir le menu de paramétrage",
+          closeTriggerLabel: "Fermer le menu de paramétrage",
+          languageLabel: "Langage",
+          colorThemeLabel: "Thème Couleur",
+          buttonSystemLabel: "Système",
+          buttonLightLabel: "Clair",
+          buttonDarkLabel: "Sombre",
+        },
         language: {
           selectorLabel: "English"
         },
@@ -796,8 +807,8 @@ export const resumeFR: ResumeType = {
           keyFocus: { label: "Repères clés" },
           skills: { label: "Compétences" }
         },
-        education: { label: "Éducation" },
         certifications: { label: "Certifications" },
+        education: { label: "Éducation" },
         languages: { label: "Langues" },
       },
       contact: {

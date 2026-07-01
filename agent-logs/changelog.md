@@ -43,3 +43,33 @@ Concise history of meaningful agent-made changes.
 - Added explicit logging for Resend API-level contact form send failures in `src/pages/api/sendMessage.ts`, preserving the generic client-facing 500 response while recording safe diagnostic fields.
 - Renamed the contact form success log to indicate the email was sent and included the Resend email id when available.
 - Verified with `npm run astro -- check`; the command passed with existing unused-code hints.
+
+## 2026-06-26
+
+- Fixed native dialog fade transitions in `src/styles/global.css` by adding `@starting-style` and discrete `display`/`overlay` transitions for the dialog and backdrop.
+- Verified with `npm run astro -- check` and `npm run build`; both passed with existing unused-code hints from `astro check`.
+
+## 2026-06-29
+
+- Simplified header navigation typing around `header.navigation.items` in `src/content/config/Types.ts` and corrected the matching config shape in `src/content/config/index.ts`.
+- Updated `src/layouts/BaseLayout.astro` and `src/components/layout/Header/NavBar.astro` to use the new navigation config shape and render empty `items` arrays as simple links.
+- Verified with `npm run astro -- check` and `npm run build`; `astro check` passed with existing unused-code hints.
+- Fixed career details submenu navigation in `src/scripts/client/navigationManagement.ts` by replacing cancelled default anchor navigation plus `window.navigation.navigate()` with explicit hash history update and `scrollIntoView()` after opening the details section.
+- Re-verified with `npm run astro -- check` and `npm run build`; browser click verification was blocked because the in-app browser was unavailable and Playwright browser binaries are not installed.
+- Adjusted the career details submenu scroll timing to wait for the details `toggle` event and two animation frames before calling `scrollIntoView()`, so the target has an open, settled layout box.
+- Re-verified with `npm run astro -- check` and `npm run build`; both passed with existing unused-code hints from `astro check`.
+- Added initial hash and `hashchange` handling in `src/scripts/client/navigationManagement.ts` so direct URLs such as `/#certifications` open the containing details section before scrolling to the embedded target.
+- Re-verified with `npm run astro -- check` and `npm run build`; both passed with existing unused-code hints from `astro check`.
+
+## 2026-07-01
+
+- Removed the unused `careerDetailsElement` setup reference and now-unused `CAREER_DETAILS` navigation ID from `src/scripts/client/navigationManagement.ts`; hash navigation already opens the closest containing `<details>` for the target.
+- Verified with `npm run astro -- check`; it passed with existing unrelated unused-code hints.
+- Added a scoped `closeDialog(id)` helper in `src/scripts/client/navigationManagement.ts` that safely finds an open `HTMLDialogElement` by id and closes it via `close()`.
+- Re-verified with `npm run astro -- check`; it passed with existing unrelated unused-code hints.
+- Wired all mobile navigation menu links into `src/scripts/client/navigationManagement.ts`, validating their DOM IDs during setup and closing the dialog indicated by each clicked link's `data-dialog-id` before scrolling.
+- Re-verified with `npm run astro -- check`; it passed with existing unrelated unused-code hints.
+
+## 2026-07-02
+
+- Prepared release `v0.0.3-alpha.6` by bumping package metadata after merging responsive menu/navigation work toward the `releases` branch.

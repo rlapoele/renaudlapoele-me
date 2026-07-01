@@ -25,15 +25,19 @@ export type NavBarItemKeyType =
   "careerDetails" |
   "contact";
 
-export type NavItemType = {
-  key: NavItemKeyType;
+export type NavBarSubItemKeyType = Exclude<NavItemKeyType, NavBarItemKeyType>;
+
+export type NavLinkType<Key extends NavItemKeyType = NavItemKeyType> = {
+  key: Key;
   url: string;
-  items?: NavItemType[];
 };
 
-export type NavBarItemType = Omit<NavItemType, "key" | "items"> & {
-  key: NavBarItemKeyType;
-  items?: NavItemType[];
+export type NavBarItemType = NavLinkType<NavBarItemKeyType> & {
+  items: NavLinkType<NavBarSubItemKeyType>[];
+};
+
+export type NavigationType = {
+  items: NavBarItemType[];
 };
 
 export type LinkType = { href: string };
@@ -53,7 +57,7 @@ export type HeroConfigType = {
 export type ConfigType = {
   header: {
     rl: RLItemType;
-    navBarItems: NavBarItemType[];
+    navigation: NavigationType;
   };
   sections: {
     hero: HeroConfigType;

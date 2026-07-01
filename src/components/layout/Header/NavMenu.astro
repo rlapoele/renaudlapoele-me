@@ -1,0 +1,77 @@
+---
+import type {
+  NavBarItemType,
+  NavItemKeyType,
+} from "@content/config/Types.ts";
+import type {NavigationUIType} from "@content/i18n/resume/Types.ts";
+import { DOM_ELEMENT_IDS as MENU_ELEMENT_IDS} from "@scripts/client/menuManagement.ts";
+import {combineCssClasses} from "@scripts/shared/combineCssClasses.ts";
+import Modal from "@components/ui/Modal.astro";
+
+type Props = {
+  navItemsData: NavBarItemType[];
+  navItemLabels: NavigationUIType;
+  class?: string;
+};
+
+const {
+  navItemsData,
+  navItemLabels,
+  class: className = ""
+} = Astro.props as Props;
+
+const baseCssClasses = "";
+const classes = combineCssClasses(baseCssClasses, className);
+
+const navItemLabelLookup = {
+  about: navItemLabels.navItems.about,
+  careerOverview: navItemLabels.navItems.careerOverview,
+  snapshot: navItemLabels.navItems.careerOverview.items.snapshot,
+  impacts: navItemLabels.navItems.careerOverview.items.impacts,
+  works: navItemLabels.navItems.careerOverview.items.works,
+  skills: navItemLabels.navItems.careerOverview.items.skills,
+  careerDetails: navItemLabels.navItems.careerDetails,
+  experiences: navItemLabels.navItems.careerDetails.items.experiences,
+  education: navItemLabels.navItems.careerDetails.items.education,
+  certifications: navItemLabels.navItems.careerDetails.items.certifications,
+  languages: navItemLabels.navItems.careerDetails.items.languages,
+  contact: navItemLabels.navItems.contact,
+} satisfies Record<NavItemKeyType, { label: string }>;
+---
+<Modal modalId={MENU_ELEMENT_IDS.MENU_NAV}
+       closeButtonTitle={navItemLabels.menu.closeTriggerLabel}
+       closeButtonAriaLabel={navItemLabels.menu.closeTriggerLabel}
+       class={classes}>
+  <h2 class="c-menu-title text-center">{navItemLabels.menu.title}</h2>
+  <nav role="navigation">
+    <ul class="text-center">
+      {navItemsData.map((navItem) => (
+        <li class="border-b last:border-b-0 border-dotted border-line-subtle pbe-3 mbe-4">
+          {
+            navItem.items.length > 0
+              ?
+                <a id={`rl-navmenu-link-${navItem.key}`}
+                   class="c-nav-link block py-1 uppercase text-ink-tertiary hover:text-accent-primary"
+                   href={navItem.url}
+                   data-dialog-id={MENU_ELEMENT_IDS.MENU_NAV}>{navItemLabelLookup[navItem.key].label}</a>
+                <ul class="pbs-0.5 mbe-2">
+                  {navItem.items.map((subItem) => (
+                    <li>
+                      <a id={`rl-navmenu-link-${subItem.key}`}
+                         class="c-nav-link block py-1 text-sm leading-relaxed uppercase"
+                         href={subItem.url}
+                         data-dialog-id={MENU_ELEMENT_IDS.MENU_NAV}>{navItemLabelLookup[subItem.key].label}</a>
+                    </li>
+                  ))}
+                </ul>
+              :
+                <a id={`rl-navmenu-link-${navItem.key}`}
+                   class="c-nav-link block py-1 uppercase text-ink-tertiary hover:text-accent-primary"
+                   href={navItem.url}
+                   data-dialog-id={MENU_ELEMENT_IDS.MENU_NAV}>{navItemLabelLookup[navItem.key].label}</a>
+          }
+        </li>
+      ))}
+    </ul>
+  </nav>
+</Modal>

@@ -1,4 +1,4 @@
-import type { ResumeType } from "../Types.ts";
+import type { ResumeType } from "@content/i18n/resume/Types.ts";
 
 export const resumeEN : ResumeType = {
   data: {
@@ -728,8 +728,11 @@ export const resumeEN : ResumeType = {
   ui: {
     header: {
       navigation: {
-        menuOpenSelectorLabel: "Open navigation menu",
-        menuCloseSelectorLabel: "Close navigation menu",
+        menu: {
+          title: "Navigation",
+          openTriggerLabel: "Open navigation menu",
+          closeTriggerLabel: "Close navigation menu",
+        },
         navItems: {
           about: { label: "Profile" },
           careerOverview: {
@@ -745,8 +748,8 @@ export const resumeEN : ResumeType = {
             label: "Details",
             items: {
               experiences: { label: "Experience" },
-              education: { label: "Education" },
               certifications: { label: "Certifications" },
+              education: { label: "Education" },
               languages: { label: "Languages" },
             },
           },
@@ -754,8 +757,16 @@ export const resumeEN : ResumeType = {
         }
       },
       settings: {
-        menuOpenSelectorLabel: "Open settings menu",
-        menuCloseSelectorLabel: "Close settings menu",
+        menu: {
+          title: "Settings",
+          openTriggerLabel: "Open Settings",
+          closeTriggerLabel: "Close Settings",
+          languageLabel: "Language",
+          colorThemeLabel: "Color Theme",
+          buttonSystemLabel: "System",
+          buttonLightLabel: "Light",
+          buttonDarkLabel: "Dark",
+        },
         language: {
           selectorLabel: "Français"
         },
