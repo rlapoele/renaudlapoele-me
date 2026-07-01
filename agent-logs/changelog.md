@@ -60,3 +60,12 @@ Concise history of meaningful agent-made changes.
 - Re-verified with `npm run astro -- check` and `npm run build`; both passed with existing unused-code hints from `astro check`.
 - Added initial hash and `hashchange` handling in `src/scripts/client/navigationManagement.ts` so direct URLs such as `/#certifications` open the containing details section before scrolling to the embedded target.
 - Re-verified with `npm run astro -- check` and `npm run build`; both passed with existing unused-code hints from `astro check`.
+
+## 2026-07-01
+
+- Removed the unused `careerDetailsElement` setup reference and now-unused `CAREER_DETAILS` navigation ID from `src/scripts/client/navigationManagement.ts`; hash navigation already opens the closest containing `<details>` for the target.
+- Verified with `npm run astro -- check`; it passed with existing unrelated unused-code hints.
+- Added a scoped `closeDialog(id)` helper in `src/scripts/client/navigationManagement.ts` that safely finds an open `HTMLDialogElement` by id and closes it via `close()`.
+- Re-verified with `npm run astro -- check`; it passed with existing unrelated unused-code hints.
+- Wired all mobile navigation menu links into `src/scripts/client/navigationManagement.ts`, validating their DOM IDs during setup and closing the dialog indicated by each clicked link's `data-dialog-id` before scrolling.
+- Re-verified with `npm run astro -- check`; it passed with existing unrelated unused-code hints.

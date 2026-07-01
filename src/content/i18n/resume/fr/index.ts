@@ -733,8 +733,11 @@ export const resumeFR: ResumeType = {
   ui: {
     header: {
       navigation: {
-        menuOpenSelectorLabel: "Ouvrir le menu de navigation",
-        menuCloseSelectorLabel: "Fermer le menu de navigation",
+        menu: {
+          title: "Navigation",
+          openTriggerLabel: "Ouvrir le menu de navigation",
+          closeTriggerLabel: "Fermer le menu de navigation",
+        },
         navItems: {
           about: { label: "Profil" },
           careerOverview: {

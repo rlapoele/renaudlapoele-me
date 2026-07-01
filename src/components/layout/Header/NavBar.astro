@@ -4,8 +4,8 @@ import type {
   NavItemKeyType,
 } from "@content/config/Types.ts";
 import type {NavigationUIType} from "@content/i18n/resume/Types.ts";
-import Icon from "@components/ui/Icon.astro";
 import {combineCssClasses} from "@scripts/shared/combineCssClasses.ts";
+import Icon from "@components/ui/Icon.astro";
 import Card from "@components/ui/Card.astro";
 
 type Props = {
@@ -43,7 +43,8 @@ const navItemLabelLookup = {
     {navItemsData.map((item) => (
       <li>
         {
-          item.items.length > 0 ?
+          item.items.length > 0
+            ?
             <div class="relative group">
               <a href={item.url} class="uppercase c-nav-link text-sm font-semibold dark:font-medium pbs-6 pbe-6 inline-flex items-center gap-0.5">
                 <span>{navItemLabelLookup[item.key].label}</span>
@@ -54,7 +55,7 @@ const navItemLabelLookup = {
                 <ul class="flex flex-col items-stretch flex-nowrap gap-1.5">
                   {item.items.map((subItem) => (
                     <li>
-                      <a id={`rl-navbar-link-${subItem.key}`} href={subItem.url} class="uppercase c-nav-link text-accent-primary-inverted hover:decoration-accent-primary-inverted text-xs font-semibold dark:font-medium pbs-1.5 pbe-1.5 block">
+                      <a id={`rl-navbar-link-${subItem.key}`} href={subItem.url} class="uppercase c-nav-link text-ink-inverted hover:text-accent-primary-inverted hover:decoration-accent-primary-inverted text-xs font-medium dark:font-semibold pbs-1.5 pbe-1.5 block">
                         {navItemLabelLookup[subItem.key].label}
                       </a>
                     </li>
@@ -62,9 +63,7 @@ const navItemLabelLookup = {
                 </ul>
               </Card>
             </div>
-
-
-              :
+            :
             <a href={item.url} class="uppercase c-nav-link text-sm font-semibold dark:font-medium pbs-6 pbe-6 inline-block">
               {navItemLabelLookup[item.key].label}
             </a>

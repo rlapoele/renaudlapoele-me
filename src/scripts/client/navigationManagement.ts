@@ -4,12 +4,18 @@ export const DOM_ELEMENT_IDS = {
   LINK_NAVBAR_CERTIFICATIONS: "rl-navbar-link-certifications",
   LINK_NAVBAR_LANGUAGES: "rl-navbar-link-languages",
 
+  LINK_NAVMENU_ABOUT: "rl-navmenu-link-about",
+  LINK_NAVMENU_CAREEROVERVIEW: "rl-navmenu-link-careerOverview",
+  LINK_NAVMENU_SNAPSHOT: "rl-navmenu-link-snapshot",
+  LINK_NAVMENU_IMPACTS: "rl-navmenu-link-impacts",
+  LINK_NAVMENU_WORKS: "rl-navmenu-link-works",
+  LINK_NAVMENU_SKILLS: "rl-navmenu-link-skills",
+  LINK_NAVMENU_CAREERDETAILS: "rl-navmenu-link-careerDetails",
   LINK_NAVMENU_EXPERIENCES: "rl-navmenu-link-experiences",
   LINK_NAVMENU_EDUCATION: "rl-navmenu-link-education",
-  LINK_NAVMENU_CERTIFICATIONS: "rl-navmanu-link-certifications",
+  LINK_NAVMENU_CERTIFICATIONS: "rl-navmenu-link-certifications",
   LINK_NAVMENU_LANGUAGES: "rl-navmenu-link-languages",
-
-  CAREER_DETAILS: "career-details"
+  LINK_NAVMENU_CONTACT: "rl-navmenu-link-contact",
 } as const;
 
 
@@ -31,7 +37,18 @@ export function createNavigationManager(): CreateNavigationManagerType {
   let linkNavbarEducationElement: HTMLAnchorElement | null = null;
   let linkNavbarCertificationsElement: HTMLAnchorElement | null = null;
   let linkNavbarLanguagesElement: HTMLAnchorElement | null = null;
-  let careerDetailsElement: HTMLDetailsElement | null = null;
+  let linkNavmenuAboutElement: HTMLAnchorElement | null = null;
+  let linkNavmenuCareerOverviewElement: HTMLAnchorElement | null = null;
+  let linkNavmenuSnapshotElement: HTMLAnchorElement | null = null;
+  let linkNavmenuImpactsElement: HTMLAnchorElement | null = null;
+  let linkNavmenuWorksElement: HTMLAnchorElement | null = null;
+  let linkNavmenuSkillsElement: HTMLAnchorElement | null = null;
+  let linkNavmenuCareerDetailsElement: HTMLAnchorElement | null = null;
+  let linkNavmenuExperiencesElement: HTMLAnchorElement | null = null;
+  let linkNavmenuEducationElement: HTMLAnchorElement | null = null;
+  let linkNavmenuCertificationsElement: HTMLAnchorElement | null = null;
+  let linkNavmenuLanguagesElement: HTMLAnchorElement | null = null;
+  let linkNavmenuContactElement: HTMLAnchorElement | null = null;
 
   function scrollToTargetElement(target: HTMLElement, hash: string, shouldUpdateHistory = false) {
     requestAnimationFrame(() => {
@@ -52,6 +69,12 @@ export function createNavigationManager(): CreateNavigationManagerType {
     const id = hash.slice(1);
     if (!id) return null;
     return document.getElementById(decodeURIComponent(id));
+  }
+
+  function closeDialog(id: string) {
+    const dialog = document.getElementById(id);
+    if (!(dialog instanceof HTMLDialogElement) || !dialog.open) return;
+    dialog.close();
   }
 
   function openDetailsAndScrollToTarget(target: HTMLElement, hash: string, shouldUpdateHistory = false) {
@@ -84,6 +107,10 @@ export function createNavigationManager(): CreateNavigationManagerType {
     if (!target) return;
 
     event.preventDefault();
+    const dialogId = link.dataset.dialogId;
+    if (dialogId) {
+      closeDialog(dialogId);
+    }
     openDetailsAndScrollToTarget(target, link.hash, true);
   }
 
@@ -119,12 +146,74 @@ export function createNavigationManager(): CreateNavigationManagerType {
       if (!linkNavbarLanguagesElement) {
         throw new Error(`NavigationManager.setup(): could not find navigation link element ${DOM_ELEMENT_IDS.LINK_NAVBAR_LANGUAGES}`);
       }
-      careerDetailsElement = document.getElementById(DOM_ELEMENT_IDS.CAREER_DETAILS) as HTMLDetailsElement;
-      if (!careerDetailsElement) {
-        throw new Error(`NavigationManager.setup(): could not find anchor element ${DOM_ELEMENT_IDS.CAREER_DETAILS}`);
+
+      linkNavmenuAboutElement = document.getElementById(DOM_ELEMENT_IDS.LINK_NAVMENU_ABOUT) as HTMLAnchorElement;
+      if (!linkNavmenuAboutElement) {
+        throw new Error(`NavigationManager.setup(): could not find navigation menu link element ${DOM_ELEMENT_IDS.LINK_NAVMENU_ABOUT}`);
+      }
+      linkNavmenuCareerOverviewElement = document.getElementById(DOM_ELEMENT_IDS.LINK_NAVMENU_CAREEROVERVIEW) as HTMLAnchorElement;
+      if (!linkNavmenuCareerOverviewElement) {
+        throw new Error(`NavigationManager.setup(): could not find navigation menu link element ${DOM_ELEMENT_IDS.LINK_NAVMENU_CAREEROVERVIEW}`);
+      }
+      linkNavmenuSnapshotElement = document.getElementById(DOM_ELEMENT_IDS.LINK_NAVMENU_SNAPSHOT) as HTMLAnchorElement;
+      if (!linkNavmenuSnapshotElement) {
+        throw new Error(`NavigationManager.setup(): could not find navigation menu link element ${DOM_ELEMENT_IDS.LINK_NAVMENU_SNAPSHOT}`);
+      }
+      linkNavmenuImpactsElement = document.getElementById(DOM_ELEMENT_IDS.LINK_NAVMENU_IMPACTS) as HTMLAnchorElement;
+      if (!linkNavmenuImpactsElement) {
+        throw new Error(`NavigationManager.setup(): could not find navigation menu link element ${DOM_ELEMENT_IDS.LINK_NAVMENU_IMPACTS}`);
+      }
+      linkNavmenuWorksElement = document.getElementById(DOM_ELEMENT_IDS.LINK_NAVMENU_WORKS) as HTMLAnchorElement;
+      if (!linkNavmenuWorksElement) {
+        throw new Error(`NavigationManager.setup(): could not find navigation menu link element ${DOM_ELEMENT_IDS.LINK_NAVMENU_WORKS}`);
+      }
+      linkNavmenuSkillsElement = document.getElementById(DOM_ELEMENT_IDS.LINK_NAVMENU_SKILLS) as HTMLAnchorElement;
+      if (!linkNavmenuSkillsElement) {
+        throw new Error(`NavigationManager.setup(): could not find navigation menu link element ${DOM_ELEMENT_IDS.LINK_NAVMENU_SKILLS}`);
+      }
+      linkNavmenuCareerDetailsElement = document.getElementById(DOM_ELEMENT_IDS.LINK_NAVMENU_CAREERDETAILS) as HTMLAnchorElement;
+      if (!linkNavmenuCareerDetailsElement) {
+        throw new Error(`NavigationManager.setup(): could not find navigation menu link element ${DOM_ELEMENT_IDS.LINK_NAVMENU_CAREERDETAILS}`);
+      }
+      linkNavmenuExperiencesElement = document.getElementById(DOM_ELEMENT_IDS.LINK_NAVMENU_EXPERIENCES) as HTMLAnchorElement;
+      if (!linkNavmenuExperiencesElement) {
+        throw new Error(`NavigationManager.setup(): could not find navigation menu link element ${DOM_ELEMENT_IDS.LINK_NAVMENU_EXPERIENCES}`);
+      }
+      linkNavmenuEducationElement = document.getElementById(DOM_ELEMENT_IDS.LINK_NAVMENU_EDUCATION) as HTMLAnchorElement;
+      if (!linkNavmenuEducationElement) {
+        throw new Error(`NavigationManager.setup(): could not find navigation menu link element ${DOM_ELEMENT_IDS.LINK_NAVMENU_EDUCATION}`);
+      }
+      linkNavmenuCertificationsElement = document.getElementById(DOM_ELEMENT_IDS.LINK_NAVMENU_CERTIFICATIONS) as HTMLAnchorElement;
+      if (!linkNavmenuCertificationsElement) {
+        throw new Error(`NavigationManager.setup(): could not find navigation menu link element ${DOM_ELEMENT_IDS.LINK_NAVMENU_CERTIFICATIONS}`);
+      }
+      linkNavmenuLanguagesElement = document.getElementById(DOM_ELEMENT_IDS.LINK_NAVMENU_LANGUAGES) as HTMLAnchorElement;
+      if (!linkNavmenuLanguagesElement) {
+        throw new Error(`NavigationManager.setup(): could not find navigation menu link element ${DOM_ELEMENT_IDS.LINK_NAVMENU_LANGUAGES}`);
+      }
+      linkNavmenuContactElement = document.getElementById(DOM_ELEMENT_IDS.LINK_NAVMENU_CONTACT) as HTMLAnchorElement;
+      if (!linkNavmenuContactElement) {
+        throw new Error(`NavigationManager.setup(): could not find navigation menu link element ${DOM_ELEMENT_IDS.LINK_NAVMENU_CONTACT}`);
       }
 
-      const linkElements = [linkNavbarExperiencesElement, linkNavbarEducationElement, linkNavbarCertificationsElement, linkNavbarLanguagesElement];
+      const linkElements = [
+        linkNavbarExperiencesElement,
+        linkNavbarEducationElement,
+        linkNavbarCertificationsElement,
+        linkNavbarLanguagesElement,
+        linkNavmenuAboutElement,
+        linkNavmenuCareerOverviewElement,
+        linkNavmenuSnapshotElement,
+        linkNavmenuImpactsElement,
+        linkNavmenuWorksElement,
+        linkNavmenuSkillsElement,
+        linkNavmenuCareerDetailsElement,
+        linkNavmenuExperiencesElement,
+        linkNavmenuEducationElement,
+        linkNavmenuCertificationsElement,
+        linkNavmenuLanguagesElement,
+        linkNavmenuContactElement,
+      ];
 
       linkElements.forEach((linkElement) => {
         linkElement.addEventListener('click', handleLinkClick);

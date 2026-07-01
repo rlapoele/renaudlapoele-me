@@ -1,0 +1,32 @@
+---
+import {combineCssClasses} from "@scripts/shared/combineCssClasses.ts";
+import Card from "@components/ui/Card.astro";
+import Icon from "@components/ui/Icon.astro";
+type Props = {
+  modalId: string,
+  closeButtonTitle: string,
+  closeButtonAriaLabel: string,
+  class?: string;
+};
+
+const {
+  modalId,
+  closeButtonTitle,
+  closeButtonAriaLabel,
+  class: className
+} = Astro.props as Props;
+
+const baseCssClasses = "space-y-8 w-full max-w-[20rem] m-auto";
+const classes = combineCssClasses(baseCssClasses, className);
+---
+<Card id={modalId} as="dialog" class={classes} padding="xl">
+  <button type="button"
+          class="c-button c-button--close absolute top-4 right-4"
+          commandfor={modalId}
+          command="close"
+          title={closeButtonTitle}
+          aria-label={closeButtonAriaLabel}
+          autofocus><Icon isDecorative={true} class="size-4" type="close" strokeWidth={2} /></button>
+  <slot/>
+</Card>
+

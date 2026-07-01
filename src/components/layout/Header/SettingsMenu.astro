@@ -7,7 +7,7 @@ import { DOM_ELEMENT_IDS as MENU_ELEMENT_IDS} from "@scripts/client/menuManageme
 
 import Icon from "@components/ui/Icon.astro";
 import {combineCssClasses} from "@scripts/shared/combineCssClasses.ts";
-import Card from "@components/ui/Card.astro";
+import Modal from "@components/ui/Modal.astro";
 
 type Props = {
   locale: LocaleType;
@@ -20,17 +20,13 @@ const {
   settings,
   class: className = ""
 } = Astro.props as Props;
-const baseCssClasses = "space-y-8 w-full max-w-[20rem] py-16 m-auto"; /*"w-dvw h-dvh overflow-y-auto m-0 py-6 px-6 bg-paint-muted/95 border-none"; */
+const baseCssClasses = "";
 const classes = combineCssClasses(baseCssClasses, className);
 ---
-<Card id={MENU_ELEMENT_IDS.MENU_SETTINGS} as="dialog" class={classes} padding="xl">
-  <button type="button"
-          class="c-button c-button--ghost c-button--icon absolute top-4 right-4"
-          commandfor={MENU_ELEMENT_IDS.MENU_SETTINGS}
-          command="close"
-          title={settings.menu.closeTriggerLabel}
-          aria-label={settings.menu.closeTriggerLabel}
-          autofocus><Icon isDecorative={true} class="size-4" type="close" strokeWidth={2} /></button>
+<Modal modalId={MENU_ELEMENT_IDS.MENU_SETTINGS}
+       closeButtonTitle={settings.menu.closeTriggerLabel}
+       closeButtonAriaLabel={settings.menu.closeTriggerLabel}
+       class={classes}>
   <h2 class="c-menu-title text-center">{settings.menu.title}</h2>
   <div class="space-y-10">
     <div class="space-y-4 text-center">
@@ -46,4 +42,5 @@ const classes = combineCssClasses(baseCssClasses, className);
       </div>
     </div>
   </div>
-</Card>
+</Modal>
+

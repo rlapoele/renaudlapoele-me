@@ -198,8 +198,11 @@ export type SkillGroupType = {
 // =============================
 
  export type NavigationUIType = {
-   menuOpenSelectorLabel: string;
-   menuCloseSelectorLabel: string;
+   menu: {
+     title: string;
+     openTriggerLabel: string;
+     closeTriggerLabel: string;
+   };
 
    navItems: {
      about: { label: string; };

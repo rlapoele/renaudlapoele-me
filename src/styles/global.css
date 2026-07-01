@@ -436,7 +436,7 @@
     text-decoration-thickness: 2px;
     text-decoration-style: dotted;
     text-decoration-color: currentColor;
-    text-underline-offset: 0.75ch;
+    text-underline-offset: 0.5ch;
     transition: color var(--transition-fast), text-decoration-color 150ms ease-in-out;
     &:hover {
       color: var(--color-accent-primary);
@@ -573,34 +573,39 @@
       animation: var(--animate-spin);
     }
 
-
     &.c-button--secondary {
       background: transparent;/*var(--color-brand-ink);*/
       color: var(--color-brand-paint);
       border-color: var(--color-brand-paint);
     }
 
-    &.c-button--ghost {
+    &.c-button--ghost,
+    &.c-button--close {
       background: transparent;
       color: var(--color-brand-paint);
       border-color: transparent;
     }
 
     &.c-button--secondary:active,
-    &.c-button--ghost:hover {
+    &.c-button--ghost:hover,
+    &.c-button--close:hover {
       background: var(--color-brand-paint);
       color: var(--color-brand-ink);
       border-color: transparent;
     }
 
-    &.c-button--icon {
+    &.c-button--icon,
+    &.c-button--close {
       padding-inline: calc(0.5rem - var(--rl-c-button-border-width));
       padding-block: calc(0.5rem - var(--rl-c-button-border-width));
-
       &:hover {
         scale: 1.1;
       }
+    }
 
+    &.c-button--close:focus {
+      outline: 2px solid var(--color-focus-ring);
+      outline-offset: 2px;
     }
 
     &.c-button--small {
@@ -753,6 +758,7 @@
     z-index: 10;
     background:
       linear-gradient(180deg, var(--color-paint-base) 0%, --alpha(var(--color-paint-base)/70%) 100%);
+    backdrop-filter: blur(1px);
   }
 
   .c-page-footer {
@@ -1151,7 +1157,7 @@
 
   .c-menu-title {
     font-family: var(--font-sans);
-    font-size: var(--text-3xl);
+    font-size: var(--text-xl);
     font-weight: var(--font-weight-extralight);
     letter-spacing: var(--tracking-wide);
     line-height: var(--text-2xl--line-height);
@@ -1159,12 +1165,12 @@
     text-transform: uppercase;
 
     @media (min-width: 40rem) {
-      font-size: var(--text-4xl);
+      font-size: var(--text-2xl);
     }
   }
 
   .c-menu-option-group-label {
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
     font-weight: var(--font-weight-medium);
     text-transform: uppercase;
     letter-spacing: var(--tracking-wider);
