@@ -16,7 +16,7 @@ const {
   class: className
 } = Astro.props as Props;
 
-const baseCssClasses = "space-y-8 w-full max-w-[20rem] m-auto";
+const baseCssClasses = "fixed space-y-8 w-full max-w-[20rem] m-auto";
 const classes = combineCssClasses(baseCssClasses, className);
 ---
 <Card id={modalId} as="dialog" class={classes} padding="xl">
