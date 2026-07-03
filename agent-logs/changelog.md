@@ -85,3 +85,7 @@ Concise history of meaningful agent-made changes.
 - Added canonical and hreflang metadata for the bilingual resume routes: `/` as the English default and `x-default`, `/en` as explicit English, and `/fr` as French.
 - Updated the language switcher to send French users back to `/` for the default English page.
 - Verified with `npm run astro -- check`, `npm run build`, and generated HTML extraction for canonical, alternate, and language-switch links.
+- Integrated localized Open Graph metadata in `src/layouts/BaseLayout.astro`, deriving `og:url` from the active canonical URL to keep `/`, `/en`, and `/fr` aligned with canonical and hreflang tags.
+- Corrected seeded resume Open Graph locale data so English alternates to `fr_FR` and French uses `/fr` with `en_GB` as its alternate locale.
+- Verified with `npm run astro -- check`, `npm run build`, and generated HTML extraction for canonical, hreflang, and Open Graph metadata.
+- Tightened duplicate control for the English resume by canonicalizing `/en` to `/` and pointing `hreflang="en"` at `/`, leaving `/fr` as the French canonical URL.

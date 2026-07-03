@@ -26,6 +26,15 @@ export type ResumeDataType = {
 export type PageMetadataType = {
   title: string;
   description: string;
+  openGraph: {
+    title: string;
+    description: string;
+    image: string;
+    url: string;
+    type: string;
+    locale: string;
+    alternateLocale: string;
+  }
 };
 
 export type HeroMetadataType = HeroMetadataItemType[];

@@ -18,6 +18,15 @@ export const resumeEN : ResumeType = {
     pageMetadata: {
       title: "Renaud Lapoële | Senior Front-End Engineer & Product Engineer",
       description: "Senior Front-End Engineer and Product Engineer in France with 25+ years of experience across UX/UI, product leadership, React, TypeScript, and scalable web applications.",
+      openGraph: {
+        type: "website",
+        title: "Renaud Lapoële | Senior Front-End Engineer / Product Engineer",
+        description: "Product-oriented front-end engineer with 25+ years of experience designing scalable web applications, user experiences, and digital products.",
+        url: "https://renaudlapoele.me/en",
+        image: "https://renaudlapoele.me/images/og-image-en.jpg",
+        locale: "en_GB",
+        alternateLocale: "fr_FR"
+      },
     },
     hero: {
       title: "Senior Front-End Engineer / Product Engineer",

@@ -30,20 +30,29 @@ const {
   navItemUrlPrefix = "",
 } = Astro.props;
 const resume: ResumeType = getResumeData(locale);
+const pageMetadata = resume.content.pageMetadata;
+const openGraph = pageMetadata.openGraph;
 const siteUrl = normalizeSiteUrl(SITE_URL);
 
 const buildAbsoluteUrl = (path: string): string => {
+  if (URL.canParse(path)) {
+    return path;
+  }
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
-
   return siteUrl ? `${siteUrl}${normalizedPath}` : normalizedPath;
 };
 
 const localizedResumeUrls = {
-  [SUPPORTED_LOCALES.EN]: buildAbsoluteUrl("/en"),
+  [SUPPORTED_LOCALES.EN]: buildAbsoluteUrl("/"),
   [SUPPORTED_LOCALES.FR]: buildAbsoluteUrl("/fr"),
   "x-default": buildAbsoluteUrl("/"),
 };
 const canonicalUrl = canonicalPath ? buildAbsoluteUrl(canonicalPath) : undefined;
+const shouldRenderOpenGraph = Boolean(canonicalUrl);
+const openGraphTitle = openGraph.title || pageTitle;
+const openGraphDescription = openGraph.description || pageDescription;
+const openGraphUrl = canonicalUrl ?? buildAbsoluteUrl(openGraph.url);
+const openGraphImage = buildAbsoluteUrl(openGraph.image);
 
 const prefixHashUrl = (url: string): string =>
   navItemUrlPrefix && url.startsWith("#") ? `${navItemUrlPrefix}${url}` : url;
@@ -74,6 +83,17 @@ const navItemsData: NavBarItemType[] = config.header.navigation.items.map((item)
         <link rel="alternate" hreflang={SUPPORTED_LOCALES.EN} href={localizedResumeUrls[SUPPORTED_LOCALES.EN]} />
         <link rel="alternate" hreflang={SUPPORTED_LOCALES.FR} href={localizedResumeUrls[SUPPORTED_LOCALES.FR]} />
         <link rel="alternate" hreflang="x-default" href={localizedResumeUrls["x-default"]} />
+      </>
+    )}
+    {shouldRenderOpenGraph && (
+      <>
+        <meta property="og:type" content={openGraph.type} />
+        {openGraphTitle && <meta property="og:title" content={openGraphTitle} />}
+        <meta property="og:description" content={openGraphDescription} />
+        <meta property="og:url" content={openGraphUrl} />
+        <meta property="og:image" content={openGraphImage} />
+        <meta property="og:locale" content={openGraph.locale} />
+        <meta property="og:locale:alternate" content={openGraph.alternateLocale} />
       </>
     )}
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
