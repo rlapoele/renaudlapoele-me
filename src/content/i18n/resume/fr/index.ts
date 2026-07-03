@@ -791,6 +791,7 @@ export const resumeFR: ResumeType = {
           buttonDarkLabel: "Sombre",
         },
         language: {
+          selectorTitle: "Choose English",
           selectorLabel: "English"
         },
         colorTheme: {

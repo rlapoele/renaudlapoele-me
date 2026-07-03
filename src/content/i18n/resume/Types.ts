@@ -246,6 +246,7 @@ export type SettingsUIType = {
     buttonDarkLabel: string,
   };
   language: {
+    selectorTitle: string,
     selectorLabel: string /* English or Français */
   };
   colorTheme: {
