@@ -1,11 +1,7 @@
-import type { CreateColorThemeManagerType } from "@scripts/client/colorThemeManagement.ts";
-import type { CreateContactFormManagerType } from "@scripts/client/contactFormManagement.ts";
-import type { CreateNotificationManagerType } from "@scripts/client/notificationManagement.ts";
-
 import { createColorThemeManager } from "@scripts/client/colorThemeManagement.ts";
 import { createContactFormManager } from "@scripts/client/contactFormManagement.ts";
 import { createNotificationManager } from "@scripts/client/notificationManagement.ts";
-import {createNavigationManager, type CreateNavigationManagerType} from "@scripts/client/navigationManagement.ts";
+import {createNavigationManager} from "@scripts/client/navigationManagement.ts";
 import { defineIconElement } from "@components/wc/Icon.ts";
 
 function setup(): void {

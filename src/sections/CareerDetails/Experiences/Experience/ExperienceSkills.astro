@@ -2,7 +2,6 @@
 import { combineCssClasses } from "@scripts/shared/combineCssClasses.ts";
 import type { ExperienceSkillGroupType } from "@content/i18n/resume/Types.ts";
 import Transformer from "@components/ui/Transformer.astro";
-import Bullet from "@components/ui/Bullet.astro";
 import Tag from "@components/ui/Tag.astro";
 
 type Props = {
@@ -34,24 +33,6 @@ const classes = combineCssClasses(baseCssClasses, className);
               <Tag>{skill}</Tag>
             ))}
           </div>
-          <!--
-          <p class="text-sm mbe-6 last:mbe-0">
-            {
-              skillGroup.skills.map(
-                (skill: string, skillIndex: number, skillArray: string[]) => ( skillIndex < (skillArray.length - 1) ? <Fragment>{skill}, </Fragment> : <Fragment>{skill}</Fragment> )
-              )
-            }
-          </p>
-        -->
-          <!--
-          <p class="text-sm mbe-6 last:mbe-0 flex items-baseline justify-start gap-2.5"><span class="ms-4 pbe-0.5"><Bullet /></span>
-          {
-            skillGroup.skills.map(
-              (skill: string, skillIndex: number, skillArray: string[]) => ( skillIndex < (skillArray.length - 1) ? <Fragment>{skill}, </Fragment> : <Fragment>{skill}</Fragment> )
-            )
-          }
-          </p>
--->
         );
       }
     )
