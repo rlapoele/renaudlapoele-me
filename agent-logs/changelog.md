@@ -82,3 +82,6 @@ Concise history of meaningful agent-made changes.
 - Localized resume page titles and meta descriptions from `src/components/pages/ResumePage.astro`, adding the profile name to titles and locale-specific recruiter-facing summaries.
 - Verified with `npm run astro -- check`, `npm run build`, and generated HTML metadata extraction for `/`, `/en`, and `/fr`.
 - Removed stale commented metadata derivation code from `src/components/pages/ResumePage.astro` after moving page metadata into localized content.
+- Added canonical and hreflang metadata for the bilingual resume routes: `/` as the English default and `x-default`, `/en` as explicit English, and `/fr` as French.
+- Updated the language switcher to send French users back to `/` for the default English page.
+- Verified with `npm run astro -- check`, `npm run build`, and generated HTML extraction for canonical, alternate, and language-switch links.

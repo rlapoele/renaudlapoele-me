@@ -7,6 +7,7 @@ import type { ResumeType } from "@content/i18n/resume/Types";
 
 import { getResumeData } from "@content/i18n/resume";
 import { config } from "@content/config";
+import { SUPPORTED_LOCALES } from "@content/i18n/locale";
 import { SITE_URL } from "astro:env/server";
 import { normalizeSiteUrl } from "@scripts/server/configUtils.ts";
 
@@ -17,6 +18,7 @@ interface Props {
   locale: LocaleType;
   pageTitle?: string;
   pageDescription?: string;
+  canonicalPath?: string;
   navItemUrlPrefix?: string;
 }
 
@@ -24,10 +26,24 @@ const {
   locale,
   pageTitle,
   pageDescription = "Resume landing page for Renaud Lapoele, Senior Front-End Engineer with UX/UI and product leadership experience.",
+  canonicalPath,
   navItemUrlPrefix = "",
 } = Astro.props;
 const resume: ResumeType = getResumeData(locale);
 const siteUrl = normalizeSiteUrl(SITE_URL);
+
+const buildAbsoluteUrl = (path: string): string => {
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+
+  return siteUrl ? `${siteUrl}${normalizedPath}` : normalizedPath;
+};
+
+const localizedResumeUrls = {
+  [SUPPORTED_LOCALES.EN]: buildAbsoluteUrl("/en"),
+  [SUPPORTED_LOCALES.FR]: buildAbsoluteUrl("/fr"),
+  "x-default": buildAbsoluteUrl("/"),
+};
+const canonicalUrl = canonicalPath ? buildAbsoluteUrl(canonicalPath) : undefined;
 
 const prefixHashUrl = (url: string): string =>
   navItemUrlPrefix && url.startsWith("#") ? `${navItemUrlPrefix}${url}` : url;
@@ -52,6 +68,14 @@ const navItemsData: NavBarItemType[] = config.header.navigation.items.map((item)
       name="description"
       content={pageDescription}
     />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    {canonicalUrl && (
+      <>
+        <link rel="alternate" hreflang={SUPPORTED_LOCALES.EN} href={localizedResumeUrls[SUPPORTED_LOCALES.EN]} />
+        <link rel="alternate" hreflang={SUPPORTED_LOCALES.FR} href={localizedResumeUrls[SUPPORTED_LOCALES.FR]} />
+        <link rel="alternate" hreflang="x-default" href={localizedResumeUrls["x-default"]} />
+      </>
+    )}
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <style>
       @font-face {
