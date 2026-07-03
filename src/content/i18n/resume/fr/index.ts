@@ -194,7 +194,7 @@ export const resumeFR: ResumeType = {
               "Conception et réalisation de projets personnels avec des technologies front-end modernes, notamment TypeScript, Astro, React, SolidJS, Tailwind CSS et Node.js.",
               "Suivi d’une formation professionnelle en accessibilité numérique et renforcement de l’expertise en conception inclusive et développement conforme aux normes WCAG.",
               "Réalisation d’une veille technologique continue et d’expérimentations pratiques autour du développement front-end moderne, du développement assisté par l’IA et des nouvelles pratiques d’ingénierie IA.",
-              "Développement de preuves de concept et de prototypes explorant la productivité, l’expérience développeur et les processus de création de produits s’appuyant sur les technologies d’IA.",
+              /*"Développement de preuves de concept et de prototypes explorant la productivité, l’expérience développeur et les processus de création de produits s’appuyant sur les technologies d’IA.",*/
               "Maintien d’une montée en compétences continue à travers des projets personnels, des recherches techniques et des réalisations concrètes."
             ],
             keyFocus: "Ingénierie Front-End moderne, accessibilité, développement assisté par l’IA et développement professionnel continu.",
@@ -219,6 +219,7 @@ export const resumeFR: ResumeType = {
                   "Prototypage"
                 ]
               },
+              /*
               {
                 name: "Produit & Delivery",
                 skills: [
@@ -226,13 +227,16 @@ export const resumeFR: ResumeType = {
                   "Développement de MVP"
                 ]
               },
+               */
               {
                 name: "Leadership Technique & Innovation",
                 skills: [
                   "Veille Technologique",
                   "Expérimentation Technique",
                   "Développement Assisté par l’IA",
-                  "Ingénierie IA"
+                  "Ingénierie IA",
+                  "OpenAI",
+                  "Codex"
                 ]
               }
             ]
@@ -254,7 +258,8 @@ export const resumeFR: ResumeType = {
             "duration": null,
             "summary": "Rôle senior combinant leadership Front-End, conception UX et responsabilité produit sur des plateformes partenaires mondiales à grande échelle.",
             "responsibilities": [
-              "Collaboration étroite avec l’équipe design sur la refonte UX et pilotage de l’implémentation Front-End de deux plateformes mondiales de recherche utilisées par les partenaires Cisco dans plusieurs régions, offrant une expérience de recherche plus intuitive et cohérente.",
+              "Collaboré étroitement avec l’équipe Design sur la refonte de l’expérience utilisateur et piloté l’implémentation Front-End de deux plateformes mondiales de recherche de partenaires Cisco, afin de faciliter l’identification des partenaires Cisco les plus adaptés aux besoins des clients et des partenaires.",
+              /*"Collaboration étroite avec l’équipe design sur la refonte UX et pilotage de l’implémentation Front-End de deux plateformes mondiales de recherche de partenaires Cisco utilisées par les clients et les partenaires dans plusieurs régions, offrant une expérience de recherche plus intuitive et cohérente.",*/
               "Intervention en tant que Tech Lead et Product Owner, avec la responsabilité du backlog, des epics, des user stories, des priorités et de l’alignement des parties prenantes tout en restant impliqué dans le développement Front-End.",
               "Définition de l’architecture UI et promotion des bonnes pratiques Front-End avec React, JavaScript, HTML, CSS et Tailwind CSS.",
               "Conception et réalisation d’API web évolutives pour la gestion des programmes d’incentive partenaires.",
@@ -273,6 +278,15 @@ export const resumeFR: ResumeType = {
                   "TypeScript"
                 ]
               },
+              {
+                "name": "Back-End & Données",
+                "skills": [
+                  "ElasticSearch",
+                  "Solr",
+                  "Kibana",
+                ]
+              },
+
               {
                 "name": "UX & Design produit",
                 "skills": [
