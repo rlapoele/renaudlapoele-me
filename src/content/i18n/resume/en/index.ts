@@ -15,6 +15,10 @@ export const resumeEN : ResumeType = {
   },
 
   content: {
+    pageMetadata: {
+      title: "Renaud Lapoële | Senior Front-End Engineer & Product Engineer",
+      description: "Senior Front-End Engineer and Product Engineer in France with 25+ years of experience across UX/UI, product leadership, React, TypeScript, and scalable web applications.",
+    },
     hero: {
       title: "Senior Front-End Engineer / Product Engineer",
       tagline: "UX/UI · Product · Engineering",

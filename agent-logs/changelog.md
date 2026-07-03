@@ -73,3 +73,12 @@ Concise history of meaningful agent-made changes.
 ## 2026-07-02
 
 - Prepared release `v0.0.3-alpha.6` by bumping package metadata after merging responsive menu/navigation work toward the `releases` branch.
+
+## 2026-07-03
+
+- Added a lightweight custom `src/pages/404.astro` page reusing the existing layout, header/footer shell, typography, buttons, and localized resume links.
+- Extended `src/layouts/BaseLayout.astro` with optional page metadata and hash-link prefixing so non-resume pages can keep header navigation pointed at the resume sections.
+- Verified with `npm run astro -- check`, `npm run build`, and local preview HTTP checks for a missing route returning `404 Not Found`.
+- Localized resume page titles and meta descriptions from `src/components/pages/ResumePage.astro`, adding the profile name to titles and locale-specific recruiter-facing summaries.
+- Verified with `npm run astro -- check`, `npm run build`, and generated HTML metadata extraction for `/`, `/en`, and `/fr`.
+- Removed stale commented metadata derivation code from `src/components/pages/ResumePage.astro` after moving page metadata into localized content.

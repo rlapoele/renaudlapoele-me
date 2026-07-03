@@ -15,6 +15,10 @@ export const resumeFR: ResumeType = {
   },
 
   content: {
+    pageMetadata: {
+      title: "Renaud Lapoële | Ingénieur Front-End & Ingénieur Produit",
+      description: "Ingénieur Front-End et Ingénieur Produit en France avec plus de 25 ans d'expérience dans l'UX/UI, la leadership de produit, React, TypeScript et les applications web évolutives.",
+    },
     hero: {
       title: "Ingénieur Front-End Senior / Ingénieur Produit",
       tagline: "UX/UI · Produit · Ingénierie",

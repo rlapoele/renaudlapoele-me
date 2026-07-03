@@ -23,6 +23,11 @@ export type ResumeDataType = {
 // =============================
 // CONTENT (narrative / positioning)
 // =============================
+export type PageMetadataType = {
+  title: string;
+  description: string;
+};
+
 export type HeroMetadataType = HeroMetadataItemType[];
 
 export type HeroMetadataItemType = {
@@ -160,6 +165,7 @@ export type CareerDetailsType = {
 };
 
 export type ResumeContentType = {
+  pageMetadata: PageMetadataType;
   hero: HeroType;
   careerOverview: CareerOverviewType;
   careerDetails: CareerDetailsType;
