@@ -16,6 +16,7 @@ const { locale } = Astro.props as Props;
 const resume = getResumeData(locale);
 const { personal } = resume.data;
 const {
+  pageMetadata,
   hero,
   careerOverview,
   careerDetails,
@@ -23,7 +24,7 @@ const {
 } = resume.content;
 const {sections} = resume.ui;
 ---
-<BaseLayout locale={locale}>
+<BaseLayout locale={locale} pageTitle={pageMetadata.title} pageDescription={pageMetadata.description}>
   <Hero content={hero} data={config.sections.hero.links} ui={sections.hero} fullname={personal.fullName} config={config.sections.hero} />
   <CareerOverview class="mbe-18" content={careerOverview} contentLabels={sections.careerOverview}/>
   <CareerDetails content={careerDetails} contentLabels={sections.careerDetails}/>

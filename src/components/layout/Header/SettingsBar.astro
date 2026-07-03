@@ -23,7 +23,7 @@ const classes = combineCssClasses(baseCssClasses, className);
 ---
 <div class={classes}>
   <div class="inline-flex items-center">
-    <a id="rl-settings-bar-language-selector" href={ locale === SUPPORTED_LOCALES.FR ? '/en' : '/fr'} class="c-button c-button--small" aria-label={settings.language.selectorLabel}>{settings.language.selectorLabel}</a>
+    <a id="rl-settings-bar-language-selector" href={ locale === SUPPORTED_LOCALES.FR ? '/en' : '/fr'} class="c-button c-button--small" title={settings.language.selectorTitle} aria-label={settings.language.selectorLabel}><Icon type="language" isDecorative={true} class="size-4 shrink-0"  /><span>{settings.language.selectorLabel}</span></a>
   </div>
   <div class="inline-flex items-center gap-2">
     <button id={DOM_ELEMENT_IDS.SETTINGS_BAR_COLOR_THEME_MANAGER_SELECTOR_SYSTEM} type="button" class="c-button c-button--icon" title={settings.colorTheme.osThemeSelectorTitle} aria-label={settings.colorTheme.osThemeSelectorTitle} aria-pressed="false" data-active-label={settings.colorTheme.osThemeSelectorActiveTitle}><Icon isDecorative={true} class="size-4" type="computer" /></button>

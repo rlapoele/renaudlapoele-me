@@ -42,8 +42,8 @@ const { content, data, ui, fullname, config } = Astro.props;
                 class="self-center" />
           }
           <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-5">
-            <a class="c-button" href={data.toContactForm.href}>{ui.links.toContactForm}</a>
-            <a download href={data.resumeDownload.href} class="c-button c-button--secondary"><Icon class="size-4 stroke-2" type="arrow-down-on-square" isDecorative={true} /><span>{ui.links.resumeDownload}</span></a>
+            <a class="c-button" href={data.toContactForm.href}><Icon type="envelope" class="size-4 stroke-2"  isDecorative={true} /><span>{ui.links.toContactForm}</span></a>
+            <a download href={data.resumeDownload.href} class="c-button c-button--secondary"><Icon type="arrow-down-on-square" class="size-4 stroke-2"  isDecorative={true} /><span>{ui.links.resumeDownload}</span></a>
           </div>
         </div>
       </div>

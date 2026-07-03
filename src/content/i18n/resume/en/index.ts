@@ -15,6 +15,10 @@ export const resumeEN : ResumeType = {
   },
 
   content: {
+    pageMetadata: {
+      title: "Renaud Lapoële | Senior Front-End Engineer & Product Engineer",
+      description: "Senior Front-End Engineer and Product Engineer in France with 25+ years of experience across UX/UI, product leadership, React, TypeScript, and scalable web applications.",
+    },
     hero: {
       title: "Senior Front-End Engineer / Product Engineer",
       tagline: "UX/UI · Product · Engineering",
@@ -189,7 +193,7 @@ export const resumeEN : ResumeType = {
               "Designed and implemented personal projects using modern front-end technologies including TypeScript, Astro, React, SolidJS, Tailwind CSS, and Node.js.",
               "Completed professional accessibility training and strengthened expertise in inclusive web design and WCAG-compliant development.",
               "Conducted continuous technology research and hands-on experimentation in modern front-end engineering, AI-assisted development, and emerging AI engineering practices.",
-              "Developed proof-of-concepts and prototypes exploring productivity, developer experience, and product creation workflows leveraging AI technologies.",
+              /*"Developed proof-of-concepts and prototypes exploring productivity, developer experience, and product creation workflows leveraging AI technologies.",*/
               "Maintained active technical learning through self-directed projects, technical research, and practical implementation work."
             ],
             "keyFocus": "Modern Front-End engineering, accessibility, AI-assisted development, and continuous professional growth.",
@@ -214,6 +218,7 @@ export const resumeEN : ResumeType = {
                   "Prototyping"
                 ]
               },
+/*
               {
                 name: "Product & Delivery",
                 skills: [
@@ -221,13 +226,16 @@ export const resumeEN : ResumeType = {
                   "MVP Development"
                 ]
               },
+ */
               {
                 name: "Technical Leadership & Innovation",
                 skills: [
                   "Technology Research",
                   "Technical Experimentation",
                   "AI-Assisted Development",
-                  "AI Engineering"
+                  "AI Engineering",
+                  "OpenAI",
+                  "Codex"
                 ]
               },
             ]
@@ -249,7 +257,8 @@ export const resumeEN : ResumeType = {
             "duration": null,
             "summary": "Senior individual contributor role combining Front-End leadership, UX design, and product ownership on global, large-scale partner platforms.",
             "responsibilities": [
-              "Collaborated closely with design team on the UX redesign and led the Front-End implementation of two worldwide search platforms used by Cisco partners across multiple regions, delivering a more intuitive and consistent partner search experience.",
+              "Partnered with the design team to redesign the UX and led the Front-End implementation of two global Cisco partner search platforms, improving how customers and partners discover and connect with Cisco partners worldwide.",
+              /*"Collaborated closely with design team on the UX redesign and led the Front-End implementation of two worldwide Cisco Partner search platforms used by customers and partners across multiple regions, delivering a more intuitive and consistent partner search experience.",*/
               "Acted as Tech Lead and Product Owner, owning backlog, epics, user stories, priorities, and stakeholder alignment while remaining hands-on with Front-End development.",
               "Drove UI architecture and Front-End best practices using React, JavaScript, HTML, CSS, and Tailwind CSS.",
               "Designed and delivered scalable web APIs supporting partner incentive program management.",
@@ -266,6 +275,14 @@ export const resumeEN : ResumeType = {
                   "React.js",
                   "JavaScript",
                   "TypeScript"
+                ]
+              },
+              {
+                "name": "Back-End & Data",
+                "skills": [
+                  "ElasticSearch",
+                  "Solr",
+                  "Kibana",
                 ]
               },
               {
@@ -768,6 +785,7 @@ export const resumeEN : ResumeType = {
           buttonDarkLabel: "Dark",
         },
         language: {
+          selectorTitle: "Choisir le français",
           selectorLabel: "Français"
         },
         colorTheme: {
