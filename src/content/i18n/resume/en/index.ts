@@ -27,6 +27,50 @@ export const resumeEN : ResumeType = {
         locale: "en_GB",
         alternateLocale: "fr_FR"
       },
+      jsonLdSchema: {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "@id": "https://renaudlapoele.me/en#profilepage",
+        "url": "https://renaudlapoele.me/en",
+        "name": "Renaud Lapoële | Senior Front-End Engineer / Product Engineer",
+        "inLanguage": "en-GB",
+        "mainEntity": {
+          "@type": "Person",
+          "@id": "https://renaudlapoele.me/#person",
+          "name": "Renaud Lapoële",
+          "url": "https://renaudlapoele.me",
+          "image": "https://renaudlapoele.me/images/hero/renaud-hero-desktop.jpg",
+          "jobTitle": "Senior Front-End Engineer / Product Engineer",
+          "description": "Product-oriented front-end engineer with 25+ years of experience designing scalable web applications, user experiences, and digital products.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "FR"
+          },
+          "knowsLanguage": [
+            "fr-FR",
+            "en-GB"
+          ],
+          "knowsAbout": [
+            "Front-End Engineering",
+            "TypeScript",
+            "JavaScript",
+            "React",
+            "SolidJS",
+            "Astro",
+            "Tailwind CSS",
+            "Node.js",
+            "UX Design",
+            "UI Design",
+            "Product Engineering",
+            "Web Accessibility",
+            "WCAG",
+            "Design Systems"
+          ],
+          "sameAs": [
+            "https://www.linkedin.com/in/renaud-lapoele-167106/"
+          ]
+        }
+      }
     },
     hero: {
       title: "Senior Front-End Engineer / Product Engineer",

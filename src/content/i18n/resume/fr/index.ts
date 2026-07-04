@@ -17,16 +17,60 @@ export const resumeFR: ResumeType = {
   content: {
     pageMetadata: {
       title: "Renaud Lapoële | Ingénieur Front-End & Ingénieur Produit",
-      description: "Ingénieur Front-End et Ingénieur Produit en France avec plus de 25 ans d'expérience dans l'UX/UI, la leadership de produit, React, TypeScript et les applications web évolutives.",
+      description: "Ingénieur Front-End et Ingénieur Produit en France avec plus de 25 ans d'expérience dans l'UX/UI, la leadership de produit, Javascript, TypeScript, React, SolidJS et les applications web évolutives.",
       openGraph: {
         type: "website",
         title: "Renaud Lapoële | Ingénieur Front-End / Ingénieur Produit",
-        description: "Ingénieur Front-End et Ingénieur Produit en France avec plus de 25 ans d'expérience dans l'UX/UI, la leadership de produit, React, TypeScript et les applications web évolutives.",
+        description: "Ingénieur Front-End et Ingénieur Produit en France avec plus de 25 ans d'expérience dans l'UX/UI, la leadership de produit, Javascript, TypeScript, React, SolidJS et les applications web évolutives.",
         url: "https://renaudlapoele.me/fr",
         image: "https://renaudlapoele.me/images/og-image-fr.jpg",
         locale: "fr_FR",
         alternateLocale: "en_GB",
       },
+      jsonLdSchema: {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "@id": "https://renaudlapoele.me/fr#profilepage",
+        "url": "https://renaudlapoele.me/fr",
+        "name": "Renaud Lapoële | Ingénieur Front-End Senior / Ingénieur Produit",
+        "inLanguage": "fr-FR",
+        "mainEntity": {
+          "@type": "Person",
+          "@id": "https://renaudlapoele.me/#person",
+          "name": "Renaud Lapoële",
+          "url": "https://renaudlapoele.me",
+          "image": "https://renaudlapoele.me/images/hero/renaud-hero-desktop.jpg",
+          "jobTitle": "Ingénieur Front-End Senior / Ingénieur Produit",
+          "description": "Ingénieur Front-End orienté produit avec plus de 25 ans d’expérience dans la conception d’applications web, d’interfaces utilisateur et de produits numériques.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "FR"
+          },
+          "knowsLanguage": [
+            "fr-FR",
+            "en-GB"
+          ],
+          "knowsAbout": [
+            "Ingénierie Front-End",
+            "TypeScript",
+            "JavaScript",
+            "Astro",
+            "Tailwind CSS",
+            "SolidJS",
+            "React",
+            "Node.js",
+            "UX Design",
+            "UI Design",
+            "Ingénierie Produit",
+            "Accessibilité numérique",
+            "WCAG",
+            "Design Systems"
+          ],
+          "sameAs": [
+            "https://www.linkedin.com/in/renaud-lapoele-167106/"
+          ]
+        }
+      }
     },
     hero: {
       title: "Ingénieur Front-End Senior / Ingénieur Produit",

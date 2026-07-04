@@ -89,3 +89,12 @@ Concise history of meaningful agent-made changes.
 - Corrected seeded resume Open Graph locale data so English alternates to `fr_FR` and French uses `/fr` with `en_GB` as its alternate locale.
 - Verified with `npm run astro -- check`, `npm run build`, and generated HTML extraction for canonical, hreflang, and Open Graph metadata.
 - Tightened duplicate control for the English resume by canonicalizing `/en` to `/` and pointing `hreflang="en"` at `/`, leaving `/fr` as the French canonical URL.
+
+## 2026-07-04
+
+- Reviewed the `BaseLayout.astro` refactor that moved URL and hash-link helpers into `src/scripts/server/configUtils.ts`; behavior matches the previous inline helpers.
+- Verified with `npm run astro -- check` and `npm run build`; both passed, with one unrelated Astro hint in the untracked `src/components/seo/JsonLd.astro`.
+- Integrated `src/components/seo/JsonLd.astro` into `BaseLayout.astro`, deriving JSON-LD ProfilePage `@id` and `url` from the actual rendered route so `/`, `/en`, and `/fr` emit locale-consistent schema.
+- Corrected the resume JSON-LD person image URLs to an existing hero image asset and verified generated schema output with `SITE_URL=https://renaudlapoele.me npm run build`.
+- Added generated `robots.txt` and `sitemap.xml` routes, default `robots` and `theme-color` metadata in `BaseLayout.astro`, and explicit `noindex, nofollow` metadata for the 404 page.
+- Verified with `npm run astro -- check`, `SITE_URL=https://renaudlapoele.me npm run build`, and generated HTML/text/XML metadata extraction.

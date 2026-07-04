@@ -34,8 +34,35 @@ export type PageMetadataType = {
     type: string;
     locale: string;
     alternateLocale: string;
-  }
+  },
+  jsonLdSchema: JsonLdSchemaType;
 };
+
+export type JsonLdSchemaType = {
+  "@context": string,
+  "@type": string,
+  "@id": string,
+  "url": string,
+  "name": string,
+  "inLanguage": string,
+  "mainEntity": {
+    "@type": string,
+    "@id": string;
+    "name": string;
+    "url": string;
+    "image": string;
+    "jobTitle": string;
+    "description": string;
+    "address": {
+      "@type": string;
+      "addressCountry": string;
+    };
+    "knowsLanguage": string[];
+    "knowsAbout": string[];
+    "sameAs": string[];
+  };
+}
+
 
 export type HeroMetadataType = HeroMetadataItemType[];
 
@@ -207,6 +234,9 @@ export type SkillGroupType = {
   name: string;
   items: string[];
 };
+
+
+
 
 // =============================
 // UI (labels, microcopy, forms)

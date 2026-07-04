@@ -5,14 +5,15 @@ import type { NavBarItemType } from "@content/config/Types";
 import type { LocaleType } from "@content/i18n/locale";
 import type { ResumeType } from "@content/i18n/resume/Types";
 
+import { SUPPORTED_LOCALES } from "@content/i18n/locale";
 import { getResumeData } from "@content/i18n/resume";
 import { config } from "@content/config";
-import { SUPPORTED_LOCALES } from "@content/i18n/locale";
 import { SITE_URL } from "astro:env/server";
-import { normalizeSiteUrl } from "@scripts/server/configUtils.ts";
+import { normalizeSiteUrl, buildAbsoluteUrl, prefixHashUrl } from "@scripts/server/configUtils.ts";
 
 import Header from "@components/layout/Header/Header.astro";
 import Footer from "@components/layout/Footer.astro";
+import JsonLd from "@components/seo/JsonLd.astro";
 
 interface Props {
   locale: LocaleType;
@@ -20,6 +21,8 @@ interface Props {
   pageDescription?: string;
   canonicalPath?: string;
   navItemUrlPrefix?: string;
+  robots?: string;
+  themeColor?: string;
 }
 
 const {
@@ -28,43 +31,43 @@ const {
   pageDescription = "Resume landing page for Renaud Lapoele, Senior Front-End Engineer with UX/UI and product leadership experience.",
   canonicalPath,
   navItemUrlPrefix = "",
+  robots = "index, follow",
+  themeColor = "#1c1917",
 } = Astro.props;
 const resume: ResumeType = getResumeData(locale);
 const pageMetadata = resume.content.pageMetadata;
 const openGraph = pageMetadata.openGraph;
 const siteUrl = normalizeSiteUrl(SITE_URL);
 
-const buildAbsoluteUrl = (path: string): string => {
-  if (URL.canParse(path)) {
-    return path;
-  }
-  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
-  return siteUrl ? `${siteUrl}${normalizedPath}` : normalizedPath;
-};
-
 const localizedResumeUrls = {
-  [SUPPORTED_LOCALES.EN]: buildAbsoluteUrl("/"),
-  [SUPPORTED_LOCALES.FR]: buildAbsoluteUrl("/fr"),
-  "x-default": buildAbsoluteUrl("/"),
+  [SUPPORTED_LOCALES.EN]: buildAbsoluteUrl(siteUrl, "/"),
+  [SUPPORTED_LOCALES.FR]: buildAbsoluteUrl(siteUrl, "/fr"),
+  "x-default": buildAbsoluteUrl(siteUrl, "/"),
 };
-const canonicalUrl = canonicalPath ? buildAbsoluteUrl(canonicalPath) : undefined;
+const canonicalUrl = canonicalPath ? buildAbsoluteUrl(siteUrl, canonicalPath) : undefined;
 const shouldRenderOpenGraph = Boolean(canonicalUrl);
 const openGraphTitle = openGraph.title || pageTitle;
 const openGraphDescription = openGraph.description || pageDescription;
-const openGraphUrl = canonicalUrl ?? buildAbsoluteUrl(openGraph.url);
-const openGraphImage = buildAbsoluteUrl(openGraph.image);
-
-const prefixHashUrl = (url: string): string =>
-  navItemUrlPrefix && url.startsWith("#") ? `${navItemUrlPrefix}${url}` : url;
+const openGraphUrl = canonicalUrl ?? buildAbsoluteUrl(siteUrl, openGraph.url);
+const openGraphImage = buildAbsoluteUrl(siteUrl, openGraph.image);
+const pagePath = Astro.url.pathname === "/" ? "/" : Astro.url.pathname.replace(/\/$/, "");
+const pageUrl = buildAbsoluteUrl(siteUrl, pagePath);
+const profilePageId = `${pageUrl}#profilepage`;
 
 const navItemsData: NavBarItemType[] = config.header.navigation.items.map((item) => ({
   ...item,
-  url: prefixHashUrl(item.url),
+  url: prefixHashUrl(navItemUrlPrefix, item.url),
   items: item.items.map((subItem) => ({
     ...subItem,
-    url: prefixHashUrl(subItem.url),
+    url: prefixHashUrl(navItemUrlPrefix, subItem.url),
   })),
 }));
+
+const jsonLdSchema = {
+  ...pageMetadata.jsonLdSchema,
+  "@id": profilePageId,
+  url: pageUrl,
+};
 ---
 
 <!DOCTYPE html>
@@ -77,6 +80,8 @@ const navItemsData: NavBarItemType[] = config.header.navigation.items.map((item)
       name="description"
       content={pageDescription}
     />
+    <meta name="robots" content={robots} />
+    <meta name="theme-color" content={themeColor} />
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     {canonicalUrl && (
       <>
@@ -96,6 +101,7 @@ const navItemsData: NavBarItemType[] = config.header.navigation.items.map((item)
         <meta property="og:locale:alternate" content={openGraph.alternateLocale} />
       </>
     )}
+    {canonicalUrl && <JsonLd schema={jsonLdSchema} />}
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <style>
       @font-face {
