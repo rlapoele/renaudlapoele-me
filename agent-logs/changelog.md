@@ -98,3 +98,5 @@ Concise history of meaningful agent-made changes.
 - Corrected the resume JSON-LD person image URLs to an existing hero image asset and verified generated schema output with `SITE_URL=https://renaudlapoele.me npm run build`.
 - Added generated `robots.txt` and `sitemap.xml` routes, default `robots` and `theme-color` metadata in `BaseLayout.astro`, and explicit `noindex, nofollow` metadata for the 404 page.
 - Verified with `npm run astro -- check`, `SITE_URL=https://renaudlapoele.me npm run build`, and generated HTML/text/XML metadata extraction.
+- Upgraded direct npm dependencies to the latest available versions, including Astro 7, `@astrojs/node` 11, Vite 8, Tailwind 4.3.2, Resend 6.17.1, Playwright 1.61.1, and Node 26 type definitions.
+- Verified the dependency update with `npm outdated --json`, `npm run astro -- check`, `SITE_URL=https://renaudlapoele.me npm run build`, and `npm audit --audit-level=moderate`.
