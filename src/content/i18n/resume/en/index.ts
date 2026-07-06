@@ -16,12 +16,12 @@ export const resumeEN : ResumeType = {
 
   content: {
     pageMetadata: {
-      title: "Renaud Lapoële | Senior Front-End Engineer & Product Engineer",
-      description: "Senior Front-End Engineer and Product Engineer in France with 25+ years of experience across UX/UI, product leadership, React, TypeScript, and scalable web applications.",
+      title: "Renaud Lapoële | Senior Front-End & Product Engineer",
+      description: "Senior Front-End & Product Engineer in France with 25+ years of experience building scalable web applications across UX, product, JavaScript, TypeScript, React, SolidJS, and design systems.",
       openGraph: {
         type: "website",
-        title: "Renaud Lapoële | Senior Front-End Engineer / Product Engineer",
-        description: "Product-oriented front-end engineer with 25+ years of experience designing scalable web applications, user experiences, and digital products.",
+        title: "Renaud Lapoële | Senior Front-End & Product Engineer",
+        description: "Senior Front-End & Product Engineer in France with 25+ years of experience building scalable web applications across UX, product, JavaScript, TypeScript, React, SolidJS, and design systems.",
         url: "https://renaudlapoele.me/en",
         image: "https://renaudlapoele.me/images/og-image-en.jpg",
         locale: "en_GB",
@@ -32,7 +32,7 @@ export const resumeEN : ResumeType = {
         "@type": "ProfilePage",
         "@id": "https://renaudlapoele.me/en#profilepage",
         "url": "https://renaudlapoele.me/en",
-        "name": "Renaud Lapoële | Senior Front-End Engineer / Product Engineer",
+        "name": "Renaud Lapoële | Senior Front-End & Product Engineer",
         "inLanguage": "en-GB",
         "mainEntity": {
           "@type": "Person",
@@ -40,8 +40,8 @@ export const resumeEN : ResumeType = {
           "name": "Renaud Lapoële",
           "url": "https://renaudlapoele.me",
           "image": "https://renaudlapoele.me/images/hero/renaud-hero-desktop.jpg",
-          "jobTitle": "Senior Front-End Engineer / Product Engineer",
-          "description": "Product-oriented front-end engineer with 25+ years of experience designing scalable web applications, user experiences, and digital products.",
+          "jobTitle": "Senior Front-End & Product Engineer",
+          "description": "Senior Front-End & Product Engineer in France with 25+ years of experience building scalable web applications across UX, product, JavaScript, TypeScript, React, SolidJS, and design systems.",
           "address": {
             "@type": "PostalAddress",
             "addressCountry": "FR"
@@ -67,13 +67,14 @@ export const resumeEN : ResumeType = {
             "Design Systems"
           ],
           "sameAs": [
-            "https://www.linkedin.com/in/renaud-lapoele-167106/"
+            "https://www.linkedin.com/in/renaud-lapoele-167106/",
+            "https://github.com/rlapoele/renaudlapoele-me"
           ]
         }
       }
     },
     hero: {
-      title: "Senior Front-End Engineer / Product Engineer",
+      title: "Senior Front-End & Product Engineer",
       tagline: "UX/UI · Product · Engineering",
       summary:
         "Product-oriented front-end leader with 25+ years of experience turning complex business requirements into scalable web applications, clear interfaces, and usable systems for global teams.",
@@ -176,7 +177,7 @@ export const resumeEN : ResumeType = {
               "Balanced engineering clarity with design quality",
               "Built with Astro and Tailwind CSS",
             ],
-            tags: ["Astro", "Tailwind","Typescript", "Localization", "Accessibility", "Design Tokens", "Content Strategy"],
+            tags: ["Astro", "Tailwind","Typescript", "Localization", "Accessibility", "Design Tokens", "Content Strategy", "Web Components"],
           },
         ],
       },

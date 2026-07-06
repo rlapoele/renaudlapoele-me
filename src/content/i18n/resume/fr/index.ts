@@ -16,12 +16,12 @@ export const resumeFR: ResumeType = {
 
   content: {
     pageMetadata: {
-      title: "Renaud Lapoële | Ingénieur Front-End & Ingénieur Produit",
-      description: "Ingénieur Front-End et Ingénieur Produit en France avec plus de 25 ans d'expérience dans l'UX/UI, la leadership de produit, Javascript, TypeScript, React, SolidJS et les applications web évolutives.",
+      title: "Renaud Lapoële | Ingénieur Front-End Senior orienté Produit",
+      description: "Ingénieur Front-End Senior en France avec plus de 25 ans d'expérience dans la conception d'applications web évolutives, avec une forte expertise UX, produit, JavaScript, TypeScript, React, SolidJS et design systems.",
       openGraph: {
         type: "website",
-        title: "Renaud Lapoële | Ingénieur Front-End / Ingénieur Produit",
-        description: "Ingénieur Front-End et Ingénieur Produit en France avec plus de 25 ans d'expérience dans l'UX/UI, la leadership de produit, Javascript, TypeScript, React, SolidJS et les applications web évolutives.",
+        title: "Renaud Lapoële | Ingénieur Front-End Senior orienté Produit",
+        description: "Ingénieur Front-End Senior en France avec plus de 25 ans d'expérience dans la conception d'applications web évolutives, avec une forte expertise UX, produit, JavaScript, TypeScript, React, SolidJS et design systems.",
         url: "https://renaudlapoele.me/fr",
         image: "https://renaudlapoele.me/images/og-image-fr.jpg",
         locale: "fr_FR",
@@ -32,7 +32,7 @@ export const resumeFR: ResumeType = {
         "@type": "ProfilePage",
         "@id": "https://renaudlapoele.me/fr#profilepage",
         "url": "https://renaudlapoele.me/fr",
-        "name": "Renaud Lapoële | Ingénieur Front-End Senior / Ingénieur Produit",
+        "name": "Renaud Lapoële | Ingénieur Front-End Senior orienté Produit",
         "inLanguage": "fr-FR",
         "mainEntity": {
           "@type": "Person",
@@ -40,8 +40,8 @@ export const resumeFR: ResumeType = {
           "name": "Renaud Lapoële",
           "url": "https://renaudlapoele.me",
           "image": "https://renaudlapoele.me/images/hero/renaud-hero-desktop.jpg",
-          "jobTitle": "Ingénieur Front-End Senior / Ingénieur Produit",
-          "description": "Ingénieur Front-End orienté produit avec plus de 25 ans d’expérience dans la conception d’applications web, d’interfaces utilisateur et de produits numériques.",
+          "jobTitle": "Ingénieur Front-End Senior orienté Produit",
+          "description": "Ingénieur Front-End Senior en France avec plus de 25 ans d'expérience dans la conception d'applications web évolutives, avec une forte expertise UX, produit, JavaScript, TypeScript, React, SolidJS et design systems.",
           "address": {
             "@type": "PostalAddress",
             "addressCountry": "FR"
@@ -67,13 +67,14 @@ export const resumeFR: ResumeType = {
             "Design Systems"
           ],
           "sameAs": [
-            "https://www.linkedin.com/in/renaud-lapoele-167106/"
+            "https://www.linkedin.com/in/renaud-lapoele-167106/",
+            "https://github.com/rlapoele/renaudlapoele-me"
           ]
         }
       }
     },
     hero: {
-      title: "Ingénieur Front-End Senior / Ingénieur Produit",
+      title: "Ingénieur Front-End Senior orienté Produit",
       tagline: "UX/UI · Produit · Ingénierie",
       summary:
         "Leader front-end orienté produit avec plus de 25 ans d'expérience dans la transformation de besoins complexes en applications web évolutives, interfaces claires et systèmes utilisables pour des équipes internationales.",
@@ -179,7 +180,7 @@ export const resumeFR: ResumeType = {
               "Équilibre entre clarté technique et qualité de design",
               "Réalisé avec Astro et Tailwind CSS",
             ],
-            tags: ["Astro", "Tailwind CSS", "Typescript", "Localisation", "Accessibilité", "Design Tokens", "Stratégie de contenu"],
+            tags: ["Astro", "Tailwind CSS", "Typescript", "Localisation", "Accessibilité", "Design Tokens", "Stratégie de contenu", "Web Components"],
           },
         ],
       },

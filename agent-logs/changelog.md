@@ -2,6 +2,10 @@
 
 Concise history of meaningful agent-made changes.
 
+## 2026-07-06
+
+- Aligned English and French resume metadata, Open Graph, JSON-LD job titles/descriptions, and hero titles around a consistent recruiter-facing front-end/product engineering positioning.
+
 ## 2026-06-09
 
 - Created `AGENTS.md` with project conventions for Astro, TypeScript, Tailwind CSS, localization, server environment handling, quality checks, and git safety.
