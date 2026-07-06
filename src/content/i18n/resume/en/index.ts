@@ -16,11 +16,72 @@ export const resumeEN : ResumeType = {
 
   content: {
     pageMetadata: {
-      title: "Renaud Lapoële | Senior Front-End Engineer & Product Engineer",
-      description: "Senior Front-End Engineer and Product Engineer in France with 25+ years of experience across UX/UI, product leadership, React, TypeScript, and scalable web applications.",
+      title: "Renaud Lapoële | Senior Front-End & Product Engineer",
+      description: "Senior Front-End & Product Engineer in France with 25+ years of experience building scalable web applications across UX, product, JavaScript, TypeScript, React, SolidJS, and design systems.",
+      openGraph: {
+        type: "website",
+        title: "Renaud Lapoële | Senior Front-End & Product Engineer",
+        description: "Senior Front-End & Product Engineer in France with 25+ years of experience building scalable web applications across UX, product, JavaScript, TypeScript, React, SolidJS, and design systems.",
+        url: "https://renaudlapoele.me/en",
+        image: {
+          url: "https://renaudlapoele.me/images/og/og-image-renaud-lapoele-en.jpg",
+          secureUrl: "https://renaudlapoele.me/images/og/og-image-renaud-lapoele-en.jpg",
+          alt: "Renaud Lapoële | Senior Front-End & Product Engineer",
+          width: "1200",
+          height: "630",
+          type: "image/jpeg",
+        },
+        locale: "en_GB",
+        alternateLocale: "fr_FR"
+      },
+      jsonLdSchema: {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "@id": "https://renaudlapoele.me/en#profilepage",
+        "url": "https://renaudlapoele.me/en",
+        "name": "Renaud Lapoële | Senior Front-End & Product Engineer",
+        "inLanguage": "en-GB",
+        "mainEntity": {
+          "@type": "Person",
+          "@id": "https://renaudlapoele.me/#person",
+          "name": "Renaud Lapoële",
+          "url": "https://renaudlapoele.me",
+          "image": "https://renaudlapoele.me/images/hero/renaud-hero-desktop.jpg",
+          "jobTitle": "Senior Front-End & Product Engineer",
+          "description": "Senior Front-End & Product Engineer in France with 25+ years of experience building scalable web applications across UX, product, JavaScript, TypeScript, React, SolidJS, and design systems.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "FR"
+          },
+          "knowsLanguage": [
+            "fr-FR",
+            "en-GB"
+          ],
+          "knowsAbout": [
+            "Front-End Engineering",
+            "TypeScript",
+            "JavaScript",
+            "React",
+            "SolidJS",
+            "Astro",
+            "Tailwind CSS",
+            "Node.js",
+            "UX Design",
+            "UI Design",
+            "Product Engineering",
+            "Web Accessibility",
+            "WCAG",
+            "Design Systems"
+          ],
+          "sameAs": [
+            "https://www.linkedin.com/in/renaud-lapoele-167106/",
+            "https://github.com/rlapoele/renaudlapoele-me"
+          ]
+        }
+      }
     },
     hero: {
-      title: "Senior Front-End Engineer / Product Engineer",
+      title: "Senior Front-End & Product Engineer",
       tagline: "UX/UI · Product · Engineering",
       summary:
         "Product-oriented front-end leader with 25+ years of experience turning complex business requirements into scalable web applications, clear interfaces, and usable systems for global teams.",
@@ -29,7 +90,7 @@ export const resumeEN : ResumeType = {
         { type: "Work type", value:"Remote or Hybrid"},
         { type: "Focus", value:"Enterprise · Product · UX-minded"},
       ],
-      focus: ["Frontend", "UX", "Product", "Design Systems", "Leadership"],
+      focus: ["Front-End Engineering", "Product Engineering", "UX/UI", "JavaScript", "TypeScript", "React / SolidJS", "Design Systems"],
       portraitImageAlt: "Portrait of Renaud Lapoële",
       availability: {
         availableFromText: "Available from ",
@@ -57,7 +118,7 @@ export const resumeEN : ResumeType = {
               "Bridging delivery, alignment, and product thinking",
           },
           {
-            label: "React · TypeScript · UX",
+            label: "JS/TS · React · UX/UI",
             description:
               "Modern front-end execution with design sensitivity",
           },
@@ -101,6 +162,7 @@ export const resumeEN : ResumeType = {
       selectedWork: {
         title: "Engineering with structured creativity",
         items: [
+          /*
           {
             name: "Offline-first Project Workspace",
             type: "Product Experiment",
@@ -112,7 +174,7 @@ export const resumeEN : ResumeType = {
               "Focused on usability in offline scenarios",
             ],
             tags: ["TypeScript", "UX", "Sync", "Architecture"],
-          },
+          },*/
           {
             name: "Resume Website / Personal Positioning",
             type: "Design + Engineering",
@@ -123,7 +185,7 @@ export const resumeEN : ResumeType = {
               "Balanced engineering clarity with design quality",
               "Built with Astro and Tailwind CSS",
             ],
-            tags: ["Astro", "Tailwind","Typescript", "Localization", "Accessibility", "Design Tokens", "Content Strategy"],
+            tags: ["Astro", "Tailwind","Typescript", "Localization", "Accessibility", "Design Tokens", "Content Strategy", "Web Components"],
           },
         ],
       },

@@ -2,6 +2,10 @@
 
 Concise history of meaningful agent-made changes.
 
+## 2026-07-06
+
+- Aligned English and French resume metadata, Open Graph, JSON-LD job titles/descriptions, and hero titles around a consistent recruiter-facing front-end/product engineering positioning.
+
 ## 2026-06-09
 
 - Created `AGENTS.md` with project conventions for Astro, TypeScript, Tailwind CSS, localization, server environment handling, quality checks, and git safety.
@@ -82,3 +86,21 @@ Concise history of meaningful agent-made changes.
 - Localized resume page titles and meta descriptions from `src/components/pages/ResumePage.astro`, adding the profile name to titles and locale-specific recruiter-facing summaries.
 - Verified with `npm run astro -- check`, `npm run build`, and generated HTML metadata extraction for `/`, `/en`, and `/fr`.
 - Removed stale commented metadata derivation code from `src/components/pages/ResumePage.astro` after moving page metadata into localized content.
+- Added canonical and hreflang metadata for the bilingual resume routes: `/` as the English default and `x-default`, `/en` as explicit English, and `/fr` as French.
+- Updated the language switcher to send French users back to `/` for the default English page.
+- Verified with `npm run astro -- check`, `npm run build`, and generated HTML extraction for canonical, alternate, and language-switch links.
+- Integrated localized Open Graph metadata in `src/layouts/BaseLayout.astro`, deriving `og:url` from the active canonical URL to keep `/`, `/en`, and `/fr` aligned with canonical and hreflang tags.
+- Corrected seeded resume Open Graph locale data so English alternates to `fr_FR` and French uses `/fr` with `en_GB` as its alternate locale.
+- Verified with `npm run astro -- check`, `npm run build`, and generated HTML extraction for canonical, hreflang, and Open Graph metadata.
+- Tightened duplicate control for the English resume by canonicalizing `/en` to `/` and pointing `hreflang="en"` at `/`, leaving `/fr` as the French canonical URL.
+
+## 2026-07-04
+
+- Reviewed the `BaseLayout.astro` refactor that moved URL and hash-link helpers into `src/scripts/server/configUtils.ts`; behavior matches the previous inline helpers.
+- Verified with `npm run astro -- check` and `npm run build`; both passed, with one unrelated Astro hint in the untracked `src/components/seo/JsonLd.astro`.
+- Integrated `src/components/seo/JsonLd.astro` into `BaseLayout.astro`, deriving JSON-LD ProfilePage `@id` and `url` from the actual rendered route so `/`, `/en`, and `/fr` emit locale-consistent schema.
+- Corrected the resume JSON-LD person image URLs to an existing hero image asset and verified generated schema output with `SITE_URL=https://renaudlapoele.me npm run build`.
+- Added generated `robots.txt` and `sitemap.xml` routes, default `robots` and `theme-color` metadata in `BaseLayout.astro`, and explicit `noindex, nofollow` metadata for the 404 page.
+- Verified with `npm run astro -- check`, `SITE_URL=https://renaudlapoele.me npm run build`, and generated HTML/text/XML metadata extraction.
+- Upgraded direct npm dependencies to the latest available versions, including Astro 7, `@astrojs/node` 11, Vite 8, Tailwind 4.3.2, Resend 6.17.1, Playwright 1.61.1, and Node 26 type definitions.
+- Verified the dependency update with `npm outdated --json`, `npm run astro -- check`, `SITE_URL=https://renaudlapoele.me npm run build`, and `npm audit --audit-level=moderate`.

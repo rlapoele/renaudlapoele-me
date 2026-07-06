@@ -10,9 +10,12 @@ import CareerOverview from "@sections/CareerOverview/CareerOverview.astro";
 import Contact from "@sections/Contact/Contact.astro";
 import Toasts from "@components/ui/Toasts.astro";
 
-type Props = { locale: LocaleType; };
+type Props = {
+  locale: LocaleType;
+  canonicalPath: string;
+};
 
-const { locale } = Astro.props as Props;
+const { locale, canonicalPath } = Astro.props as Props;
 const resume = getResumeData(locale);
 const { personal } = resume.data;
 const {
@@ -24,7 +27,7 @@ const {
 } = resume.content;
 const {sections} = resume.ui;
 ---
-<BaseLayout locale={locale} pageTitle={pageMetadata.title} pageDescription={pageMetadata.description}>
+<BaseLayout locale={locale} pageTitle={pageMetadata.title} pageDescription={pageMetadata.description} canonicalPath={canonicalPath}>
   <Hero content={hero} data={config.sections.hero.links} ui={sections.hero} fullname={personal.fullName} config={config.sections.hero} />
   <CareerOverview class="mbe-18" content={careerOverview} contentLabels={sections.careerOverview}/>
   <CareerDetails content={careerDetails} contentLabels={sections.careerDetails}/>
