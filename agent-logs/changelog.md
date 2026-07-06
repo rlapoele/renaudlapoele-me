@@ -5,6 +5,7 @@ Concise history of meaningful agent-made changes.
 ## 2026-07-06
 
 - Aligned English and French resume metadata, Open Graph, JSON-LD job titles/descriptions, and hero titles around a consistent recruiter-facing front-end/product engineering positioning.
+- Downgraded Astro to `6.4.8`, Vite to `7.3.6`, and `@astrojs/node` to `10.1.4`; kept explicit optional `@emnapi/core` and `@emnapi/runtime` dependencies so `npm ci` resolves Tailwind's WASM runtime peers cleanly.
 
 ## 2026-06-09
 
