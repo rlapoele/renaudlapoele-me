@@ -23,7 +23,14 @@ export const resumeEN : ResumeType = {
         title: "Renaud Lapoële | Senior Front-End & Product Engineer",
         description: "Senior Front-End & Product Engineer in France with 25+ years of experience building scalable web applications across UX, product, JavaScript, TypeScript, React, SolidJS, and design systems.",
         url: "https://renaudlapoele.me/en",
-        image: "https://renaudlapoele.me/images/og-image-en.jpg",
+        image: {
+          url: "https://renaudlapoele.me/images/og/og-image-renaud-lapoele-en.jpg",
+          secureUrl: "https://renaudlapoele.me/images/og/og-image-renaud-lapoele-en.jpg",
+          alt: "Renaud Lapoële | Senior Front-End & Product Engineer",
+          width: "1200",
+          height: "630",
+          type: "image/jpeg",
+        },
         locale: "en_GB",
         alternateLocale: "fr_FR"
       },
@@ -83,7 +90,7 @@ export const resumeEN : ResumeType = {
         { type: "Work type", value:"Remote or Hybrid"},
         { type: "Focus", value:"Enterprise · Product · UX-minded"},
       ],
-      focus: ["Frontend", "UX", "Product", "Design Systems", "Leadership"],
+      focus: ["Front-End Engineering", "Product Engineering", "UX/UI", "JavaScript", "TypeScript", "React / SolidJS", "Design Systems"],
       portraitImageAlt: "Portrait of Renaud Lapoële",
       availability: {
         availableFromText: "Available from ",
@@ -111,7 +118,7 @@ export const resumeEN : ResumeType = {
               "Bridging delivery, alignment, and product thinking",
           },
           {
-            label: "React · TypeScript · UX",
+            label: "JS/TS · React · UX/UI",
             description:
               "Modern front-end execution with design sensitivity",
           },
@@ -155,6 +162,7 @@ export const resumeEN : ResumeType = {
       selectedWork: {
         title: "Engineering with structured creativity",
         items: [
+          /*
           {
             name: "Offline-first Project Workspace",
             type: "Product Experiment",
@@ -166,7 +174,7 @@ export const resumeEN : ResumeType = {
               "Focused on usability in offline scenarios",
             ],
             tags: ["TypeScript", "UX", "Sync", "Architecture"],
-          },
+          },*/
           {
             name: "Resume Website / Personal Positioning",
             type: "Design + Engineering",

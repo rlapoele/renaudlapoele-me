@@ -17,13 +17,20 @@ export const resumeFR: ResumeType = {
   content: {
     pageMetadata: {
       title: "Renaud Lapoële | Ingénieur Front-End Senior orienté Produit",
-      description: "Ingénieur Front-End Senior en France avec plus de 25 ans d'expérience dans la conception d'applications web évolutives, avec une forte expertise UX, produit, JavaScript, TypeScript, React, SolidJS et design systems.",
+      description: "Ingénieur Front-End Senior orienté Produit en France avec plus de 25 ans d'expérience dans la conception d'applications web évolutives, avec une forte expertise UX, produit, JavaScript, TypeScript, React, SolidJS et design systems.",
       openGraph: {
         type: "website",
         title: "Renaud Lapoële | Ingénieur Front-End Senior orienté Produit",
         description: "Ingénieur Front-End Senior en France avec plus de 25 ans d'expérience dans la conception d'applications web évolutives, avec une forte expertise UX, produit, JavaScript, TypeScript, React, SolidJS et design systems.",
         url: "https://renaudlapoele.me/fr",
-        image: "https://renaudlapoele.me/images/og-image-fr.jpg",
+        image: {
+          url: "https://renaudlapoele.me/images/og/og-image-renaud-lapoele-fr.jpg",
+          secureUrl: "https://renaudlapoele.me/images/og/og-image-renaud-lapoele-fr.jpg",
+          alt: "Renaud Lapoële | Ingénieur Front-End Senior orienté Produit",
+          width: "1200",
+          height: "630",
+          type: "image/jpeg",
+        },
         locale: "fr_FR",
         alternateLocale: "en_GB",
       },
@@ -83,7 +90,7 @@ export const resumeFR: ResumeType = {
         {type: "Type de travail", value: "Télétravail ou Hybride"}, // "💻 Télétravail ou Hybride"
         {type: "Focus", value: "Environnements complexes · Produit · UX"},
       ],
-      focus: ["Frontend", "UX", "Produit", "Design Systems", "Leadership"],
+      focus: ["Ingénierie Front-End", "Produit", "UX/UI", "JavaScript", "TypeScript", "React / SolidJS", "Design Systems"],
       portraitImageAlt: "Portrait de Renaud Lapoële",
       availability: {
         availableFromText: "Disponible dès ",
@@ -111,7 +118,7 @@ export const resumeFR: ResumeType = {
               "Capacité à faire le lien entre delivery, produit et alignement des équipes",
           },
           {
-            label: "React · TypeScript · UX",
+            label: "JS/TS · React · UX/UI",
             description:
               "Expertise front-end moderne avec une forte attention portée à l’expérience utilisateur",
           },
@@ -158,6 +165,7 @@ export const resumeFR: ResumeType = {
       selectedWork: {
         title: "Une ingénierie structurée avec une dimension créative",
         items: [
+          /*
           {
             name: "Application de gestion de projets offline-first",
             type: "Expérimentation produit",
@@ -169,7 +177,7 @@ export const resumeFR: ResumeType = {
               "Attention portée à l’utilisabilité en mode hors ligne",
             ],
             tags: ["TypeScript", "UX", "Sync", "Architecture"],
-          },
+          },*/
           {
             name: "Site de présentation / Positionnement professionnel",
             type: "Design & Engineering",

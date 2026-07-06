@@ -29,7 +29,14 @@ export type PageMetadataType = {
   openGraph: {
     title: string;
     description: string;
-    image: string;
+    image: {
+      url: string;
+      secureUrl: string;
+      alt: string;
+      width: string;
+      height: string;
+      type: string;
+    };
     url: string;
     type: string;
     locale: string;
