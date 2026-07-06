@@ -7,6 +7,8 @@ Concise history of meaningful agent-made changes.
 - Aligned English and French resume metadata, Open Graph, JSON-LD job titles/descriptions, and hero titles around a consistent recruiter-facing front-end/product engineering positioning.
 - Merged the latest `dev` changes into `releases` and prepared release `v1.0.0-beta.1`.
 - Added explicit optional `@emnapi/core` and `@emnapi/runtime` dependencies to satisfy `@napi-rs/wasm-runtime` peer resolution during `npm ci` on the `releases` branch.
+- Downgraded Astro to `6.4.8`, Vite to `7.3.6`, and `@astrojs/node` to `10.1.4`; kept explicit optional `@emnapi/core` and `@emnapi/runtime` dependencies so `npm ci` resolves Tailwind's WASM runtime peers cleanly.
+- Merged the downgraded dependency graph into `releases` and prepared release `v1.0.0-beta.2`.
 
 ## 2026-06-09
 
