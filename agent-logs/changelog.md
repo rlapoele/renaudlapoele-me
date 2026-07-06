@@ -6,6 +6,7 @@ Concise history of meaningful agent-made changes.
 
 - Aligned English and French resume metadata, Open Graph, JSON-LD job titles/descriptions, and hero titles around a consistent recruiter-facing front-end/product engineering positioning.
 - Merged the latest `dev` changes into `releases` and prepared release `v1.0.0-beta.1`.
+- Added explicit optional `@emnapi/core` and `@emnapi/runtime` dependencies to satisfy `@napi-rs/wasm-runtime` peer resolution during `npm ci` on the `releases` branch.
 
 ## 2026-06-09
 
