@@ -43,8 +43,7 @@ export type NavigationType = {
 export type LinkType = { href: string };
 
 export type HeroLinksType = {
-  toContactForm: LinkType,
-  resumeDownload: LinkType
+  toContactForm: LinkType
 };
 
 export type HeroConfigType = {

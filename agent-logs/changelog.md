@@ -8,6 +8,16 @@ Concise history of meaningful agent-made changes.
 - Downgraded Astro to `6.4.8`, Vite to `7.3.6`, and `@astrojs/node` to `10.1.4`; kept explicit optional `@emnapi/core` and `@emnapi/runtime` dependencies so `npm ci` resolves Tailwind's WASM runtime peers cleanly.
 - Moved `@emnapi/core` and `@emnapi/runtime` from optional dependencies to regular dependencies so npm writes complete lockfile package entries required by Railway `npm ci`.
 
+## 2026-07-07
+
+- Reworded the opening README introduction in first person so the project overview reads more personally while staying concise and professional.
+- Adjusted the print resume HTML so PDF page margins are defined with `@page`, giving continued pages the same top margin as the first page.
+- Updated the resume HTML-to-PDF utility to derive generated PDF filenames from the source HTML filename and suffix them with a readable production date.
+- Added a French print resume HTML file using the same markup and CSS as the English version, adapted from the localized French resume content.
+- Refactored the resume HTML-to-PDF utility to accept an HTML file or directory argument, defaulting to the current working directory when no argument is provided.
+- Added localized `resumePdfFileUrl` hero content for English and French resume PDFs, removed the now-unused global hero download href config, and wired the Hero download button to the localized content URL.
+- Hardened the Hero resume PDF download link with a new-tab fallback, safe `rel` attributes, and a PDF MIME hint so ignored-download cases do not replace the resume page.
+
 ## 2026-06-09
 
 - Created `AGENTS.md` with project conventions for Astro, TypeScript, Tailwind CSS, localization, server environment handling, quality checks, and git safety.
