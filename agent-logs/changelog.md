@@ -21,6 +21,10 @@ Concise history of meaningful agent-made changes.
 - Added localized `resumePdfFileUrl` hero content for English and French resume PDFs, removed the now-unused global hero download href config, and wired the Hero download button to the localized content URL.
 - Hardened the Hero resume PDF download link with a new-tab fallback, safe `rel` attributes, and a PDF MIME hint so ignored-download cases do not replace the resume page.
 
+## 2026-07-08
+
+- Merged `dev` into `releases` and prepared release `v1.0.0-beta.3`, keeping the release branch version sequence as the source of truth.
+
 ## 2026-06-09
 
 - Created `AGENTS.md` with project conventions for Astro, TypeScript, Tailwind CSS, localization, server environment handling, quality checks, and git safety.
