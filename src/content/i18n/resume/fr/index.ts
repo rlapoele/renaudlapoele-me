@@ -9,7 +9,7 @@ export const resumeFR: ResumeType = {
       location: "France",
       workStyle: "Hybride ou télétravail",
       availability: "Ouvert à de nouvelles opportunités",
-      languages: ["Français (natif)", "Anglais (courant)"],
+      languages: ["Français (natif)", "Anglais (courant)", "Espagnol (notions)"],
       yearsExperience: 25,
     },
   },
@@ -90,8 +90,9 @@ export const resumeFR: ResumeType = {
         {type: "Type de travail", value: "Télétravail ou Hybride"}, // "💻 Télétravail ou Hybride"
         {type: "Focus", value: "Environnements complexes · Produit · UX"},
       ],
-      focus: ["Ingénierie Front-End", "Produit", "UX/UI", "JavaScript", "TypeScript", "React / SolidJS", "Design Systems"],
+      focus: ["Ingénierie Front-End", "Produit", "UX/UI", "JavaScript", "TypeScript", "React", "SolidJS", "Vue", "Astro", "Design Systems"],
       portraitImageAlt: "Portrait de Renaud Lapoële",
+      resumePdfFileUrl: "/pdf/renaud_lapoele_resume_fr_07-Jul-2026.pdf",
       availability: {
         availableFromText: "Disponible dès ",
         availabilityPeriodText: 'Septembre 2026',

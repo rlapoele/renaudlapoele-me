@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Renaud Lapoële - Senior Front-End Engineer Resume</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Urbanist:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --ink: #111111;
+      --text: #232323;
+      --marker: #343434;
+      --muted: #5f5f5f;
+      --quiet: #7a7a7a;
+      --line: #d8d8d8;
+      --soft-line: #ededed;
+      --panel: #f6f6f6;
+      --paper: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: #e9e9e9;
+      color: var(--text);
+      font-family: "Urbanist", Arial, sans-serif;
+      font-size: 10.35pt;
+      line-height: 1.32;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #e9e9e9;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 13mm 14mm 12mm;
+      background: var(--paper);
+      box-shadow: 0 12px 42px rgba(0, 0, 0, 0.12);
+    }
+
+    .resume {
+      display: grid;
+      grid-template-columns: 1fr 55mm;
+      gap: 8mm;
+    }
+
+    header {
+      grid-column: 1 / -1;
+      padding-bottom: 5mm;
+      /*border-bottom: 1.4px dotted var(--ink);*/
+    }
+
+    .eyebrow {
+      margin: 0 0 1.5mm;
+      color: var(--muted);
+      font-size: 8.7pt;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 3mm 0 5mm;
+      color: var(--ink);
+      font-family: "Lora", Georgia, serif;
+      font-size: 27pt;
+      font-weight: 600;
+      line-height: 1.02;
+    }
+
+    .headline {
+      margin: 3mm 0 0;
+      color: var(--ink);
+      font-size: 12pt;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+    }
+
+    .summary {
+      margin: 5mm 0 0;
+      color: var(--text);
+      font-size: 10.4pt;
+      line-height: 1.38;
+    }
+
+    main,
+    aside {
+      min-width: 0;
+    }
+
+    section {
+      margin-top: 5.4mm;
+    }
+
+    section:first-child {
+      margin-top: 0;
+    }
+
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 2.5mm;
+      margin: 0 0 2.4mm;
+      color: var(--muted);
+      font-size: 9pt;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+
+      &#experience-title {
+        font-size: 10.4pt;
+      }
+    }
+/*
+    h2::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--soft-line);
+    }
+*/
+    .role {
+      padding: 0 0 4mm;
+      margin: 0 0 5mm;
+      /*border-bottom: 1px dotted var(--line);*/
+      font-size: 9.75pt;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .role:last-child {
+      border-bottom: 0;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .role-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4mm;
+      align-items: baseline;
+      margin-bottom: 4mm;
+    }
+
+    h3 {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Lora", Georgia, serif;
+      font-size: 11.1pt;
+      letter-spacing: 0.02em;
+      line-height: 1.18;
+    }
+
+    .meta {
+      margin: 0.8mm 0 0;
+      color: var(--quiet);
+      font-size: 8.6pt;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .meta-block {
+      text-align: right;
+    }
+
+    .role-note {
+      margin: 0mm 0 4mm;
+      color: var(--ink);
+      font-size: 9.5pt;
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 4.2mm;
+    }
+
+    li {
+      margin: 0 0 1.5mm;
+      padding-left: 0.5mm;
+
+      &::marker {
+        color: var(--marker);
+      }
+    }
+
+    .tight li {
+      margin-bottom: 1.5mm;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.4mm;
+      margin: 4mm 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tags li {
+      margin: 0;
+      padding: 0.75mm 1.7mm;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text);
+      font-size: 8.1pt;
+      font-weight: 550;
+      line-height: 1;
+    }
+
+    aside {
+      padding-left: 5mm;
+      /*border-left: 1px solid var(--line);*/
+    }
+
+    .side-block {
+      margin: 0 0 8mm;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .side-block h2 {
+      margin-bottom: 2mm;
+    }
+
+    .contact-list,
+    .compact-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .contact-list li,
+    .compact-list li {
+      margin: 0 0 2mm;
+      padding: 0;
+      color: var(--text);
+      font-size: 9.1pt;
+      line-height: 1.28;
+    }
+
+    .label {
+      display: block;
+      margin-bottom: 0.2mm;
+      color: var(--quiet);
+      font-size: 7.7pt;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .skill-group {
+      margin: 0 0 4.5mm;
+    }
+
+    .skill-group h3 {
+      margin-bottom: 1.2mm;
+      font-family: "Urbanist", Arial, sans-serif;
+      font-size: 8.9pt;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .skill-group p,
+    .side-copy {
+      margin: 0;
+      color: var(--text);
+      font-size: 9pt;
+      line-height: 1.32;
+    }
+
+    .panel {
+      padding: 3mm;
+      background: var(--panel);
+      border: 1px solid var(--soft-line);
+      border-radius: 1mm
+    }
+
+    .education-item {
+      margin: 0 0 2.2mm;
+    }
+
+    .education-item strong {
+      display: block;
+      color: var(--ink);
+      font-size: 9pt;
+      line-height: 1.24;
+    }
+
+    .education-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 8.4pt;
+      line-height: 1.25;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .older-experience {
+      margin-top: 2mm;
+      padding-top: 2.4mm;
+      border-top: 1px solid var(--soft-line);
+    }
+
+    .older-experience p {
+      margin: 0 0 1.6mm;
+      font-size: 8.9pt;
+      line-height: 1.28;
+    }
+
+    .older-experience strong {
+      color: var(--ink);
+    }
+
+    @page {
+      size: A4;
+      margin: 10mm;
+    }
+
+    @media print {
+      html,
+      body {
+        background: #ffffff;
+        font-size: 10.1pt;
+      }
+
+      body {
+        padding: 0;
+      }
+
+      .page {
+        width: auto;
+        min-height: auto;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+
+      a {
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="resume">
+      <header>
+        <p class="eyebrow">Senior Front-End Engineer · Product-minded · UX/UI</p>
+        <h1>Renaud Lapoële</h1>
+        <p class="headline">Design-minded Front-End Engineer combining 25+ years of Cisco delivery experience with UX leadership, product ownership, and modern JavaScript engineering.</p>
+        <p class="summary">I translate complex business needs into clear, accessible, scalable web applications. I operate comfortably across discovery, UX design, front-end architecture, implementation, stakeholder alignment, and delivery, with a pragmatic senior IC profile suited to permanent or freelance roles.</p>
+      </header>
+
+      <main>
+        <section aria-labelledby="experience-title">
+          <h2 id="experience-title">Experience</h2>
+
+          <article class="role">
+            <div class="role-head">
+              <h3>YunikApps - Independent Consulting &amp; Professional Development</h3>
+              <div class="meta-block">
+                <p class="meta">Jan 2024 - Present</p>
+                <p class="meta">France</p>
+              </div>
+            </div>
+            <p class="role-note">Independent consulting preparation, modern front-end engineering, accessibility, and AI-assisted product development.</p>
+            <ul class="tight">
+              <li>Prepared the launch of an independent consulting activity focused on web applications and digital product development.</li>
+              <li>Built personal projects with TypeScript, Astro, React, SolidJS, Tailwind CSS, and Node.js.</li>
+              <li>Completed professional accessibility training and deepened expertise in inclusive, WCAG-compliant development.</li>
+              <li>Conducted hands-on research in modern front-end engineering, AI-assisted development, and emerging AI engineering practices.</li>
+            </ul>
+            <ul class="tags" aria-label="Key skills">
+              <li>TypeScript</li><li>Astro</li><li>React</li><li>SolidJS</li><li>Accessibility</li><li>AI-Assisted Development</li>
+            </ul>
+          </article>
+
+          <article class="role">
+            <div class="role-head">
+              <h3>Cisco Systems - Senior Front-End Engineer / Tech Lead / Product Owner</h3>
+              <div class="meta-block">
+                <p class="meta">Jul 2019 - Jan 2024</p>
+                <p class="meta">France · Remote</p>
+              </div>
+            </div>
+            <p class="role-note">Senior IC role combining front-end leadership, UX design, and product ownership on global partner platforms.</p>
+            <ul class="tight">
+              <li>Led the UX redesign and front-end implementation of two worldwide Cisco partner search platforms, improving consistency and usability across regions.</li>
+              <li>Owned backlog, epics, user stories, priorities, and stakeholder alignment while remaining hands-on with front-end development.</li>
+              <li>Drove UI architecture and front-end best practices using React, JavaScript, HTML, CSS, and Tailwind CSS.</li>
+              <li>Designed and delivered scalable web APIs for partner incentive program management.</li>
+              <li>Acted as Product Owner on a Salesforce migration for a direct partner contract management solution.</li>
+              <li>Mentored a junior Product Owner on backlog management, user stories, prioritization, and stakeholder communication.</li>
+            </ul>
+            <ul class="tags" aria-label="Key skills">
+              <li>React</li><li>JavaScript</li><li>TypeScript</li><li>UX/UI</li><li>Product Ownership</li><li>Agile</li>
+            </ul>
+          </article>
+
+          <article class="role">
+            <div class="role-head">
+              <h3>Cisco Systems - UX Lead / Front-End Engineer</h3>
+              <div class="meta-block">
+                <p class="meta">Aug 2016 - Jun 2019</p>
+                <p class="meta">France</p>
+              </div>
+            </div>
+            <p class="role-note">Front-End engineer with a strong UX leadership role, focused on improving usability, consistency, and product clarity.</p>
+            <ul class="tight">
+              <li>Promoted UI and UX practices across teams, embedding user-centered thinking into delivery.</li>
+              <li>Designed and redesigned experiences through wireframes, mockups, prototypes, and journey maps.</li>
+              <li>Implemented complex interfaces with AngularJS / Angular and contributed to a business intelligence dashboard balancing data density with usability.</li>
+              <li>Rapidly prototyped concepts with Vue.js to validate ideas and support MVP initiatives.</li>
+              <li>Collaborated with product owners, analysts, and developers in Lean and Agile environments.</li>
+            </ul>
+            <ul class="tags" aria-label="Key skills">
+              <li>UX Leadership</li><li>Prototyping</li><li>Angular</li><li>Vue.js</li><li>Lean</li><li>Cross-functional Delivery</li>
+            </ul>
+          </article>
+
+          <article class="role">
+            <div class="role-head">
+              <h3>Cisco Systems - IT Analyst / Technical Lead</h3>
+              <div class="meta-block">
+                <p class="meta">Mar 2008 - Jul 2016</p>
+                <p class="meta">France</p>
+              </div>
+            </div>
+            <p class="role-note">Hybrid role at the intersection of business analysis, UX design, and technical leadership.</p>
+            <ul class="tight">
+              <li>Gathered, analyzed, and documented requirements for worldwide partner management, pricing, and discounting initiatives.</li>
+              <li>Designed user interfaces aligned with business processes and user needs, improving usability and business/IT alignment.</li>
+              <li>Authored technical specifications, functional documentation, and user manuals.</li>
+              <li>Coordinated small delivery teams as technical lead or project lead across multiple initiatives.</li>
+            </ul>
+            <ul class="tags" aria-label="Key skills">
+              <li>Requirements Analysis</li><li>Technical Documentation</li><li>UX Design</li><li>Leadership</li>
+            </ul>
+          </article>
+
+          <div class="older-experience">
+            <p><strong>Cisco Systems - Software Engineer</strong> · San Jose, CA, USA · Feb 2007 - Feb 2008<br />Partner Deal Registration platform, requirements, technical specifications, UI design, and localization.</p>
+            <p><strong>Cisco Systems - Software Engineer</strong> · France · Jan 2000 - Jan 2007<br />Designed, implemented, and supported web applications for logistics, marketing, e-learning, finance, and channel teams across EMEA.</p>
+            <p><strong>Earlier roles</strong> · Nantes University, Hegler France, Celia · 1994 - 1997<br />Technical support, web pages, system administration, database design, and Microsoft Access applications.</p>
+          </div>
+        </section>
+      </main>
+
+      <aside>
+        <section class="side-block panel" aria-labelledby="contact-title">
+          <h2 id="contact-title">Contact</h2>
+          <ul class="contact-list">
+            <li><span class="label">Email</span><a href="mailto:rlapoele@gmail.com">rlapoele@gmail.com</a></li>
+            <li><span class="label">Location</span>France</li>
+            <li><span class="label">Work style</span>Remote or hybrid</li>
+            <li><span class="label">Open to</span>Permanent roles and freelance contracts</li>
+          </ul>
+        </section>
+
+        <section class="side-block" aria-labelledby="positioning-title">
+          <h2 id="positioning-title">Positioning</h2>
+          <p class="side-copy">Senior front-end individual contributor with product ownership and UX leadership depth. Strong fit for product-facing engineering roles where clarity, delivery ownership, and usability matter.</p>
+        </section>
+
+        <section class="side-block" aria-labelledby="skills-title">
+          <h2 id="skills-title">Core Skills</h2>
+          <div class="skill-group">
+            <h3>Front-End</h3>
+            <p>JavaScript, TypeScript, React, SolidJS, Vue.js, Angular, HTML, CSS, Tailwind CSS, responsive UI, UI architecture.</p>
+          </div>
+          <div class="skill-group">
+            <h3>UX &amp; Product</h3>
+            <p>UX/UI design, wireframing, prototyping, journey maps, product discovery, backlog ownership, user stories, stakeholder alignment.</p>
+          </div>
+          <div class="skill-group">
+            <h3>Engineering</h3>
+            <p>Node.js, web APIs, Java, SQL, PL/SQL, Oracle technologies, technical documentation, requirements analysis.</p>
+          </div>
+          <div class="skill-group">
+            <h3>Current Focus</h3>
+            <p>Accessibility, inclusive design, WCAG compliance, Astro, AI-assisted development, AI engineering practice.</p>
+          </div>
+        </section>
+
+        <section class="side-block" aria-labelledby="certification-title">
+          <h2 id="certification-title">Certification</h2>
+          <div class="education-item">
+            <strong>Access 42 - Accessibility</strong>
+            <span>October 2024 · Develop accessible sites and web applications</span>
+          </div>
+        </section>
+
+        <section class="side-block" aria-labelledby="education-title">
+          <h2 id="education-title">Education</h2>
+          <div class="education-item">
+            <strong>Maîtrise, Computer Science &amp; Software Engineering</strong>
+            <span>Nantes University · 1996</span>
+          </div>
+          <div class="education-item">
+            <strong>Licence, Computer Science &amp; Software Engineering</strong>
+            <span>Nantes University · 1995</span>
+          </div>
+          <div class="education-item">
+            <strong>DUT, Computer Science &amp; Software Engineering</strong>
+            <span>Nantes University · 1994</span>
+          </div>
+        </section>
+
+        <section class="side-block" aria-labelledby="languages-title">
+          <h2 id="languages-title">Languages</h2>
+          <ul class="compact-list">
+            <li><strong>French</strong> - Native</li>
+            <li><strong>English</strong> - Fluent</li>
+            <li><strong>Spanish</strong> - Basic</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </div>
+</body>
+</html>

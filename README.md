@@ -1,8 +1,10 @@
 # renaudlapoele.me
 
-This project is a bilingual resume landing page for Renaud Lapoele, Senior Front-End Engineer / Product Engineer.
+Hey Hi! I'm **Renaud**.
 
-Its purpose is to give recruiters and potential employers a clear, concise way to evaluate Renaud's profile: experience, skills, product mindset, UX sensitivity, and technical background without having to parse a long-form CV first.
+This is my bilingual resume landing page. I built it to introduce myself as a Senior Front-End Engineer / Product Engineer in a way that is direct, useful, and easy to scan.
+
+My goal is to help recruiters and potential employers quickly understand my experience, skills, product mindset, UX sensitivity, and technical background before diving into a longer CV.
 
 ## Why This Project Exists
 
@@ -60,4 +62,4 @@ Node `>=22.12.0` is required.
 
 ## Content Direction
 
-The site favors concise, scannable content over exhaustive detail. Design and copy decisions should help recruiters quickly understand what Renaud brings to a team: senior front-end execution, UX/product thinking, structured communication, and experience delivering usable systems in complex environments.
+The site favors concise, scannable content over exhaustive detail. Design and copy decisions should help recruiters quickly understand what I bring to a team: senior front-end execution, UX/product thinking, structured communication, and experience delivering usable systems in complex environments.

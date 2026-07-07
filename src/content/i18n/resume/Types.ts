@@ -85,6 +85,7 @@ export type HeroType = {
   meta: HeroMetadataType;
   focus: string[];
   portraitImageAlt: string;
+  resumePdfFileUrl: string;
   availability: {
     availableFromText: string;
     availabilityPeriodText: string;

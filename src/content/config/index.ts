@@ -41,7 +41,6 @@ export const config: ConfigType = {
     hero: {
       links: {
         toContactForm: { href: "#contact" },
-        resumeDownload: { href: "#" },
       },
       availability: {
         isAvailable: true
