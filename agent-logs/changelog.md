@@ -25,6 +25,10 @@ Concise history of meaningful agent-made changes.
 
 - Merged `dev` into `releases` and prepared release `v1.0.0-beta.3`, keeping the release branch version sequence as the source of truth.
 
+## 2026-07-09
+
+- Merged the latest resume PDF updates from `dev` into `releases` and prepared release `v1.0.0`.
+
 ## 2026-06-09
 
 - Created `AGENTS.md` with project conventions for Astro, TypeScript, Tailwind CSS, localization, server environment handling, quality checks, and git safety.
