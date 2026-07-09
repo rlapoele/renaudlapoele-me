@@ -41,7 +41,7 @@
       width: 210mm;
       min-height: 297mm;
       margin: 0 auto;
-      padding: 13mm 14mm 12mm;
+      padding: 20mm 17.5mm 20mm;
       background: var(--paper);
       box-shadow: 0 12px 42px rgba(0, 0, 0, 0.12);
     }
@@ -55,7 +55,6 @@
     header {
       grid-column: 1 / -1;
       padding-bottom: 5mm;
-      /*border-bottom: 1.4px dotted var(--ink);*/
     }
 
     .eyebrow {
@@ -120,14 +119,7 @@
         font-size: 10.4pt;
       }
     }
-/*
-    h2::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: var(--soft-line);
-    }
-*/
+
     .role {
       padding: 0 0 4mm;
       margin: 0 0 5mm;
@@ -217,8 +209,8 @@
       line-height: 1;
     }
 
-    aside {
-      padding-left: 5mm;
+    aside.panel {
+      padding: 3.5mm;
       /*border-left: 1px solid var(--line);*/
     }
 
@@ -241,7 +233,7 @@
 
     .contact-list li,
     .compact-list li {
-      margin: 0 0 2mm;
+      margin: 0 0 2.5mm;
       padding: 0;
       color: var(--text);
       font-size: 9.1pt;
@@ -250,8 +242,8 @@
 
     .label {
       display: block;
-      margin-bottom: 0.2mm;
-      color: var(--quiet);
+      margin-bottom: 0.4mm;
+      color: var(--ink);
       font-size: 7.7pt;
       font-weight: 800;
       letter-spacing: 0.08em;
@@ -278,6 +270,10 @@
       font-size: 9pt;
       line-height: 1.32;
     }
+    .side-copy {
+      font-size: 10pt;
+      line-height: 1.4;
+    }
 
     .panel {
       padding: 3mm;
@@ -295,6 +291,7 @@
       color: var(--ink);
       font-size: 9pt;
       line-height: 1.24;
+      margin-bottom: .75mm;
     }
 
     .education-item span {
@@ -360,7 +357,7 @@
   <div class="page">
     <div class="resume">
       <header>
-        <p class="eyebrow">Ingénieur Front-End Senior · Produit · UX/UI</p>
+        <p class="eyebrow">Ingénieur Front-End Senior - Produit - UX/UI</p>
         <h1>Renaud Lapoële</h1>
         <p class="headline">Ingénieur Front-End orienté design et produit, avec 25+ ans d’expérience chez Cisco, combinant leadership UX, ownership produit et ingénierie JavaScript moderne.</p>
         <p class="summary">Je transforme des besoins métier complexes en applications web claires, accessibles et évolutives. J’interviens aussi bien sur la découverte, l’UX, l’architecture front-end, l’implémentation, l’alignement des parties prenantes et la livraison, avec un profil senior IC adapté à des rôles en CDI, CDD ou mission freelance.</p>
@@ -395,7 +392,7 @@
               <h3>Cisco Systems - Senior Front-End Engineer / Tech Lead / Product Owner</h3>
               <div class="meta-block">
                 <p class="meta">Juil. 2019 - Jan. 2024</p>
-                <p class="meta">France · Télétravail</p>
+                <p class="meta">France - Télétravail</p>
               </div>
             </div>
             <p class="role-note">Rôle senior combinant leadership front-end, conception UX et responsabilité produit sur des plateformes partenaires mondiales.</p>
@@ -417,7 +414,7 @@
               <h3>Cisco Systems - UX Lead / Front-End Engineer</h3>
               <div class="meta-block">
                 <p class="meta">Août 2016 - Juin 2019</p>
-                <p class="meta">France</p>
+                <p class="meta">France - Télétravail</p>
               </div>
             </div>
             <p class="role-note">Ingénieur front-end avec une forte dimension de leadership UX, centré sur l’utilisabilité, la cohérence et la clarté produit.</p>
@@ -438,7 +435,7 @@
               <h3>Cisco Systems - IT Analyst / Technical Lead</h3>
               <div class="meta-block">
                 <p class="meta">Mars 2008 - Juil. 2016</p>
-                <p class="meta">France</p>
+                <p class="meta">France - Télétravail</p>
               </div>
             </div>
             <p class="role-note">Rôle hybride à l’intersection de l’analyse métier, de la conception UX et du leadership technique.</p>
@@ -454,18 +451,19 @@
           </article>
 
           <div class="older-experience">
-            <p><strong>Cisco Systems - Software Engineer</strong> · San Jose, CA, États-Unis · Fév. 2007 - Fév. 2008<br />Plateforme Partner Deal Registration, besoins, spécifications techniques, conception UI et localisation.</p>
-            <p><strong>Cisco Systems - Software Engineer</strong> · France · Jan. 2000 - Jan. 2007<br />Conception, développement et support d’applications web pour les équipes logistique, marketing, e-learning, finance et partenaires en EMEA.</p>
-            <p><strong>Premières expériences</strong> · Université de Nantes, Hegler France, Celia · 1994 - 1997<br />Support technique, pages web, administration système, conception de bases de données et applications Microsoft Access.</p>
+            <p><strong>Cisco Systems - Software Engineer</strong> - San Jose, CA, États-Unis - Fév. 2007 - Fév. 2008<br />Plateforme Partner Deal Registration, besoins, spécifications techniques, conception UI et localisation.</p>
+            <p><strong>Cisco Systems - Software Engineer</strong> - France - Jan. 2000 - Jan. 2007<br />Conception, développement et support d’applications web pour les équipes logistique, marketing, e-learning, finance et partenaires en EMEA.</p>
+            <p><strong>Premières expériences</strong> - Université de Nantes, Hegler France, Celia - 1994 - 1997<br />Support technique, pages web, administration système, conception de bases de données et applications Microsoft Access.</p>
           </div>
         </section>
       </main>
 
-      <aside>
-        <section class="side-block panel" aria-labelledby="contact-title">
+      <aside class="panel">
+        <section class="side-block" aria-labelledby="contact-title">
           <h2 id="contact-title">Contact</h2>
           <ul class="contact-list">
             <li><span class="label">Email</span><a href="mailto:rlapoele@gmail.com">rlapoele@gmail.com</a></li>
+            <li><span class="label">Site web</span><a href="https://renaudlapoele.me/" target="_blank">https://renaudlapoele.me/</a></li>
             <li><span class="label">Localisation</span>France</li>
             <li><span class="label">Mode de travail</span>Télétravail ou hybride</li>
             <li><span class="label">Ouvert à</span>CDI, CDD et missions freelance</li>
@@ -501,7 +499,7 @@
           <h2 id="certification-title">Certification</h2>
           <div class="education-item">
             <strong>Access42 - Accessibilité</strong>
-            <span>Octobre 2024 · Développer des sites et des applications web accessibles</span>
+            <span>Octobre 2024 - Développer des sites et des applications web accessibles</span>
           </div>
         </section>
 
@@ -509,15 +507,15 @@
           <h2 id="education-title">Formation</h2>
           <div class="education-item">
             <strong>Maîtrise, Informatique &amp; Génie Logiciel</strong>
-            <span>Université de Nantes · 1996</span>
+            <span>Université de Nantes - 1996</span>
           </div>
           <div class="education-item">
             <strong>Licence, Informatique &amp; Génie Logiciel</strong>
-            <span>Université de Nantes · 1995</span>
+            <span>Université de Nantes - 1995</span>
           </div>
           <div class="education-item">
             <strong>DUT, Informatique &amp; Génie Logiciel</strong>
-            <span>Université de Nantes · 1994</span>
+            <span>Université de Nantes - 1994</span>
           </div>
         </section>
 
