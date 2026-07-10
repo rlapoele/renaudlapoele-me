@@ -13,12 +13,14 @@ import ExperienceKeyFocuses from "@sections/CareerDetails/Experiences/Experience
 
 
 type Props = {
+  id: string;
   sectionLabels: ExperienceSectionLabelsType;
   experience: ExperienceItemType;
   class?: string;
 };
 
 const {
+  id,
   sectionLabels,
   experience,
   class: className = ""
@@ -26,10 +28,15 @@ const {
 
 const baseCssClasses = "";
 const classes = combineCssClasses(baseCssClasses, className);
+const titleId = `${id}-title`;
+const metaId = `${id}-meta`;
+const summaryId = `${id}-summary`;
+const ariaDescribedBy = !!experience.startDate ? `${metaId} ${summaryId}` : summaryId;
 ---
-<Card class={classes}>
+<Card class={classes} aria-labelledby={titleId} aria-describedby={ariaDescribedBy}>
   { experience.startDate &&
     <ExperienceDatesLocation
+      id={metaId}
       startDateLabel={experience.startDate?.label as string}
       endDateLabel={experience.endDate?.label as string}
       location={experience.location as string}
@@ -37,11 +44,13 @@ const classes = combineCssClasses(baseCssClasses, className);
     />
   }
   <ExperienceOrgRole
+    id={titleId}
     org={experience.company}
     role={experience.role as string}
     class="mbe-4"
   />
   <ExperienceSummary
+    id={summaryId}
     summary={experience.summary as string}
   />
   <ExperienceResponsibilities

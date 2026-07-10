@@ -12,9 +12,10 @@ const {
   content,
   sectionLabels
 } = Astro.props as Props;
+
 ---
 <Section id="experience" label={sectionLabels.sectionLabel} title={content.title} bodyClass="space-y-5">
   {
-    content.items.map((experience) => <Experience experience={experience} sectionLabels={sectionLabels} />)
+    content.items.map((experience, index) => <Experience id={`experience-${index}`} experience={experience} sectionLabels={sectionLabels} />)
   }
 </Section>

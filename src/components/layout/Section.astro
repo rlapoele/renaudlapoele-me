@@ -31,9 +31,10 @@ const containerClasses = combineCssClasses(
   containerClass
 );
 ---
-<section id={id} class={sectionClasses}>
+<section id={id} class={sectionClasses} aria-labelledby={`${id}-title`}>
   <Container class={containerClasses}>
     <SectionHeading
+      sectionId={id}
       label={label}
       title={title}
       class={headingClass}
