@@ -42,14 +42,23 @@ const initialSubmitButtonTextLabel = contentLabels. form.controls.submitButton.l
 <div>
   <Container><h2 id="contact" tabindex="-1" class="c-section-group-heading mbe-10">{contentLabels.label}</h2></Container>
 
-<section class={ classes }>
+<section class={classes} aria-labelledby="contact">
   <Container>
-    <Card variant="section" padding="xl">
+    <Card
+      as="section"
+      variant="section"
+      padding="xl"
+      aria-labelledby="contact-card-title"
+      aria-describedby="contact-card-description contact-card-note">
       <div class="grid gap-10 lg:gap-20 lg:grid-cols-[0.95fr_1.35fr]">
         <div>
-          <SectionHeading title={content.title} label={contentLabels.cardLabel} isHeaderStatic={true}/>
-          <p class="mt-4 max-w-lg leading-relaxed text-ink-secondary">{content.description}</p>
-          <p class="mt-6 text-sm text-ink-tertiary">{content.note}</p>
+          <SectionHeading
+            sectionId="contact-card"
+            title={content.title}
+            label={contentLabels.cardLabel}
+            isHeaderStatic={true}/>
+          <p id="contact-card-description" class="mt-4 max-w-lg leading-relaxed text-ink-secondary">{content.description}</p>
+          <p id="contact-card-note" class="mt-6 text-sm text-ink-tertiary">{content.note}</p>
         </div>
 
         <form

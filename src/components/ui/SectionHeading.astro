@@ -3,6 +3,7 @@ import { combineCssClasses } from "@scripts/shared/combineCssClasses.ts";
 import type {HTMLTag} from "astro/types";
 
 type Props = {
+  sectionId: string;
   label: string;
   title: string;
   class?: string;
@@ -13,6 +14,7 @@ type Props = {
 };
 
 const {
+  sectionId,
   class: className,
   label,
   title,
@@ -26,9 +28,7 @@ const baseCssClasses = isHeaderStatic ? "c-section__heading" : "c-section__headi
 const classes = combineCssClasses(baseCssClasses, className);
 ---
 <SectionHeadingTagElement class={classes}>
-  <SectionHeadingLabelTagElement class="c-section__heading__label">
-    {label}
-  </SectionHeadingLabelTagElement>
-  <SectionHeadingTitleTagElement class="c-section__heading__title">{title}</SectionHeadingTitleTagElement>
+  <SectionHeadingLabelTagElement id={`${sectionId}-label`} class="c-section__heading__label">{label}</SectionHeadingLabelTagElement>
+  <SectionHeadingTitleTagElement id={`${sectionId}-title`} class="c-section__heading__title">{title}</SectionHeadingTitleTagElement>
 </SectionHeadingTagElement>
 

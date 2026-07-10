@@ -1,16 +1,18 @@
 ---
 import OrgOrCertRoleOrField from '@sections/CareerDetails/shared/OrgOrCertRoleOrField.astro';
 type Props = {
-  org: string
-  role: string
-  class?: string
+  id: string;
+  org: string;
+  role: string;
+  class?: string;
 }
 
 const {
+  id,
   org ,
   role,
   class: className = ""
 } = Astro.props as Props;
 
 ---
-<OrgOrCertRoleOrField class={className} orgOrCert={org} roleOrField={role} />
+<OrgOrCertRoleOrField id={id} class={className} orgOrCert={org} roleOrField={role} />

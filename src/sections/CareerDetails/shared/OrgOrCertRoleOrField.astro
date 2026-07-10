@@ -1,12 +1,14 @@
 ---
 import {combineCssClasses} from "@scripts/shared/combineCssClasses.ts";
 type Props = {
+  id?: string;
   orgOrCert: string
   roleOrField: string
   class?: string
 }
 
 const {
+  id,
   orgOrCert ,
   roleOrField,
   class: className = ""
@@ -15,4 +17,4 @@ const {
 const baseCssClasses = "text-xl leading-tight font-semibold";
 const classes = combineCssClasses(baseCssClasses, className);
 ---
-<h5 class={classes}><span class="text-ink-tertiary">{orgOrCert}</span><span class="text-ink-tertiary/50 font-normal"> - </span><span>{roleOrField}</span></h5>
+<h5 id={id} class={classes}><span class="text-ink-tertiary">{orgOrCert}</span><span class="text-ink-tertiary/50 font-normal"> - </span><span>{roleOrField}</span></h5>

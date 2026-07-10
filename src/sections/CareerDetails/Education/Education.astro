@@ -15,7 +15,7 @@ const {
 ---
 <Section id="education" label={sectionLabel} title={content.title} bodyClass="space-y-5">
 
-  { content.items.map((certification: EducationDegreeItemType) => (
-    <EducationDiploma educationDiploma={certification} />
+  { content.items.map((certification: EducationDegreeItemType, index:number) => (
+    <EducationDiploma index={index} educationDiploma={certification} />
   ))}
 </Section>

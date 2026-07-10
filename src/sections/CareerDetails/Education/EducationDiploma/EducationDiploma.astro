@@ -6,11 +6,13 @@ import Card from "@components/ui/Card.astro";
 import Transformer from "@components/ui/Transformer.astro";
 
 type Props = {
-  educationDiploma: EducationDegreeItemType
-  class?: string
+  index: number;
+  educationDiploma: EducationDegreeItemType;
+  class?: string;
 }
 
 const {
+  index,
   educationDiploma,
   class: className = ""
 } = Astro.props as Props;
@@ -22,9 +24,10 @@ const location = `${educationDiploma.institution}, ${educationDiploma.location}`
 const diploma = `${educationDiploma.degree} - ${educationDiploma.fieldOfStudy}`;
 const startDateLabel: string = educationDiploma.startDate?.label ?? ""
 const endDateLabel: string = educationDiploma.endDate?.label ?? "";
-
+const idLabel = `diploma-${index}-label`;
+const idDescription = `diploma-${index}-description`;
 ---
-<Card class={classes}>
-  <DatesLocation class="mbe-3" startDateLabel={startDateLabel} endDateLabel={endDateLabel} location={location} />
-  <h5 class="text-base leading-tight"><Transformer text={diploma} sourceItemSeparator=" - " mustTrimSeparator={false} class="text-ink-tertiary/50"/></h5>
+<Card class={classes} aria-labelledby={idLabel} aria-describedby={idDescription}>
+  <DatesLocation id={idDescription} class="mbe-3" startDateLabel={startDateLabel} endDateLabel={endDateLabel} location={location} />
+  <h5 id={idLabel} class="text-base leading-normal"><Transformer text={diploma} sourceItemSeparator=" - " mustTrimSeparator={false} class="text-ink-tertiary/50"/></h5>
 </Card>
