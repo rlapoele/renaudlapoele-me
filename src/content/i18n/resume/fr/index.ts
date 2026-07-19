@@ -90,7 +90,7 @@ export const resumeFR: ResumeType = {
         {type: "Type de travail", value: "Télétravail ou Hybride"}, // "💻 Télétravail ou Hybride"
         {type: "Focus", value: "Environnements complexes · Produit · UX"},
       ],
-      focus: ["Ingénierie Front-End", "Produit", "UX/UI", "JavaScript", "TypeScript", "React", "SolidJS", "Vue", "Astro", "Design Systems"],
+      focus: ["Ingénierie Front-End", "Produit", "UX/UI", "Architecture par Composants", "JavaScript", "TypeScript", "React", "SolidJS", "Vue", "Astro", "Design Systems"],
       portraitImageAlt: "Portrait de Renaud Lapoële",
       resumePdfFileUrl: "/pdf/renaud_lapoele_resume_fr_09-Jul-2026.pdf",
       availability: {
@@ -245,9 +245,9 @@ export const resumeFR: ResumeType = {
             "role": "Consultant indépendant & Développement professionnel",
             "location": "France",
             "startDate": {
-              "label": "Janvier 2024",
+              "label": "Mai 2024",
               "year": 2024,
-              "month": 1
+              "month": 5
             },
             "endDate": {
               "label": "Aujourd’hui",
@@ -270,6 +270,7 @@ export const resumeFR: ResumeType = {
                 name: "Ingénierie Front-End",
                 skills: [
                   "Développement Front-End",
+                  "Architecture par Composants",
                   "TypeScript",
                   "Astro",
                   "Tailwind CSS",
@@ -318,9 +319,9 @@ export const resumeFR: ResumeType = {
               "month": 7
             },
             "endDate": {
-              "label": "Janvier 2024",
+              "label": "Mai 2024",
               "year": 2024,
-              "month": 1
+              "month": 5
             },
             "duration": null,
             "summary": "Rôle senior combinant leadership Front-End, conception UX et responsabilité produit sur des plateformes partenaires mondiales à grande échelle.",
@@ -340,6 +341,7 @@ export const resumeFR: ResumeType = {
                 "name": "Ingénierie Front-End",
                 "skills": [
                   "Développement Front-End",
+                  "Architecture par Composants",
                   "React.js",
                   "JavaScript",
                   "TypeScript"
@@ -418,6 +420,7 @@ export const resumeFR: ResumeType = {
                 "name": "Ingénierie Front-End",
                 "skills": [
                   "Développement Front-End",
+                  "Architecture par Composants",
                   "Responsive Web Design",
                   "Vue.js"
                 ]

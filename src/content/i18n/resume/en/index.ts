@@ -90,7 +90,7 @@ export const resumeEN : ResumeType = {
         { type: "Work type", value:"Remote or Hybrid"},
         { type: "Focus", value:"Enterprise · Product · UX-minded"},
       ],
-      focus: ["Front-End Engineering", "Product Engineering", "UX/UI", "JavaScript", "TypeScript", "React", "SolidJS", "Vue", "Astro", "Design Systems"],
+      focus: ["Front-End Engineering", "Product Engineering", "UX/UI", "Component Architecture", "JavaScript", "TypeScript", "React", "SolidJS", "Vue", "Astro", "Design Systems"],
       portraitImageAlt: "Portrait of Renaud Lapoële",
       resumePdfFileUrl: "/pdf/renaud_lapoele_resume_en_09-Jul-2026.pdf",
       availability: {
@@ -240,9 +240,9 @@ export const resumeEN : ResumeType = {
             "role": "Independent Consulting & Professional Development",
             "location": "France",
             "startDate": {
-              "label": "January 2024",
+              "label": "May 2024",
               "year": 2024,
-              "month": 1
+              "month": 5
             },
             "endDate": {
               "label": "Present",
@@ -265,6 +265,7 @@ export const resumeEN : ResumeType = {
                 name: "Front-End Engineering",
                 skills: [
                   "Front-End Development",
+                  "Component Architecture",
                   "TypeScript",
                   "Astro",
                   "Tailwind CSS",
@@ -313,9 +314,9 @@ export const resumeEN : ResumeType = {
               "month": 7
             },
             "endDate": {
-              "label": "January 2024",
+              "label": "May 2024",
               "year": 2024,
-              "month": 1
+              "month": 5
             },
             "duration": null,
             "summary": "Senior individual contributor role combining Front-End leadership, UX design, and product ownership on global, large-scale partner platforms.",
@@ -335,6 +336,7 @@ export const resumeEN : ResumeType = {
                 "name": "Front-End Engineering",
                 "skills": [
                   "Front-End Development",
+                  "Component Architecture",
                   "React.js",
                   "JavaScript",
                   "TypeScript"
@@ -412,6 +414,7 @@ export const resumeEN : ResumeType = {
                 "name": "Front-End Engineering",
                 "skills": [
                   "Front-End Development",
+                  "Component Architecture",
                   "Responsive Web Design",
                   "Vue.js"
                 ]
