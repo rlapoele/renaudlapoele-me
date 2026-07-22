@@ -177,6 +177,26 @@ export const resumeEN : ResumeType = {
             tags: ["TypeScript", "UX", "Sync", "Architecture"],
           },*/
           {
+            name: "Product Engineering Workbench",
+            type: "Product Strategy + Specification Design",
+            description:
+              "A knowledge-first product specification project exploring how people and AI can collaboratively create implementation-ready software specifications.",
+            highlights: [
+              "Designed a document-first experience for structuring product knowledge",
+              "Defined traceable relationships between product intent, requirements, UX, and validation",
+              "Explored AI-assisted review, readiness assessment, and implementation handoff workflows",
+            ],
+            tags: [
+              "Product Strategy",
+              "Product Design",
+              "Requirements Engineering",
+              "UX Strategy",
+              "Knowledge Modeling",
+              "AI Collaboration",
+              "System Design",
+            ],
+          },
+          {
             name: "Resume Website / Personal Positioning",
             type: "Design + Engineering",
             description:
