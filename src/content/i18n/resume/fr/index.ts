@@ -180,6 +180,26 @@ export const resumeFR: ResumeType = {
             tags: ["TypeScript", "UX", "Sync", "Architecture"],
           },*/
           {
+            name: "Product Engineering Workbench",
+            type: "Stratégie produit + conception de spécifications",
+            description:
+              "Un projet de conception de produit fondé sur la connaissance, qui explore comment les personnes et l’IA peuvent créer ensemble des spécifications logicielles prêtes pour l’implémentation.",
+            highlights: [
+              "Conception d’une expérience document-first pour structurer la connaissance produit",
+              "Définition de relations traçables entre intention produit, exigences, UX et validation",
+              "Exploration de workflows d’assistance IA, d’évaluation de préparation et de passation vers l’implémentation",
+            ],
+            tags: [
+              "Stratégie Produit",
+              "Conception Produit",
+              "Ingénierie des Exigences",
+              "Stratégie UX",
+              "Modélisation des Connaissances",
+              "Collaboration IA",
+              "Conception de Systèmes",
+            ],
+          },
+          {
             name: "Site de présentation / Positionnement professionnel",
             type: "Design & Engineering",
             description:
