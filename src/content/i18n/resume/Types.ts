@@ -230,12 +230,18 @@ export type ImpactItemType = {
   highlights: string[];
 };
 
+export type WorkItemRepositoryType = {
+  url: string;
+  title: string;
+}
+
 export type WorkItemType = {
   name: string;
   type: string;
   description: string;
   highlights: string[];
   tags: string[];
+  repository: WorkItemRepositoryType | null;
 };
 
 export type SkillGroupType = {
