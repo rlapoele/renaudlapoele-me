@@ -5,6 +5,8 @@ import Tag from "@components/ui/Tag.astro";
 import Section from "@components/layout/Section.astro";
 import Bullet from "@components/ui/Bullet.astro";
 import Transformer from "@components/ui/Transformer.astro";
+import Icon from "@components/ui/Icon.astro";
+import IconGitHub from "@components/ui/brand/IconGitHub.astro";
 
 type Props = { content: SelectedWorkType, sectionLabel: string };
 const { content, sectionLabel} = Astro.props as Props;
@@ -34,6 +36,10 @@ const { content, sectionLabel} = Astro.props as Props;
           <Tag>{tag}</Tag>
         ))}
       </div>
+      {
+        !!project.repository &&
+        <p class="mt-7 text-sm"><a class="c-text-link text-ink-secondary hover:text-accent-primary inline-flex items-center gap-2" href={project.repository.url} title={project.repository.title} target="_blank" rel="noopener"><IconGitHub class="inline-block size-5"/>{project.repository.url}</a></p>
+      }
     </Card>
   ))}
 </Section>

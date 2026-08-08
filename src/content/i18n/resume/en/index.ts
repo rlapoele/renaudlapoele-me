@@ -195,6 +195,10 @@ export const resumeEN : ResumeType = {
               "AI Collaboration",
               "System Design",
             ],
+            repository: {
+              url: 'https://github.com/rlapoele/product-engineering-workbench',
+              title: 'Navigate to the "product-engineering-workbench" project repository'
+            },
           },
           {
             name: "Resume Website / Personal Positioning",
@@ -207,6 +211,10 @@ export const resumeEN : ResumeType = {
               "Built with Astro and Tailwind CSS",
             ],
             tags: ["Astro", "Tailwind","Typescript", "Localization", "Accessibility", "Design Tokens", "Content Strategy", "Web Components"],
+            repository: {
+              url: 'https://github.com/rlapoele/renaudlapoele-me',
+              title: 'Navigate to the "renaudlapoele-me" project repository'
+            },
           },
         ],
       },
