@@ -2,6 +2,10 @@
 
 Concise history of meaningful agent-made changes.
 
+## 2026-08-28
+
+- Merged the LinkedIn profile URL correction from `dev` into `releases` and prepared release `v1.2.0`.
+
 ## 2026-08-08
 
 - Merged the selected-work repository URL feature from `dev` into `releases` and prepared release `v1.1.0`.
