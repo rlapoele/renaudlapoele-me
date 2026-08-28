@@ -74,7 +74,7 @@ export const resumeFR: ResumeType = {
             "Design Systems"
           ],
           "sameAs": [
-            "https://www.linkedin.com/in/renaud-lapoele-167106/",
+            "https://www.linkedin.com/in/renaud-lapo%C3%ABle-167106/",
             "https://github.com/rlapoele/renaudlapoele-me"
           ]
         }
