@@ -53,13 +53,40 @@ if (sourceHtmlPaths.length === 0) {
 
 const browser = await chromium.launch();
 
+const requiredFonts = [
+  "400 10pt Urbanist",
+  "500 10pt Urbanist",
+  "600 10pt Urbanist",
+  "700 10pt Urbanist",
+  "800 10pt Urbanist",
+  "500 10pt Lora",
+  "600 10pt Lora",
+  "700 10pt Lora"
+];
+
+async function waitForRequiredFonts(page: import("playwright").Page) {
+  const unavailableFonts = await page.evaluate(async (fonts) => {
+    await document.fonts.ready;
+    await Promise.all(fonts.map((font) => document.fonts.load(font, "Renaud Lapoële")));
+
+    return fonts.filter((font) => !document.fonts.check(font, "Renaud Lapoële"));
+  }, requiredFonts);
+
+  if (unavailableFonts.length > 0) {
+    throw new Error(
+      `Unable to load required PDF fonts: ${unavailableFonts.join(", ")}`
+    );
+  }
+}
+
 try {
   for (const sourceHtmlPath of sourceHtmlPaths) {
     const outputPdfPath = getOutputPdfPath(sourceHtmlPath);
     const page = await browser.newPage();
 
-    await page.goto(pathToFileURL(sourceHtmlPath).href);
-    //await page.emulateMedia({media: "screen"});
+    await page.goto(pathToFileURL(sourceHtmlPath).href, { waitUntil: "networkidle" });
+    await waitForRequiredFonts(page);
+
     await page.pdf({
       path: outputPdfPath,
       format: "A4",
