@@ -74,7 +74,7 @@ export const resumeFR: ResumeType = {
             "Design Systems"
           ],
           "sameAs": [
-            "https://www.linkedin.com/in/renaud-lapoele-167106/",
+            "https://www.linkedin.com/in/renaud-lapo%C3%ABle-167106/",
             "https://github.com/rlapoele/renaudlapoele-me"
           ]
         }
@@ -198,6 +198,10 @@ export const resumeFR: ResumeType = {
               "Collaboration IA",
               "Conception de Systèmes",
             ],
+            repository: {
+              url: 'https://github.com/rlapoele/product-engineering-workbench',
+              title: 'Naviguer vers le dépôt du projet "product-engineering-workbench"'
+            },
           },
           {
             name: "Site de présentation / Positionnement professionnel",
@@ -210,6 +214,10 @@ export const resumeFR: ResumeType = {
               "Réalisé avec Astro et Tailwind CSS",
             ],
             tags: ["Astro", "Tailwind CSS", "Typescript", "Localisation", "Accessibilité", "Design Tokens", "Stratégie de contenu", "Web Components"],
+            repository: {
+              url: 'https://github.com/rlapoele/renaudlapoele-me',
+              title: 'Naviguer vers le dépôt du projet "renaudlapoele-me"'
+            },
           },
         ],
       },
