@@ -92,7 +92,7 @@ export const resumeEN : ResumeType = {
       ],
       focus: ["Front-End Engineering", "Product Engineering", "UX/UI", "Component Architecture", "JavaScript", "TypeScript", "React", "SolidJS", "Vue", "Astro", "Design Systems"],
       portraitImageAlt: "Portrait of Renaud Lapoële",
-      resumePdfFileUrl: "/pdf/renaud_lapoele_resume_en_19-Jul-2026.pdf",
+      resumePdfFileUrl: "/pdf/renaud_lapoele_resume_en_04-Sept-2026.pdf",
       availability: {
         availableFromText: "Available from ",
         availabilityPeriodText: 'September 2026',
@@ -265,7 +265,7 @@ export const resumeEN : ResumeType = {
         items: [
           {
             "company": "YunikApps",
-            "role": "Independent Consulting & Professional Development",
+            "role": "Founder, Independent Product Development",
             "location": "France",
             "startDate": {
               "label": "May 2024",
@@ -278,16 +278,14 @@ export const resumeEN : ResumeType = {
               "month": null
             },
             "duration": null,
-            "summary": "Independent consulting preparation, modern front-end engineering, accessibility, and AI-assisted product development.",
-            "responsibilities": [
-              "Created and prepared the launch of an independent consulting activity focused on web applications and digital product development.",
-              "Designed and implemented personal projects using modern front-end technologies including TypeScript, Astro, React, SolidJS, Tailwind CSS, and Node.js.",
-              "Completed professional accessibility training and strengthened expertise in inclusive web design and WCAG-compliant development.",
-              "Conducted continuous technology research and hands-on experimentation in modern front-end engineering, AI-assisted development, and emerging AI engineering practices.",
-              /*"Developed proof-of-concepts and prototypes exploring productivity, developer experience, and product creation workflows leveraging AI technologies.",*/
-              "Maintained active technical learning through self-directed projects, technical research, and practical implementation work."
+            "summary": "Independent product development, modern front-end practice, accessibility, and exploration of AI-assisted product workflows.",
+            responsibilities: [
+              "Established a French micro-enterprise for independent product development, continued front-end practice, and occasional pro bono consulting.",
+              "Developing the Product Engineering Workbench, a document-first workspace for structuring product knowledge; an initial working slice includes social login and exploration of AI-assisted specification workflows.",
+              "Building web applications and prototypes with TypeScript, Astro, React, SolidJS, Tailwind CSS, and Node.js.",
+              "Strengthened accessibility practice through Access42 training and hands-on WCAG-informed implementation."
             ],
-            "keyFocus": "Modern Front-End engineering, accessibility, AI-assisted development, and continuous professional growth.",
+            keyFocus: "Independent product development, modern front-end engineering, accessibility, and AI-assisted product workflows.",
             "skillGroups": [
               {
                 name: "Front-End Engineering",
@@ -295,6 +293,7 @@ export const resumeEN : ResumeType = {
                   "Front-End Development",
                   "Component Architecture",
                   "TypeScript",
+                  "React",
                   "Astro",
                   "Tailwind CSS",
                   "Node.js",
@@ -302,32 +301,21 @@ export const resumeEN : ResumeType = {
                 ]
               },
               {
-                name: "UX & Product Design",
+                name: "Product Development & Accessibility",
                 skills: [
+                  "Product Specification",
+                  "Prototyping",
                   "Web Accessibility",
                   "Inclusive Design",
-                  "WCAG Compliance",
-                  "Prototyping"
+                  "WCAG / RGAA Compliance"
                 ]
               },
-/*
               {
-                name: "Product & Delivery",
+                name: "AI-Assisted Product Workflow",
                 skills: [
-                  "Proof of Concept Development",
-                  "MVP Development"
-                ]
-              },
- */
-              {
-                name: "Technical Leadership & Innovation",
-                skills: [
-                  "Technology Research",
-                  "Technical Experimentation",
                   "AI-Assisted Development",
-                  "AI Engineering",
-                  "OpenAI",
-                  "Codex"
+                  "Codex",
+                  "ChatGPT"
                 ]
               },
             ]

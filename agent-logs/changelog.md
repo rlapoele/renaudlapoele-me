@@ -2,6 +2,10 @@
 
 Concise history of meaningful agent-made changes.
 
+## 2026-09-04
+
+- Updated `print/resume_html2pdf.ts` to wait for the required Urbanist and Lora font faces after navigation and fail clearly if any are unavailable before generating a PDF. Regenerated both print resumes and verified each embeds Urbanist and Lora; `npm run astro -- check` passed.
+
 ## 2026-08-28
 
 - Merged the LinkedIn profile URL correction from `dev` into `releases` and prepared release `v1.2.0`.
@@ -13,7 +17,6 @@ Concise history of meaningful agent-made changes.
 ## 2026-07-22
 
 - Merged the latest selected-work content from `dev` into `releases` and prepared release `v1.0.4`.
-
 ## 2026-07-06
 
 - Aligned English and French resume metadata, Open Graph, JSON-LD job titles/descriptions, and hero titles around a consistent recruiter-facing front-end/product engineering positioning.
