@@ -4,6 +4,10 @@ Concise history of meaningful agent-made changes.
 
 ## 2026-09-04
 
+- Merged the latest `dev` changes into `releases` and prepared release `v1.2.1`.
+
+## 2026-09-04
+
 - Updated `print/resume_html2pdf.ts` to wait for the required Urbanist and Lora font faces after navigation and fail clearly if any are unavailable before generating a PDF. Regenerated both print resumes and verified each embeds Urbanist and Lora; `npm run astro -- check` passed.
 
 ## 2026-08-28
