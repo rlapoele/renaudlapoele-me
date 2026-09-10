@@ -2,6 +2,11 @@
 
 Concise history of meaningful agent-made changes.
 
+## 2026-09-11
+
+- Merged the latest `dev` changes into `releases` and prepared release `v1.3.0`.
+- Verified the release with `npm run astro -- check` and `npm run build`.
+
 ## 2026-09-10
 
 - Added `print/rlapoele_resume_en_20260910.html`, a standalone Poppins-based HTML/CSS recreation of the supplied English resume screenshot, with matching two-column layout, Font Awesome icons, responsive behavior, and A4 print rules.
