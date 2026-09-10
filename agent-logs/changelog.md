@@ -2,6 +2,12 @@
 
 Concise history of meaningful agent-made changes.
 
+## 2026-09-10
+
+- Added `print/rlapoele_resume_en_20260910.html`, a standalone Poppins-based HTML/CSS recreation of the supplied English resume screenshot, with matching two-column layout, Font Awesome icons, responsive behavior, and A4 print rules.
+- Visually checked the recreation in the in-app browser at the reference's normalized width; Google Fonts loaded, console checks were clean, and `design-qa.md` records the comparison and remaining minor icon-set variance.
+- Updated the recreated resume's print stylesheet to reserve 15 mm top and bottom margins on every A4 page and repeat the Work Experience and Skills headings where those sections continue onto page 2. Verified a three-page Chromium PDF render with no clipping, overlap, or unintended fourth page.
+
 ## 2026-09-04
 
 - Merged the latest `dev` changes into `releases` and prepared release `v1.2.1`.
@@ -146,3 +152,13 @@ Concise history of meaningful agent-made changes.
 - Verified with `npm run astro -- check`, `SITE_URL=https://renaudlapoele.me npm run build`, and generated HTML/text/XML metadata extraction.
 - Upgraded direct npm dependencies to the latest available versions, including Astro 7, `@astrojs/node` 11, Vite 8, Tailwind 4.3.2, Resend 6.17.1, Playwright 1.61.1, and Node 26 type definitions.
 - Verified the dependency update with `npm outdated --json`, `npm run astro -- check`, `SITE_URL=https://renaudlapoele.me npm run build`, and `npm audit --audit-level=moderate`.
+
+## 2026-09-10
+
+- Refined the printable English resume with a visible professional headline, ATS-readable role/company/location structure, grouped and normalized skills, and tighter evidence-led experience copy.
+- Regenerated the three-page A4 PDF from the HTML source and verified page rendering, print margins, continuation heading, and extracted text.
+- Added discovery, scoping, estimation, feasibility, Global Deal Registration workshop, and concise CI/CD evidence; regenerated and re-verified the PDF.
+- Moved Education and Certificates into the printable resume sidebar and added narrow-column typography and spacing for clean wrapping.
+- Added a recruiter-facing French adaptation of the two-page printable resume, preserving ATS-relevant industry terminology and the English version's visual structure.
+- Generated and visually verified the corresponding two-page A4 French PDF, including coherent text extraction and page-2 placement for Formation and Certification.
+- Grouped Education and Certificates into a print-only page-two sidebar block so neither section splits across the two-page PDF; regenerated and visually verified both pages.
