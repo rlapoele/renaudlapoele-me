@@ -133,4 +133,6 @@ Concise history of meaningful agent-made changes.
 - Regenerated the three-page A4 PDF from the HTML source and verified page rendering, print margins, continuation heading, and extracted text.
 - Added discovery, scoping, estimation, feasibility, Global Deal Registration workshop, and concise CI/CD evidence; regenerated and re-verified the PDF.
 - Moved Education and Certificates into the printable resume sidebar and added narrow-column typography and spacing for clean wrapping.
+- Added a recruiter-facing French adaptation of the two-page printable resume, preserving ATS-relevant industry terminology and the English version's visual structure.
+- Generated and visually verified the corresponding two-page A4 French PDF, including coherent text extraction and page-2 placement for Formation and Certification.
 - Grouped Education and Certificates into a print-only page-two sidebar block so neither section splits across the two-page PDF; regenerated and visually verified both pages.
