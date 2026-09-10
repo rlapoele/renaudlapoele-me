@@ -92,7 +92,7 @@ export const resumeFR: ResumeType = {
       ],
       focus: ["Ingénierie Front-End", "Produit", "UX/UI", "Architecture par Composants", "JavaScript", "TypeScript", "React", "SolidJS", "Vue", "Astro", "Design Systems"],
       portraitImageAlt: "Portrait de Renaud Lapoële",
-      resumePdfFileUrl: "/pdf/renaud_lapoele_resume_fr_19-Jul-2026.pdf",
+      resumePdfFileUrl: "/pdf/renaud_lapoele_resume_fr_04-Sept-2026.pdf",
       availability: {
         availableFromText: "Disponible dès ",
         availabilityPeriodText: 'Septembre 2026',
@@ -270,7 +270,7 @@ export const resumeFR: ResumeType = {
         items: [
           {
             "company": "YunikApps",
-            "role": "Consultant indépendant & Développement professionnel",
+            "role": "Fondateur, Développement produit indépendant",
             "location": "France",
             "startDate": {
               "label": "Mai 2024",
@@ -283,23 +283,22 @@ export const resumeFR: ResumeType = {
               "month": null
             },
             "duration": null,
-            "summary": "Préparation d’une activité de conseil indépendante autour de l’ingénierie front-end, de l’accessibilité numérique et du développement de produits assisté par l’IA.",
-            "responsibilities": [
-              "Création et préparation du lancement d’une activité de conseil indépendante spécialisée dans les applications web et le développement de produits numériques.",
-              "Conception et réalisation de projets personnels avec des technologies front-end modernes, notamment TypeScript, Astro, React, SolidJS, Tailwind CSS et Node.js.",
-              "Suivi d’une formation professionnelle en accessibilité numérique et renforcement de l’expertise en conception inclusive et développement conforme aux normes WCAG.",
-              "Réalisation d’une veille technologique continue et d’expérimentations pratiques autour du développement front-end moderne, du développement assisté par l’IA et des nouvelles pratiques d’ingénierie IA.",
-              /*"Développement de preuves de concept et de prototypes explorant la productivité, l’expérience développeur et les processus de création de produits s’appuyant sur les technologies d’IA.",*/
-              "Maintien d’une montée en compétences continue à travers des projets personnels, des recherches techniques et des réalisations concrètes."
+            "summary": "Développement de produits indépendant, pratique front-end moderne, accessibilité et exploration de workflows produit assistés par l’IA.",
+            responsibilities: [
+              "Création d’une micro-entreprise comme cadre pour le développement de produits indépendants, la pratique active du front-end et quelques missions ponctuelles de conseil bénévole.",
+              "Développement du Product Engineering Workbench, un espace document-first pour structurer la connaissance produit ; une première tranche fonctionnelle inclut l’authentification sociale et l’exploration de workflows de spécification assistés par l’IA.",
+              "Réalisation d’applications web et de prototypes avec TypeScript, Astro, React, SolidJS, Tailwind CSS et Node.js.",
+              "Renforcement de la pratique de l’accessibilité grâce à la formation Access42 et à des réalisations s’appuyant sur les WCAG."
             ],
-            keyFocus: "Ingénierie Front-End moderne, accessibilité, développement assisté par l’IA et développement professionnel continu.",
-            skillGroups: [
+            keyFocus:
+              "Développement de produits indépendant, ingénierie front-end moderne, accessibilité et workflows produit assistés par l’IA.",skillGroups: [
               {
                 name: "Ingénierie Front-End",
                 skills: [
                   "Développement Front-End",
                   "Architecture par Composants",
                   "TypeScript",
+                  "React",
                   "Astro",
                   "Tailwind CSS",
                   "Node.js",
@@ -307,32 +306,21 @@ export const resumeFR: ResumeType = {
                 ]
               },
               {
-                name: "UX & Conception Produit",
+                name: "Conception Produit & Accessibilité",
                 skills: [
+                  "Spécifications",
+                  "Prototypage",
                   "Accessibilité Web",
                   "Conception Inclusive",
-                  "Conformité WCAG",
-                  "Prototypage"
+                  "Conformité WCAG / RGAA"
                 ]
               },
-              /*
               {
-                name: "Produit & Delivery",
+                name: "Workflows produit assistés par l’IA",
                 skills: [
-                  "Développement de preuves de concept (PoC)",
-                  "Développement de MVP"
-                ]
-              },
-               */
-              {
-                name: "Leadership Technique & Innovation",
-                skills: [
-                  "Veille Technologique",
-                  "Expérimentation Technique",
-                  "Développement Assisté par l’IA",
-                  "Ingénierie IA",
-                  "OpenAI",
-                  "Codex"
+                  "Développement assisté par l’IA",
+                  "Codex",
+                  "ChatGPT"
                 ]
               }
             ]

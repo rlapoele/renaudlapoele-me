@@ -15,3 +15,7 @@ Durable decisions and working conventions for this project.
 - During Astro/Vite/Tailwind upgrades, verify Railway compatibility with `npm ci` before release. npm can leave peer packages such as `@emnapi/core` and `@emnapi/runtime` listed in root lock metadata but omit their `node_modules/@emnapi/*` package entries when they are optional dependencies, causing Railway `npm ci` to fail as out of sync.
 - If `@napi-rs/wasm-runtime` peer resolution introduces `@emnapi/core` or `@emnapi/runtime`, keep those packages as regular `dependencies`, not `optionalDependencies`, so `package-lock.json` includes complete `version`, `resolved`, and `integrity` entries.
 - After major dependency upgrades, explicitly check `package-lock.json` for missing or empty-version WASM-related package entries, especially under `@emnapi`, `@napi-rs/wasm-runtime`, `@tailwindcss/oxide-wasm32-wasi`, `@astrojs/*wasm*`, `@rolldown/*wasm*`, and `@img/sharp-wasm32`.
+
+## 2026-09-04
+
+- The print resume PDF generator must wait for and verify every required Urbanist and Lora weight before calling `page.pdf()`. This prevents non-deterministic fallback to Arial and Georgia when Google Fonts load asynchronously.
