@@ -90,7 +90,7 @@ try {
     await page.pdf({
       path: outputPdfPath,
       format: "A4",
-      printBackground: true
+      printBackground: false //true
     });
     await page.close();
 

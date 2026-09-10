@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>Renaud Lapoële — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <style>
+    :root {
+      --paper: #ffffff;
+      --ink: #4a4a4a;
+      --body: #666666;
+      --muted: #8a8a8a;
+      --accent: #a44b01; <!-- #4a80bd -->
+      --track: #d5d5d5;
+
+      --root-font-size: 1rem;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--paper);
+      color: var(--body);
+      font-family: "Poppins", Arial, sans-serif;
+      font-size: var(--root-font-size);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+    }
+
+    .resume-page {
+      width: 794px;
+      min-height: 2319px;
+      margin: 0 auto;
+      padding: 42px 56px 58px;
+      background: var(--paper);
+    }
+
+    .resume-header {
+      margin: 0 0 20px;
+    }
+
+    h1 {
+      margin: 0;
+      color: #414141;
+      font-size: 34px;
+      font-weight: 600;
+      letter-spacing: -1.25px;
+      line-height: 1.16;
+    }
+
+    .professional-title {
+      margin: 5px 0 0;
+      color: var(--accent);
+      font-size: 14.2px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .professional-focus {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 10.6px;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    .resume-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 454px) 195px;
+      column-gap: 33px;
+      align-items: start;
+    }
+
+    main,
+    aside {
+      min-width: 0;
+    }
+
+    section {
+      margin: 0 0 26px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 10px;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .section-heading .icon {
+      width: 14px;
+      color: var(--accent);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .summary-copy {
+      margin: 0 0 0 31px;
+      font-size: 12.2px;
+      line-height: 1.55;
+    }
+
+    .experience-section {
+      margin-top: 4px;
+    }
+
+    .role {
+      margin: 0 0 37px 23px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .role:last-child {
+      margin-bottom: 0;
+    }
+
+    .role h3 {
+      margin: 0;
+      color: #555555;
+      font-size: 12.3px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .role-company {
+      margin: 1px 0 0;
+      color: #666666;
+      font-size: 11.2px;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    .date {
+      margin: 1px 0 8px;
+      color: var(--accent);
+      font-size: 10.9px;
+      line-height: 1.35;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 10px;
+    }
+
+    li {
+      margin: 0 0 5px;
+      padding-left: 0;
+      font-size: 12.15px;
+      line-height: 1.5;
+    }
+
+    li::marker {
+      color: #555555;
+      font-size: 0.72em;
+    }
+
+    .contact-section,
+    .skills-section,
+    .languages-section {
+      margin-bottom: 27px;
+    }
+
+    .contact-section {
+      margin-bottom: 47px;
+    }
+
+    aside .section-heading {
+      margin-left: 0;
+      margin-bottom: 10px;
+    }
+
+    .contact-list,
+    .skills-list,
+    .language-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .contact-list li {
+      display: grid;
+      grid-template-columns: 14px minmax(0, 1fr);
+      gap: 7px;
+      align-items: baseline;
+      margin: 0 0 8px;
+      padding: 0;
+      font-size: 10.8px;
+      line-height: 1.35;
+    }
+
+    .contact-list li::marker,
+    .skills-list li::marker,
+    .language-list li::marker {
+      content: "";
+    }
+
+    .contact-list .icon {
+      color: var(--accent);
+      font-size: 10px;
+      text-align: center;
+    }
+
+    a {
+      color: inherit;
+      text-decoration-color: #8e8e8e;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 1px;
+    }
+
+    .skill-group {
+      margin: 0 0 14px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .skill-group h3 {
+      margin: 0 0 3px;
+      color: #5b5b5b;
+      font-size: 10.9px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .skill-group p {
+      margin: 0;
+      font-size: 10.4px;
+      line-height: 1.55;
+    }
+
+    .language-list li {
+      margin: 0 0 13px;
+      padding: 0;
+      color: #686868;
+      font-size: 10.8px;
+      line-height: 1.25;
+    }
+
+    .language-list strong {
+      font-weight: 600;
+    }
+
+    .proficiency {
+      width: 100%;
+      height: 4px;
+      margin-top: 8px;
+      overflow: hidden;
+      background: var(--track);
+    }
+
+    .proficiency span {
+      display: block;
+      height: 100%;
+      background: var(--accent);
+    }
+
+    .proficiency.native span {
+      width: 100%;
+    }
+
+    .proficiency.fluent span {
+      width: 80%;
+    }
+
+    .proficiency.basic span {
+      width: 20%;
+    }
+
+    .education-section {
+      margin-top: 36px;
+    }
+
+    .education-item,
+    .certificate-item {
+      margin: 0 0 30px 23px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .education-item h3,
+    .certificate-item h3 {
+      margin: 0;
+      color: #5b5b5b;
+      font-size: 12.3px;
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    .certificate-item .date {
+      margin-top: 1px;
+    }
+
+    aside .education-section {
+      margin-top: 0;
+      margin-bottom: 27px;
+    }
+
+    aside .education-item,
+    aside .certificate-item {
+      margin: 0 0 14px;
+    }
+
+    aside .education-item h3,
+    aside .certificate-item h3 {
+      font-size: 10.4px;
+      line-height: 1.45;
+    }
+
+    aside .certificate-item .date {
+      font-size: 10.1px;
+    }
+
+    .sidebar-page-two {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .print-continuation-heading {
+      display: none;
+    }
+
+    @media (max-width: 793px) {
+      .resume-page {
+        width: 100%;
+        min-height: 0;
+        padding: 34px 34px 48px 52px;
+      }
+
+      .resume-grid {
+        grid-template-columns: minmax(0, 1fr) 180px;
+        column-gap: 28px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .resume-page {
+        padding: 30px 26px 42px 46px;
+      }
+
+      .resume-grid {
+        display: flex;
+        flex-direction: column;
+      }
+
+      aside {
+        order: -1;
+        width: 100%;
+      }
+
+      .contact-section {
+        margin-bottom: 25px;
+      }
+
+      .skills-section,
+      .languages-section {
+        display: none;
+      }
+
+      .summary-copy {
+        margin-left: 0;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 15mm 14.8mm;
+    }
+
+    @media print {
+      html,
+      body {
+        width: auto;
+        background: #ffffff;
+      }
+
+      .resume-page {
+        width: auto;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+      }
+
+      .print-continuation-heading {
+        display: flex;
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+
+      .print-page-break {
+        break-before: page;
+        page-break-before: always;
+      }
+
+      .section-heading {
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+
+      .sidebar-page-two {
+        break-before: page;
+        page-break-before: always;
+      }
+
+      a {
+        text-decoration: underline;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="resume-page">
+    <header class="resume-header">
+      <h1>Renaud Lapoële</h1>
+      <p class="professional-title">Senior Front-End &amp; Product Engineer</p>
+      <p class="professional-focus">TypeScript | React | UX | Technical Leadership</p>
+    </header>
+
+    <div class="resume-grid">
+      <main>
+        <section class="summary-section" aria-labelledby="summary-title">
+          <h2 class="section-heading" id="summary-title">
+            <i class="fa-regular fa-user icon" aria-hidden="true"></i>
+            <span>Summary</span>
+          </h2>
+          <p class="summary-copy">Senior Front-End and Product Engineer with extensive experience turning complex business requirements into clear, accessible, and scalable web applications. Deep expertise in front-end architecture, TypeScript, React, and UX, combined with product ownership and technical leadership on global enterprise platforms. Comfortable working across APIs, Node.js, and broader system concerns, with particular depth in front-end engineering, usability, and accessibility.</p>
+          <!-- <p class="summary-copy">Accomplished and versatile engineer with over 15 years of experience in full-stack development, UI/UX design, and product ownership. Proven ability to lead front-end implementation, drive UI architecture, and manage product backlogs, enhancing usability and stakeholder alignment. Skilled in modern web technologies including TypeScript, React, and Node.js, with a strong focus on accessibility. Eager to leverage extensive experience to deliver innovative web solutions.</p> -->
+        </section>
+
+        <section class="experience-section" aria-labelledby="experience-title">
+          <h2 class="section-heading" id="experience-title">
+            <i class="fa-solid fa-briefcase icon" aria-hidden="true"></i>
+            <span>Work Experience</span>
+          </h2>
+
+          <article class="role">
+            <h3>Founder - Independent Product Development</h3>
+            <p class="role-company">YunikApps | France</p>
+            <p class="date">05/2024 - Present</p>
+            <ul>
+              <li>Founded YunikApps to build independent web products and provide selected pro bono guidance on web, UX, and product development.</li>
+              <li>Building the Product Engineering Workbench, an AI-assisted, document-first product specification tool.</li>
+              <li>Delivering modern web projects with TypeScript, Astro, React, SolidJS, Tailwind CSS, and Node.js.</li>
+              <li>Strengthened accessibility practice through Access42 training and certification, applying WCAG guidance in hands-on implementation.</li>
+            </ul>
+          </article>
+
+          <article class="role">
+            <h3>Senior Front-End Engineer / Tech Lead / Product Owner</h3>
+            <p class="role-company">Cisco Systems | France</p>
+            <p class="date">07/2019 - 05/2024</p>
+            <ul>
+              <li>Led the UX redesign and front-end delivery of two global Cisco partner search platforms, creating a more consistent experience across regions.</li>
+              <li>Facilitated discovery and scoping workshops with business stakeholders across Cisco organizations, translating needs into estimates, epics, user stories, and delivery priorities.</li>
+              <li>Defined UI architecture and front-end standards across React, JavaScript, HTML, CSS, and Tailwind CSS.</li>
+              <li>Designed and shipped scalable web APIs supporting partner incentive program management.</li>
+              <li>Scoped and assessed the technical feasibility of a Salesforce migration for direct partner contract management, aligning requirements and delivery plans with business stakeholders.</li>
+              <li>Mentored a junior Product Owner in backlog management, user story creation, prioritization techniques, and effective stakeholder communication.</li>
+            </ul>
+          </article>
+
+          <h2 class="section-heading print-continuation-heading print-page-break" aria-hidden="true">
+            <i class="fa-solid fa-briefcase icon" aria-hidden="true"></i>
+            <span>Work Experience</span>
+          </h2>
+
+          <article class="role">
+            <h3>UX Lead / Front-End Engineer</h3>
+            <p class="role-company">Cisco Systems | France</p>
+            <p class="date">08/2016 - 06/2019</p>
+            <ul>
+              <li>Introduced user-centered UI and UX practices across multiple delivery teams and throughout the development lifecycle.</li>
+              <li>Translated business and user needs into wireframes, mockups, interactive prototypes, and customer journey maps.</li>
+              <li>Designed complex AngularJS/Angular interfaces and a business intelligence dashboard, balancing data density with usability.</li>
+              <li>Built Vue.js prototypes to test concepts and support Minimum Viable Product (MVP) decisions before full implementation.</li>
+            </ul>
+          </article>
+
+          <article class="role">
+            <h3>IT Analyst / Technical Lead</h3>
+            <p class="role-company">Cisco Systems | France</p>
+            <p class="date">03/2008 - 07/2016</p>
+            <ul>
+              <li>Facilitated requirements workshops for Global Deal Registration, a strategic global pricing and discounting initiative, translating stakeholder needs into scoped requirements.</li>
+              <li>Designed user interfaces aligned with business processes and user needs, improving usability and IT-business alignment.</li>
+              <li>Produced technical specifications, functional documentation, and user manuals while coordinating small delivery teams as technical or project lead.</li>
+            </ul>
+          </article>
+
+          <article class="role">
+            <h3>Software Engineer</h3>
+            <p class="role-company">Cisco Systems | San Jose, USA</p>
+            <p class="date">02/2007 - 02/2008</p>
+            <ul>
+              <li>Contributed to the Partner Deal Registration platform by managing requirements, technical specifications, UI design, and localization efforts.</li>
+            </ul>
+          </article>
+
+          <article class="role">
+            <h3>Software Engineer</h3>
+            <p class="role-company">Cisco Systems | France</p>
+            <p class="date">03/1998 - 01/2007</p>
+            <ul>
+              <li>Developed, implemented, and maintained web applications supporting logistics, marketing, e-learning, finance, and channel teams across the EMEA region.</li>
+            </ul>
+          </article>
+
+          <article class="role">
+            <h3>Earlier Technical Roles</h3>
+            <p class="role-company">Nantes University, Hegler France, and Celia | France</p>
+            <p class="date">1994 - 1997</p>
+            <ul>
+              <li>Provided technical support, created web pages, administered systems, designed databases, and developed Microsoft Access applications.</li>
+            </ul>
+          </article>
+        </section>
+
+      </main>
+
+      <aside aria-label="Contact details, skills, languages, education, and certificates">
+        <section class="contact-section" aria-labelledby="contact-title">
+          <h2 class="section-heading" id="contact-title">Contact</h2>
+          <ul class="contact-list">
+            <li><i class="fa-solid fa-location-dot icon" aria-hidden="true"></i><span>France</span></li>
+            <li><i class="fa-regular fa-envelope icon" aria-hidden="true"></i><a href="mailto:rlapoele@gmail.com">rlapoele@gmail.com</a></li>
+            <li><i class="fa-brands fa-linkedin icon" aria-hidden="true"></i><a href="https://www.linkedin.com/in/renaud-lapo%C3%ABle-167106/">LinkedIn</a></li>
+            <li><i class="fa-brands fa-github icon" aria-hidden="true"></i><a href="https://github.com/rlapoele">GitHub</a></li>
+            <li><i class="fa-solid fa-earth-americas icon" aria-hidden="true"></i><a href="https://renaudlapoele.me/">https://renaudlapoele.me/</a></li>
+          </ul>
+        </section>
+
+        <section class="skills-section" aria-labelledby="skills-title">
+          <h2 class="section-heading" id="skills-title">Skills</h2>
+          <div class="skill-group">
+            <h3>Front-End</h3>
+            <p>TypeScript, JavaScript, React, SolidJS, Vue.js, AngularJS, HTML, CSS, Sass/SCSS, Tailwind CSS, Responsive UI, UI Architecture</p>
+          </div>
+          <div class="skill-group">
+            <h3>Product &amp; UX</h3>
+            <p>Product Discovery, UX/UI Design, Prototyping, Wireframing, Journey Maps, Backlog Ownership, User Stories</p>
+          </div>
+          <div class="skill-group">
+            <h3>Backend &amp; Data</h3>
+            <p>Node.js, Web APIs, Java, SQL, PL/SQL, Oracle Technologies</p>
+          </div>
+          <div class="skill-group">
+            <h3>Leadership &amp; Delivery</h3>
+            <p>Technical Leadership, CI/CD Pipelines, Git, Bitbucket, Jenkins, Automated Code Quality, Stakeholder Alignment, Requirements Analysis, Agile Delivery</p>
+          </div>
+          <div class="skill-group">
+            <h3>AI &amp; Accessibility</h3>
+            <p>Codex, AI-Assisted Development, WCAG, Accessible UI</p>
+          </div>
+        </section>
+
+        <section class="languages-section" aria-labelledby="languages-title">
+          <h2 class="section-heading" id="languages-title">Languages</h2>
+          <ul class="language-list">
+            <li>
+              <strong>French</strong> (Native)
+              <div class="proficiency native" aria-label="Native proficiency"><span></span></div>
+            </li>
+            <li>
+              <strong>English</strong> (Fluent)
+              <div class="proficiency fluent" aria-label="Fluent proficiency"><span></span></div>
+            </li>
+            <li>
+              <strong>Spanish</strong> (Basic)
+              <div class="proficiency basic" aria-label="Basic proficiency"><span></span></div>
+            </li>
+          </ul>
+        </section>
+
+        <div class="sidebar-page-two">
+          <section class="education-section" aria-labelledby="education-title">
+            <h2 class="section-heading" id="education-title">
+              <i class="fa-solid fa-graduation-cap icon" aria-hidden="true"></i>
+              <span>Education</span>
+            </h2>
+            <article class="education-item">
+              <h3>Nantes University Maîtrise, Computer Science &amp; Software Engineering</h3>
+            </article>
+            <article class="education-item">
+              <h3>Nantes University Licence, Computer Science &amp; Software Engineering</h3>
+            </article>
+            <article class="education-item">
+              <h3>Nantes University DUT, Computer Science &amp; Software Engineering</h3>
+            </article>
+          </section>
+
+          <section class="certificates-section" aria-labelledby="certificates-title">
+            <h2 class="section-heading" id="certificates-title">
+              <i class="fa-solid fa-award icon" aria-hidden="true"></i>
+              <span>Certificates</span>
+            </h2>
+            <article class="certificate-item">
+              <h3>Accessibility, Access42</h3>
+              <p class="date">10/2024</p>
+            </article>
+          </section>
+        </div>
+      </aside>
+    </div>
+  </article>
+</body>
+</html>
