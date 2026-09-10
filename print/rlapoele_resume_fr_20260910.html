@@ -143,14 +143,14 @@
 
     .role-company {
       margin: 1px 0 0;
-      color: #666666;
+      color: #787878;
       font-size: 11.2px;
       font-weight: 500;
       line-height: 1.35;
     }
 
     .date {
-      margin: 1px 0 8px;
+      margin: 2px 0 8px;
       color: var(--accent);
       font-size: 10.9px;
       line-height: 1.35;
@@ -301,9 +301,21 @@
       font-weight: 600;
       line-height: 1.45;
     }
+    .education-item p,
+    .certificate-item p {
+      margin: 0;
+      font-size: 11px;
+      margin-top:1px;
+    }
+    .education-item p,
+    .certificate-item p:not(.date) {
+      color: #787878;
+      font-weight: 500;
+    }
 
     .certificate-item .date {
-      margin-top: 1px;
+      font-size: 10.9px;
+      line-height: 1.35;
     }
 
     aside .education-section {
@@ -438,7 +450,7 @@
             <i class="fa-regular fa-user icon" aria-hidden="true"></i>
             <span>Profil</span>
           </h2>
-          <p class="summary-copy">Ingénieur Front-End senior et Product Engineer, expérimenté dans la transformation de besoins métiers complexes en applications web claires, accessibles et évolutives. Expertise approfondie en architecture front-end, TypeScript, React et UX, complétée par une expérience en product ownership et leadership technique sur des plateformes internationales. À l'aise avec les API, Node.js et les problématiques système, avec une expertise particulière en ingénierie front-end, utilisabilité et accessibilité.</p>
+          <p class="summary-copy">Ingénieur Front-End senior et Product Engineer, expérimenté dans la transformation de besoins métiers complexes en applications web claires, accessibles et évolutives. Expertise approfondie en architecture front-end, TypeScript, React, Redux et UX, complétée par une expérience en product ownership et leadership technique sur des plateformes internationales. À l'aise avec les API, Node.js et les problématiques système, avec une expertise particulière en ingénierie front-end, utilisabilité et accessibilité.</p>
         </section>
 
         <section class="experience-section" aria-labelledby="experience-title">
@@ -485,7 +497,7 @@
             <ul>
               <li>Déploiement de pratiques UI et UX centrées utilisateur au sein de plusieurs équipes et sur l'ensemble du cycle de développement.</li>
               <li>Traduction des besoins métiers et utilisateurs en wireframes, maquettes, prototypes interactifs et parcours clients.</li>
-              <li>Conception d'interfaces AngularJS/Angular complexes et contribution à un tableau de bord décisionnel, en conciliant densité des données et utilisabilité.</li>
+              <li>Conception d'interfaces AngularJS complexes et contribution à un tableau de bord décisionnel, en conciliant densité des données et utilisabilité.</li>
               <li>Création rapide de prototypes Vue.js pour tester des concepts et éclairer les décisions de MVP avant leur développement.</li>
             </ul>
           </article>
@@ -546,7 +558,7 @@
           <h2 class="section-heading" id="skills-title">Compétences</h2>
           <div class="skill-group">
             <h3>Front-End</h3>
-            <p>TypeScript, JavaScript, React, SolidJS, Vue.js, AngularJS, HTML, CSS, Sass/SCSS, Tailwind CSS, Interfaces responsives, Architecture UI</p>
+            <p>TypeScript, JavaScript, React, Redux, SolidJS, Vue.js, AngularJS, HTML, CSS, Sass/SCSS, Tailwind CSS, Interfaces responsives, Architecture UI</p>
           </div>
           <div class="skill-group">
             <h3>Produit &amp; UX</h3>
@@ -591,13 +603,16 @@
               <span>Formation</span>
             </h2>
             <article class="education-item">
-              <h3>Maîtrise, Informatique et Génie logiciel - Université de Nantes</h3>
+              <h3>Maîtrise, Informatique et Génie logiciel</h3>
+              <p>Université de Nantes</p>
             </article>
             <article class="education-item">
-              <h3>Licence, Informatique et Génie logiciel - Université de Nantes</h3>
+              <h3>Licence, Informatique et Génie logiciel</h3>
+              <p>Université de Nantes</p>
             </article>
             <article class="education-item">
-              <h3>DUT, Informatique et Génie logiciel - Université de Nantes</h3>
+              <h3>DUT, Informatique et Génie logiciel</h3>
+              <p>Université de Nantes</p>
             </article>
           </section>
 
@@ -607,7 +622,8 @@
               <span>Certification</span>
             </h2>
             <article class="certificate-item">
-              <h3>Accessibilité, Access42</h3>
+              <h3>&OpenCurlyDoubleQuote;Développer des sites web accessibles et conformes au RGAA&CloseCurlyDoubleQuote;</h3>
+              <p>Access42</p>
               <p class="date">10/2024</p>
             </article>
           </section>
