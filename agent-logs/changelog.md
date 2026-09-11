@@ -6,6 +6,8 @@ Concise history of meaningful agent-made changes.
 
 - Merged the latest `dev` changes into `releases` and prepared release `v1.3.0`.
 - Verified the release with `npm run astro -- check` and `npm run build`.
+- Added print-only compact typography and spacing for work-experience entries in both standalone resume HTML files, preserving the larger summary text and screen layout.
+- Regenerated the English and French A4 PDFs; both now fit on two pages and were visually verified for readable type, clean page breaks, and unclipped content.
 
 ## 2026-09-10
 

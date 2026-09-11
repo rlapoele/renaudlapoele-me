@@ -92,7 +92,7 @@ export const resumeEN : ResumeType = {
       ],
       focus: ["Front-End Engineering", "Product Engineering", "UX/UI", "Component Architecture", "JavaScript", "TypeScript", "React", "SolidJS", "Vue", "Astro", "Design Systems"],
       portraitImageAlt: "Portrait of Renaud Lapoële",
-      resumePdfFileUrl: "/pdf/rlapoele_resume_en_20260910_10-Sept-2026.pdf",
+      resumePdfFileUrl: "/pdf/rlapoele_resume_en_11-Sept-2026.pdf",
       availability: {
         availableFromText: "Available from ",
         availabilityPeriodText: 'September 2026',
