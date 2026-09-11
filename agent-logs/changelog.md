@@ -2,6 +2,11 @@
 
 Concise history of meaningful agent-made changes.
 
+## 2026-09-11
+
+- Added print-only compact typography and spacing for work-experience entries in both standalone resume HTML files, preserving the larger summary text and screen layout.
+- Regenerated the English and French A4 PDFs; both now fit on two pages and were visually verified for readable type, clean page breaks, and unclipped content.
+
 ## 2026-09-10
 
 - Added `print/rlapoele_resume_en_20260910.html`, a standalone Poppins-based HTML/CSS recreation of the supplied English resume screenshot, with matching two-column layout, Font Awesome icons, responsive behavior, and A4 print rules.
