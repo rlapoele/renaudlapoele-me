@@ -4,6 +4,8 @@ Concise history of meaningful agent-made changes.
 
 ## 2026-09-11
 
+- Merged the latest `dev` changes into `releases`, bumped package metadata to `v1.3.1`, and synchronized the release commit back to `dev`.
+- Verified release `v1.3.1` with Astro diagnostics and a production build.
 - Merged the latest `dev` changes into `releases` and prepared release `v1.3.0`.
 - Verified the release with `npm run astro -- check` and `npm run build`.
 - Added print-only compact typography and spacing for work-experience entries in both standalone resume HTML files, preserving the larger summary text and screen layout.
