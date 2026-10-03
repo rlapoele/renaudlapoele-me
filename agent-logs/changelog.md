@@ -2,6 +2,11 @@
 
 Concise history of meaningful agent-made changes.
 
+## 2026-10-03
+
+- Merged the latest `dev` changes into `releases`, bumped package metadata to `v1.3.2`, and synchronized the release commit back to `dev`.
+- Verified release `v1.3.2` with Astro diagnostics and a production build.
+
 ## 2026-09-11
 
 - Merged the latest `dev` changes into `releases`, bumped package metadata to `v1.3.1`, and synchronized the release commit back to `dev`.
