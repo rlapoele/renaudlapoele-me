@@ -180,3 +180,9 @@ Concise history of meaningful agent-made changes.
 ## 2026-09-21
 
 - Established a local, Markdown-based job-application tracking workflow under `docs/job-applications`, including a pipeline dashboard, controlled status vocabulary, reusable application and interview templates, privacy guidance, and dated per-application records.
+
+## 2026-10-07
+
+- Extended the HTML-to-PDF resume converter to generate both the existing polished PDF and an additional single-column ATS-oriented PDF from each localized HTML source.
+- Enabled tagged PDF output and document outlines for both variants, while preserving the polished version's existing filename and layout.
+- Generated and visually inspected the English and French outputs; verified A4 pagination, PDF tags and language metadata, and deterministic ATS section extraction order.
