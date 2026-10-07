@@ -135,6 +135,7 @@ Do not write secrets or sensitive material to agent logs, including:
 - Raw `.env` values or deployment secrets.
 - Full terminal output that may contain secrets.
 - Private personal data beyond what is already intentionally present in public resume content.
+- Job-application details such as employer or recruiter names, role titles, application dates or statuses, interview details, feedback, compensation, and outcomes. Keep these details only under the ignored `docs/job-applications/` directory, not in Git-tracked files.
 - Full conversation transcripts unless explicitly requested and reviewed for sensitive data.
 
 If a durable rule emerges from a session, promote it to `AGENTS.md`. Keep `AGENTS.md` as the current operating guide, not a chronological diary.

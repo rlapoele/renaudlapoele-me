@@ -2,6 +2,11 @@
 
 Concise history of meaningful agent-made changes.
 
+## 2026-10-03
+
+- Merged the latest `dev` changes into `releases`, bumped package metadata to `v1.3.2`, and synchronized the release commit back to `dev`.
+- Verified release `v1.3.2` with Astro diagnostics and a production build.
+
 ## 2026-09-11
 
 - Merged the latest `dev` changes into `releases`, bumped package metadata to `v1.3.1`, and synchronized the release commit back to `dev`.
@@ -171,3 +176,7 @@ Concise history of meaningful agent-made changes.
 - Added a recruiter-facing French adaptation of the two-page printable resume, preserving ATS-relevant industry terminology and the English version's visual structure.
 - Generated and visually verified the corresponding two-page A4 French PDF, including coherent text extraction and page-2 placement for Formation and Certification.
 - Grouped Education and Certificates into a print-only page-two sidebar block so neither section splits across the two-page PDF; regenerated and visually verified both pages.
+
+## 2026-09-21
+
+- Established a local, Markdown-based job-application tracking workflow under `docs/job-applications`, including a pipeline dashboard, controlled status vocabulary, reusable application and interview templates, privacy guidance, and dated per-application records.
