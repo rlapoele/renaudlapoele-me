@@ -13,14 +13,96 @@ const productionDateSuffix = productionDate
   })
   .replaceAll(" ", "-");
 
-function getOutputPdfPath(sourceHtmlPath: string) {
+type PdfVariant = "polished" | "ats";
+
+function getOutputPdfPath(sourceHtmlPath: string, variant: PdfVariant) {
   const sourceHtmlBaseName = basename(sourceHtmlPath, extname(sourceHtmlPath));
+  const variantSuffix = variant === "ats" ? "_ats" : "";
 
   return join(
     dirname(sourceHtmlPath),
-    `${sourceHtmlBaseName}_${productionDateSuffix}.pdf`
+    `${sourceHtmlBaseName}${variantSuffix}_${productionDateSuffix}.pdf`
   );
 }
+
+const atsStyles = `
+  @page {
+    size: A4;
+    margin: 15mm 17mm;
+  }
+
+  .resume-page {
+    width: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .resume-header {
+    margin-bottom: 18px !important;
+  }
+
+  .resume-grid {
+    display: block !important;
+  }
+
+  main {
+    display: block !important;
+  }
+
+  section {
+    margin: 0 0 22px !important;
+  }
+
+  .section-heading {
+    margin: 0 0 8px !important;
+  }
+
+  .summary-copy,
+  .role,
+  .education-item,
+  .certificate-item {
+    margin-left: 0 !important;
+  }
+
+  .role {
+    margin-bottom: 24px !important;
+  }
+
+  .role li::marker {
+    font-size: 0.9em !important;
+  }
+
+  .contact-list li {
+    display: block !important;
+    margin-bottom: 4px !important;
+  }
+
+  .icon,
+  .proficiency,
+  .print-continuation-heading {
+    display: none !important;
+  }
+
+  .print-page-break,
+  .sidebar-page-two {
+    break-before: auto !important;
+    page-break-before: auto !important;
+  }
+
+  .skills-section {
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+
+  .skill-group {
+    margin-bottom: 10px !important;
+  }
+
+  .language-list li {
+    margin-bottom: 6px !important;
+  }
+`;
 
 async function getSourceHtmlPaths(path: string) {
   const pathStats = await stat(path);
@@ -79,22 +161,96 @@ async function waitForRequiredFonts(page: import("playwright").Page) {
   }
 }
 
+async function prepareAtsLayout(page: import("playwright").Page) {
+  await page.evaluate(() => {
+    const main = document.querySelector("main");
+    const aside = document.querySelector("aside");
+
+    if (!main || !aside) {
+      throw new Error("Expected the resume to contain main and aside elements");
+    }
+
+    const selectors = [
+      ".contact-section",
+      ".summary-section",
+      ".skills-section",
+      ".experience-section",
+      ".education-section",
+      ".certificates-section",
+      ".languages-section"
+    ];
+
+    const orderedSections = selectors.map((selector) => {
+      const section = document.querySelector<HTMLElement>(selector);
+
+      if (!section) {
+        throw new Error(`Expected resume section: ${selector}`);
+      }
+
+      return section;
+    });
+
+    main.replaceChildren(...orderedSections);
+    aside.remove();
+
+    const contactLinks = main.querySelectorAll<HTMLAnchorElement>(
+      ".contact-section a"
+    );
+
+    for (const link of contactLinks) {
+      const href = link.href;
+
+      if (href.startsWith("mailto:")) {
+        link.textContent = href.slice("mailto:".length);
+      } else if (href.includes("linkedin.com")) {
+        const url = new URL(href);
+        const displayUrl = `${url.hostname.replace(/^www\./, "")}${decodeURI(url.pathname)}`;
+        link.textContent = `LinkedIn: ${displayUrl}`;
+      } else if (href.includes("github.com")) {
+        const url = new URL(href);
+        const displayUrl = `${url.hostname.replace(/^www\./, "")}${decodeURI(url.pathname)}`;
+        link.textContent = `GitHub: ${displayUrl}`;
+      }
+    }
+  });
+
+  await page.addStyleTag({ content: atsStyles });
+}
+
 try {
   for (const sourceHtmlPath of sourceHtmlPaths) {
-    const outputPdfPath = getOutputPdfPath(sourceHtmlPath);
     const page = await browser.newPage();
 
     await page.goto(pathToFileURL(sourceHtmlPath).href, { waitUntil: "networkidle" });
     await waitForRequiredFonts(page);
 
+    const polishedOutputPath = getOutputPdfPath(sourceHtmlPath, "polished");
+
     await page.pdf({
-      path: outputPdfPath,
+      path: polishedOutputPath,
       format: "A4",
-      printBackground: false //true
+      printBackground: false,
+      tagged: true,
+      outline: true
     });
+
+    console.log(`Generated polished PDF: ${polishedOutputPath}`);
+
+    await prepareAtsLayout(page);
+
+    const atsOutputPath = getOutputPdfPath(sourceHtmlPath, "ats");
+
+    await page.pdf({
+      path: atsOutputPath,
+      format: "A4",
+      printBackground: false,
+      tagged: true,
+      outline: true
+    });
+
     await page.close();
 
-    console.log(`Generated ${outputPdfPath}`);
+    console.log(`Generated ATS PDF: ${atsOutputPath}`);
   }
 } finally {
   await browser.close();
