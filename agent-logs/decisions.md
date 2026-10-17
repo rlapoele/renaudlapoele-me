@@ -19,3 +19,8 @@ Durable decisions and working conventions for this project.
 ## 2026-09-04
 
 - The print resume PDF generator must wait for and verify every required Urbanist and Lora weight before calling `page.pdf()`. This prevents non-deterministic fallback to Arial and Georgia when Google Fonts load asynchronously.
+
+## 2026-10-07
+
+- The resume PDF converter produces two synchronized outputs from each localized HTML source: the existing polished two-column PDF and an `_ats` single-column variant.
+- Both PDF variants must enable Playwright's tagged output and document outline. The ATS variant must preserve conventional section order in extracted text and keep decorative icons and proficiency bars out of the rendered document.
