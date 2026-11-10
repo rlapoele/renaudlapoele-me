@@ -2,6 +2,11 @@
 
 Concise history of meaningful agent-made changes.
 
+## 2026-10-17
+
+- Added bilingual selected-work content for AgentFlow Live, covering its real-time workflow execution, recovery, accessibility, and full-stack implementation.
+- Merged the latest `dev` changes into `releases`, bumped package metadata to `v1.4.0`, and prepared the annotated release tag.
+
 ## 2026-10-03
 
 - Merged the latest `dev` changes into `releases`, bumped package metadata to `v1.3.2`, and synchronized the release commit back to `dev`.

@@ -166,19 +166,34 @@ export const resumeFR: ResumeType = {
       selectedWork: {
         title: "Une ingénierie structurée avec une dimension créative",
         items: [
-          /*
           {
-            name: "Application de gestion de projets offline-first",
-            type: "Expérimentation produit",
+            name: "AgentFlow Live",
+            type: "Ingénierie full-stack + systèmes temps réel",
             description:
-              "Application web de gestion de projets explorant le fonctionnement offline-first, la synchronisation multi-appareils et une UX adaptée aux usages locaux.",
+              "Une simulation responsive de centre de services qui exécute des workflows IT définis en JSON, avec des résultats déterministes, des journaux progressifs et un suivi en temps réel résilient aux reconnexions.",
             highlights: [
-              "Implémentation avec OPFS et horloges logiques hybrides",
-              "Conçue pour la cohérence multi-appareils",
-              "Attention portée à l’utilisabilité en mode hors ligne",
+              "Développement d’un moteur d’exécution générique avec NestJS et RxJS pour des workflows validés, des exécutions isolées et des scénarios déterministes de réussite ou d’échec",
+              "Conception d’une synchronisation par Server-Sent Events séquencés avec instantanés de référence, restauration après actualisation, récupération après reconnexion et protection contre les événements obsolètes",
+              "Réalisation d’une interface accessible avec Astro et React, intégrant un suivi responsive des workflows, des limitations adaptées à une démo publique et une vérification automatisée",
             ],
-            tags: ["TypeScript", "UX", "Sync", "Architecture"],
-          },*/
+            tags: [
+              "TypeScript",
+              "NestJS",
+              "Astro",
+              "React",
+              "RxJS",
+              "Server-Sent Events",
+              "TanStack Query",
+              "Validation à l’exécution",
+              "Accessibilité",
+              "Systèmes temps réel",
+              "Vitest",
+            ],
+            repository: {
+              url: "https://github.com/rlapoele/realtime-workflow-sim",
+              title: 'Naviguer vers le dépôt du projet "realtime-workflow-sim"',
+            },
+          },
           {
             name: "Product Engineering Workbench",
             type: "Stratégie produit + conception de spécifications",

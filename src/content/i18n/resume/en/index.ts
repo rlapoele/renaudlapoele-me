@@ -163,19 +163,34 @@ export const resumeEN : ResumeType = {
       selectedWork: {
         title: "Engineering with structured creativity",
         items: [
-          /*
           {
-            name: "Offline-first Project Workspace",
-            type: "Product Experiment",
+            name: "AgentFlow Live",
+            type: "Full-Stack Engineering + Real-Time Systems",
             description:
-              "A project management web app exploring offline-first behavior, multi-device sync, and clear UX for local-first workflows.",
+              "A responsive service-desk simulation that runs JSON-authored IT workflows with deterministic outcomes, progressive logs, and reconnect-safe real-time execution tracking.",
             highlights: [
-              "Built with OPFS and hybrid logical clocks",
-              "Designed for multi-device consistency",
-              "Focused on usability in offline scenarios",
+              "Built a generic NestJS and RxJS execution engine for validated workflows with isolated runs and deterministic success and failure paths",
+              "Designed sequenced Server-Sent Events with authoritative snapshots, refresh restoration, reconnect recovery, and stale-event protection",
+              "Delivered an accessible Astro and React interface with responsive workflow monitoring, public-demo rate limits, and automated verification",
             ],
-            tags: ["TypeScript", "UX", "Sync", "Architecture"],
-          },*/
+            tags: [
+              "TypeScript",
+              "NestJS",
+              "Astro",
+              "React",
+              "RxJS",
+              "Server-Sent Events",
+              "TanStack Query",
+              "Runtime Validation",
+              "Accessibility",
+              "Real-Time Systems",
+              "Vitest",
+            ],
+            repository: {
+              url: "https://github.com/rlapoele/realtime-workflow-sim",
+              title: 'Navigate to the "realtime-workflow-sim" project repository',
+            },
+          },
           {
             name: "Product Engineering Workbench",
             type: "Product Strategy + Specification Design",
