@@ -242,6 +242,7 @@ export type WorkItemType = {
   highlights: string[];
   tags: string[];
   repository: WorkItemRepositoryType | null;
+  liveDemo?: WorkItemRepositoryType;
 };
 
 export type SkillGroupType = {

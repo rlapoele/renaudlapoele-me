@@ -16,17 +16,17 @@ export const resumeEN : ResumeType = {
 
   content: {
     pageMetadata: {
-      title: "Renaud Lapoële | Senior Front-End & Product Engineer",
-      description: "Senior Front-End & Product Engineer in France with 25+ years of experience building scalable web applications across UX, product, JavaScript, TypeScript, React, SolidJS, and design systems.",
+      title: "Renaud Lapoële | Senior Front-End Engineer",
+      description: "Senior Front-End Engineer in France with 25+ years of experience across web engineering, UX and product delivery. React, TypeScript, accessibility and AI-assisted development.",
       openGraph: {
         type: "website",
-        title: "Renaud Lapoële | Senior Front-End & Product Engineer",
-        description: "Senior Front-End & Product Engineer in France with 25+ years of experience building scalable web applications across UX, product, JavaScript, TypeScript, React, SolidJS, and design systems.",
+        title: "Renaud Lapoële | Senior Front-End Engineer",
+        description: "Senior Front-End Engineer in France with 25+ years of experience across web engineering, UX and product delivery. React, TypeScript, accessibility and AI-assisted development.",
         url: "https://renaudlapoele.me/en",
         image: {
           url: "https://renaudlapoele.me/images/og/og-image-renaud-lapoele-en.jpg",
           secureUrl: "https://renaudlapoele.me/images/og/og-image-renaud-lapoele-en.jpg",
-          alt: "Renaud Lapoële | Senior Front-End & Product Engineer",
+          alt: "Renaud Lapoële | Senior Front-End Engineer",
           width: "1200",
           height: "630",
           type: "image/jpeg",
@@ -39,7 +39,7 @@ export const resumeEN : ResumeType = {
         "@type": "ProfilePage",
         "@id": "https://renaudlapoele.me/en#profilepage",
         "url": "https://renaudlapoele.me/en",
-        "name": "Renaud Lapoële | Senior Front-End & Product Engineer",
+        "name": "Renaud Lapoële | Senior Front-End Engineer",
         "inLanguage": "en-GB",
         "mainEntity": {
           "@type": "Person",
@@ -47,8 +47,8 @@ export const resumeEN : ResumeType = {
           "name": "Renaud Lapoële",
           "url": "https://renaudlapoele.me",
           "image": "https://renaudlapoele.me/images/hero/renaud-hero-desktop.jpg",
-          "jobTitle": "Senior Front-End & Product Engineer",
-          "description": "Senior Front-End & Product Engineer in France with 25+ years of experience building scalable web applications across UX, product, JavaScript, TypeScript, React, SolidJS, and design systems.",
+          "jobTitle": "Senior Front-End Engineer",
+          "description": "Senior Front-End Engineer in France with 25+ years of experience across web engineering, UX and product delivery. React, TypeScript, accessibility and AI-assisted development.",
           "address": {
             "@type": "PostalAddress",
             "addressCountry": "FR"
@@ -71,31 +71,33 @@ export const resumeEN : ResumeType = {
             "Product Engineering",
             "Web Accessibility",
             "WCAG",
-            "Design Systems"
+            "Design Systems",
+            "AI-Assisted Development",
+            "Codex"
           ],
           "sameAs": [
             "https://www.linkedin.com/in/renaud-lapo%C3%ABle-167106/",
-            "https://github.com/rlapoele/renaudlapoele-me"
+            "https://github.com/rlapoele"
           ]
         }
       }
     },
     hero: {
-      title: "Senior Front-End & Product Engineer",
-      tagline: "UX/UI · Product · Engineering",
+      title: "Senior Front-End Engineer",
+      tagline: "React & TypeScript · Product, UX & Accessibility",
       summary:
-        "Product-oriented front-end leader with 25+ years of experience turning complex business requirements into scalable web applications, clear interfaces, and usable systems for global teams.",
+        "I build clear, accessible web applications with React and TypeScript, combining front-end expertise with UX, product ownership, and experience across APIs and delivery. I use Codex throughout discovery, design, implementation, testing, and deployment, with hands-on review and responsibility for the result.",
       meta: [
         { type: "Location", value: "France"},
         { type: "Work type", value:"Remote or Hybrid"},
         { type: "Focus", value:"Enterprise · Product · UX-minded"},
       ],
-      focus: ["Front-End Engineering", "Product Engineering", "UX/UI", "Component Architecture", "JavaScript", "TypeScript", "React", "SolidJS", "Vue", "Astro", "Design Systems"],
+      focus: ["Front-End Engineering", "Product Engineering", "UX/UI", "Component Architecture", "JavaScript", "TypeScript", "React", "SolidJS", "Vue", "Astro", "Design Systems", "AI-Assisted Development"],
       portraitImageAlt: "Portrait of Renaud Lapoële",
-      resumePdfFileUrl: "/pdf/rlapoele_resume_en_07-Oct-2026.pdf",
+      resumePdfFileUrl: "/pdf/rlapoele_resume_en_10-Nov-2026.pdf",
       availability: {
-        availableFromText: "Available from ",
-        availabilityPeriodText: 'September 2026',
+        availableFromText: "",
+        availabilityPeriodText: 'Open to opportunities',
         openToText: 'Open to permanent or contract opportunities'
       }
     },
@@ -161,77 +163,82 @@ export const resumeEN : ResumeType = {
         ],
       },
       selectedWork: {
-        title: "Engineering with structured creativity",
+        title: "Selected projects",
         items: [
           {
-            name: "AgentFlow Live",
-            type: "Full-Stack Engineering + Real-Time Systems",
-            description:
-              "A responsive service-desk simulation that runs JSON-authored IT workflows with deterministic outcomes, progressive logs, and reconnect-safe real-time execution tracking.",
+            name: "Video Session Builder",
+            type: "Front-End Engineering + UX & Accessibility",
+            description: "A responsive application for preparing video-based career-discovery sessions, built as a recruitment exercise using a supplied mock API.",
             highlights: [
-              "Built a generic NestJS and RxJS execution engine for validated workflows with isolated runs and deterministic success and failure paths",
-              "Designed sequenced Server-Sent Events with authoritative snapshots, refresh restoration, reconnect recovery, and stale-event protection",
-              "Delivered an accessible Astro and React interface with responsive workflow monitoring, public-demo rate limits, and automated verification",
+              "Designed a catalogue-to-session flow with responsive React interfaces and accessible keyboard interactions",
+              "Implemented search, URL-based criteria, server-side API integration, and persistent local drafts",
+              "Used AI-assisted implementation with code review, automated checks, manual browser testing, and Railway deployment"
+            ],
+            tags: [
+              "React",
+              "TypeScript",
+              "Astro",
+              "TanStack Query",
+              "Accessibility",
+              "Playwright",
+              "Railway"
+            ],
+            repository: {
+              url: "https://github.com/rlapoele/metiers360-session-builder",
+              title: "Source code — Video Session Builder"
+            },
+            liveDemo: {
+              url: "https://web-production-2e0a66.up.railway.app",
+              title: "Live demo — Video Session Builder"
+            }
+          },
+          {
+            name: "AgentFlow Live",
+            type: "Full-Stack TypeScript + Real-Time UI",
+            description: "A service-desk workflow simulation combining a NestJS/RxJS backend with an Astro/React interface. Uses fictional data and simulated operations.",
+            highlights: [
+              "Built a generic NestJS/RxJS execution engine with validated workflows and isolated runs",
+              "Implemented real-time tracking with sequenced Server-Sent Events, refresh restoration, and reconnect recovery",
+              "Delivered a responsive interface, automated tests, and public-demo safeguards"
             ],
             tags: [
               "TypeScript",
               "NestJS",
-              "Astro",
               "React",
               "RxJS",
               "Server-Sent Events",
-              "TanStack Query",
-              "Runtime Validation",
-              "Accessibility",
-              "Real-Time Systems",
-              "Vitest",
+              "Vitest"
             ],
             repository: {
               url: "https://github.com/rlapoele/realtime-workflow-sim",
-              title: 'Navigate to the "realtime-workflow-sim" project repository',
+              title: "Source code — AgentFlow Live"
             },
+            liveDemo: {
+              url: "https://agentflowfrontend-production.up.railway.app",
+              title: "Live demo — AgentFlow Live"
+            }
           },
           {
-            name: "Product Engineering Workbench",
-            type: "Product Strategy + Specification Design",
-            description:
-              "A knowledge-first product specification project exploring how people and AI can collaboratively create implementation-ready software specifications.",
+            name: "AI-Assisted Development — Reusable Project Workflow",
+            type: "AI-Assisted Development + Project Workflow",
+            description: "A reusable Codex skill for structuring collaboration with AI agents, with documented behavioural evaluations and explicit verification limits.",
             highlights: [
-              "Designed a document-first experience for structuring product knowledge",
-              "Defined traceable relationships between product intent, requirements, UX, and validation",
-              "Explored AI-assisted review, readiness assessment, and implementation handoff workflows",
+              "Defined project context, scoped increments, responsibilities, reviews, and handoffs",
+              "Made assumptions, human decisions, verification evidence, and limitations explicit",
+              "Provided reusable guidance for new and existing projects, with documented evaluation scenarios"
             ],
             tags: [
-              "Product Strategy",
-              "Product Design",
-              "Requirements Engineering",
-              "UX Strategy",
-              "Knowledge Modeling",
-              "AI Collaboration",
-              "System Design",
+              "Codex",
+              "AI-Assisted Development",
+              "Project Context",
+              "Verification"
             ],
             repository: {
-              url: 'https://github.com/rlapoele/product-engineering-workbench',
-              title: 'Navigate to the "product-engineering-workbench" project repository'
-            },
-          },
-          {
-            name: "Resume Website / Personal Positioning",
-            type: "Design + Engineering",
-            description:
-              "A bilingual resume website designed to communicate senior engineering credibility with a strong product and UX sensibility.",
-            highlights: [
-              "Content structured for recruiter scanning",
-              "Balanced engineering clarity with design quality",
-              "Built with Astro and Tailwind CSS",
-            ],
-            tags: ["Astro", "Tailwind","Typescript", "Localization", "Accessibility", "Design Tokens", "Content Strategy", "Web Components"],
-            repository: {
-              url: 'https://github.com/rlapoele/renaudlapoele-me',
-              title: 'Navigate to the "renaudlapoele-me" project repository'
-            },
-          },
-        ],
+              url: "https://github.com/rlapoele/ai-assisted-project-workflow-skill",
+              title: "Source code — AI-Assisted Development — Reusable Project Workflow"
+            }
+          }
+        ]
       },
       skills: {
         title: "A unique blend of engineering, UX, and product expertise",
@@ -268,7 +275,11 @@ export const resumeEN : ResumeType = {
               "APIs",
               "Tech Leadership",
               "AI-Assisted Development",
-              "Scalable Web Applications",
+              "Node.js",
+              "NestJS",
+              "Automated Testing",
+              "Manual Browser Testing",
+              "Reusable Agent Instructions",
             ],
           },
         ],
@@ -280,7 +291,7 @@ export const resumeEN : ResumeType = {
         items: [
           {
             "company": "YunikApps",
-            "role": "Founder, Independent Product Development",
+            "role": "Founder | Independent Software & Product Development",
             "location": "France",
             "startDate": {
               "label": "May 2024",
@@ -293,14 +304,16 @@ export const resumeEN : ResumeType = {
               "month": null
             },
             "duration": null,
-            "summary": "Independent product development, modern front-end practice, accessibility, and exploration of AI-assisted product workflows.",
+            "summary": "Independent software and product development, combining hands-on engineering, UX, accessibility, and AI-assisted delivery.",
             responsibilities: [
-              "Established a French micro-enterprise for independent product development, continued front-end practice, and occasional pro bono consulting.",
-              "Developing the Product Engineering Workbench, a document-first workspace for structuring product knowledge; an initial working slice includes social login and exploration of AI-assisted specification workflows.",
-              "Building web applications and prototypes with TypeScript, Astro, React, SolidJS, Tailwind CSS, and Node.js.",
-              "Strengthened accessibility practice through Access42 training and hands-on WCAG-informed implementation."
+              "Developed and deployed Video Session Builder, a recruitment exercise with responsive React interfaces, server-side API integration, persistent local drafts, and URL-based search criteria.",
+              "Built and deployed AgentFlow Live with a NestJS/RxJS backend and Astro/React interface, including live execution tracking, reconnect recovery, and automated tests.",
+              "Developed reusable AI-agent skills for project collaboration and front-end implementation, covering context, scoped increments, review, accessibility, verification, and handoffs.",
+              "Used Codex across discovery, design, implementation, testing, and deployment, reviewing outputs, challenging proposals, and making hands-on code and interface adjustments.",
+              "Continued development of Product Engineering Workbench and applied accessibility practices informed by Access42 training and certification.",
+              "Provided occasional pro bono guidance on web, UX, and product development."
             ],
-            keyFocus: "Independent product development, modern front-end engineering, accessibility, and AI-assisted product workflows.",
+            keyFocus: null,
             "skillGroups": [
               {
                 name: "Front-End Engineering",
@@ -312,6 +325,8 @@ export const resumeEN : ResumeType = {
                   "Astro",
                   "Tailwind CSS",
                   "Node.js",
+                  "NestJS",
+                  "Automated Testing",
                   "SolidJS"
                 ]
               },
@@ -322,7 +337,7 @@ export const resumeEN : ResumeType = {
                   "Prototyping",
                   "Web Accessibility",
                   "Inclusive Design",
-                  "WCAG / RGAA Compliance"
+                  "WCAG / RGAA Accessibility Practices"
                 ]
               },
               {
@@ -330,7 +345,9 @@ export const resumeEN : ResumeType = {
                 skills: [
                   "AI-Assisted Development",
                   "Codex",
-                  "ChatGPT"
+                  "ChatGPT",
+                  "Reusable Agent Instructions",
+                  "Project Context Preparation"
                 ]
               },
             ]
@@ -350,18 +367,16 @@ export const resumeEN : ResumeType = {
               "month": 5
             },
             "duration": null,
-            "summary": "Senior individual contributor role combining Front-End leadership, UX design, and product ownership on global, large-scale partner platforms.",
+            "summary": "Senior individual contributor combining hands-on front-end engineering, UX collaboration, and product ownership on global Cisco partner platforms.",
             "responsibilities": [
-              "Partnered with the design team to redesign the UX and led the Front-End implementation of two global Cisco partner search platforms, improving how customers and partners discover and connect with Cisco partners worldwide.",
-              /*"Collaborated closely with design team on the UX redesign and led the Front-End implementation of two worldwide Cisco Partner search platforms used by customers and partners across multiple regions, delivering a more intuitive and consistent partner search experience.",*/
-              "Acted as Tech Lead and Product Owner, owning backlog, epics, user stories, priorities, and stakeholder alignment while remaining hands-on with Front-End development.",
-              "Drove UI architecture and Front-End best practices using React, JavaScript, HTML, CSS, and Tailwind CSS.",
+              "Partnered with designers on the UX redesign and led the front-end implementation of two global partner-search platforms, helping customers and partners discover relevant Cisco expertise.",
+              "Defined UI architecture and front-end practices using React, JavaScript, HTML, CSS, and Tailwind CSS.",
+              "Owned backlog, epics, user stories, priorities, and stakeholder alignment as Tech Lead and Product Owner while remaining hands-on with development.",
               "Designed and delivered scalable web APIs supporting partner incentive program management.",
-              "Collaborated closely with business, UX, and engineering teams to translate complex requirements into intuitive, usable solutions.",
-              "Contributed to an application portfolio migration to Salesforce by acting as Product Owner on a direct partner contract management solution.",
-              "Trained and mentored a junior Product Owner on backlog and priority management, user stories, and stakeholder communication."
+              "Acted as Product Owner for a direct partner contract management solution as part of an application portfolio migration to Salesforce.",
+              "Mentored a junior Product Owner on backlog management, prioritisation, user stories, and stakeholder communication."
             ],
-            "keyFocus": "Front-End architecture, UX quality, product ownership, and delivery at scale.",
+            "keyFocus": null,
             "skillGroups": [
               {
                 "name": "Front-End Engineering",
