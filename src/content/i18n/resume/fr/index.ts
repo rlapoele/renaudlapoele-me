@@ -16,17 +16,17 @@ export const resumeFR: ResumeType = {
 
   content: {
     pageMetadata: {
-      title: "Renaud Lapoële | Ingénieur Front-End Senior orienté Produit",
-      description: "Ingénieur Front-End Senior orienté Produit en France avec plus de 25 ans d'expérience dans la conception d'applications web évolutives, avec une forte expertise UX, produit, JavaScript, TypeScript, React, SolidJS et design systems.",
+      title: "Renaud Lapoële | Ingénieur Front-End senior",
+      description: "Ingénieur Front-End senior en France, avec plus de 25 ans d’expérience en développement web, UX et livraison produit. React, TypeScript, accessibilité et développement assisté par IA.",
       openGraph: {
         type: "website",
-        title: "Renaud Lapoële | Ingénieur Front-End Senior orienté Produit",
-        description: "Ingénieur Front-End Senior en France avec plus de 25 ans d'expérience dans la conception d'applications web évolutives, avec une forte expertise UX, produit, JavaScript, TypeScript, React, SolidJS et design systems.",
+        title: "Renaud Lapoële | Ingénieur Front-End senior",
+        description: "Ingénieur Front-End senior en France, avec plus de 25 ans d’expérience en développement web, UX et livraison produit. React, TypeScript, accessibilité et développement assisté par IA.",
         url: "https://renaudlapoele.me/fr",
         image: {
           url: "https://renaudlapoele.me/images/og/og-image-renaud-lapoele-fr.jpg",
           secureUrl: "https://renaudlapoele.me/images/og/og-image-renaud-lapoele-fr.jpg",
-          alt: "Renaud Lapoële | Ingénieur Front-End Senior orienté Produit",
+          alt: "Renaud Lapoële | Ingénieur Front-End senior",
           width: "1200",
           height: "630",
           type: "image/jpeg",
@@ -39,7 +39,7 @@ export const resumeFR: ResumeType = {
         "@type": "ProfilePage",
         "@id": "https://renaudlapoele.me/fr#profilepage",
         "url": "https://renaudlapoele.me/fr",
-        "name": "Renaud Lapoële | Ingénieur Front-End Senior orienté Produit",
+        "name": "Renaud Lapoële | Ingénieur Front-End senior",
         "inLanguage": "fr-FR",
         "mainEntity": {
           "@type": "Person",
@@ -47,8 +47,8 @@ export const resumeFR: ResumeType = {
           "name": "Renaud Lapoële",
           "url": "https://renaudlapoele.me",
           "image": "https://renaudlapoele.me/images/hero/renaud-hero-desktop.jpg",
-          "jobTitle": "Ingénieur Front-End Senior orienté Produit",
-          "description": "Ingénieur Front-End Senior en France avec plus de 25 ans d'expérience dans la conception d'applications web évolutives, avec une forte expertise UX, produit, JavaScript, TypeScript, React, SolidJS et design systems.",
+          "jobTitle": "Ingénieur Front-End senior",
+          "description": "Ingénieur Front-End senior en France, avec plus de 25 ans d’expérience en développement web, UX et livraison produit. React, TypeScript, accessibilité et développement assisté par IA.",
           "address": {
             "@type": "PostalAddress",
             "addressCountry": "FR"
@@ -71,31 +71,33 @@ export const resumeFR: ResumeType = {
             "Ingénierie Produit",
             "Accessibilité numérique",
             "WCAG",
-            "Design Systems"
+            "Design Systems",
+            "Développement assisté par IA",
+            "Codex"
           ],
           "sameAs": [
             "https://www.linkedin.com/in/renaud-lapo%C3%ABle-167106/",
-            "https://github.com/rlapoele/renaudlapoele-me"
+            "https://github.com/rlapoele"
           ]
         }
       }
     },
     hero: {
-      title: "Ingénieur Front-End Senior orienté Produit",
-      tagline: "UX/UI · Produit · Ingénierie",
+      title: "Ingénieur Front-End senior",
+      tagline: "React & TypeScript · Produit, UX & Accessibilité",
       summary:
-        "Leader front-end orienté produit avec plus de 25 ans d'expérience dans la transformation de besoins complexes en applications web évolutives, interfaces claires et systèmes utilisables pour des équipes internationales.",
+        "Je développe des applications web claires et accessibles avec React et TypeScript, en associant expertise front-end, UX, responsabilité produit et expérience des API et de la livraison. J’utilise Codex du cadrage au déploiement, avec une revue attentive des réalisations et en gardant la responsabilité du résultat.",
       meta: [
         {type: "Basé en", value: "France"}, // "🇫🇷 France"
         {type: "Type de travail", value: "Télétravail ou Hybride"}, // "💻 Télétravail ou Hybride"
         {type: "Focus", value: "Environnements complexes · Produit · UX"},
       ],
-      focus: ["Ingénierie Front-End", "Produit", "UX/UI", "Architecture par Composants", "JavaScript", "TypeScript", "React", "SolidJS", "Vue", "Astro", "Design Systems"],
+      focus: ["Ingénierie Front-End", "Produit", "UX/UI", "Architecture par Composants", "JavaScript", "TypeScript", "React", "SolidJS", "Vue", "Astro", "Design Systems", "Développement assisté par IA"],
       portraitImageAlt: "Portrait de Renaud Lapoële",
       resumePdfFileUrl: "/pdf/rlapoele_resume_fr_07-Oct-2026.pdf",
       availability: {
-        availableFromText: "Disponible dès ",
-        availabilityPeriodText: 'Septembre 2026',
+        availableFromText: "",
+        availabilityPeriodText: 'Ouvert aux opportunités',
         openToText: 'ouvert à un CDI, CDD ou une mission freelance'
       }
     },
@@ -164,79 +166,83 @@ export const resumeFR: ResumeType = {
       },
 
       selectedWork: {
-        title: "Une ingénierie structurée avec une dimension créative",
+        title: "Sélection de projets",
         items: [
           {
-            name: "AgentFlow Live",
-            type: "Ingénierie full-stack + systèmes temps réel",
-            description:
-              "Une simulation responsive de centre de services qui exécute des workflows IT définis en JSON, avec des résultats déterministes, des journaux progressifs et un suivi en temps réel résilient aux reconnexions.",
+            name: "Video Session Builder",
+            type: "Ingénierie front-end + UX & accessibilité",
+            description: "Une application responsive pour préparer des séances de découverte des métiers en vidéo, réalisée comme exercice de recrutement avec une API simulée fournie.",
             highlights: [
-              "Développement d’un moteur d’exécution générique avec NestJS et RxJS pour des workflows validés, des exécutions isolées et des scénarios déterministes de réussite ou d’échec",
-              "Conception d’une synchronisation par Server-Sent Events séquencés avec instantanés de référence, restauration après actualisation, récupération après reconnexion et protection contre les événements obsolètes",
-              "Réalisation d’une interface accessible avec Astro et React, intégrant un suivi responsive des workflows, des limitations adaptées à une démo publique et une vérification automatisée",
+              "Conception d’un parcours du catalogue à la séance avec React, une interface responsive et des interactions au clavier accessibles",
+              "Implémentation de la recherche, des critères dans l’URL, de l’intégration API côté serveur et du brouillon local persistant",
+              "Développement assisté par IA avec revue de code, contrôles automatisés, tests manuels dans le navigateur et déploiement sur Railway"
+            ],
+            tags: [
+              "React",
+              "TypeScript",
+              "Astro",
+              "TanStack Query",
+              "Accessibilité",
+              "Playwright",
+              "Railway"
+            ],
+            repository: {
+              url: "https://github.com/rlapoele/metiers360-session-builder",
+              title: "Code source — Video Session Builder"
+            },
+            liveDemo: {
+              url: "https://web-production-2e0a66.up.railway.app",
+              title: "Démo en ligne — Video Session Builder"
+            }
+          },
+          {
+            name: "AgentFlow Live",
+            type: "TypeScript full-stack + interface temps réel",
+            description: "Une simulation de centre de services associant un backend NestJS/RxJS et une interface Astro/React. Les données et opérations sont fictives.",
+            highlights: [
+              "Développement d’un moteur NestJS/RxJS générique avec validation des workflows et isolation des exécutions",
+              "Suivi en temps réel par Server-Sent Events séquencés, restauration après actualisation et récupération après reconnexion",
+              "Réalisation d’une interface responsive, de tests automatisés et de protections adaptées à une démo publique"
             ],
             tags: [
               "TypeScript",
               "NestJS",
-              "Astro",
               "React",
               "RxJS",
               "Server-Sent Events",
-              "TanStack Query",
-              "Validation à l’exécution",
-              "Accessibilité",
-              "Systèmes temps réel",
-              "Vitest",
+              "Vitest"
             ],
             repository: {
               url: "https://github.com/rlapoele/realtime-workflow-sim",
-              title: 'Naviguer vers le dépôt du projet "realtime-workflow-sim"',
+              title: "Code source — AgentFlow Live"
             },
+            liveDemo: {
+              url: "https://agentflowfrontend-production.up.railway.app",
+              title: "Démo en ligne — AgentFlow Live"
+            }
           },
           {
-            name: "Product Engineering Workbench",
-            type: "Stratégie produit + conception de spécifications",
-            description:
-              "Un projet de conception de produit fondé sur la connaissance, qui explore comment les personnes et l’IA peuvent créer ensemble des spécifications logicielles prêtes pour l’implémentation.",
+            name: "Développement assisté par IA — Workflow projet réutilisable",
+            type: "Développement assisté par IA + workflow projet",
+            description: "Un skill Codex réutilisable pour structurer la collaboration avec des agents IA, avec des évaluations comportementales documentées et des limites de vérification explicites.",
             highlights: [
-              "Conception d’une expérience document-first pour structurer la connaissance produit",
-              "Définition de relations traçables entre intention produit, exigences, UX et validation",
-              "Exploration de workflows d’assistance IA, d’évaluation de préparation et de passation vers l’implémentation",
+              "Définition du contexte projet, des incréments délimités, des responsabilités, des revues et des passations",
+              "Explicitation des hypothèses, des décisions humaines, des preuves de vérification et des limites",
+              "Consignes réutilisables pour les projets nouveaux et existants, avec des scénarios d’évaluation documentés"
             ],
             tags: [
-              "Stratégie Produit",
-              "Conception Produit",
-              "Ingénierie des Exigences",
-              "Stratégie UX",
-              "Modélisation des Connaissances",
-              "Collaboration IA",
-              "Conception de Systèmes",
+              "Codex",
+              "Développement assisté par IA",
+              "Contexte projet",
+              "Vérification"
             ],
             repository: {
-              url: 'https://github.com/rlapoele/product-engineering-workbench',
-              title: 'Naviguer vers le dépôt du projet "product-engineering-workbench"'
-            },
-          },
-          {
-            name: "Site de présentation / Positionnement professionnel",
-            type: "Design & Engineering",
-            description:
-              "Site de CV bilingue conçu pour refléter un positionnement senior en ingénierie tout en mettant en avant une sensibilité produit et UX.",
-            highlights: [
-              "Contenu structuré pour une lecture rapide par les recruteurs",
-              "Équilibre entre clarté technique et qualité de design",
-              "Réalisé avec Astro et Tailwind CSS",
-            ],
-            tags: ["Astro", "Tailwind CSS", "Typescript", "Localisation", "Accessibilité", "Design Tokens", "Stratégie de contenu", "Web Components"],
-            repository: {
-              url: 'https://github.com/rlapoele/renaudlapoele-me',
-              title: 'Naviguer vers le dépôt du projet "renaudlapoele-me"'
-            },
-          },
-        ],
+              url: "https://github.com/rlapoele/ai-assisted-project-workflow-skill",
+              title: "Code source — Développement assisté par IA — Workflow projet réutilisable"
+            }
+          }
+        ]
       },
-
       skills: {
         title:
           "Une expertise construite à la croisée de l’ingénierie, de l’UX et du produit",
@@ -273,7 +279,11 @@ export const resumeFR: ResumeType = {
               "APIs",
               "Responsabilité technique",
               "Développement assisté par l'IA",
-              "Applications Web évolutives",
+              "Node.js",
+              "NestJS",
+              "Tests automatisés",
+              "Tests manuels dans le navigateur",
+              "Consignes réutilisables pour les agents IA",
             ],
           },
         ],
@@ -285,7 +295,7 @@ export const resumeFR: ResumeType = {
         items: [
           {
             "company": "YunikApps",
-            "role": "Fondateur, Développement produit indépendant",
+            "role": "Fondateur | Développement indépendant de logiciels et de produits",
             "location": "France",
             "startDate": {
               "label": "Mai 2024",
@@ -298,15 +308,17 @@ export const resumeFR: ResumeType = {
               "month": null
             },
             "duration": null,
-            "summary": "Développement de produits indépendant, pratique front-end moderne, accessibilité et exploration de workflows produit assistés par l’IA.",
+            "summary": "Développement indépendant de logiciels et de produits, associant pratique du développement, UX, accessibilité et livraison assistée par IA.",
             responsibilities: [
-              "Création d’une micro-entreprise comme cadre pour le développement de produits indépendants, la pratique active du front-end et quelques missions ponctuelles de conseil bénévole.",
-              "Développement du Product Engineering Workbench, un espace document-first pour structurer la connaissance produit ; une première tranche fonctionnelle inclut l’authentification sociale et l’exploration de workflows de spécification assistés par l’IA.",
-              "Réalisation d’applications web et de prototypes avec TypeScript, Astro, React, SolidJS, Tailwind CSS et Node.js.",
-              "Renforcement de la pratique de l’accessibilité grâce à la formation Access42 et à des réalisations s’appuyant sur les WCAG."
+              "Développement et déploiement de Video Session Builder, un exercice de recrutement avec une interface React responsive, une intégration API côté serveur, un brouillon local persistant et des critères de recherche dans l’URL.",
+              "Développement et déploiement d’AgentFlow Live avec un backend NestJS/RxJS et une interface Astro/React : suivi en temps réel, récupération après reconnexion et tests automatisés.",
+              "Création de skills réutilisables pour la collaboration avec des agents IA et l’implémentation front-end : contexte, incréments délimités, revue, accessibilité, vérification et passation.",
+              "Utilisation de Codex du cadrage au déploiement, avec revue des résultats, remise en question des propositions et ajustements manuels du code et de l’interface.",
+              "Poursuite du développement de Product Engineering Workbench et mise en pratique de l’accessibilité à la suite de la formation et certification Access42.",
+              "Conseil bénévole ponctuel sur le web, l’UX et le développement produit."
             ],
-            keyFocus:
-              "Développement de produits indépendant, ingénierie front-end moderne, accessibilité et workflows produit assistés par l’IA.",skillGroups: [
+            keyFocus: null,
+            skillGroups: [
               {
                 name: "Ingénierie Front-End",
                 skills: [
@@ -317,6 +329,8 @@ export const resumeFR: ResumeType = {
                   "Astro",
                   "Tailwind CSS",
                   "Node.js",
+                  "NestJS",
+                  "Tests automatis\u00e9s",
                   "SolidJS"
                 ]
               },
@@ -327,7 +341,7 @@ export const resumeFR: ResumeType = {
                   "Prototypage",
                   "Accessibilité Web",
                   "Conception Inclusive",
-                  "Conformité WCAG / RGAA"
+                  "Pratiques d’accessibilité WCAG / RGAA"
                 ]
               },
               {
@@ -335,7 +349,9 @@ export const resumeFR: ResumeType = {
                 skills: [
                   "Développement assisté par l’IA",
                   "Codex",
-                  "ChatGPT"
+                  "ChatGPT",
+                  "Consignes réutilisables pour les agents IA",
+                  "Préparation du contexte projet"
                 ]
               }
             ]
@@ -355,18 +371,16 @@ export const resumeFR: ResumeType = {
               "month": 5
             },
             "duration": null,
-            "summary": "Rôle senior combinant leadership Front-End, conception UX et responsabilité produit sur des plateformes partenaires mondiales à grande échelle.",
+            "summary": "Rôle senior de contributeur individuel associant développement front-end, collaboration UX et responsabilité produit sur les plateformes partenaires mondiales de Cisco.",
             "responsibilities": [
-              "Collaboré étroitement avec l’équipe Design sur la refonte de l’expérience utilisateur et piloté l’implémentation Front-End de deux plateformes mondiales de recherche de partenaires Cisco, afin de faciliter l’identification des partenaires Cisco les plus adaptés aux besoins des clients et des partenaires.",
-              /*"Collaboration étroite avec l’équipe design sur la refonte UX et pilotage de l’implémentation Front-End de deux plateformes mondiales de recherche de partenaires Cisco utilisées par les clients et les partenaires dans plusieurs régions, offrant une expérience de recherche plus intuitive et cohérente.",*/
-              "Intervention en tant que Tech Lead et Product Owner, avec la responsabilité du backlog, des epics, des user stories, des priorités et de l’alignement des parties prenantes tout en restant impliqué dans le développement Front-End.",
-              "Définition de l’architecture UI et promotion des bonnes pratiques Front-End avec React, JavaScript, HTML, CSS et Tailwind CSS.",
-              "Conception et réalisation d’API web évolutives pour la gestion des programmes d’incentive partenaires.",
-              "Collaboration étroite avec les équipes métier, UX et ingénierie afin de transformer des besoins complexes en solutions intuitives et efficaces.",
-              "Contribution à la migration d’un portefeuille applicatif vers Salesforce en tant que Product Owner d’une solution de gestion directe des contrats partenaires.",
-              "Formation et accompagnement d’une Product Owner junior sur la gestion du backlog et des priorités, la rédaction des user stories et la communication avec les parties prenantes."
+              "Collaboration avec les designers sur la refonte UX et pilotage du développement front-end de deux plateformes mondiales de recherche de partenaires, pour faciliter la découverte des expertises Cisco pertinentes.",
+              "Définition de l’architecture UI et des pratiques front-end avec React, JavaScript, HTML, CSS et Tailwind CSS.",
+              "Responsabilité du backlog, des epics, des user stories, des priorités et de l’alignement des parties prenantes en tant que Tech Lead et Product Owner, tout en continuant à développer.",
+              "Conception et réalisation d’API web évolutives pour la gestion des programmes d’incitation partenaires.",
+              "Responsabilité produit d’une solution de gestion directe des contrats partenaires dans le cadre d’une migration du portefeuille applicatif vers Salesforce.",
+              "Accompagnement d’une Product Owner junior sur le backlog, la priorisation, les user stories et la communication avec les parties prenantes."
             ],
-            "keyFocus": "Architecture Front-End, qualité UX, responsabilité produit et pilotage de la livraison à grande échelle.",
+            "keyFocus": null,
             "skillGroups": [
               {
                 "name": "Ingénierie Front-End",

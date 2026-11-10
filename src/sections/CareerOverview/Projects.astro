@@ -6,6 +6,7 @@ import Section from "@components/layout/Section.astro";
 import Bullet from "@components/ui/Bullet.astro";
 import Transformer from "@components/ui/Transformer.astro";
 import IconGitHub from "@components/ui/brand/IconGitHub.astro";
+import Icon from "@components/ui/Icon.astro";
 
 type Props = { content: SelectedWorkType, sectionLabel: string };
 const { content, sectionLabel} = Astro.props as Props;
@@ -35,10 +36,14 @@ const { content, sectionLabel} = Astro.props as Props;
           <Tag>{tag}</Tag>
         ))}
       </div>
-      {
-        !!project.repository &&
-        <p class="mt-7 text-sm"><a class="c-text-link text-ink-secondary hover:text-accent-primary inline-flex items-center gap-2" href={project.repository.url} title={project.repository.title} target="_blank" rel="noopener"><IconGitHub class="inline-block size-5"/>{project.repository.url}</a></p>
-      }
+      <div class="mt-7 flex flex-col items-start gap-3 text-sm">
+        {project.liveDemo && (
+          <a class="c-text-link text-ink-secondary hover:text-accent-primary inline-flex items-center gap-2" href={project.liveDemo.url} target="_blank" rel="noopener noreferrer"><Icon type="globe-alt" isDecorative={true} class="inline-block size-5 shrink-0"/> {project.liveDemo.title}</a>
+        )}
+        {project.repository && (
+          <a class="c-text-link text-ink-secondary hover:text-accent-primary inline-flex items-center gap-2" href={project.repository.url} target="_blank" rel="noopener noreferrer"><IconGitHub class="inline-block size-5 shrink-0"/>{project.repository.title}</a>
+        )}
+      </div>
     </Card>
   ))}
 </Section>

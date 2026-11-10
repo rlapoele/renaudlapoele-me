@@ -193,3 +193,10 @@ Concise history of meaningful agent-made changes.
 - Generated and visually inspected the English and French outputs; verified A4 pagination, PDF tags and language metadata, and deterministic ATS section extraction order.
 - Merged the tagged and ATS-focused resume PDF generation changes from `dev` into `releases`, bumped package metadata to `v1.3.3`, and synchronized the release commit back to `dev`.
 - Verified release `v1.3.3` with Astro diagnostics and a production build.
+
+## 2026-11-10
+
+- Request and plan: align both website languages with the updated public professional profile; refresh positioning, recent experience, selected projects and skills, add demo links, then verify. Work remains on `dev` without staging, committing or pushing; printable resumes are deferred.
+- Updated localized resume content and metadata, availability wording, selected-project order, and public GitHub identity links. Preserved existing content structures; the only model addition is optional `WorkItemType.liveDemo`, using the existing URL/title shape.
+- Rendered localized demo and source links in project cards; corrected the footer GitHub destination. No PDF or print-source changes.
+- Verification: Astro check passed with zero errors/warnings/hints; production build passed; production HTML links, metadata and structured data checked; baseline/current object-key comparison confirmed structure preservation; `git diff --check` passed. Browser review covered both languages, English expanded experience, French project layout, and no page overflow at the effective narrow viewport (477 CSS px). The browser did not honor the requested 320 CSS px width, so that breakpoint is not claimed as verified. Demo destination applications were not retested.
