@@ -207,3 +207,9 @@ Concise history of meaningful agent-made changes.
 - Preserved CSS, dates, role count, print-break rules, education, certification, and contact details. Plan: edit content only, inspect both browser renders, then check structure and links.
 - Verified both HTML renders in the browser, project destinations in the markup, unchanged CSS/dates, unique IDs and heading references, and clean whitespace. No application runtime changed, so an Astro build was not needed.
 - PDF generation, print pagination verification, and website PDF-link updates remain with the user. No PDFs generated; no staging, commit, or push performed.
+
+## 2026-11-10 — Open Graph images
+
+- Refreshed both 1200×630 JPEG social-preview images from current localized hero content, including headline, tagline, summary, metadata and focus tags. Retained the established dark grid, amber accent, local Urbanist/Lora fonts, and existing portrait asset.
+- Plan and verification: inspect old graphics, render deterministic HTML compositions using existing project assets, then visually inspect both exports and verify dimensions, font loading, text bounds, and whitespace. Text is read directly from each locale's content module; no content-model change was needed.
+- Kept existing image paths and metadata references. No PDFs, commits, pushes or deployment; renderer intermediates remain outside the repository.
