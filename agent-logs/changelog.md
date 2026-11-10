@@ -213,3 +213,11 @@ Concise history of meaningful agent-made changes.
 - Refreshed both 1200×630 JPEG social-preview images from current localized hero content, including headline, tagline, summary, metadata and focus tags. Retained the established dark grid, amber accent, local Urbanist/Lora fonts, and existing portrait asset.
 - Plan and verification: inspect old graphics, render deterministic HTML compositions using existing project assets, then visually inspect both exports and verify dimensions, font loading, text bounds, and whitespace. Text is read directly from each locale's content module; no content-model change was needed.
 - Kept existing image paths and metadata references. No PDFs, commits, pushes or deployment; renderer intermediates remain outside the repository.
+
+## 2026-11-10 — Release v1.5.0
+
+- Prepared a minor release for bilingual profile alignment, localized project demo links and globe icon, refreshed printable resumes/PDF downloads, and updated Open Graph images and metadata. No dependency or breaking interface changes.
+- Backed up the previous `releases` content (v1.4.0) onto `main` with a merge commit and verified identical trees before merging `dev` into `releases`.
+- Bumped package and lockfile versions to 1.5.0 using npm. Self-review covered the scoped component/type changes and localized content; no blocking finding identified.
+- Verification passed: Astro check (98 files, no errors/warnings/hints), production build with the public www site origin, localized built metadata and JSON-LD, current PDF references, demo links, matching package/lockfile versions, and whitespace checks.
+- Release process: annotated v1.5.0 tag; synchronize the release version back to dev; push the main backup before publishing releases/dev/tag. Railway is configured to deploy the releases branch. Post-deployment checks are recorded in the handoff response.
